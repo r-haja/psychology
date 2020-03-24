@@ -1,0 +1,23 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.home{
+  width: 100%;
+  text-align: center;
+  ul{
+    list-style-type: none;
+    margin: auto 0;
+    padding: 0;
+    li{
+      width: 30%;
+      text-align: center;
+      height: 40px;
+      .home-btn{
+        display: inline-block;
+        padding: 10px;
+        margin:  10px;
+      }
+    }
+  }
+}
