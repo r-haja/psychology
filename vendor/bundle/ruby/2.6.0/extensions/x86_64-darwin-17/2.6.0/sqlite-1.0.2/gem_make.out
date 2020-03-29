@@ -1,0 +1,45 @@
+current directory: /Users/h.r_mac/Desktop/侍関連/99.その他/texhpitgram/vendor/bundle/ruby/2.6.0/gems/sqlite-1.0.2/ext/sqlite
+/Users/h.r_mac/.rbenv/versions/2.6.5/bin/ruby -I /Users/h.r_mac/.rbenv/versions/2.6.5/lib/ruby/site_ruby/2.6.0 -r ./siteconf20200329-32825-bjoqbc.rb extconf.rb
+checking for malloc()... yes
+checking for free()... yes
+creating Makefile
+
+current directory: /Users/h.r_mac/Desktop/侍関連/99.その他/texhpitgram/vendor/bundle/ruby/2.6.0/gems/sqlite-1.0.2/ext/sqlite
+make "DESTDIR=" clean
+
+current directory: /Users/h.r_mac/Desktop/侍関連/99.その他/texhpitgram/vendor/bundle/ruby/2.6.0/gems/sqlite-1.0.2/ext/sqlite
+make "DESTDIR="
+compiling main.c
+compiling ruby_sqlite3.c
+ruby_sqlite3.c:58:20: warning: equality comparison result unused [-Wunused-comparison]
+    c->dont_delete == false;
+    ~~~~~~~~~~~~~~~^~~~~~~~
+ruby_sqlite3.c:58:20: note: use '=' to turn this equality comparison into an assignment
+    c->dont_delete == false;
+                   ^~
+                   =
+ruby_sqlite3.c:74:20: warning: equality comparison result unused [-Wunused-comparison]
+    c->dont_delete == true;
+    ~~~~~~~~~~~~~~~^~~~~~~
+ruby_sqlite3.c:74:20: note: use '=' to turn this equality comparison into an assignment
+    c->dont_delete == true;
+                   ^~
+                   =
+2 warnings generated.
+compiling ruby_sqlite3_stmt.c
+compiling sqlite3_dist.c
+sqlite3_dist.c:155767:32: warning: incompatible function pointer types assigning to 'int (*)(void *, int, int)' from 'int (*)(void *, int)' [-Wincompatible-function-pointer-types]
+  db->lockEventHandlers.busy   = xBusy; 
+                               ^ ~~~~~
+sqlite3_dist.c:155768:32: warning: incompatible function pointer types assigning to 'int (*)(void *, int, int)' from 'int (*)(void *, int)' [-Wincompatible-function-pointer-types]
+  db->lockEventHandlers.unlock = xUnlock; 
+                               ^ ~~~~~~~
+sqlite3_dist.c:155770:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+3 warnings generated.
+linking shared-object sqlite/sqlite.bundle
+
+current directory: /Users/h.r_mac/Desktop/侍関連/99.その他/texhpitgram/vendor/bundle/ruby/2.6.0/gems/sqlite-1.0.2/ext/sqlite
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 sqlite.bundle ./.gem.20200329-32825-lsqii0/sqlite
