@@ -1,0 +1,25 @@
+<div class="d-flex flex-column align-items-center mt-3">
+  <div class="col-xl-7 col-lg-8 col-md-10 col-sm-11 post-card">
+    <div class="card">
+      <div class="card-header">
+        Passportの作成
+      </div>
+      <div class="card-body">
+        <%= form_with model: @passport, url: [current_user, @passport], class: " p-0 border-0", local: true do |f| %>
+          <%= render 'partial/error_messages', model: f.object %>
+          <div class="form-group row mt-2">
+            <div class="col-md-10">
+              <%= f.text_field :purpose, class: "form-control border-0", placeholder: "目的を記載" %>
+            </div>
+            <div class="col-md-12 pl-0">
+              <%= f.text_field :goal, class: "form-control border-0", placeholder: "目標を記載" %>
+            </div>
+          </div>
+          <div class="mb-3">
+            <%= f.file_field :passport_image, class: "new-image" %>
+          </div>
+          <%= f.submit "作成する", class: "btn btn-outline-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>

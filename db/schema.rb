@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_22_144009) do
+ActiveRecord::Schema.define(version: 2020_03_25_122403) do
 
   create_table "comments", force: :cascade do |t|
     t.string "comment", null: false
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 2020_03_22_144009) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "passports", force: :cascade do |t|
+    t.string "purpose", null: false
+    t.string "goal", null: false
+    t.string "passport_image"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_passports_on_user_id"
   end
 
   create_table "photos", force: :cascade do |t|

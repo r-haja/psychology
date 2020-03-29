@@ -98,21 +98,35 @@ ja:
 
   activerecord:
     models:
-      post: ポスト
+      post: 'ポスト'
+      passport: 'パスポート'
     attributes:
       post:
-        id: ID
-        created_at: 登録日時
-        updated_at: 更新日時
-        title: タイトル
-        discription: 詳細
+        id: 'ID'
+        created_at: '登録日時'
+        updated_at: '更新日時'
+        title: 'タイトル'
+        discription: '詳細'
+      passport:
+        id: 'ID'
+        created_at: '登録日時'
+        updated_at: '更新日時'
+        purpose: '目的'
+        goal: '目標'
 
     errors:
       models:
         post:
           attributes:
             title:
-              blank: を入力して下さい。
-              too_long: は50文字以内で記入してください。
+              blank: 'を入力して下さい。'
+              too_long: 'は50文字以内で記入してください。'
             discription:
-              too_long: は140文字以内で記入してください。
+              too_long: 'は140文字以内で記入してください。'
+              
+        passport:
+          attributes:
+            purpose:
+              blank: 'を設定してください。'
+            goal:
+              blank: 'を設定してください。'

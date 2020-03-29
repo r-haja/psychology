@@ -1,0 +1,35 @@
+<div class="col-md-10 col-md-offset-1 mx-auto postShow-wrap">
+  <div class="row post-wrap">
+    <div class="col-md-8">
+      <% if @passport.passport_image.nil? %>
+      <% else %>
+        <div class="card-left">
+          <%= image_tag @passport.passport_image.url(:medium), class: "card-img-top" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <div class="card-right">
+        <div class="card-right-comment">
+          <div class="card-right-name">
+            <%= link_to user_path(@passport.user), class: "no-text-decoration" do %>
+              <%= image_tag 'dumbo_default.png', class: "post-profile-icon" %>
+            <% end %>
+            <%= link_to user_path(@passport.user), class: "black-color no-text-decoration post-user-name",
+              title: @passport.user.name do %>
+              <strong><%= @passport.user.name %></strong>
+            <% end %>
+          </div>
+          <div class="m-2">
+            <h4>
+              <%= @passport.purpose %>
+            </h4>
+            <strong>
+              <%= @passport.goal %>
+            </strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
