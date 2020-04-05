@@ -8,9 +8,9 @@
     <% if user_signed_in? %>
       <ul>
         <li><%= link_to "シェア", posts_path, class: "link" %></li>
-        <li><%= link_to "パスポート", user_path(current_user), class: "link" %></li>
+        <li><%= link_to "パスポート", new_user_passport_path(current_user), class: "link" %></li>
         <li><%= link_to "心理学", "#", class: "link" %></li>
-        <li><%= link_to "設定", "#", class: "link" %></li>
+        <li><%= link_to "設定", user_path(current_user), class: "link" %></li>
       <% end %>
     </ul>
   </div>

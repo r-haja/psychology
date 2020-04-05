@@ -4,7 +4,7 @@
       <% if @passport.passport_image.nil? %>
       <% else %>
         <div class="card-left">
-          <%= image_tag @passport.passport_image.url(:medium), class: "card-img-top" %>
+          <%= image_tag @passport.passport_image.url, class: "card-img-top" %>
         </div>
       <% end %>
     </div>

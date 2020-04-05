@@ -2,20 +2,28 @@ class PassportsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @passport = Passport.find_by(id: params[:id])
+    if current_user.passports.present?
+      @passport = Passport.find_by(id: params[:id])
+    else
+      redirect_to new_user_passport_path(current_user)
+      flash[:notice] = "パスポートを作成しましょう！"
+    end
   end
 
   def new
-    #毎回パスポートデータが消される。
-    @user = User.find(params[:user_id])
-    @passport = @user.build_passport
+    if current_user.passports.present?
+      redirect_to user_passport_path(current_user, current_user.passports.first.id)
+      flash[:alert] = "すでにパスポートは作成済みです!"
+    else
+      @passport = current_user.passports.new
+    end
   end
 
   def create
-    passport = current_user.build_passport(passport_params)
-    if passport.save
+    @passport = current_user.passports.new(passport_params)
+    if @passport.save
       flash[:notice] = "習慣化パスポートを保存しました！"
-      redirect_to root_path
+      redirect_to user_passport_path(current_user, current_user.passports.first.id)
     else
       render :new
     end
