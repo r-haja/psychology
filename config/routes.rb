@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     controllers: {registrations: "registrations"}
 
   root to: "pages#home"
+  get "psychology", to: "pages#psychology"
 
 
   resources :users, only: %i(show) do
