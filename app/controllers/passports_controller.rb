@@ -13,7 +13,7 @@ class PassportsController < ApplicationController
   def new
     if current_user.passports.present?
       redirect_to user_passport_path(current_user, current_user.passports.first.id)
-      flash[:alert] = "すでにパスポートは作成済みです!"
+    #  flash[:alert] = "すでにパスポートは作成済みです!"
     else
       @passport = current_user.passports.new
     end
