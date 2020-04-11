@@ -100,6 +100,7 @@ ja:
     models:
       post: 'ポスト'
       passport: 'パスポート'
+      user: 'ユーザ'
     attributes:
       post:
         id: 'ID'
@@ -113,6 +114,10 @@ ja:
         updated_at: '更新日時'
         purpose: '目的'
         goal: '目標'
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        password: "パスワード"
 
     errors:
       models:
@@ -123,10 +128,19 @@ ja:
               too_long: 'は50文字以内で記入してください。'
             discription:
               too_long: 'は140文字以内で記入してください。'
-              
+
         passport:
           attributes:
             purpose:
               blank: 'を設定してください。'
             goal:
               blank: 'を設定してください。'
+        user:
+          attributes:
+            name:
+              blank: 'を入力してください。'
+            email:
+              blank: 'を入力してください。'
+              taken: 'は既に登録されています。'
+            password:
+              blank: 'を入力してください。'

@@ -9,6 +9,11 @@
           </div>
 
           <div class="form-group">
+            <%= f.label :profile_image, "ユーザ画像" %>
+            <%= f.file_field :profile_image, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
             <%= f.label :email, "メールアドレス" %>
             <%= f.email_field :email, autofocus: true, class: "form-control" %>
           </div>

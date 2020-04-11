@@ -40,6 +40,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'sqlite3'
   gem 'rspec-rails', '~>3.6.0'
+  gem 'factory_bot_rails', '~>4.10.0'
 end
 
 group :development do
@@ -58,6 +59,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'launchy', '~>2.4.3'
 end
 
 group :production do

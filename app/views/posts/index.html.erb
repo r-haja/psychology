@@ -21,8 +21,7 @@
           <div>
             <span><h5><%= post.title %></h5></span>
             <span><%= post.discription %></span>
-            <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration" %>
-
+        
             <div id="comment-post-<%= post.id.to_s %>">
               <%= render 'comment_list', {post: post} %>
             </div>

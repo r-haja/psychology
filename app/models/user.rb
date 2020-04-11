@@ -22,4 +22,6 @@ class User < ApplicationRecord
     clean_up_passwords
     result
   end
+
+  mount_uploader :profile_image, ProfileImageUploader
 end

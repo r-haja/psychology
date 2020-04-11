@@ -3,6 +3,8 @@
     <div class="card">
       <div class="card-header">
         Passportの作成
+        passportは一度作成したら、編集できません。
+        目標達成までに習慣をやめたい場合は、一度削除して作り直す必要があります。
       </div>
       <div class="card-body">
         <%= form_with model: @passport, url: [current_user, @passport], class: " p-0 border-0", local: true do |f| %>
@@ -16,7 +18,7 @@
             </div>
           </div>
           <div class="mb-3">
-            <%= f.file_field :passport_image, class: "new-image" %>
+            <%= f.file_field :passport_image, placeholder: "ファイルを選択", class: "new-image" %>
           </div>
           <%= f.submit "作成する", class: "btn btn-outline-primary" %>
         <% end %>
