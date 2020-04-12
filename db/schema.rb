@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_12_064440) do
+ActiveRecord::Schema.define(version: 2020_04_12_094643) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 2020_04_12_064440) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "passport_psychologies", force: :cascade do |t|
+    t.integer "passport_id"
+    t.integer "psychology_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["passport_id"], name: "index_passport_psychologies_on_passport_id"
+    t.index ["psychology_id"], name: "index_passport_psychologies_on_psychology_id"
   end
 
   create_table "passports", force: :cascade do |t|
@@ -60,6 +69,13 @@ ActiveRecord::Schema.define(version: 2020_04_12_064440) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "psychologies", force: :cascade do |t|
+    t.string "title"
+    t.string "discription"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

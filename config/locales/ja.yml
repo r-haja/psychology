@@ -118,6 +118,9 @@ ja:
         name: "名前"
         email: "メールアドレス"
         password: "パスワード"
+      psychology:
+        title: "タイトル"
+        discription: "詳細"
 
     errors:
       models:
@@ -143,4 +146,11 @@ ja:
               blank: 'を入力してください。'
               taken: 'は既に登録されています。'
             password:
+              blank: 'を入力してください。'
+
+        psychology:
+          attributes:
+            title:
+              blank: 'を入力してください。'
+            discription:
               blank: 'を入力してください。'
