@@ -9,7 +9,11 @@
           <%= render 'partial/error_messages', model: f.object %>
           <div class="form-group row mt-2">
             <div class="col-auto pr-0">
-              <%= image_tag 'dumbo_default.png', class: "post-profile-icon" %>
+              <% if current_user.profile_image %>
+                <%= image_tag current_user.profile_image.url, class: "post-profile-icon" %>
+              <% else %>
+                <%= image_tag 'dumbo_default.png', class: "post-profile-icon" %>
+              <% end %>
             </div>
             <div class="col-md-10">
               <%= f.text_field :title, class: "form-control border-0 new-title", placeholder: "タイトルを記載" %>

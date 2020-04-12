@@ -11,3 +11,9 @@ User.create!(
   email: 'dumbo@test.com',
   password: 'password'
 )
+
+Admin.create!(
+  name: 'admin_dumbo',
+  email: 'dumbo.fs@gmail.com',
+  password: 'DumboAppPass'
+)

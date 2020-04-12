@@ -5,7 +5,7 @@ RSpec.feature "Passports", type: :feature do
     user = FactoryBot.create(:user)
 
     visit root_path
-    click_link "ログイン"
+    click_link "サインイン"
     fill_in "メールアドレス", with: user.email
     fill_in "パスワード", with: user.password
     click_button "サインインする"

@@ -13,7 +13,11 @@
         <div class="card-right-comment">
           <div class="card-right-name">
             <%= link_to user_path(@post.user), class: "no-text-decoration" do %>
-              <%= image_tag 'dumbo_default.png', class: "post-profile-icon" %>
+              <% if @post.user.profile_image %>
+                <%= image_tag @post.user.profile_image.url, class: "post-profile-icon" %>
+              <% else %>
+                <%= image_tag 'dumbo_default.png', class: "post-profile-icon" %>
+              <% end %>
             <% end %>
             <%= link_to user_path(@post.user), class: "black-color no-text-decoration post-user-name",
               title: @post.user.name do %>

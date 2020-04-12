@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-md-4 text-center">
       <% if @user.profile_image.file.nil? %>
+        <%= image_tag 'dumbo_default.png', class: "post-profile-icon" %>
       <% else %>
         <%= image_tag @user.profile_image.url, class: "round-img" %>
       <% end %>

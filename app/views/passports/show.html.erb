@@ -2,6 +2,7 @@
   <div class="row post-wrap">
     <div class="col-md-8">
       <% if @passport.passport_image.file.nil? %>
+        <%= image_tag 'dumbo_default.png', class: "post-profile-icon" %>
       <% else %>
         <div class="card-left">
           <%= image_tag @passport.passport_image.url, class: "card-img-top" %>
@@ -13,7 +14,11 @@
         <div class="card-right-comment">
           <div class="card-right-name">
             <%= link_to user_path(@passport.user), class: "no-text-decoration" do %>
-              <%= image_tag 'dumbo_default.png', class: "post-profile-icon" %>
+              <% if current_user.profile_image.file.nil? %>
+                <%= image_tag 'dumbo_default.png', class: "post-profile-icon" %>
+              <% else %>
+                <%= image_tag current_user.profile_image.url, class: "post-profile-icon"  %>
+              <% end %>
             <% end %>
             <%= link_to user_path(@passport.user), class: "black-color no-text-decoration post-user-name",
               title: @passport.user.name do %>
