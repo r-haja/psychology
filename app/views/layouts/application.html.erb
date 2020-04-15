@@ -13,10 +13,12 @@
     <div class="wrapper">
       <%= render 'partial/navbar' %>
       <%= render 'partial/flash' %>
-      <div class="container">
+      <%#<div class="container">%>
         <%= yield %>
-      </div>
-      <%= render 'partial/footer' %>
+      <%#</div>%>
+      <% if user_signed_in? || admin_signed_in? %>
+        <%= render 'partial/footer' %>
+      <% end %>
     </div>
   </body>
 </html>

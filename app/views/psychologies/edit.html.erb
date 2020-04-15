@@ -1,0 +1,14 @@
+<h1>Psychologys#edit</h1>
+<p>Find me in app/views/psychologys/edit.html.erb</p>
+
+<%= form_with model: @psychology, local: true  do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :discription %>
+  <%= f.text_area :discription %>
+
+  <%= f.file_field :psychology_image, placeholder: "ファイルを選択"%>
+
+  <%= f.submit "心理学方法を追加する" %>
+<% end %>

@@ -1,0 +1,95 @@
+<div class="top-wrapper">
+  <div class="container">
+    <h1>心理学関連の情報を載せる。</h1>
+    <h1>以降、どんなことをやって欲しいかを記載。</h1>
+    <p>習慣化はとても重要であり、ｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘ</p>
+    <p>背景画像欲しいなあ</p>
+  </div>
+</div>
+<div class="container">
+  <div class="genre-wrapper">
+    <div class="heading">
+      <h3>はじめに</h3>
+      <p>習慣化にはいくつかジャンルがあります。</p>
+      <p>自分がどのジャンルの習慣化に得意とするかを将来知るためにも</p>
+      <p>習慣化したいことがどのジャンルに当てはまるか考えてみよう！</p>
+    </div>
+    <div class="genres">
+      <ul>
+        <li class="genre" data-toggle="modal" data-target=".genre1"><%= image_tag "genre1.png", width: "230px", height:"150px" %></li>
+        <li class="genre"><%= image_tag "genre2.png", width: "230px", height:"150px" %></li>
+        <li class="genre"><%= image_tag "genre3.png", width: "230px", height:"150px" %></li>
+        <li class="genre"><%= image_tag "genre4.png", width: "230px", height:"150px" %></li>
+        <li class="genre"><%= image_tag "genre5.png", width: "230px", height:"150px" %></li>
+        <li class="genre"><%= image_tag "genre6.png", width: "230px", height:"150px" %></li>
+        <li class="genre"><%= image_tag "genre7.png", width: "230px", height:"150px" %></li>
+        <li class="genre"><%= image_tag "genre8.png", width: "230px", height:"150px" %></li>
+        <li class="genre"><%= image_tag "genre9.png", width: "230px", height:"150px" %></li>
+        <li class="genre"><%= image_tag "genre10.png", width: "230px", height:"150px" %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade bd-example-modal-lg genre1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="container">
+        ...
+        <p>aaaaaaaaaaaaaaaa</p>
+        <p>aaaaaaaaaa</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="psychology-wrapper">
+  <div class="container">
+    <div class="heading">
+      <h2>さあ！習慣化方法を選ぼう！！</h2>
+    </div>
+    <div class="psychologies">
+      <%# if user_signed_in? || admin_signed_in? %>
+        <% if @psychologies %>
+          <% @psychologies.each do |psychology| %>
+            <div class="psychology">
+              <h5 class="psychology-title"><%= psychology.title %></h5>
+              <% if admin_signed_in? %>
+                <%= link_to "Edit", edit_psychology_path(psychology), class: "btn btn-outline-primary " %>
+                <%= link_to "Delete", psychology_path(psychology), method: :delete, class: "btn btn-outline-danger" %>
+              <% end %>
+              <% if psychology.psychology_image.file.nil? %>
+                <%= image_tag "dumbo_default.png", class: "psychology-icon" %>
+              <% else %>
+                <%= image_tag psychology.psychology_image.url, class: "psychology-icon" %>
+              <% end %>
+              <p class="psychology-discription"><%= psychology.discription %></p>
+            </div>
+          <% end %>
+        <% end %>
+
+        <%# else %>
+        <%#<h1>サインインしていない</h1>%>
+        <%#サインインしていないのであれば、一部の情報のみ載せる。%>
+      <%# end %>
+    </div>
+  </div>
+</div>
+
+<div class="message-wrapper">
+  <div class="container">
+    <div class="heading">
+      <h2>習慣化は選べましたか？</h2>
+      <h3>どれがいいかいまいちわからない場合は、自身の生活スタイルに合わせて
+          とりあえずできそうなものをいったん選んでみよう！フィーリングでいいんやで（適当）</h3>
+    </div>
+  </div>
+</div>
+
+<div class="footer-wrapper">
+  <div class="container">
+      <p>DUMBO</p>
+  </div>
+</div>

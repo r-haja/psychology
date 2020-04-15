@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  resources :psychologies
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :admins
   devise_for :users,
     controllers: {registrations: "registrations"}
 
   root to: "pages#home"
-  get "psychology", to: "pages#psychology"
 
 
   resources :users, only: %i(show) do

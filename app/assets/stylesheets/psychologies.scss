@@ -1,0 +1,101 @@
+// Place all the styles related to the psychologies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.psychology-wrapper{
+  margin: 0;
+  font-family: "Hiragino Kaku Gothin ProN", sans-serif;
+}
+
+.top-wrapper{
+  padding: 180px 0 100px 0;
+  color: black;
+  text-align: center;
+  h1{
+    opacity: 0.7;
+    font-size: 45px;
+    letter-spacing: 5px;
+  }
+  p{
+    opacity: 0.7;
+  }
+}
+.genre-wrapper{
+  height: 1100px;
+  .genres{
+    margin-bottom: 50px;
+    ul{
+      list-style: none;
+    }
+    .genre{
+      width: 30%;
+      margin: 20px 10px 10px 10px;
+      float: left;
+    }
+  }
+}
+
+
+.psychology-wrapper{
+  background-color: #f7f7f7;
+  text-align: left;
+  padding-bottom: 600px;
+  height: 4000px;
+  .heading{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: #5f5d60;
+    h2{
+      font-weight: normal;
+    }
+    h3{
+      font-weight: normal;
+    }
+  }
+  .psychologies{
+    margin: 10px 0 100px 0;
+    .psychology{
+      height: 350px;
+      float: left;
+      width: 45%;
+      background-color: white;
+      margin-right: 5%;
+      margin-top: 30px;
+      .psychology-title{
+        padding: 10px 20px 10px 20px;
+        background-color: #008BBB;
+        color: white;
+        margin-bottom: 10px;
+      }
+      .psychology-icon{
+        height: 　200px;
+        width: 200px;
+        margin: 0 25% 0 25%;
+      }
+      .psychology-discription{
+        display: inline-block;
+        margin: 15px 0 15px 20px;
+        font-size: 13px;
+        color: #b3aeb5;
+      }
+    }
+  }
+}
+
+.message-wrapper{
+  border-bottom: 1px solid #eee;
+  padding:80px 0 80px 0;
+  text-align: center;
+}
+
+.footer-wrapper{
+  padding: 30px 0 20px 0;
+  p{
+    color: #b3aeb5;
+    font-size: 12px;
+  }
+}
+
+.btn{
+  float: right;
+}
