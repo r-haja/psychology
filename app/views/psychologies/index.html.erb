@@ -40,22 +40,26 @@
 <div class="methods">
   <div class="container">
     <h2 class="heading">習慣化方法を選びましょう</h2>
-    <div class="psychologies">
+    <div class="methods__block">
       <%# if user_signed_in? || admin_signed_in? %>
         <% if @psychologies %>
           <% @psychologies.each do |psychology| %>
-            <div class="psychology">
-              <h5 class="psychology-title"><%= psychology.title %></h5>
+            <div class="item">
+              <div class="itemTitle">
+                <% if psychology.psychology_image.file.nil? %>
+                  <%= image_tag "dumbo_default.png", class: "itemTitle__img" %>
+                <% else %>
+                  <%= image_tag psychology.psychology_image.url, class: "itemTitle__img" %>
+                <% end %>
+                <h3><%= psychology.title %></h3>
+              </div>
+              <p class="item__disc"><%= psychology.discription %></p>
               <% if admin_signed_in? %>
-                <%= link_to "Edit", edit_psychology_path(psychology), class: "btn btn-outline-primary " %>
-                <%= link_to "Delete", psychology_path(psychology), method: :delete, class: "btn btn-outline-danger" %>
+                <div class="adminBtn">
+                  <%= link_to "Edit", edit_psychology_path(psychology), class: "btn btn-outline-primary " %>
+                  <%= link_to "Delete", psychology_path(psychology), method: :delete, class: "btn btn-outline-danger" %>
+                </div>
               <% end %>
-              <% if psychology.psychology_image.file.nil? %>
-                <%= image_tag "dumbo_default.png", class: "psychology-icon" %>
-              <% else %>
-                <%= image_tag psychology.psychology_image.url, class: "psychology-icon" %>
-              <% end %>
-              <p class="psychology-discription"><%= psychology.discription %></p>
             </div>
           <% end %>
         <% end %>
