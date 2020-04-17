@@ -9,7 +9,7 @@
       <p>習慣化したいことがどのジャンルに当てはまるか考えてみよう！</p>
       <div class="genre__list">
         <ul>
-          <li data-toggle="modal" data-target=".genre1"><%= image_tag "genre1.png" %></li>
+          <li><%= image_tag "genre1.png" %></li>
           <li><%= image_tag "genre2.png" %></li>
           <li><%= image_tag "genre3.png" %></li>
           <li><%= image_tag "genre4.png" %></li>
@@ -23,14 +23,61 @@
       </div>
   </div>
 </div>
+<div class="premises">
+  <div class="container">
+    <div class="heading">
+      <h2>習慣化を行う上で、すべての人に実践してほしいこと</h2>
+      <p>習慣化を進めていく上で念頭においてほしい考えて方があります。</p>
+      <p>すべての習慣化に関係してくる内容となります。必ずお読みください！</p>
+    </div>
+    <div class="premises-block">
+      <div class="premise">
+        <%= image_tag "premise1.png", class: "premise-image"%>
+        <h3 class="premise-title">セルフコンパッション</h3>
+        <p class="premise-discription">
+          習慣化したい事が続かなかったり、出来なかった時に自分を責めてはいけない。
+          といった考え方。
 
-<div class="modal fade bd-example-modal-lg genre1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="container">
-        ...
-        <p>aaaaaaaaaaaaaaaa</p>
-        <p>aaaaaaaaaa</p>
+          人は、習慣化で失敗したときに
+          その失敗を取り返すために無理な設定をします。
+          そして、無理な目標にも挫折し、自己嫌悪に陥ります。
+          <br>基本的に習慣化に挫折する方は、上記のサイクルに陥り失敗します。
+
+          例えば、勉強を習慣化しようとしていたが、失敗した場合
+          「今日は勉強できなかったから明日はいつもの２倍の量勉強しよう！」と考えいます。
+
+          もともと設定していた目標も達成できないのに
+          その２倍の目標を実現することは非常に難しいです。
+
+          <br>この”無理な目標設定”を繰り返すことで失敗を積み重ね、
+          “自己嫌悪”に陥ります。　<br>
+          <br>
+          「ああ、自分はなんてだめなやつなんだ、、、」
+
+          人は自己嫌悪に陥ると”自己効力感”と呼ばれる<br>
+          「自分は頑張ればなんでもできる！！」といった感情が低下します。<br>
+          習慣化と自己効力感は密接に関係しているので、
+          もし、失敗したとしても自己嫌悪にならず、
+          <br>「こんな日もあるよね〜♪」くらいの感覚で乗り切りましょう。</p>
+      </div>
+      <div class="premise">
+          <%= image_tag "premise2.png", class: "premise-image"%>
+        <h3 class="premise-title">コミットメント想起日</h3>
+        <p class="premise-discription">
+          毎日、特定のタイミング/場所で習慣化を行う目的を思い出す。
+          人は、簡単に習慣化した先の目的を見失ってしまいます。
+          目的を忘れてしまうと習慣化の成功率が下がってしまうこともわかっています。
+
+          そのため、習慣化を行う目的を忘れないように
+          毎日目的を思い浮かべることで成功率を上げましょう。
+
+          <br>また、思い浮かべる方法として
+          メモに目的を記載し、思い出すタイミングと一緒に音読することも効果的です。</p>
+      </div>
+      <div class="premise">
+        <%= image_tag "premise3.png", class: "premise-image" %>
+        <h3 class="premise-title">例外ルール</h3>
+        <p class="premise-discription"></p>
       </div>
     </div>
   </div>
@@ -39,13 +86,14 @@
 
 <div class="methods">
   <div class="container">
-    <h2 class="heading">習慣化方法を選びましょう</h2>
+    <h2 class="heading">習慣化方法を選びましょう(各習慣化方法をタッチしてね！)</h2>
     <div class="methods__block">
       <%# if user_signed_in? || admin_signed_in? %>
+        <% i = 0 %>
         <% if @psychologies %>
           <% @psychologies.each do |psychology| %>
             <div class="item">
-              <div class="itemTitle">
+              <div class="itemTitle" data-toggle="modal" data-target="#genre<%= i %>">
                 <% if psychology.psychology_image.file.nil? %>
                   <%= image_tag "dumbo_default.png", class: "itemTitle__img" %>
                 <% else %>
@@ -53,14 +101,37 @@
                 <% end %>
                 <h3><%= psychology.title %></h3>
               </div>
-              <p class="item__disc"><%= psychology.discription %></p>
+
+
+
+              <div class="modal fade" id="genre<%= i %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle"><%= psychology.title %></h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p class="item__disc"><%= simple_format(psychology.discription) %></p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
               <% if admin_signed_in? %>
                 <div class="adminBtn">
                   <%= link_to "Edit", edit_psychology_path(psychology), class: "btn btn-outline-primary " %>
-                  <%= link_to "Delete", psychology_path(psychology), method: :delete, class: "btn btn-outline-danger" %>
+                  <%= link_to "Delete", psychology_path(psychology), method: :delete, class: "btn btn-outline-danger", data: {confirm: "本当に削除してよろしいですか？"} %>
                 </div>
               <% end %>
             </div>
+            <% i += 1 %>
           <% end %>
         <% end %>
 
@@ -78,6 +149,7 @@
       <div class="heading">習慣化は選べましたか？</div>
       <p>どれがいいかいまいちわからない場合は、自身の生活スタイルに合わせて
           とりあえずできそうなものをいったん選んでみよう！フィーリングでいいんやで（適当）</p>
+      <p>また、選んだ習慣化方法はLINEで指定したフォーマットに合わせて、LINE公式アカウントへの送付をお願いいいたします！</p>
     </div>
   </div>
 </div>

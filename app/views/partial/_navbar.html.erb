@@ -3,7 +3,8 @@
     <% if user_signed_in? %>
       <%= link_to "", posts_path, class: "navbar__brand navbar__mainLogo"%>
     <% else %>
-      <%= link_to "", root_path, class: "navbar__brand navbar__mainLogo"%>
+      <%# link_to "", root_path, class: "navbar__brand navbar__mainLogo"%>
+      <%= link_to "", psychologies_path, class: "navbar__brand navbar__mainLogo"%>
     <% end %>
     <% if user_signed_in? || admin_signed_in? %>
       <button class="navbar-toggler" type="button"
