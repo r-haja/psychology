@@ -5,8 +5,8 @@
   <div class="genre">
       <h2 class="heading">はじめに</h2>
       <p>習慣化にはいくつかジャンルがあります。</p>
-      <p>自分がどのジャンルの習慣化に得意とするかを将来知るためにも</p>
-      <p>習慣化したいことがどのジャンルに当てはまるか考えてみよう！</p>
+      <p>自分がどのジャンルの習慣化に得意とするかを将来知るためにも
+      習慣化したいことがどのジャンルに当てはまるか考えてみよう！</p>
       <div class="genre__list">
         <ul>
           <li><%= image_tag "genre1.png" %></li>
@@ -26,9 +26,9 @@
 <div class="premises">
   <div class="container">
     <div class="heading">
-      <h2>習慣化を行う上で、すべての人に実践してほしいこと</h2>
-      <p>習慣化を進めていく上で念頭においてほしい考えて方があります。</p>
-      <p>すべての習慣化に関係してくる内容となります。必ずお読みください！</p>
+      <h2>習慣化を行う上で、<br>すべての人に実践してほしいこと</h2>
+      <p>習慣化を進めていく上で念頭においてほしい考え方があります。
+      すべての習慣化に関係してくる内容となります。必ずお読みください！</p>
     </div>
     <div class="premises-block">
       <div class="premise">
@@ -86,7 +86,7 @@
 
 <div class="methods">
   <div class="container">
-    <h2 class="heading">習慣化方法を選びましょう(各習慣化方法をタッチしてね！)</h2>
+    <h2 class="heading">習慣化方法を選びましょう<br>(各習慣化方法をタッチしてね！)</h2>
     <div class="methods__block">
       <%# if user_signed_in? || admin_signed_in? %>
         <% i = 0 %>
@@ -114,7 +114,7 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <p class="item__disc"><%= simple_format(psychology.discription) %></p>
+                      <p class="item__disc　modal-disc"><%= simple_format(psychology.discription) %></p>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
