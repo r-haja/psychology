@@ -4,7 +4,7 @@ class PsychologiesController < ApplicationController
 
 
   def index
-    @psychologies = Psychology.all
+    @psychologies = Psychology.all.order(created_at: :asc)
   end
 
   def show
