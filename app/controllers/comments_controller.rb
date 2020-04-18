@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authenticate_admin!
 
   def create
     @comment = Comment.new(comment_params)
