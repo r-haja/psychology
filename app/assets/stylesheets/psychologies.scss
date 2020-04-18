@@ -115,9 +115,12 @@
   .container {
     width: 980px;
   }
+  .hosoku{
+    margin-bottom: 50px;
+  }
   .heading{
     padding-top: 50px;
-    padding-bottom: 30px;
+    padding-bottom: 5px;
     color: #5f5d60;
     h2{
       font-weight: normal;
@@ -225,6 +228,10 @@
     }
     .container{
       width: 100%;
+      .hosoku{
+        font-size: 12px;
+        text-align: center;
+      }
     }
   }
   .genre{
@@ -252,9 +259,6 @@
         font-size: 14px;
         margin: 0 0 0 40px ;
         text-align: left;
-      }
-      .hosoku{
-        font-size: 12px;
       }
     }
   }
