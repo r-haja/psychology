@@ -14,7 +14,12 @@ CarrierWave.configure do |config|
     # 環境毎にバケットを分けます
     case Rails.env
     when 'production'
-        config.fog_directory  = 'psychologyapp'
+       config.storage :fog
+       config.fog_provider = 'fog/aws'
+       config.fog_directory  = 'psychologyapp'
+       config.asset_host = 'https://s3.amazonaws.com/psychologyapp'
+       # NOTE: AWS側の設定を変えなくても、この１行の設定でアップロードできた
+       config.fog_public = false # ←コレ
     when 'development'
         config.storage :fog
         config.fog_provider = 'fog/aws'
