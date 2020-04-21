@@ -4,10 +4,10 @@
       <div class="card">
         <div class="card-header align-items-center d-flex">
           <%= link_to user_path(post.user), class: "no-text-decoration" do %>
-            <% if post.user.profile_image %>
-              <%= image_tag post.user.profile_image.url, class: "post-profile-icon" %>
-            <% else %>
+            <% if post.user.profile_image.file.nil? %>
               <%= image_tag 'dumbo_default.png', class: "post-profile-icon" %>
+            <% else %>
+              <%= image_tag post.user.profile_image.url, class: "post-profile-icon" %>
             <% end %>
           <% end %>
           <%= link_to user_path(post.user), class: "black-color no-text-decoration",

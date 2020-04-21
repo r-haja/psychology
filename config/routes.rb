@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
 
   resources :users, only: %i(show) do
-    resources :passports, only: %i(show new create destroy)
+    resources :passports, only: %i(show new create destroy edit update)
   end
   resources :posts, only: %i(new create index show destroy) do
     resources :photos, only: %i(create)
