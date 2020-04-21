@@ -9,10 +9,10 @@
           <%= render 'partial/error_messages', model: f.object %>
           <div class="form-group row mt-2">
             <div class="col-auto pr-0">
-              <% if current_user.profile_image %>
-                <%= image_tag current_user.profile_image.url, class: "post-profile-icon" %>
-              <% else %>
+              <% if current_user.profile_image.file.nil? %>
                 <%= image_tag 'dumbo_default.png', class: "post-profile-icon" %>
+              <% else %>
+                <%= image_tag current_user.profile_image.url, class: "post-profile-icon" %>
               <% end %>
             </div>
             <div class="col-md-10">

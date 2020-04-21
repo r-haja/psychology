@@ -5,6 +5,7 @@ class PsychologiesController < ApplicationController
 
   def index
     @psychologies = Psychology.all.order(created_at: :asc)
+    @passport =Passport.new
   end
 
   def show

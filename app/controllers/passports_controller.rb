@@ -4,6 +4,7 @@ class PassportsController < ApplicationController
   def show
     if current_user.passports.present?
       @passport = Passport.find_by(id: params[:id])
+      @psychologies = Psychology.all
     else
       redirect_to new_user_passport_path(current_user)
       flash[:notice] = "パスポートを作成しましょう！"
@@ -32,8 +33,19 @@ class PassportsController < ApplicationController
   def destroy
   end
 
+  def edit
+  end
+
+  def update
+    if @passport.update(passport_params)
+      redirect_to user_passport_path(current_user, current_user.passports.first.id)
+    else
+      render :show
+    end
+  end
+
 private
   def passport_params
-    params.require(:passport).permit(:purpose ,:goal, :passport_image)
+    params.require(:passport).permit(:purpose ,:goal, :passport_image, psychology_ids: [])
   end
 end

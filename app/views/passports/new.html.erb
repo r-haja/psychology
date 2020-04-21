@@ -14,11 +14,15 @@
               <p>目的はなぜ、習慣化を行うのか？その習慣は本当に必要なのか？について考えた上で記載しましょう。</p>
               <%= f.text_field :purpose, class: "form-control border-0", placeholder: "目的を記載" %>
             </div>
-            <div class="col-md-12 pl-0">
+            <div class="col-md-12">
               <p>達成不可能な目標設定はNGです。生活スタイルにあった無理のない目標を設定しましょう。</p>
               <%= f.text_field :goal, class: "form-control border-0", placeholder: "目標を記載" %>
             </div>
           </div>
+          <div>
+            <%# f.collection_check_boxes :psychology_ids, Psychology.all, :id, :title do |b| %>
+              <%# b.label {b.check_box + b.text} %>
+            <%# end %>
           <div class="mb-3">
             <%= f.file_field :passport_image, placeholder: "ファイルを選択", class: "new-image" %>
           </div>
