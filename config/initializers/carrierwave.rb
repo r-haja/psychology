@@ -12,9 +12,9 @@ if Rails.env.production? || Rails.env.development?
     config.fog_public = false # ←コレ
     config.fog_credentials = {
       provider: 'AWS',
-      aws_access_key_id: ENV['AWS_ACCESS_KEY'],
-      aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
-      region: ENV['AWS_REGION']  # Tokyoの場合
+      aws_access_key_id: ENV['AWS_ACCESS_KEY2'],
+      aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY2'],
+      region: ENV['AWS_REGION2']  # Tokyoの場合
     }
     config.cache_storage = :fog # キャッシュにS3を指定
   end
