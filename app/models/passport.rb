@@ -1,9 +1,10 @@
 class Passport < ApplicationRecord
   belongs_to :user
+  belongs_to :genre
 
-  has_many :passport_psychologys
-  has_many :psychologies, through: :passport_psychologys
-  accepts_nested_attributes_for :passport_psychologys
+  has_many :passport_psychologies
+  has_many :psychologies, through: :passport_psychologies
+  accepts_nested_attributes_for :passport_psychologies
 
   validates :purpose, presence: true
   validates :goal, presence: true

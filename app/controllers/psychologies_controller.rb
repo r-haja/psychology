@@ -1,14 +1,11 @@
 class PsychologiesController < ApplicationController
   before_action :authenticate_admin!, only: [:edit, :update, :new, :create, :destroy]
-  before_action :set_psychology, only: [:show, :edit, :update, :destroy]
+  before_action :set_psychology, only: [:edit, :update, :destroy]
 
 
   def index
     @psychologies = Psychology.all.order(created_at: :asc)
     @passport =Passport.new
-  end
-
-  def show
   end
 
   def new

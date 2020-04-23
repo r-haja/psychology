@@ -1,14 +1,20 @@
-<h1>Psychologys#new</h1>
-<p>Find me in app/views/psychologys/new.html.erb</p>
-
-<%= form_with model: @psychology, local: true  do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <%= f.label :discription %>
-  <%= f.text_area :discription %>
-
-  <%= f.file_field :psychology_image, placeholder: "ファイルを選択"%>
-
-  <%= f.submit "心理学方法を追加する" %>
-<% end %>
+<div class="d-flex flex-column align-items-center mt-3">
+  <div class="col-xl-7 col-lg-8 col-md-10 col-sm-11 post-card">
+    <div class="card">
+      <div class="card-header">
+      </div>
+      <div class="card-body">
+        <%= form_with model: @psychology, local: true  do |f| %>
+          <div class="form-group row mt-2">
+            <div class="col-md-10">
+              <%= f.label :title %>
+              <%= f.text_field :title, class: "form-control border-0", placeholder: "タイトルを記載" %>
+              <%= f.label :discription %>
+              <%= f.text_field :discription, class: "form-control border-0", placeholder: "詳細を記載" %>
+              <%= f.file_field :psychology_image, placeholder: "ファイルを選択"%>
+            </div>
+          <%= f.submit "作成する", class: "btn btn-outline-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>

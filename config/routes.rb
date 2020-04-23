@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :psychologies
+  resources :genres
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :admins

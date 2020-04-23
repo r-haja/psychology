@@ -1,0 +1,23 @@
+<% @genres.each do |genre| %>
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">
+        <span>ジャンル名：</span>
+        <%= genre.name %>
+      </div>
+      <div class="card-text">
+        <span>ジャンル作成日：</span>
+        <%= genre.created_at %>
+      </div>
+      <div class="card-text">
+        <span>ジャンル修正日：</span>
+        <%= genre.updated_at %>
+      </div>
+      <div class="card-link">
+        <%= link_to "Edit", edit_genre_path(genre), class: "btn btn-outline-primary" %>
+        <%= link_to "Delete", genre_path(genre), class: "btn btn-outline-danger" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= link_to "作成", new_genre_path, class: "btn btn-success" %>

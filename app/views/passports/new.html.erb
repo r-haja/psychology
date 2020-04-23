@@ -19,10 +19,13 @@
               <%= f.text_field :goal, class: "form-control border-0", placeholder: "目標を記載" %>
             </div>
           </div>
-          <div>
-            <%# f.collection_check_boxes :psychology_ids, Psychology.all, :id, :title do |b| %>
-              <%# b.label {b.check_box + b.text} %>
-            <%# end %>
+            <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択してください" do |b|%>
+              <%= b.label {b.select + b.text} %>
+            <% end %>
+
+            <%= f.collection_check_boxes :psychology_ids, Psychology.all, :id, :title do |b| %>
+              <%= b.label {b.check_box + b.text} %>
+            <% end %>
           <div class="mb-3">
             <%= f.file_field :passport_image, placeholder: "ファイルを選択", class: "new-image" %>
           </div>
@@ -31,3 +34,4 @@
       </div>
     </div>
   </div>
+</div>

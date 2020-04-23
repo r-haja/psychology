@@ -1,9 +1,10 @@
 class PassportsController < ApplicationController
   before_action :authenticate_user!
+  before_action :passport_set, only: [:show, :edit, :update, :destroy]
 
   def show
     if current_user.passports.present?
-      @passport = Passport.find_by(id: params[:id])
+      #@passport = Passport.find_by(id: params[:id])
       @psychologies = Psychology.all
     else
       redirect_to new_user_passport_path(current_user)
@@ -45,7 +46,11 @@ class PassportsController < ApplicationController
   end
 
 private
+  def passport_set
+    @passport = Passport.find_by(id: params[:id])
+  end
+
   def passport_params
-    params.require(:passport).permit(:purpose ,:goal, :passport_image, psychology_ids: [])
+    params.require(:passport).permit(:purpose ,:goal, :passport_image,:genre_id, psychology_ids: [])
   end
 end

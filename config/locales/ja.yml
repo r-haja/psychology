@@ -114,6 +114,7 @@ ja:
         updated_at: '更新日時'
         purpose: '目的'
         goal: '目標'
+        genre: 'ジャンル'
       user:
         name: "名前"
         email: "メールアドレス"
@@ -138,6 +139,9 @@ ja:
               blank: 'を設定してください。'
             goal:
               blank: 'を設定してください。'
+            genre:
+              required: '許可されていません。'
+
         user:
           attributes:
             name:
