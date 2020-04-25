@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_151529) do
+ActiveRecord::Schema.define(version: 2020_04_25_034926) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -68,6 +68,15 @@ ActiveRecord::Schema.define(version: 2020_04_22_151529) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_photos_on_post_id"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.integer "passport_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["passport_id"], name: "index_plans_on_passport_id"
   end
 
   create_table "posts", force: :cascade do |t|

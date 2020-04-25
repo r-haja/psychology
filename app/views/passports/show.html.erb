@@ -30,7 +30,9 @@
           <% end %>
         </div>
         <div class="passport-calender">
-
+          <%= month_calendar events: @plans do |data| %>
+            <%= data %>
+          <% end %>
         </div>
       </div>
 

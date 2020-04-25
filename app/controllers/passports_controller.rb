@@ -6,6 +6,7 @@ class PassportsController < ApplicationController
     if current_user.passports.present?
       #@passport = Passport.find_by(id: params[:id])
       @psychologies = Psychology.all
+      @plans = Plan.includes(:passport).all
     else
       redirect_to new_user_passport_path(current_user)
       flash[:notice] = "パスポートを作成しましょう！"

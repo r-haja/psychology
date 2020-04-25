@@ -1,6 +1,7 @@
 class Passport < ApplicationRecord
   belongs_to :user
   belongs_to :genre
+  has_one :plan
 
   has_many :passport_psychologies
   has_many :psychologies, through: :passport_psychologies
