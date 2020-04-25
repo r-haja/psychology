@@ -1,48 +1,51 @@
-<div class="passport-top">
+<div class="passport-wrapper">
   <div class="container">
-    <% if @passport.passport_image.file.nil? %>
-      <%= image_tag 'dumbo_default.png', class: "post-profile-icon" %>
-    <% else %>
-      <div class="card-left">
-        <%= image_tag @passport.passport_image.url, class: "card-img-top" %>
+    <div class="passport-top">
+      <% if @passport.passport_image.file.nil? %>
+        <%= image_tag 'dumbo_default.png', class: "passport-image" %>
+      <% else %>
+        <%= image_tag @passport.passport_image.url, class: "passport-image" %>
+      <% end %>
+    </div>
+
+    <div class="passport-main">
+      <div class="passport-left">
+        <div class="passport-purpose">
+          <h4><%= @passport.purpose %></h4>
+          <h6><%= @passport.goal %></h6>
+          <p><%= @passport.genre.name %></p>
+        </div>
+
+        <div class="passport-user">
+          <%= link_to user_path(@passport.user), class: "no-text-decoration" do %>
+            <% if current_user.profile_image.file.nil? %>
+              <%= image_tag 'dumbo_default.png', class: "post-profile-icon" %>
+            <% else %>
+              <%= image_tag current_user.profile_image.url, class: "post-profile-icon"  %>
+            <% end %>
+          <% end %>
+          <%= link_to user_path(@passport.user), class: "black-color no-text-decoration post-user-name",
+            title: @passport.user.name do %>
+            <strong><%= @passport.user.name %></strong>
+          <% end %>
+        </div>
+        <div class="passport-calender">
+
+        </div>
       </div>
-    <% end %>
-  </div>
-</div>
 
-<div class="passport-main">
-  <div class="passport-left">
-    <div class="passport-purpose">
-      <h4><%= @passport.purpose %></h4>
-      <strong><%= @passport.goal %></strong>
-      <strong><%= @passport.genre.name %></strong>
-    </div>
-
-    <div class="passport-user">
-      <%= link_to user_path(@passport.user), class: "no-text-decoration" do %>
-        <% if current_user.profile_image.file.nil? %>
-          <%= image_tag 'dumbo_default.png', class: "post-profile-icon" %>
-        <% else %>
-          <%= image_tag current_user.profile_image.url, class: "post-profile-icon"  %>
-        <% end %>
-      <% end %>
-      <%= link_to user_path(@passport.user), class: "black-color no-text-decoration post-user-name",
-        title: @passport.user.name do %>
-        <strong><%= @passport.user.name %></strong>
-      <% end %>
+      <div class="passport-right">
+        <p class="right-header">習慣化方法</p>
+        <strong>
+          <%= render partial: "passports/psychology", collection: @passport.psychologies, as: :psychology %>
+        </strong>
+        <button type="button" class="psychology-btn" data-toggle="modal" data-target="#exampleModalLong">
+          <p><span>+</span>新規登録</p>
+        </button>
+      </div>
     </div>
   </div>
-
-  <div class="passport-right">
-    <strong>
-      <%= render partial: "passports/psychology", collection: @passport.psychologies, as: :psychology %>
-    </strong>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-      習慣化方法を選択
-    </button>
-  </div>
 </div>
-
 
 
 <!-- Modal -->

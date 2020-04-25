@@ -1,3 +1,79 @@
-// Place all the styles related to the passports controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//passport_show
+.passport-wrapper{
+  height: 1000px;
+  background-color: #F8F8FF;
+  padding-top: 30px;
+  .container{
+    background-color: white;
+    border-style: solid;
+    border: solid 1px rgb(220, 220, 220);
+    border-radius: 4px;
+    height: 900px;
+    .passport-top{
+      height: 400px;
+      text-align: center;
+      background-color: white;
+      .passport-image{
+      }
+    }
+
+    .passport-main{
+      background-color: white;
+      padding-top: 20px;
+      height: 450px;
+      .passport-left{
+        float: left;
+        width: 60%;
+        height: 400px;
+        .passport-purpose{
+          h4{
+            font-size: 18px;
+          }
+          h6{
+            margin-top: 20px;
+          }
+        }
+        .passport-user{
+        }
+        .passport-calender{
+        }
+      }
+      .passport-right{
+        float: right;
+        width: 40%;
+        height: 400px;
+        text-align: center;
+        .right-header{
+          font-size: 13px;
+          border-style: solid;
+          border-radius: 10px;
+          width: 120px;
+          line-height: 30px;
+          border: solid 3px rgb(255, 173, 144);
+          margin: 0 auto;
+          vertical-align: middle;
+        }
+        .psychology-btn{
+          text-align: center;
+          width: 220px;
+          background-color: Transparent;
+          border-style: solid;
+          border: solid 3px rgb(220, 220, 220);
+          border-radius: 5px;
+          margin-top: 20px;
+          height: 60px;
+          p{
+            width: 200px;
+
+            span{
+              color: #FFAD90;
+              font-size: 30px;
+              margin-right: 17px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

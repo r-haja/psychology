@@ -1,34 +1,48 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
-    <% if user_signed_in? %>
-      <%= link_to "", new_user_passport_path(current_user), class: "navbar__brand navbar__mainLogo"%>
-    <% else %>
-      <%# link_to "", root_path, class: "navbar__brand navbar__mainLogo"%>
-      <%= link_to "", psychologies_path, class: "navbar__brand navbar__mainLogo"%>
-    <% end %>
-    <% if user_signed_in? || admin_signed_in? %>
-      <button class="navbar-toggler" type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-md-auto align-items-center">
+    <div class="navbar-left">
+      <% if user_signed_in? %>
+        <%= link_to "", new_user_passport_path(current_user), class: "navbar__brand navbar__mainLogo"%>
+      <% else %>
+        <%= link_to "", psychologies_path, class: "navbar__brand navbar__mainLogo"%>
+      <% end %>
+    </div>
+    <div class="navbar-right">
+      <% if user_signed_in? && controller.controller_name == 'posts' && controller.action_name == 'index'  %>
+        <ul>
           <% if admin_signed_in? %>
             <li><%= link_to "サインアウト", destroy_admin_session_path, method: :delete, class: "home-btn btn btn-outline-dangger" %></li>
-          <% elsif user_signed_in? %>
+          <% elsif user_signed_in?%>
             <li>
               <%= link_to "投稿", new_post_path, class: "btn btn-primary" %>
             </li>
             <li>
-              <%= link_to "", user_path(current_user), class: "nav-link commonNavIcon profile-icon" %>
+              <%= link_to  user_path(current_user), class: "nav-link commonNavIcon profile-icon" do %>
+                <% if current_user.profile_image.file %>
+                  <%= image_tag current_user.profile_image.url, class:"post-profile-icon" %>
+                <% else %>
+                  <%= mage_tag "dumbo_default.png", class: "post-profile-icon" %>
+                <% end %>
+                <%= current_user.name %>
+              <% end %>
             </li>
           <% end %>
         </ul>
-      </div>
-    <% end %>
+      <% elsif user_signed_in? %>
+        <li>
+          <%= link_to  user_path(current_user), class: "nav-link commonNavIcon profile-icon" do %>
+            <% if current_user.profile_image.file %>
+              <%= image_tag current_user.profile_image.url, class: "post-profile-icon" %>
+            <% else %>
+              <%= image_tag "dumbo_default.png", class: "post-profile-icon" %>
+            <% end %>
+            <%= current_user.name %>
+          <% end %>
+        </li>
+      <% elsif %>
+        <li><%= link_to "サインアウト", destroy_admin_session_path, method: :delete, class: "home-btn btn btn-outline-dangger" %></li>
+      <% else %>
+      <% end %>
+    </div>
   </div>
 </nav>
