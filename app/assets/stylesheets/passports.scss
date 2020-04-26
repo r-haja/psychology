@@ -1,79 +1,138 @@
 
 //passport_show
-.passport-wrapper{
-  height: 1000px;
-  background-color: #F8F8FF;
-  padding-top: 30px;
-  .container{
-    background-color: white;
+.passport {
+  height: auto;
+  .container {
+    width: 810px;
+    height: auto;
+    padding: 0;
+    background-color: #fff;
     border-style: solid;
     border: solid 1px rgb(220, 220, 220);
-    border-radius: 4px;
-    height: 900px;
-    .passport-top{
-      height: 400px;
-      text-align: center;
-      background-color: white;
-      .passport-image{
+    border-radius: 5px;
+    .passport__header {
+      height: 120px;
+      img {
+        width: 100%;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
       }
-    }
-
-    .passport-main{
-      background-color: white;
-      padding-top: 20px;
-      height: 450px;
-      .passport-left{
-        float: left;
-        width: 60%;
-        height: 400px;
-        .passport-purpose{
-          h4{
-            font-size: 18px;
-          }
-          h6{
-            margin-top: 20px;
-          }
-        }
-        .passport-user{
-        }
-        .passport-calender{
-        }
+    } /*passport__header*/
+    .passport__contents {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px 50px;
+      .contents + .contents {
+        margin-left: 50px;
       }
-      .passport-right{
-        float: right;
-        width: 40%;
-        height: 400px;
-        text-align: center;
-        .right-header{
-          font-size: 13px;
-          border-style: solid;
-          border-radius: 10px;
-          width: 120px;
-          line-height: 30px;
-          border: solid 3px rgb(255, 173, 144);
-          margin: 0 auto;
-          vertical-align: middle;
+      .habit {
+        width: 390px;
+        &__purpose {
+          margin-bottom: 16px;
+          font-size: 18px;
+          font-weight: bold;
         }
-        .psychology-btn{
-          text-align: center;
-          width: 220px;
-          background-color: Transparent;
-          border-style: solid;
-          border: solid 3px rgb(220, 220, 220);
-          border-radius: 5px;
-          margin-top: 20px;
-          height: 60px;
-          p{
-            width: 200px;
-
-            span{
-              color: #FFAD90;
-              font-size: 30px;
-              margin-right: 17px;
+        &__goal {
+          margin-bottom: 16px;
+          font-size: 16px;
+        }
+        &__details {
+          display: flex;
+          align-items: center;
+          margin-bottom: 20px;
+          .period {
+            margin-right: 15px;
+            margin-bottom: 0;
+            font-size: 14px;
+          }
+          .genre {
+            margin-bottom: 0;
+            padding: 6px 15px;
+            background-color: #CFCFCF;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1;
+          }
+          .percentage {
+            margin-right: 30px;
+            margin-bottom: 0;
+            font-size: 14px;
+            span {
+              margin-left: 15px;
+              color: #F9703E;
+              font-size: 18px;
+              font-weight: bold;
             }
           }
         }
       }
-    }
-  }
-}
+      .methods {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 260px;
+        &__label {
+          width: 110px;
+          margin-bottom: 26px;
+          padding: 6px 15px;
+          border: 2px solid #E1E1E1;
+          border-radius: 18px;
+          font-size: 14px;
+          text-align: center;
+          line-height: 1;
+        }
+        .d-inline-block {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          margin-bottom: 20px;
+          padding: 12px 20px;
+          border: 2px solid #FFB088;
+          border-radius: 5px;
+          font-size: 14px;
+          .badge-secondary {
+            color: #333333;
+            font-size: 14px;
+            background-color: transparent;
+          }
+        }
+/*        ul {
+          width: 100%;
+          margin-bottom: 0;
+          padding-left: 0;
+          list-style: none;
+          li {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 12px 20px;
+            border: 2px solid #FFB088;
+            border-radius: 5px;
+            font-size: 14px;
+            img {
+              margin-right: 20px;
+            }
+          }
+        } */
+        .psychology-btn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 60px;
+          border: 2px solid #E1E1E1;
+          border-radius: 5px;
+          font-size: 14px;
+          text-align: center;
+          span {
+            color: #F9703E;
+            font-size: 26px;
+            margin-right: 5px;
+          }
+        } /*psychology-btn*/
+
+      } /*methods*/
+    } /*passport__contents*/
+  } /*container*/
+} /*passport*/

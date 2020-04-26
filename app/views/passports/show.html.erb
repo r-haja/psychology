@@ -1,22 +1,32 @@
-<div class="passport-wrapper">
-  <div class="container">
-    <div class="passport-top">
+<main class="passport">
+  <section class="container">
+
+    <div class="passport__header">
       <% if @passport.passport_image.file.nil? %>
-        <%= image_tag 'dumbo_default.png', class: "passport-image" %>
+        <%= image_tag 'img_passport_header.jpg' %>
       <% else %>
-        <%= image_tag @passport.passport_image.url, class: "passport-image" %>
+        <%= image_tag @passport.passport_image.url %>
       <% end %>
     </div>
 
-    <div class="passport-main">
-      <div class="passport-left">
-        <div class="passport-purpose">
-          <h4><%= @passport.purpose %></h4>
-          <h6><%= @passport.goal %></h6>
-          <p><%= @passport.genre.name %></p>
+    <div class="passport__contents">
+      <div class="contents">
+        <div class="habit">
+          <h1 class="habit__purpose"><%= @passport.purpose %></h1>
+          <h2 class="habit__goal"><%= @passport.goal %></h2>
+          <div class="habit__details">
+            <p class="period">2020/03/01〜2020/06/01</p>
+            <p class="genre"><%= @passport.genre.name %></p>
+          </div>
+          <div class="habit__details">
+            <p class="percentage">今週の達成率<span>20</span>%</p>
+            <p class="percentage">今月の達成率<span>70</span>%</p>
+            <a href="#" class="trash"><%= image_tag 'icon_trash.png' %></a> 
+          </div>
+
         </div>
 
-        <div class="passport-user">
+        <!-- <div class="passport-user">
           <%= link_to user_path(@passport.user), class: "no-text-decoration" do %>
             <% if current_user.profile_image.file.nil? %>
               <%= image_tag 'dumbo_default.png', class: "post-profile-icon" %>
@@ -31,21 +41,23 @@
         </div>
         <div class="passport-calender">
 
-        </div>
-      </div>
+        </div> -->
+      </div><!-- contents -->
 
-      <div class="passport-right">
-        <p class="right-header">習慣化方法</p>
-        <strong>
+      <div class="contents">
+        <div class="methods">
+          <p class="methods__label">習慣化方法</p>
           <%= render partial: "passports/psychology", collection: @passport.psychologies, as: :psychology %>
-        </strong>
-        <button type="button" class="psychology-btn" data-toggle="modal" data-target="#exampleModalLong">
-          <p><span>+</span>新規登録</p>
-        </button>
-      </div>
+          <button type="button" class="psychology-btn" data-toggle="modal" data-target="#exampleModalLong">
+            <span>＋</span>
+            新規登録
+          </button>
+        </div>
+      </div><!-- contents -->
+
     </div>
-  </div>
-</div>
+  </section>
+</main>
 
 
 <!-- Modal -->

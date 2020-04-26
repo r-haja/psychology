@@ -1,37 +1,46 @@
-.navbar {
-  background-color: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, .0975);
-  height: 77px;
-  .container{
-    .navbar-left{
-      .navbar__brand {
-        height: 85px;
-        width: 80px;
-        background-size: 80px;
-      }
-      .navbar__mainLogo {
-        background-repeat: no-repeat;
-        background-image: image-url("dumbo_default.png");
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 67px;
+  max-width: 810px;
+  margin: 0 auto;
+  padding: 0 0 0 12px;
+  .logo {
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    background-image: image-url("img_logo.png");
+    background-size: contain;
+  }
+  .menu {
+    ul {
+      list-style: none;
+      li {
+        margin-left: 20px;
+        &:first-child {
+          margin-left: 0;
+        }
       }
     }
-
-    .navbar-right{
-      &-nav {
-        & > li {
-          margin-left: 20px;
-          &:first-child {
-            margin-left: 0;
-          }
-          .commonNavIcon {
-            height: 24px;
-            width: 24px;
-            background-size: 22px !important;
-            background-repeat: no-repeat;
-          }
-          .profile-icon {
-            background-image: image-url("parts3.png");
-          }
+    &__user {
+      display: flex;
+      align-items: center;
+      .userIcon {
+        width: 36px;
+        height: 36px;
+        margin-right: 12px;
+        img {
+          width: 100%;
         }
+      }
+      .userName {
+        color: #333333;
+        font-size: 14px;
+        text-decoration: none;
+      }
+      &:hover {
+        text-decoration: none;
       }
     }
   }
