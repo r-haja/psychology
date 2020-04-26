@@ -33,6 +33,12 @@ class PassportsController < ApplicationController
   end
 
   def destroy
+    if @passport.destroy
+      redirect_to redirect_to new_user_passport_path(current_user)
+    else
+      flash[:notice] = "パスポートの削除に失敗しました。"
+      render :show
+    end
   end
 
   def edit
