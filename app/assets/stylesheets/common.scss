@@ -1,10 +1,15 @@
 body{
-  background-color: #fafafa;
-  font-size: 14px;
-  color: #262626;
+  background-color: #F7F7F7;
+  border-top: 5px solid #F9703E;
+  font-size: 16px;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  color: #333333;
 }
 footer{
-  height: auto;
+  p {
+    margin-top: 40px;
+    text-align: center;
+  }
 }
 .footer-nav{
   width: 100%;

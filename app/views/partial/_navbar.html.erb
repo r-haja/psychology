@@ -1,48 +1,52 @@
-<nav class="navbar navbar-expand-lg navbar-light">
-  <div class="container">
-    <div class="navbar-left">
-      <% if user_signed_in? %>
-        <%= link_to "", new_user_passport_path(current_user), class: "navbar__brand navbar__mainLogo"%>
-      <% else %>
-        <%= link_to "", psychologies_path, class: "navbar__brand navbar__mainLogo"%>
-      <% end %>
-    </div>
-    <div class="navbar-right">
-      <% if user_signed_in? && controller.controller_name == 'posts' && controller.action_name == 'index'  %>
-        <ul>
-          <% if admin_signed_in? %>
-            <li><%= link_to "サインアウト", destroy_admin_session_path, method: :delete, class: "home-btn btn btn-outline-dangger" %></li>
-          <% elsif user_signed_in?%>
-            <li>
-              <%= link_to "投稿", new_post_path, class: "btn btn-primary" %>
-            </li>
-            <li>
-              <%= link_to  user_path(current_user), class: "nav-link commonNavIcon profile-icon" do %>
-                <% if current_user.profile_image.file %>
-                  <%= image_tag current_user.profile_image.url, class:"post-profile-icon" %>
-                <% else %>
-                  <%= mage_tag "dumbo_default.png", class: "post-profile-icon" %>
-                <% end %>
-                <%= current_user.name %>
+<nav>
+  <div class="logo">
+    <% if user_signed_in? %>
+      <%= link_to "", new_user_passport_path(current_user)%>
+    <% else %>
+      <%= link_to "", psychologies_path%>
+    <% end %>
+  </div>
+  <div class="menu">
+    <% if user_signed_in? && controller.controller_name == 'posts' && controller.action_name == 'index'  %>
+      <ul>
+        <% if admin_signed_in? %>
+          <li><%= link_to "サインアウト", destroy_admin_session_path, method: :delete, class: "home-btn btn btn-outline-dangger" %></li>
+        <% elsif user_signed_in?%>
+          <li>
+            <%= link_to "投稿", new_post_path, class: "btn btn-primary" %>
+          </li>
+          <li>
+            <%= link_to  user_path(current_user), class: "nav-link commonNavIcon profile-icon" do %>
+              <% if current_user.profile_image.file %>
+                <%= image_tag current_user.profile_image.url, class:"post-profile-icon" %>
+              <% else %>
+                <%= mage_tag "dumbo_default.png", class: "post-profile-icon" %>
               <% end %>
-            </li>
-          <% end %>
-        </ul>
-      <% elsif user_signed_in? %>
-        <li>
-          <%= link_to  user_path(current_user), class: "nav-link commonNavIcon profile-icon" do %>
-            <% if current_user.profile_image.file %>
-              <%= image_tag current_user.profile_image.url, class: "post-profile-icon" %>
-            <% else %>
-              <%= image_tag "dumbo_default.png", class: "post-profile-icon" %>
+              <%= current_user.name %>
             <% end %>
-            <%= current_user.name %>
-          <% end %>
-        </li>
-      <% elsif %>
-        <li><%= link_to "サインアウト", destroy_admin_session_path, method: :delete, class: "home-btn btn btn-outline-dangger" %></li>
-      <% else %>
+          </li>
+        <% end %>
+      </ul>
+    <% elsif user_signed_in? %>
+      <%= link_to  user_path(current_user), class: "menu__user" do %>
+        <div class="userIcon">
+          <% if current_user.profile_image.file %>
+              <%= image_tag current_user.profile_image.url %>
+          <% else %>
+            <%= image_tag "icon_default_user.png" %>
+        <% end %>
+        </div>
+        <div class="userName">
+          <%= current_user.name %>
+        </div>
       <% end %>
-    </div>
+    <% elsif %>
+      <div class="menu__user">
+        <div class="userName">
+          <%= link_to "サインアウト", destroy_admin_session_path, method: :delete, class: "home-btn btn btn-outline-dangger" %>
+        </div>
+      </div>
+    <% else %>
+    <% end %>
   </div>
 </nav>
