@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature "Passports", type: :feature do
-  scenario "user create a new passport" do
+  scenario "user create a new passport", js: true do
     user = FactoryBot.create(:user)
+    FactoryBot.create(:genre)
 
     visit root_path
     click_link "サインイン"
@@ -14,7 +15,10 @@ RSpec.feature "Passports", type: :feature do
       click_link "パスポート"
       fill_in "目的を記載", with: "Test Purpose"
       fill_in "目標を記載", with: "Test Goal"
-      attach_file "ファイルを選択", file_fixture("test.png")
+      select "運動", from: "passport_genre_id"
+      select_date "2020-04-26", from: "passport_plans_attributes_0_start_time"
+      select_date "2020-05-26", from: "passport_plans_attributes_0_end_time"
+      attach_file "好きな画像を選択してください", file_fixture("test.png")
       click_button "作成する"
 
       expect(page).to have_content "習慣化パスポートを保存しました！"

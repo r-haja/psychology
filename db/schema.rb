@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_25_034926) do
+ActiveRecord::Schema.define(version: 2020_04_26_064408) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(version: 2020_04_25_034926) do
   end
 
   create_table "plans", force: :cascade do |t|
-    t.datetime "start_at"
-    t.datetime "end_at"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.integer "passport_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -94,6 +94,17 @@ ActiveRecord::Schema.define(version: 2020_04_25_034926) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "psychology_image"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.datetime "day"
+    t.boolean "comprate"
+    t.integer "passport_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["passport_id"], name: "index_schedules_on_passport_id"
+    t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

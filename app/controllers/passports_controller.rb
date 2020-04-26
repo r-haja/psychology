@@ -4,9 +4,8 @@ class PassportsController < ApplicationController
 
   def show
     if current_user.passports.present?
-      #@passport = Passport.find_by(id: params[:id])
       @psychologies = Psychology.all
-      @plans = Plan.includes(:passport).all
+      @schedules = Schedule.all.includes(:passport)
     else
       redirect_to new_user_passport_path(current_user)
       flash[:notice] = "パスポートを作成しましょう！"
@@ -19,6 +18,7 @@ class PassportsController < ApplicationController
     #  flash[:alert] = "すでにパスポートは作成済みです!"
     else
       @passport = current_user.passports.new
+      @passport.plans.build
     end
   end
 
@@ -52,6 +52,6 @@ private
   end
 
   def passport_params
-    params.require(:passport).permit(:purpose ,:goal, :passport_image,:genre_id, psychology_ids: [])
+    params.require(:passport).permit(:purpose ,:goal, :passport_image,:genre_id, psychology_ids: [], plans_attributes: [:start_time, :end_time])
   end
 end

@@ -13,25 +13,41 @@
         <div class="passport-purpose">
           <h4><%= @passport.purpose %></h4>
           <h6><%= @passport.goal %></h6>
-          <p><%= @passport.genre.name %></p>
-        </div>
-
-        <div class="passport-user">
-          <%= link_to user_path(@passport.user), class: "no-text-decoration" do %>
-            <% if current_user.profile_image.file.nil? %>
-              <%= image_tag 'dumbo_default.png', class: "post-profile-icon" %>
-            <% else %>
-              <%= image_tag current_user.profile_image.url, class: "post-profile-icon"  %>
-            <% end %>
-          <% end %>
-          <%= link_to user_path(@passport.user), class: "black-color no-text-decoration post-user-name",
-            title: @passport.user.name do %>
-            <strong><%= @passport.user.name %></strong>
-          <% end %>
+          <p><%= @passport.plans.first.start_time.strftime("%Y/%m/%d") %>
+              ~ <%= @passport.plans.first.end_time.strftime("%Y/%m/%d") %><span><%= @passport.genre.name %></span></p>
         </div>
         <div class="passport-calender">
-          <%= month_calendar events: @plans do |data| %>
-            <%= data %>
+          <%= month_calendar do |date| %>
+            <% if date.strftime("%Y-%m-%d") <= Time.now.strftime("%Y-%m-%d") %>
+              <div　class="calender-check">
+                <% if @passport.schedules.nil? %>
+                  <%= form_with model: [current_user, @passport, Schedule.new] do |f| %>
+                    <%= f.hidden_field :passport_id, value: @passport.id %>
+                    <%= f.hidden_field :user_id, value: current_user.id %>
+                    <%= f.hidden_field :day, value: date %>
+                    <%= f.hidden_field :comprate, value: true %>
+                    <%= f.submit "○" %>
+                  <% end %>
+                <% else %>
+                  <% schedule = @schedules.find_by(day: date.strftime("%Y-%m-%d")) %>
+                  <% if schedule.nil? %>
+                    <%= form_with model: [current_user, @passport, Schedule.new] do |f| %>
+                      <%= f.hidden_field :passport_id, value: @passport.id %>
+                      <%= f.hidden_field :user_id, value: current_user.id %>
+                      <%= f.hidden_field :day, value: date %>
+                      <%= f.hidden_field :comprate, value: true %>
+                      <%= f.submit "-" %>
+                    <% end %>
+                  <% elsif schedule.comprate == true %>
+                    <%= link_to "○", user_passport_schedule_path(current_user, @passport.id, schedule.id), method: :delete %>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
+            <% if Time.now.strftime("%Y-%m-%d") == date.strftime("%Y-%m-%d") %>
+              <div class="calendar-color">
+              </div>
+            <% end %>
           <% end %>
         </div>
       </div>

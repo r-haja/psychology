@@ -1,7 +1,8 @@
 class Passport < ApplicationRecord
   belongs_to :user
   belongs_to :genre
-  has_one :plan
+  has_many :plans, dependent: :destroy
+  has_many :schedules, dependent: :destroy
 
   has_many :passport_psychologies
   has_many :psychologies, through: :passport_psychologies
@@ -11,4 +12,5 @@ class Passport < ApplicationRecord
   validates :goal, presence: true
 
   mount_uploader :passport_image, PassportImageUploader
+  accepts_nested_attributes_for :plans
 end
