@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.feature "Passports", type: :feature do
   scenario "user create a new passport", js: true do

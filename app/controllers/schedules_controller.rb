@@ -4,7 +4,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new(params_schedule)
     @passport = @schedule.passport
     if @schedule.save
-      redirect_to user_passport_path(current_user, current_user.passports.first.id)
+      respond_to :js
     else
       flash[:notice] = "失敗しました"
     end

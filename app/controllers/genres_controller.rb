@@ -32,7 +32,7 @@ class GenresController < ApplicationController
 
   def destroy
     if @genre.destroy
-      redirect_to :index
+      redirect_to genres_path
     else
       render :index
     end

@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.feature "Posts", type: :feature do
   scenario "user create a new post" do

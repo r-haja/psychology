@@ -21,45 +21,34 @@
           <div class="habit__details">
             <p class="percentage">今週の達成率<span>20</span>%</p>
             <p class="percentage">今月の達成率<span>70</span>%</p>
-            <%= link_to user_passport_path(current_user, @passport.id), method: :delete do %>
+            <%= link_to user_passport_path(current_user.id, @passport.id), method: :delete do %>
               <%= image_tag 'icon_trash.png', class: "trash" %>
             <% end %>
           </div>
         </div>
-        <div class="passport-calender">
-          <%= month_calendar do |date| %>
-            <% if date.strftime("%Y-%m-%d") <= Time.now.strftime("%Y-%m-%d") %>
-              <div　class="calender-check">
-                <% if @passport.schedules.nil? %>
-                  <%= form_with model: [current_user, @passport, Schedule.new] do |f| %>
-                    <%= f.hidden_field :passport_id, value: @passport.id %>
-                    <%= f.hidden_field :user_id, value: current_user.id %>
-                    <%= f.hidden_field :day, value: date %>
-                    <%= f.hidden_field :comprate, value: true %>
-                    <%= f.submit "○" %>
-                  <% end %>
-                <% else %>
-                  <% schedule = @schedules.find_by(day: date.strftime("%Y-%m-%d")) %>
-                  <% if schedule.nil? %>
-                    <%= form_with model: [current_user, @passport, Schedule.new] do |f| %>
-                      <%= f.hidden_field :passport_id, value: @passport.id %>
-                      <%= f.hidden_field :user_id, value: current_user.id %>
-                      <%= f.hidden_field :day, value: date %>
-                      <%= f.hidden_field :comprate, value: true %>
-                      <%= f.submit "-" %>
+          <div class="passport-calender">
+            <%= month_calendar do |date| %>
+              <% if date.strftime("%Y-%m-%d") <= Time.now.strftime("%Y-%m-%d") %>
+                <div　class="calendar-check">
+                  <% if @passport.schedules.nil? %>
+                    <%= render partial: "passports/calendar", locals: { date2: date } %>
+                  <% else %>
+                    <% schedule = @schedules.find_by(day: date.strftime("%Y-%m-%d")) %>
+                    <% if schedule.nil? %>
+                      <%= render partial: "passports/calendar", locals: { date2: date } %>
+                    <% elsif schedule.comprate == true %>
+                      <%= link_to "○", user_passport_schedule_path(current_user, @passport.id, schedule.id), method: :delete %>
                     <% end %>
-                  <% elsif schedule.comprate == true %>
-                    <%= link_to "○", user_passport_schedule_path(current_user, @passport.id, schedule.id), method: :delete %>
                   <% end %>
-                <% end %>
-              </div>
+                </div>
+              <% end %>
+              <% if Time.now.strftime("%Y-%m-%d") == date.strftime("%Y-%m-%d") %>
+                <div class="calendar-color">
+                  a
+                </div>
+              <% end %>
             <% end %>
-            <% if Time.now.strftime("%Y-%m-%d") == date.strftime("%Y-%m-%d") %>
-              <div class="calendar-color">
-              </div>
-            <% end %>
-          <% end %>
-        </div>
+          </div>
       </div><!-- contents -->
 
       <div class="contents">

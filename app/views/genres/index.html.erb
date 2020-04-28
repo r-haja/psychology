@@ -14,8 +14,8 @@
         <%= genre.updated_at %>
       </div>
       <div class="card-link">
-        <%= link_to "Edit", edit_genre_path(genre), class: "btn btn-outline-primary" %>
-        <%= link_to "Delete", genre_path(genre), class: "btn btn-outline-danger" %>
+        <%= link_to "Edit", edit_genre_path(genre.id), class: "btn btn-outline-primary" %>
+        <%= link_to "Delete", genre_path(genre.id), class: "btn btn-outline-danger", method: :delete %>
       </div>
     </div>
   </div>

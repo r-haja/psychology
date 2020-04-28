@@ -1,0 +1,9 @@
+<div id="calendar-form">
+  <%= form_with model: [current_user, @passport, Schedule.new] do |f| %>
+    <%= f.hidden_field :passport_id, value: @passport.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :day, value: date2 %>
+    <%= f.hidden_field :comprate, value: true %>
+    <%= f.submit "-" %>
+  <% end %>
+</div>

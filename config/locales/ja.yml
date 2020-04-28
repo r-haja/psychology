@@ -158,6 +158,7 @@ ja:
       post: 'ポスト'
       passport: 'パスポート'
       user: 'ユーザ'
+      plan: '習慣化スケジュール'
     attributes:
       post:
         id: 'ID'
@@ -172,6 +173,9 @@ ja:
         purpose: '目的'
         goal: '目標'
         genre: 'ジャンル'
+      passport/plans:
+          start_time: '開始日'
+          end_time: '終了日'
       user:
         name: "名前"
         email: "メールアドレス"
@@ -215,3 +219,9 @@ ja:
               blank: 'を入力してください。'
             discription:
               blank: 'を入力してください。'
+        plan:
+          attributes:
+            start_time:
+              blank: 'を選してください。'
+            end_time:
+              blank: 'を選択してください。'
