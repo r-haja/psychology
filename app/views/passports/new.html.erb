@@ -24,8 +24,8 @@
             <% end %>
 
             <%= f.fields_for :plans do |i| %>
-              <%= i.date_field :start_time, class: "form-control" %>
-              <%= i.date_field :end_time, class: "form-control" %>
+              <%= i.date_field :start_time, class: "form-control", discard_time: true %>
+              <%= i.date_field :end_time, class: "form-control", discard_time: true %>
             <% end %>
 
             <%# f.collection_check_boxes :psychology_ids, Psychology.all, :id, :title do |b| %>

@@ -12,6 +12,7 @@ class SchedulesController < ApplicationController
 
   def destroy
     @schedule = Schedule.find_by(id: params[:id])
+    @passport = @schedule.passport
     if @schedule.destroy
       redirect_to user_passport_path(current_user, current_user.passports.first.id)
     else

@@ -38,7 +38,7 @@
           <%= current_user.name %>
         </div>
       <% end %>
-    <% elsif %>
+    <% elsif admin_signed_in? %>
       <div class="menu__user">
         <div class="userName">
           <%= link_to "サインアウト", destroy_admin_session_path, method: :delete, class: "home-btn btn btn-outline-dangger" %>
