@@ -3,7 +3,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :destroy]
 
   def index
-    @posts = Post.limit(10).includes(:photos, :user).order("created_at DESC")
+    @posts = Post.includes(:photos, :user).order("created_at DESC").
+              page(params[:page]).without_count.per(2)
   end
 
   def show

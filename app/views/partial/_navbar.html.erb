@@ -11,7 +11,9 @@
       <% if admin_signed_in? %>
         <%= link_to "サインアウト", destroy_admin_session_path, method: :delete, class: "home-btn btn btn-outline-dangger" %>
       <% elsif user_signed_in?%>
-        <%= link_to "投稿", new_post_path, class: "btn btn-primary" %>
+        <div class="menu__post">
+          <%= link_to "投稿", new_post_path, class: "btn btn-primary"%>
+        </div>
           <%= link_to  user_path(current_user), class: "menu__user" do %>
             <div class="userIcon">
               <% if current_user.profile_image.file %>
@@ -24,6 +26,15 @@
               <%= current_user.name %>
             </div>
           <% end %>
+          <div class="menu__shared">
+            <%= link_to "シェア", posts_path %>
+          </div>
+          <div class="menu__passport">
+            <%= link_to "パスポート", new_user_passport_path(current_user) %>
+          </div>
+          <div class="menu__psychology">
+            <%= link_to "心理学", psychologies_path %>
+          </div>
         <% end %>
     <% elsif user_signed_in? %>
       <%= link_to  user_path(current_user), class: "menu__user" do %>
@@ -38,6 +49,15 @@
           <%= current_user.name %>
         </div>
       <% end %>
+      <div class="menu__shared">
+        <%= link_to "シェア", posts_path %>
+      </div>
+      <div class="menu__passport">
+        <%= link_to "パスポート", new_user_passport_path(current_user) %>
+      </div>
+      <div class="menu__psychology">
+        <%= link_to "心理学", psychologies_path %>
+      </div>
     <% elsif admin_signed_in? %>
       <div class="menu__user">
         <div class="userName">

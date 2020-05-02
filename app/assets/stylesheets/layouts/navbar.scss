@@ -23,6 +23,10 @@ nav {
         }
       }
     }
+    &__post{
+      float: left;
+      height: 20px;
+    }
     &__user {
       display: flex;
       align-items: center;
@@ -42,6 +46,21 @@ nav {
       &:hover {
         text-decoration: none;
       }
+    }
+    &__shared{
+      font-size: 16px;
+      float: left;
+      margin-left: 10px;
+    }
+    &__passport{
+      font-size: 16px;
+      float: left;
+      margin-left: 10px;
+    }
+    &__psychology{
+      font-size: 16px;
+      float: left;
+      margin-left: 10px;
     }
   }
 }

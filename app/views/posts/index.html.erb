@@ -1,7 +1,7 @@
 <% @posts.each do |post| %>
   <div class="col-md-8 col-md-2 mx-auto">
     <div class="card-wrap">
-      <div class="card">
+      <div class="card jscroll">
         <div class="card-header align-items-center d-flex">
           <%= link_to user_path(post.user), class: "no-text-decoration" do %>
             <% if post.user.profile_image.file.nil? %>
@@ -44,3 +44,6 @@
     </div>
   </div>
 <% end %>
+
+<%= link_to "前のページ", prev_page_path(@posts), class: "prev" %>
+<%= link_to "次のページ", next_page_path(@posts), class: "next" %>

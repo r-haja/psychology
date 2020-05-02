@@ -1,21 +1,21 @@
 <footer>
     <p>&copy; 2020 dumbo, Inc</p>
   <div class="footer-nav">
-    <% if user_signed_in? %>
+    <%# if user_signed_in? %>
+    <!--  <ul>
+        <li><%# link_to "シェア", posts_path, class: "link" %></li>
+        <li><%# link_to "パスポート", new_user_passport_path(current_user), class: "link" %></li>
+        <li><%# link_to "心理学", psychologies_path, class: "link" %></li>
+        <li><%# link_to "設定", user_path(current_user), class: "link" %></li>
+      <%# end %>
+    <%# if admin_signed_in? %>
       <ul>
-        <li><%= link_to "シェア", posts_path, class: "link" %></li>
-        <li><%= link_to "パスポート", new_user_passport_path(current_user), class: "link" %></li>
-        <li><%= link_to "心理学", psychologies_path, class: "link" %></li>
-        <li><%= link_to "設定", user_path(current_user), class: "link" %></li>
-      <% end %>
-    <% if admin_signed_in? %>
-      <ul>
-        <li><%= link_to "Genre 一覧", genres_path, class: "link" %></li>
-        <li><%= link_to "Psychology 一覧", psychologies_path, class: "link" %></li>
-        <li><%= link_to "ユーザ管理", "#", class: "link" %></li>
-        <li><%= link_to "Admin 設定", "#", class: "link" %></li>
+        <li><%# link_to "Genre 一覧", genres_path, class: "link" %></li>
+        <li><%# link_to "Psychology 一覧", psychologies_path, class: "link" %></li>
+        <li><%# link_to "ユーザ管理", "#", class: "link" %></li>
+        <li><%# link_to "Admin 設定", "#", class: "link" %></li>
       </ul>
-    <% end %>
-    </ul>
+    <%# end %>
+    </ul>-->
   </div>
 </footer>
