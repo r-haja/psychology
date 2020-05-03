@@ -10,10 +10,13 @@ nav {
     height: 30px;
     width: 30px;
     background-repeat: no-repeat;
-    background-image: image-url("img_logo.png");
+    //background-image: image-url("img_logo.png");
     background-size: contain;
   }
   .menu {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
     ul {
       list-style: none;
       li {
@@ -21,6 +24,15 @@ nav {
         &:first-child {
           margin-left: 0;
         }
+      }
+    }
+    &__action {
+      a {
+        margin-right: 20px;
+      }
+      a:hover {
+        text-decoration: none;
+        cursor: pointer;
       }
     }
     &__post{
