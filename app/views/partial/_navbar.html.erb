@@ -11,9 +11,17 @@
       <% if admin_signed_in? %>
         <%= link_to "サインアウト", destroy_admin_session_path, method: :delete, class: "home-btn btn btn-outline-dangger" %>
       <% elsif user_signed_in?%>
-        <div class="menu__post">
-          <%= link_to "投稿", new_post_path, class: "btn btn-primary"%>
-        </div>
+          <div class="menu__action">
+            <%= link_to new_post_path do %>
+              <%= image_tag "icon_post.png" %>
+            <% end %>
+            <%= link_to new_user_passport_path(current_user) do %>
+              <%= image_tag "icon_passport.png" %>
+            <% end %>
+            <%= link_to psychologies_path do %>
+              <%= image_tag "icon_methods.png" %>
+            <% end %>
+          </div>
           <%= link_to  user_path(current_user), class: "menu__user" do %>
             <div class="userIcon">
               <% if current_user.profile_image.file %>
@@ -26,17 +34,19 @@
               <%= current_user.name %>
             </div>
           <% end %>
-          <div class="menu__shared">
-            <%= link_to "シェア", posts_path %>
-          </div>
-          <div class="menu__passport">
-            <%= link_to "パスポート", new_user_passport_path(current_user) %>
-          </div>
-          <div class="menu__psychology">
-            <%= link_to "心理学", psychologies_path %>
-          </div>
         <% end %>
     <% elsif user_signed_in? %>
+      <div class="menu__action">
+        <%= link_to posts_path do %>
+          <%= image_tag "icon_message.png" %>
+        <% end %>
+        <%= link_to new_user_passport_path(current_user) do %>
+          <%= image_tag "icon_passport.png" %>
+        <% end %>
+        <%= link_to psychologies_path do %>
+          <%= image_tag "icon_methods.png" %>
+        <% end %>
+      </div>
       <%= link_to  user_path(current_user), class: "menu__user" do %>
         <div class="userIcon">
           <% if current_user.profile_image.file %>
@@ -49,15 +59,6 @@
           <%= current_user.name %>
         </div>
       <% end %>
-      <div class="menu__shared">
-        <%= link_to "シェア", posts_path %>
-      </div>
-      <div class="menu__passport">
-        <%= link_to "パスポート", new_user_passport_path(current_user) %>
-      </div>
-      <div class="menu__psychology">
-        <%= link_to "心理学", psychologies_path %>
-      </div>
     <% elsif admin_signed_in? %>
       <div class="menu__user">
         <div class="userName">

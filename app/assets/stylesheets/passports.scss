@@ -1,7 +1,6 @@
 
 //passport_show
 .passport {
-  height: auto;
   .container {
     width: 810px;
     height: auto;
@@ -68,6 +67,32 @@
           }
         }
       }
+      .calendar {
+        text-align: center;
+          &__label {
+            width: 110px;
+            margin: 0 auto;
+            padding: 6px 15px;
+            border: 2px solid #E1E1E1;
+            border-radius: 18px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1;
+          }
+        .passport-calendar {
+          margin-top: 20px;
+          form input {
+            border: none;
+            background: transparent;
+          }
+          .checkGray {
+            width: 23px;
+            height: 18px;
+            background-image: image-url("icon_check_gray.png");
+          }
+        }
+      }
       .methods {
         display: flex;
         align-items: center;
@@ -80,6 +105,7 @@
           border: 2px solid #E1E1E1;
           border-radius: 18px;
           font-size: 14px;
+          font-weight: bold;
           text-align: center;
           line-height: 1;
         }
@@ -143,3 +169,42 @@
     } /*passport__contents*/
   } /*container*/
 } /*passport*/
+
+@media screen and (max-width: 810px) {
+  .passport {
+    .container {
+      width: 100%;
+      .passport__contents {
+        justify-content: center;
+        padding: 0;
+        .contents + .contents {
+          margin-left: 0;
+        }
+        .habit {
+          width: 100%;
+          margin-top: 28px;
+        }
+        .calendar {
+          width: 100%;
+          margin-top: 20px;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          background: #fff;
+          &__label {
+            display: none;
+          }
+          .passport-calendar {
+            margin-top: 0;
+            .calendar-heading {
+              background: #FFE8D9;
+            }
+          }
+        }
+        .methods {
+          height: 70vh;
+        }
+      }
+    }
+  }
+}

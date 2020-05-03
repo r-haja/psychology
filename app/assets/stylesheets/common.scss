@@ -11,6 +11,10 @@ footer{
     text-align: center;
   }
 }
+a:hover {
+  opacity: 0.6;
+  transition: all .4s;
+}
 .footer-nav{
   width: 100%;
   position: fixed;
@@ -43,8 +47,28 @@ footer{
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (min-width: 992px) {
+  .container {
+    max-width: 810px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 810px !important;
+  }
+}
+@media screen and (max-width: 810px) {
+  body {
+    background-color: #fff
+  }
+  .container {
+    max-width: 100% !important;
+    border: none !important;
+  }
+}
+
+/*@media screen and (max-width: 750px) {
   body {
     background-color: #fff;
   }
-}
+}*/

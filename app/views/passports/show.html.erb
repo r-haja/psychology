@@ -11,6 +11,7 @@
 
     <div class="passport__contents">
       <div class="contents">
+
         <div class="habit">
           <h1 class="habit__purpose"><%= @passport.purpose %></h1>
           <h2 class="habit__goal"><%= @passport.goal %></h2>
@@ -26,10 +27,13 @@
             <% end %>
           </div>
         </div>
-          <div class="passport-calender">
+
+        <div class="calendar">
+          <p class="calendar__label">習慣記録</p>
+          <div class="passport-calendar">
             <%= month_calendar do |date| %>
               <% if date.strftime("%Y-%m-%d") <= Time.now.strftime("%Y-%m-%d") %>
-                <div　class="calendar-check">
+                <div class="calendar-check">
                   <% if @passport.schedules.nil? %>
                     <%= render partial: "passports/calendar", locals: { date2: date } %>
                   <% else %>
@@ -37,18 +41,20 @@
                     <% if schedule.nil? %>
                       <%= render partial: "passports/calendar", locals: { date2: date } %>
                     <% elsif schedule.comprate == true %>
-                      <%= link_to "○", user_passport_schedule_path(current_user, @passport.id, schedule.id), method: :delete %>
+                      <%= link_to image_tag("icon_checked.png"), user_passport_schedule_path(current_user, @passport.id, schedule.id), method: :delete %>
                     <% end %>
                   <% end %>
                 </div>
               <% end %>
               <% if Time.now.strftime("%Y-%m-%d") == date.strftime("%Y-%m-%d") %>
                 <div class="calendar-color">
-                  a
+                  <%= image_tag 'icon_check_today.png' %>
                 </div>
               <% end %>
             <% end %>
           </div>
+        </div>
+
       </div><!-- contents -->
 
       <div class="contents">
