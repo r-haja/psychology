@@ -1,7 +1,7 @@
 class PassportsController < ApplicationController
   before_action :authenticate_user!
   before_action :passport_set, only: [:show, :edit, :update, :destroy]
-  before_action :passport_rate, only: [:show]
+  before_action :passport_rate, only: [:show], if: -> { current_user.passports.present? }
 
   def show
     if current_user.passports.present?
@@ -29,6 +29,7 @@ class PassportsController < ApplicationController
       flash[:notice] = "習慣化パスポートを保存しました！"
       redirect_to user_passport_path(current_user, current_user.passports.first.id)
     else
+      flash[:alert] = "入力誤りがあります。再度記入してください。"
       render :new
     end
   end

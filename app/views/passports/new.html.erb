@@ -7,7 +7,27 @@
         目標達成までに習慣をやめたい場合は、一度削除して作り直す必要があります。
       </div>
       <div class="card-body">
-        <%= form_with model: @passport, url: [current_user, @passport], class: " p-0 border-0", local: true do |f| %>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          習慣化パスポートを作成しよう！
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">習慣化パスポート</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_with model: @passport, url: [current_user, @passport], class: " p-0 border-0", local: true do |f| %>
+        <div class="modal-body">
           <%= render 'partial/error_messages', model: f.object %>
           <div class="form-group row mt-2">
             <div class="col-md-10">
@@ -31,9 +51,13 @@
           <div class="mb-3">
             <%= f.file_field :passport_image, placeholder: "好きな画像を選択してください", class: "new-image" %>
           </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <%= f.submit "作成する", class: "btn btn-outline-primary" %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

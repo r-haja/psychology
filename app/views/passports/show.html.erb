@@ -1,6 +1,5 @@
 <main class="passport">
   <section class="container">
-
     <div class="passport__header">
       <% if @passport.passport_image.file.nil? %>
         <%= image_tag 'img_passport_header.jpg' %>
@@ -11,7 +10,6 @@
 
     <div class="passport__contents">
       <div class="contents">
-
         <div class="habit">
           <h1 class="habit__purpose"><%= @passport.purpose %></h1>
           <h2 class="habit__goal"><%= @passport.goal %></h2>
@@ -20,9 +18,8 @@
             <p class="genre"><%= @passport.genre.name %></p>
           </div>
           <div class="habit__details">
-            <p class="percentage">今週の達成率<span><%= @passport.week_rate %></span>%</p>
-            <p class="percentage">今月の達成率<span><%= @passport.rate %></span>%</p>
-            <%= link_to user_passport_path(current_user.id, @passport.id), method: :delete do %>
+            <%= render partial: "passports/rate", locals: {passport: @passport} %>
+            <%= link_to user_passport_path(current_user.id, @passport.id), method: :delete, data: {confirm: "本当に削除してよろしいですか？"} do %>
               <%= image_tag 'icon_trash.png', class: "trash" %>
             <% end %>
           </div>
@@ -32,17 +29,9 @@
           <p class="calendar__label">習慣記録</p>
           <div class="passport-calendar">
             <%= render partial: "passports/calendar", locals: { passport: @passport, schedules: @schedules } %>
-              <!--
-              <%# if Time.now.strftime("%Y-%m-%d") == date.strftime("%Y-%m-%d") %>
-                <div class="calendar-color">
-                  <%# image_tag 'icon_check_today.png' %>
-                </div>
-              <%# end %>
-              -->
           </div>
         </div>
       </div><!-- contents -->
-
       <div class="contents">
         <div class="methods">
           <p class="methods__label">習慣化方法</p>
@@ -53,7 +42,6 @@
           </button>
         </div>
       </div><!-- contents -->
-
     </div>
   </section>
 </main>
@@ -77,7 +65,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary"><%= f.submit "Save changes"%></button>
+          <%= f.submit "習慣化方法を選択", class: "btn btn-primary" %>
         </div>
       </div>
     </div>
