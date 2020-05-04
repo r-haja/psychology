@@ -1,9 +1,40 @@
-<div id="calendar-form">
-  <%= form_with model: [current_user, @passport, Schedule.new] do |f| %>
-    <%= f.hidden_field :passport_id, value: @passport.id %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.hidden_field :day, value: date2 %>
-    <%= f.hidden_field :comprate, value: true %>
-    <%= f.submit "", class: "checkGray" %>
+<%= month_calendar do |date| %>
+  <% if date.strftime("%Y-%m-%d") <= Time.now.strftime("%Y-%m-%d") %>
+    <div class="calendar-check">
+      <% if passport.schedules.nil? %>
+        <div id="calendar-form">
+          <%= form_with model: [current_user, passport, Schedule.new], method: :post, remote: true do |f| %>
+            <%= f.hidden_field :passport_id, value: passport.id %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :day, value: date %>
+            <%= f.hidden_field :comprate, value: true %>
+            <% if Time.now.strftime("%Y-%m-%d") == date.strftime("%Y-%m-%d") %>
+              <%= f.submit "", class: "calendar-color" %>
+            <% else %>
+              <%= f.submit "", class: "checkGray" %>
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
+        <% schedule = schedules.find_by(day: date.strftime("%Y-%m-%d")) %>
+        <% if schedule.nil? %>
+          <div id="calendar-form">
+            <%= form_with model: [current_user, passport, Schedule.new], method: :post, remote: true do |f| %>
+              <%= f.hidden_field :passport_id, value: passport.id %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.hidden_field :day, value: date %>
+              <%= f.hidden_field :comprate, value: true %>
+              <% if Time.now.strftime("%Y-%m-%d") == date.strftime("%Y-%m-%d") %>
+                <%= f.submit "", class: "calendar-color" %>
+              <% else %>
+                <%= f.submit "", class: "checkGray" %>
+              <% end %>
+            <% end %>
+          </div>
+        <% elsif schedule.comprate == true %>
+          <%= link_to image_tag("icon_checked.png"), user_passport_schedule_path(current_user, passport.id, schedule.id), method: :delete, remote: true %>
+        <% end %>
+      <% end %>
+    </div>
   <% end %>
-</div>
+<% end %>

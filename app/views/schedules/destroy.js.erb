@@ -1,0 +1,3 @@
+$(".passport-calendar").
+  html('<%= j render partial: "passports/calendar", locals: { passport: @passport, schedules: @schedules } %>');
+$(".passport-calendar").fadeIn(800);

@@ -91,6 +91,11 @@
             height: 18px;
             background-image: image-url("icon_check_gray.png");
           }
+          .calendar-color{
+            background-image: image-url("icon_check_today.png");
+            width: 27px;
+            height: 22px;
+          }
         }
       }
       .methods {

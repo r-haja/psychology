@@ -1,6 +1,7 @@
 class SchedulesController < ApplicationController
 
   def create
+    @schedules = Schedule.all.includes(:passport)
     @schedule = Schedule.new(params_schedule)
     @passport = @schedule.passport
     if @schedule.save
@@ -11,10 +12,11 @@ class SchedulesController < ApplicationController
   end
 
   def destroy
+    @schedules = Schedule.all.includes(:passport)
     @schedule = Schedule.find_by(id: params[:id])
     @passport = @schedule.passport
     if @schedule.destroy
-      redirect_to user_passport_path(current_user, current_user.passports.first.id)
+      respond_to :js
     else
       flash[:notice] = "失敗しました"
     end
