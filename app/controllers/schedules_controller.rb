@@ -1,11 +1,11 @@
 class SchedulesController < ApplicationController
-  before_action :passport_rate
 
   def create
     @schedules = Schedule.all.includes(:passport)
     @schedule = Schedule.new(params_schedule)
     @passport = @schedule.passport
     if @schedule.save
+      passport_rate
       respond_to :js
     else
       flash[:notice] = "失敗しました"
@@ -17,6 +17,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.find_by(id: params[:id])
     @passport = @schedule.passport
     if @schedule.destroy
+      passport_rate
       respond_to :js
     else
       flash[:notice] = "失敗しました"

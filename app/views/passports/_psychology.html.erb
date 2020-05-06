@@ -1,4 +1,4 @@
-<div class="d-inline-block" data-toggle="modal" data-target="#exampleModal<%= psychology.title %>">
+<div class="d-inline-block" data-toggle="modal" data-target="#exampleModal<%= psychology.id %>">
   <span class="badge badge-secondary mr-1">
     <%= image_tag psychology.psychology_image_url, class: "psychology-image" %>
     <%= psychology.title %>
@@ -6,17 +6,18 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal<%= psychology.title %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal<%= psychology.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><%= psychology.title %></h5>
+        <h5 class="modal-title" id="exampleModalLabel">
+          <%= image_tag psychology.psychology_image_url, class: "psychology-image" %>
+          <%= psychology.title %></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <%= image_tag psychology.psychology_image_url, class: "psychology-image" %>
         <%= psychology.discription %>
       </div>
       <div class="modal-footer">

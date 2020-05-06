@@ -21,6 +21,7 @@ class PostsController < ApplicationController
       redirect_to posts_path
       flash[:notice] = "投稿しました！"
     else
+      flash[:alert] = "入力誤りがあります。再度記入してください。"
       render :new
     end
   end

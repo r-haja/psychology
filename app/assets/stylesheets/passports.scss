@@ -54,6 +54,11 @@
             font-size: 14px;
             line-height: 1;
           }
+        }
+        &__rate{
+          display: flex;
+          align-items: center;
+          margin-bottom: 20px;
           .percentage {
             margin-right: 30px;
             margin-bottom: 0;

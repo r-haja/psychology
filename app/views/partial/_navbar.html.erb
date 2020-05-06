@@ -14,9 +14,7 @@
         <%= link_to "サインアウト", destroy_admin_session_path, method: :delete, class: "home-btn btn btn-outline-dangger" %>
       <% elsif user_signed_in?%>
           <div class="menu__action">
-            <%= link_to new_post_path do %>
-              <%= image_tag "icon_post.png" %>
-            <% end %>
+            <%= link_to "投稿する", new_post_path, class: "btn btn-primary" %>
             <%= link_to new_user_passport_path(current_user) do %>
               <%= image_tag "icon_passport.png" %>
             <% end %>
@@ -24,18 +22,20 @@
               <%= image_tag "icon_methods.png" %>
             <% end %>
           </div>
-          <%= link_to  user_path(current_user), class: "menu__user" do %>
-            <div class="userIcon">
-              <% if current_user.profile_image.file %>
-                <%= image_tag current_user.profile_image.url, class:"post-profile-icon" %>
-              <% else %>
-                <%= image_tag "icon_default_user.png", class: "post-profile-icon" %>
-              <% end %>
-            </div>
-            <div class="userName">
-              <%= current_user.name %>
-            </div>
-          <% end %>
+          <div data-turbolinks="false">
+            <%= link_to  user_path(current_user), class: "menu__user" do %>
+              <div class="userIcon">
+                <% if current_user.profile_image.file %>
+                  <%= image_tag current_user.profile_image.url, class:"post-profile-icon" %>
+                <% else %>
+                  <%= image_tag "icon_default_user.png", class: "post-profile-icon" %>
+                <% end %>
+              </div>
+              <div class="userName">
+                <%= current_user.name %>
+              </div>
+            <% end %>
+          </div>
         <% end %>
     <% elsif user_signed_in? %>
       <div class="menu__action">
@@ -49,18 +49,20 @@
           <%= image_tag "icon_methods.png" %>
         <% end %>
       </div>
-      <%= link_to  user_path(current_user), class: "menu__user" do %>
-        <div class="userIcon">
-          <% if current_user.profile_image.file %>
-            <%= image_tag current_user.profile_image.url %>
-          <% else %>
-            <%= image_tag "icon_default_user.png" %>
-          <% end %>
-        </div>
-        <div class="userName">
-          <%= current_user.name %>
-        </div>
-      <% end %>
+      <div data-turbolinks="false">
+        <%= link_to  user_path(current_user), class: "menu__user" do %>
+          <div class="userIcon">
+            <% if current_user.profile_image.file %>
+              <%= image_tag current_user.profile_image.url %>
+            <% else %>
+              <%= image_tag "icon_default_user.png" %>
+            <% end %>
+          </div>
+          <div class="userName">
+            <%= current_user.name %>
+          </div>
+        <% end %>
+      </div>
     <% elsif admin_signed_in? %>
       <div class="menu__user">
         <div class="userName">

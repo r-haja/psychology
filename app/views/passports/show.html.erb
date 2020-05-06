@@ -17,11 +17,8 @@
             <p class="period"><%= @passport.plans.first.start_time.strftime("%Y-%m-%d") %> 〜 <%= @passport.plans.first.end_time.strftime("%Y-%m-%d") %></p>
             <p class="genre"><%= @passport.genre.name %></p>
           </div>
-          <div class="habit__details">
+          <div class="habit__rate">
             <%= render partial: "passports/rate", locals: {passport: @passport} %>
-            <%= link_to user_passport_path(current_user.id, @passport.id), method: :delete, data: {confirm: "本当に削除してよろしいですか？"} do %>
-              <%= image_tag 'icon_trash.png', class: "trash" %>
-            <% end %>
           </div>
         </div>
 
