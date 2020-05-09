@@ -1,0 +1,5 @@
+require:
+  - rubocop-performance
+
+SuppressedException:
+  AllowComments: true

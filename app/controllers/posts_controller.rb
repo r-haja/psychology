@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.includes(:photos, :user).order("created_at DESC").
-              page(params[:page]).without_count.per(2)
+              page(params[:page]).without_count.per(5)
   end
 
   def show

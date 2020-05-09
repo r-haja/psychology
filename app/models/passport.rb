@@ -12,5 +12,5 @@ class Passport < ApplicationRecord
   validates :goal, presence: true
 
   mount_uploader :passport_image, PassportImageUploader
-  accepts_nested_attributes_for :plans
+  accepts_nested_attributes_for :plans, allow_destroy: true
 end

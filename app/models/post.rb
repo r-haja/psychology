@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :title, presence: true, length: { maximum: 50}
-  validates :discription, length: {maximum: 140}
+  validates :discription, length: {maximum: 500}
 
   accepts_nested_attributes_for :photos
 end

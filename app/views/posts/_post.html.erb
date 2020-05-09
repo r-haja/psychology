@@ -1,0 +1,44 @@
+<% posts.each do |post| %>
+  <div class="card-wrap">
+    <div class="card">
+      <div class="card-header align-items-center d-flex">
+        <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+          <% if post.user.profile_image.file.nil? %>
+            <%= image_tag 'dumbo_default.png', class: "post-profile-icon" %>
+          <% else %>
+            <%= image_tag post.user.profile_image.url, class: "post-profile-icon" %>
+          <% end %>
+        <% end %>
+        <%= link_to user_path(post.user), class: "black-color no-text-decoration",　title: post.user.name do %>
+          <strong><%= post.user.name %></strong>
+        <% end %>
+      </div>
+      <% if post.photos.first.nil? %>
+      <% else %>
+        <%= link_to(post_path(post)) do %>
+          <%= image_tag post.photos.first.post_image.url(:medium), class: "card-img-top" %>
+        <% end %>
+      <% end %>
+      <div class="card-body">
+        <div>
+          <span><h5><%= post.title %></h5></span>
+          <span><%= post.discription %></span>
+
+          <div id="comment-post-<%= post.id.to_s %>">
+            <%= render 'comment_list', {post: post} %>
+          </div>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post),
+            class: "light-color post-time no-text-decoration" %>
+          <hr>
+          <div class="row actions" id="comment-form-post-<%= post.id.to_s %>">
+            <%= form_with model: [post, Comment.new], class: "w-100" do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.hidden_field :post_id, value: post.id %>
+              <%= f.text_field :comment, class: "form-control comment-input border-0", placeholder: "コメント ...", autocomplete: :off %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
