@@ -48,18 +48,18 @@ class PassportsController < ApplicationController
   end
 
   def update
-    if params[:purpose]
+    if params[:passport][:purpose]
       if @passport.update(passport_params)
         @passport.plans.first.destroy
-        redirect_to user_passport_path(current_user)
+        redirect_to user_passports_path(current_user)
       else
-        render :index
+        redirect_to user_passports_path(current_user)
       end
     else
       if @passport.update(passport_params)
-        redirect_to user_passport_path(current_user)
+        redirect_to user_passports_path(current_user)
       else
-        render :index
+        redirect_to user_passports_path(current_user)
       end
     end
   end

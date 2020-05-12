@@ -34,7 +34,7 @@
           <div class="methods">
             <p class="methods__label">習慣化方法</p>
             <%= render partial: "passports/psychology", collection: passport.psychologies, as: :psychology %>
-            <button type="button" class="psychology-btn" data-toggle="modal" data-target="#exampleModalLong">
+            <button type="button" class="psychology-btn" data-toggle="modal" data-target="#exampleModalLong<%= passport.id %>">
               <span>＋</span>
               新規登録
             </button>
@@ -49,12 +49,12 @@
 
 
   <!-- Modal -->
-  <%= form_with(model: passport, url: user_passport_path(current_user, current_user.passports.first.id), local: true ) do |f| %>
-    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <%= form_with(model: passport, url: user_passport_path(current_user, passport.id), local: true ) do |f| %>
+    <div class="modal fade" id="exampleModalLong<%= passport.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">習慣化方法</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
