@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :users, only: %i(show) do
-    resources :passports, only: %i(show new create destroy edit update) do
+    resources :passports, only: %i(index new create destroy edit update) do
       resources :schedules, only: %i(create destroy)
     end
   end

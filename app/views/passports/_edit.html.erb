@@ -13,7 +13,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <%= form_with model: @passport, url: [current_user, @passport], class: " p-0 border-0" do |f| %>
+      <%= form_with model: passport, url: [current_user, passport], class: " p-0 border-0" do |f| %>
         <div class="modal-body">
           <%= render 'partial/error_messages', model: f.object %>
           <div class="form-group row mt-2">

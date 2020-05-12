@@ -1,6 +1,6 @@
 <nav>
     <% if user_signed_in? %>
-      <%= link_to new_user_passport_path(current_user) do %>
+      <%= link_to user_passports_path(current_user) do %>
         <%= image_tag "img_logo.png", class: "logo" %>
       <% end %>
     <% else %>
@@ -13,36 +13,70 @@
       <% if admin_signed_in? %>
         <%= link_to "サインアウト", destroy_admin_session_path, method: :delete, class: "home-btn btn btn-outline-dangger" %>
       <% elsif user_signed_in?%>
-          <div class="menu__action">
-            <%= link_to "投稿する", new_post_path, class: "btn btn-primary" %>
+        <div class="menu__action">
+          <%= link_to "投稿する", new_post_path, class: "btn btn-primary" %>
+          <% if current_user.passports.present? %>
+            <%= link_to user_passports_path(current_user) do %>
+              <%= image_tag "icon_passport.png" %>
+            <% end %>
+          <% else %>
             <%= link_to new_user_passport_path(current_user) do %>
               <%= image_tag "icon_passport.png" %>
             <% end %>
-            <%= link_to psychologies_path do %>
-              <%= image_tag "icon_methods.png" %>
-            <% end %>
-          </div>
-          <div data-turbolinks="false">
-            <%= link_to  user_path(current_user), class: "menu__user" do %>
-              <div class="userIcon">
-                <% if current_user.profile_image.file %>
-                  <%= image_tag current_user.profile_image.url, class:"post-profile-icon" %>
-                <% else %>
-                  <%= image_tag "icon_default_user.png", class: "post-profile-icon" %>
-                <% end %>
-              </div>
-              <div class="userName">
-                <%= current_user.name %>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
+          <% end %>
+          <%= link_to psychologies_path do %>
+            <%= image_tag "icon_methods.png" %>
+          <% end %>
+        </div>
+        <div data-turbolinks="false">
+          <%= link_to  user_path(current_user), class: "menu__user" do %>
+            <div class="userIcon">
+              <% if current_user.profile_image.file %>
+                <%= image_tag current_user.profile_image.url, class:"post-profile-icon" %>
+              <% else %>
+                <%= image_tag "icon_default_user.png", class: "post-profile-icon" %>
+              <% end %>
+            </div>
+            <div class="userName">
+              <%= current_user.name %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% elsif user_signed_in? && controller.controller_name == 'passports' && controller.action_name == 'index'  %>
+      <% if admin_signed_in? %>
+        <%= link_to "サインアウト", destroy_admin_session_path, method: :delete, class: "home-btn btn btn-outline-dangger" %>
+      <% elsif user_signed_in?%>
+        <div class="menu__action">
+          <%= link_to posts_path do %>
+            <%= image_tag "icon_message.png" %>
+          <% end %>
+          <%= link_to "追加する",new_user_passport_path(current_user), class: "btn btn-primary"  %>
+          <%= link_to psychologies_path do %>
+            <%= image_tag "icon_methods.png" %>
+          <% end %>
+        </div>
+        <div data-turbolinks="false">
+          <%= link_to  user_path(current_user), class: "menu__user" do %>
+            <div class="userIcon">
+              <% if current_user.profile_image.file %>
+                <%= image_tag current_user.profile_image.url, class:"post-profile-icon" %>
+              <% else %>
+                <%= image_tag "icon_default_user.png", class: "post-profile-icon" %>
+              <% end %>
+            </div>
+            <div class="userName">
+              <%= current_user.name %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     <% elsif user_signed_in? %>
       <div class="menu__action">
         <%= link_to posts_path do %>
           <%= image_tag "icon_message.png" %>
         <% end %>
-        <%= link_to new_user_passport_path(current_user) do %>
+        <%= link_to user_passports_path(current_user) do %>
           <%= image_tag "icon_passport.png" %>
         <% end %>
         <%= link_to psychologies_path do %>

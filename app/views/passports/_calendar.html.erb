@@ -16,7 +16,7 @@
           <% end %>
         </div>
       <% else %>
-        <% schedule = schedules.find_by(day: date.strftime("%Y-%m-%d")) %>
+        <% schedule = passport.schedules.find_by(day: date.strftime("%Y-%m-%d")) %>
         <% if schedule.nil? %>
           <div id="calendar-form">
             <%= form_with model: [current_user, passport, Schedule.new], method: :post, remote: true do |f| %>

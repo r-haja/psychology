@@ -1,10 +1,11 @@
 class PassportsController < ApplicationController
   before_action :authenticate_user!
-  before_action :passport_set, only: [:show, :edit, :update, :destroy]
+  before_action :passport_set, only: [:edit, :update, :destroy]
 
-  def show
+  def index
     if current_user.passports.present?
-      rate = PassportRator.new(@passport)
+      @passports = current_user.passports
+      rate = PassportRator.new(@passports)
       rate.passport_rate
       @psychologies = Psychology.all
       @schedules = Schedule.all.includes(:passport)
@@ -15,20 +16,15 @@ class PassportsController < ApplicationController
   end
 
   def new
-    if current_user.passports.present?
-      redirect_to user_passport_path(current_user, current_user.passports.first.id)
-    #  flash[:alert] = "すでにパスポートは作成済みです!"
-    else
-      @passport = current_user.passports.new
-      @passport.plans.build
-    end
+    @passport = current_user.passports.new
+    @passport.plans.build
   end
 
   def create
     @passport = current_user.passports.new(passport_params)
     if @passport.save
       flash[:notice] = "習慣化パスポートを保存しました！"
-      redirect_to user_passport_path(current_user, current_user.passports.first.id)
+      redirect_to user_passports_path(current_user)
     else
       flash[:alert] = "入力誤りがあります。再度記入してください。"
       render :new
@@ -37,10 +33,10 @@ class PassportsController < ApplicationController
 
   def destroy
     if @passport.destroy
-      redirect_to new_user_passport_path(current_user)
+      redirect_to user_passports_path(current_user)
     else
       flash[:notice] = "パスポートの削除に失敗しました。"
-      render :show
+      render :index
     end
   end
 
@@ -55,15 +51,15 @@ class PassportsController < ApplicationController
     if params[:purpose]
       if @passport.update(passport_params)
         @passport.plans.first.destroy
-        redirect_to user_passport_path(current_user, current_user.passports.first.id)
+        redirect_to user_passport_path(current_user)
       else
-        render :show
+        render :index
       end
     else
       if @passport.update(passport_params)
-        redirect_to user_passport_path(current_user, current_user.passports.first.id)
+        redirect_to user_passport_path(current_user)
       else
-        render :show
+        render :index
       end
     end
   end
