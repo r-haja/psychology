@@ -1,75 +1,80 @@
 <% @passports.each do |passport| %>
-  <main class="passport">
-    <section class="container">
-      <div class="passport__header">
-        <% if passport.passport_image.file.nil? %>
-          <%= image_tag 'img_passport_header.jpg' %>
-        <% else %>
-          <%= image_tag passport.passport_image.url %>
-        <% end %>
-      </div>
+  <% if passport.achievement != true %>
+    <main class="passport">
+      <section class="container">
+        <div class="passport__header">
+          <% if passport.passport_image.file.nil? %>
+            <%= image_tag 'img_passport_header.jpg' %>
+          <% else %>
+            <%= image_tag passport.passport_image.url %>
+          <% end %>
+        </div>
 
-      <div class="passport__contents">
-        <div class="contents">
-          <div class="habit">
-            <h1 class="habit__purpose"><%= passport.purpose %></h1>
-            <h2 class="habit__goal"><%= passport.goal %></h2>
-            <div class="habit__details">
-              <p class="period"><%= passport.plans.first.start_time.strftime("%Y-%m-%d") %> 〜 <%= passport.plans.first.end_time.strftime("%Y-%m-%d") %></p>
-              <p class="genre"><%= passport.genre.name %></p>
+        <div class="passport__contents">
+          <div class="contents">
+            <div class="habit">
+              <h1 class="habit__purpose"><%= passport.purpose %></h1>
+              <h2 class="habit__goal"><%= passport.goal %></h2>
+              <div class="habit__details">
+                <p class="period"><%= passport.plans.first.start_time.strftime("%Y-%m-%d") %> 〜 <%= passport.plans.first.end_time.strftime("%Y-%m-%d") %></p>
+                <p class="genre"><%= passport.genre.name %></p>
+              </div>
+              <div class="habit__rate habit__rate<%= passport.id.to_s %>">
+                <%= render partial: "passports/rate", locals: {passport: passport} %>
+              </div>
             </div>
-            <div class="habit__rate habit__rate<%= passport.id.to_s %>">
-              <%= render partial: "passports/rate", locals: {passport: passport} %>
+
+            <div class="calendar">
+              <p class="calendar__label">習慣記録</p>
+              <div class="passport-calendar passport-calendar<%= passport.id.to_s %>">
+                <%= render partial: "passports/calendar", locals: { passport: passport, schedules: @schedules } %>
+              </div>
             </div>
-          </div>
-
-          <div class="calendar">
-            <p class="calendar__label">習慣記録</p>
-            <div class="passport-calendar passport-calendar<%= passport.id.to_s %>">
-              <%= render partial: "passports/calendar", locals: { passport: passport, schedules: @schedules } %>
+          </div><!-- contents -->
+          <div class="contents">
+            <div class="methods">
+              <p class="methods__label">習慣化方法</p>
+              <%= render partial: "passports/psychology", collection: passport.psychologies, as: :psychology %>
+              <button type="button" class="psychology-btn" data-toggle="modal" data-target="#psychologi_new_ModalLong<%= passport.id %>">
+                <span>＋</span>
+                新規登録
+              </button>
             </div>
-          </div>
-        </div><!-- contents -->
-        <div class="contents">
-          <div class="methods">
-            <p class="methods__label">習慣化方法</p>
-            <%= render partial: "passports/psychology", collection: passport.psychologies, as: :psychology %>
-            <button type="button" class="psychology-btn" data-toggle="modal" data-target="#exampleModalLong<%= passport.id %>">
-              <span>＋</span>
-              新規登録
-            </button>
-          </div>
-        </div><!-- contents -->
-      </div>
-      <div class="passport_footer">
-        <%= render partial: "edit", locals:{passport: passport} %>
-      </div>
-    </section>
-  </main>
+          </div><!-- contents -->
+        </div>
+        <div class="passport_footer">
+          <%= render partial: "edit", locals:{passport: passport} %>
+          <%= render partial: "achievement", locals:{passport: passport} %>
+        </div>
+      </section>
+    </main>
 
 
-  <!-- Modal -->
-  <%= form_with(model: passport, url: user_passport_path(current_user, passport.id), local: true ) do |f| %>
-    <div class="modal fade" id="exampleModalLong<%= passport.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">習慣化方法</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <%= f.collection_check_boxes :psychology_ids, Psychology.all, :id, :title do |b| %>
-              <%= b.label {b.check_box + b.text} %>
-            <% end %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <%= f.submit "習慣化方法を選択", class: "btn btn-primary" %>
+    <!-- Modal -->
+    <%= form_with(model: passport, url: user_passport_path(current_user, passport.id), local: true ) do |f| %>
+      <div class="modal fade" id="psychologi_new_ModalLong<%= passport.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">習慣化方法</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= f.collection_check_boxes :psychology_ids, Psychology.all, :id, :title do |b| %>
+                <%= b.label {b.check_box + b.text} %>
+              <% end %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <%= f.submit "習慣化方法を選択", class: "btn btn-primary" %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
+  <% else %>
+    <%= render partial: "achievement_passport", locals:{passport: passport} %>
   <% end %>
 <% end %>

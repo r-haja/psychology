@@ -70,6 +70,6 @@ private
   end
 
   def passport_params
-    params.require(:passport).permit(:purpose , :goal, :passport_image, :genre_id, psychology_ids: [], plans_attributes: [:start_time, :end_time])
+    params.require(:passport).permit(:purpose , :goal, :passport_image, :genre_id, :achievement, psychology_ids: [], plans_attributes: [:start_time, :end_time])
   end
 end

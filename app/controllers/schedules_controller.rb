@@ -32,9 +32,11 @@ class SchedulesController < ApplicationController
     def passport_rate
       #Userが設定した開始日から終了日までの日数を計算
       @passport = Passport.find_by(id: params[:passport_id])
-      #start_time = @passport.plans.first.start_time
-      #end_time = @passport.plans.first.end_time
-      #sum = (end_time - start_time)/86400
+      start_time = @passport.plans.first.start_time
+      end_time = @passport.plans.first.end_time
+      sum = (end_time - start_time)/86400
+      success_rate = @passport.schedules.where(day: start_time..end_time).count*100/sum
+      @passport.rate = success_rate
 
       #今月の開始日と終了日の取得
       this_date = Date.today
@@ -44,7 +46,7 @@ class SchedulesController < ApplicationController
 
       #月の成功率の計算
       success_rate_month = @passport.schedules.where(day: start_month_date..end_month_date).count*100/sum_month
-      @passport.rate = success_rate_month
+      @passport.month_rate = success_rate_month
 
       #週の開始日と終了日を計算
       start_week_date = this_date.beginning_of_week.to_s
