@@ -10,8 +10,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true, length: {maximum: 30}, uniqueness: true
+
   VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
-  validates :password, format: { with: VALID_PASSWORD_REGEX }
+  validates :password, format: { with: VALID_PASSWORD_REGEX }, if: :password_presence?
+
+  def password_presence?
+    password.present? && password_confirmation.present?
+  end
 
   def update_without_current_password(params, *options)
     params.delete(:current_password)
