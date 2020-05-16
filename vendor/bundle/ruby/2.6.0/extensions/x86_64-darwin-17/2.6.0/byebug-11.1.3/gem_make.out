@@ -1,0 +1,19 @@
+current directory: /Users/h.r_mac/Desktop/侍関連/99.その他/texhpitgram/vendor/bundle/ruby/2.6.0/gems/byebug-11.1.3/ext/byebug
+/Users/h.r_mac/.rbenv/versions/2.6.5/bin/ruby -I /Users/h.r_mac/.rbenv/versions/2.6.5/lib/ruby/site_ruby/2.6.0 -r ./siteconf20200516-12369-12146mz.rb extconf.rb
+creating Makefile
+
+current directory: /Users/h.r_mac/Desktop/侍関連/99.その他/texhpitgram/vendor/bundle/ruby/2.6.0/gems/byebug-11.1.3/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /Users/h.r_mac/Desktop/侍関連/99.その他/texhpitgram/vendor/bundle/ruby/2.6.0/gems/byebug-11.1.3/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/h.r_mac/Desktop/侍関連/99.その他/texhpitgram/vendor/bundle/ruby/2.6.0/gems/byebug-11.1.3/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.bundle ./.gem.20200516-12369-o0o3i0/byebug

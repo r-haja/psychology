@@ -43,8 +43,12 @@
           </div><!-- contents -->
         </div>
         <div class="passport_footer">
-          <%= render partial: "edit", locals:{passport: passport} %>
-          <%= render partial: "achievement", locals:{passport: passport} %>
+          <div class="edit<%= passport.id.to_s %>">
+            <%= render partial: "passports/edit", locals:{passport: passport} %>
+          </div>
+          <div class="achievement<%= passport.id.to_s %>">
+            <%= render partial: "passports/achievement", locals: { passport: passport } %>
+          </div>
         </div>
       </section>
     </main>

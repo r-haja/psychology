@@ -31,7 +31,7 @@ class SchedulesController < ApplicationController
 
     def passport_rate
       #Userが設定した開始日から終了日までの日数を計算
-      @passport = Passport.find_by(id: params[:passport_id])
+      @passports = Passport.find_by(id: params[:passport_id])
       start_time = @passport.plans.first.start_time
       end_time = @passport.plans.first.end_time
       sum = (end_time - start_time)/86400

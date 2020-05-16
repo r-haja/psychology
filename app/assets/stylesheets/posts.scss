@@ -15,7 +15,21 @@
 .no-text-decoration:hover {
   text-decoration: none;
 }
+.card-body{
+  span{
+    text-decoration: none;
+    h5{
+      color: #262626;
+      :hover{
+        text-decoration: none;
 
+      }
+    }
+    p{
+      color: #262626;
+    }
+  }
+}
 .black-color {
   color: #262626;
 }

@@ -4,7 +4,7 @@ class Plan < ApplicationRecord
   validates :start_time, presence: true
   validates :end_time, presence: true
   validate :start_end_check
-  validate :start_time_cannot_be_int_the_past
+  #validate :start_time_cannot_be_int_the_past
 
   def start_end_check
     if start_time.present? && end_time.present?
@@ -14,9 +14,9 @@ class Plan < ApplicationRecord
     end
   end
 
-  def start_time_cannot_be_int_the_past
-    if start_time.present? && start_time < Date.today
-      errors.add(:start_time, "の日付を正しく記入してください。")
-    end
-  end
+  #def start_time_cannot_be_int_the_past
+  #  if start_time.present? && start_time < Date.today
+  #    errors.add(:start_time, "の日付を正しく記入してください。")
+  #  end
+  #end
 end

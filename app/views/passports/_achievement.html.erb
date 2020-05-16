@@ -13,9 +13,9 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <p>期間中の達成率</p>
+      <%= passport.rate %>%
       <%= form_with model: passport, url: [current_user, passport], class: " p-0 border-0" do |f| %>
-        <p>期間中の達成率</p>
-        <%= passport.rate %>%
         <%= f.hidden_field :achievement, value: true %>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">いいえ</button>

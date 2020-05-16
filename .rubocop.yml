@@ -1,5 +1,2 @@
-require:
-  - rubocop-performance
-
-SuppressedException:
-  AllowComments: true
+Rails:
+  Enabled: true

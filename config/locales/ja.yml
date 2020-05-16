@@ -180,6 +180,7 @@ ja:
         name: "名前"
         email: "メールアドレス"
         password: "パスワード"
+        password_confirmation: "パスワードの確認"
       psychology:
         title: "タイトル"
         discription: "詳細"
@@ -207,11 +208,17 @@ ja:
           attributes:
             name:
               blank: 'を入力してください。'
+              too_long: 'は30文字以内で入力してください。'
+              taken: 'はすでに利用されています。'
             email:
               blank: 'を入力してください。'
               taken: 'は既に登録されています。'
             password:
               blank: 'を入力してください。'
+              too_short: 'は6以上で設定してください。'
+              invalid: 'は半角英数字のみ有効です。'
+            password_confirmation:
+              confirmation: "を入力してください。"
 
         psychology:
           attributes:
