@@ -47,12 +47,12 @@
       </div>
     <% elsif user_signed_in? && controller.controller_name == 'passports' && controller.action_name == 'index'  %>
       <div class="menu__action">
-        <%= link_to posts_path do %>
-          <%= image_tag "icon_message.png" %>
-        <% end %>
         <%= link_to "追加する",new_user_passport_path(current_user), class: "btn btn-primary"  %>
         <%= link_to psychologies_path do %>
           <%= image_tag "icon_methods.png" %>
+        <% end %>
+        <%= link_to posts_path do %>
+          <%= image_tag "icon_message.png" %>
         <% end %>
       </div>
       <div data-turbolinks="false">
@@ -77,14 +77,14 @@
       </div>
     <% elsif user_signed_in? %>
       <div class="menu__action">
-        <%= link_to posts_path do %>
-          <%= image_tag "icon_message.png" %>
-        <% end %>
         <%= link_to user_passports_path(current_user) do %>
           <%= image_tag "icon_passport.png" %>
         <% end %>
         <%= link_to psychologies_path do %>
           <%= image_tag "icon_methods.png" %>
+        <% end %>
+        <%= link_to posts_path do %>
+          <%= image_tag "icon_message.png" %>
         <% end %>
       </div>
       <div data-turbolinks="false">

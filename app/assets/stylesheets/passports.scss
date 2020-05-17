@@ -87,25 +87,27 @@
               color: #F9703E;
               font-size: 18px;
               font-weight: bold;
+              animation: fadeIn 1s ease 0s 1 normal;
             }
           }
         }
       }
       .calendar {
         text-align: center;
-          &__label {
-            width: 110px;
-            margin: 0 auto;
-            padding: 6px 15px;
-            border: 2px solid #E1E1E1;
-            border-radius: 18px;
-            font-size: 14px;
-            font-weight: bold;
-            text-align: center;
-            line-height: 1;
-          }
+        &__label {
+          width: 110px;
+          margin: 0 auto;
+          padding: 6px 15px;
+          border: 2px solid #E1E1E1;
+          border-radius: 18px;
+          font-size: 14px;
+          font-weight: bold;
+          text-align: center;
+          line-height: 1;
+        }
         .passport-calendar {
           margin-top: 20px;
+          animation: fadeIn 3s ease 0s 1 normal;
           form input {
             border: none;
             background: transparent;
@@ -114,6 +116,11 @@
             width: 23px;
             height: 18px;
             background-image: image-url("icon_check_gray.png");
+            transition: 0.2s;
+            &:hover {
+              background-image: image-url("icon_checked.png");
+              transition: 0.2s;
+            }
           }
           .calendar-color{
             background-image: image-url("icon_check_today.png");
@@ -235,5 +242,14 @@
         }
       }
     }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: 1
   }
 }
