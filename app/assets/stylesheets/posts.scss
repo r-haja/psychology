@@ -135,3 +135,22 @@
   margin: 5px 0 0 10px;
   background-size: 11px !important;
 }
+
+.pagination{
+  margin: 0 auto;
+  li{
+    a{
+      border: none;
+      color: #696969;
+      :hover{
+        border-radius: 15px;
+      }
+    }
+  }
+  .active{
+    a{
+      background: #93c9ff;
+      border-radius: 15px;
+    }
+  }
+}

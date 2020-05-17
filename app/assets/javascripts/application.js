@@ -17,6 +17,6 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-//= require jquery.jscroll.min.js
+// require jquery.jscroll.min.js
 
-//= require index.js
+// require index.js
