@@ -39,25 +39,55 @@ nav {
       float: left;
       height: 20px;
     }
-    &__user {
+    &__status {
       display: flex;
       align-items: center;
-      .userIcon {
-        width: 36px;
-        height: 36px;
-        margin-right: 12px;
-        img {
-          width: 100%;
-          height: auto;
+      .user {
+        display: flex;
+        align-items: center;
+        .userIcon {
+          width: 36px;
+          height: 36px;
+          margin-right: 12px;
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+        .userName {
+          color: #333333;
+          font-size: 14px;
+          text-decoration: none;
+        }
+        &:hover {
+          text-decoration: none;
         }
       }
-      .userName {
-        color: #333333;
-        font-size: 14px;
-        text-decoration: none;
+    }
+    .userAchievement {
+      position: relative;
+      display: inline-block;
+      height: 30px;
+      width: 30px;
+      margin-left: 10px;
+      i {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+        color: #ffd633;
+        font-size: 30px;
       }
-      &:hover {
-        text-decoration: none;
+      p {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 30px;
+        font-size: 14px;
+        text-align: center;
+        line-height: 30px;
+        vertical-align: middle;
+        margin-bottom: 0;
       }
     }
     &__shared{
@@ -78,7 +108,16 @@ nav {
   }
 }
 
-@media screen and (max-width: 670px){
+@media screen and (max-width: 750px){
+  nav {
+    height: 50px;
+    .menu__user {
+      .userIcon {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
   .navbar{
     &__brand{
       height: 60px;

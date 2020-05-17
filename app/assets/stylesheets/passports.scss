@@ -9,202 +9,187 @@
     border-style: solid;
     border: solid 1px rgb(220, 220, 220);
     border-radius: 5px;
-    .passport__header {
-      //height: 120px;
-      background-image: cover;
-      background-position: center center;
-      img {
-        width: 100%;
-        border-top-left-radius: 4px;
-        border-top-right-radius: 4px;
+  } /*container*/
+  &__header {
+    position: relative;
+    overflow: hidden;
+    height: 120px;
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      width: 100%;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+  }
+  &__contents {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 32px 50px;
+    .contents + .contents {
+      margin-left: 50px;
+    }
+  }
+  .habit {
+    width: 390px;
+    &__purpose {
+      margin-bottom: 16px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    &__goal {
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+    &__details {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      .period {
+        margin-right: 15px;
+        margin-bottom: 0;
+        font-size: 14px;
       }
-    } /*passport__header*/
-    .passport_footer{
-      text-align: center;
-      margin-bottom: 30px;
-      .btn-edit{
-        display: inline-block;
-        vertical-align: middle;
-        width: 235px;
-        height: 44px;
-        margin-top: 5px;
-        background-color: $primary-color;
-        border: none;
-        border-radius: 5px;
-        color: #fff;
-        font-size: 16px;
-        :hover{
-          cursor: pointer;
+      .genre {
+        margin-bottom: 0;
+        padding: 6px 15px;
+        background-color: #CFCFCF;
+        border-radius: 18px;
+        font-size: 14px;
+        line-height: 1;
+      }
+    }
+    &__rate{
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      .percentage {
+        margin-right: 30px;
+        margin-bottom: 0;
+        font-size: 14px;
+        span {
+          margin-left: 15px;
+          color: #F9703E;
+          font-size: 18px;
+          font-weight: bold;
+          animation: fadeIn 1s ease 0s 1 normal;
         }
       }
     }
-    .passport__contents {
+  }
+  .calendar {
+    text-align: center;
+    &__label {
+      width: 110px;
+      margin: 0 auto;
+      padding: 6px 15px;
+      border: 2px solid #E1E1E1;
+      border-radius: 18px;
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+      line-height: 1;
+    }
+    .passport-calendar {
+      margin-top: 20px;
+      animation: fadeIn 3s ease 0s 1 normal;
+      form input {
+        border: none;
+        background: transparent;
+      }
+      .checkGray {
+        width: 23px;
+        height: 18px;
+        background-image: image-url("icon_check_gray.png");
+        transition: 0.2s;
+        &:hover {
+          background-image: image-url("icon_checked.png");
+          transition: 0.2s;
+        }
+      }
+      .calendar-color{
+        background-image: image-url("icon_check_today.png");
+        width: 27px;
+        height: 22px;
+      }
+    }
+  }
+  .methods {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 260px;
+    &__label {
+      width: 110px;
+      margin-bottom: 26px;
+      padding: 6px 15px;
+      border: 2px solid #E1E1E1;
+      border-radius: 18px;
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+      line-height: 1;
+    }
+    .d-inline-block {
       display: flex;
-      flex-wrap: wrap;
-      padding: 20px 50px;
-      .contents + .contents {
-        margin-left: 50px;
-      }
-      .habit {
-        width: 390px;
-        &__purpose {
-          margin-bottom: 16px;
-          font-size: 18px;
-          font-weight: bold;
-        }
-        &__goal {
-          margin-bottom: 16px;
-          font-size: 16px;
-        }
-        &__details {
-          display: flex;
-          align-items: center;
-          margin-bottom: 20px;
-          .period {
-            margin-right: 15px;
-            margin-bottom: 0;
-            font-size: 14px;
-          }
-          .genre {
-            margin-bottom: 0;
-            padding: 6px 15px;
-            background-color: #CFCFCF;
-            border-radius: 18px;
-            font-size: 14px;
-            line-height: 1;
-          }
-        }
-        &__rate{
-          display: flex;
-          align-items: center;
-          margin-bottom: 20px;
-          .percentage {
-            margin-right: 30px;
-            margin-bottom: 0;
-            font-size: 14px;
-            span {
-              margin-left: 15px;
-              color: #F9703E;
-              font-size: 18px;
-              font-weight: bold;
-              animation: fadeIn 1s ease 0s 1 normal;
-            }
-          }
+      align-items: center;
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 12px 20px;
+      border: 2px solid #FFB088;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor : pointer;
+      .badge-secondary {
+        color: #333333;
+        font-size: 14px;
+        background-color: transparent;
+        .psychology-image{
+          height: 30px;
+          margin-right: 15px;
         }
       }
-      .calendar {
-        text-align: center;
-        &__label {
-          width: 110px;
-          margin: 0 auto;
-          padding: 6px 15px;
-          border: 2px solid #E1E1E1;
-          border-radius: 18px;
-          font-size: 14px;
-          font-weight: bold;
-          text-align: center;
-          line-height: 1;
-        }
-        .passport-calendar {
-          margin-top: 20px;
-          animation: fadeIn 3s ease 0s 1 normal;
-          form input {
-            border: none;
-            background: transparent;
-          }
-          .checkGray {
-            width: 23px;
-            height: 18px;
-            background-image: image-url("icon_check_gray.png");
-            transition: 0.2s;
-            &:hover {
-              background-image: image-url("icon_checked.png");
-              transition: 0.2s;
-            }
-          }
-          .calendar-color{
-            background-image: image-url("icon_check_today.png");
-            width: 27px;
-            height: 22px;
-          }
-        }
+    }
+    .psychology-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 60px;
+      border: 2px solid #E1E1E1;
+      border-radius: 5px;
+      background-color: #fff;
+      font-size: 14px;
+      text-align: center;
+      span {
+        color: #F9703E;
+        font-size: 26px;
+        margin-right: 5px;
       }
-      .methods {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        width: 260px;
-        &__label {
-          width: 110px;
-          margin-bottom: 26px;
-          padding: 6px 15px;
-          border: 2px solid #E1E1E1;
-          border-radius: 18px;
-          font-size: 14px;
-          font-weight: bold;
-          text-align: center;
-          line-height: 1;
-        }
-        .d-inline-block {
-          display: flex;
-          align-items: center;
-          width: 100%;
-          margin-bottom: 20px;
-          padding: 12px 20px;
-          border: 2px solid #FFB088;
-          border-radius: 5px;
-          font-size: 14px;
-          cursor : pointer;
-          .badge-secondary {
-            color: #333333;
-            font-size: 14px;
-            background-color: transparent;
-            .psychology-image{
-              height: 30px;
-              margin-right: 15px;
-            }
-          }
-        }
-/*        ul {
-          width: 100%;
-          margin-bottom: 0;
-          padding-left: 0;
-          list-style: none;
-          li {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            margin-bottom: 20px;
-            padding: 12px 20px;
-            border: 2px solid #FFB088;
-            border-radius: 5px;
-            font-size: 14px;
-            img {
-              margin-right: 20px;
-            }
-          }
-        } */
-        .psychology-btn {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 100%;
-          height: 60px;
-          border: 2px solid #E1E1E1;
-          border-radius: 5px;
-          font-size: 14px;
-          text-align: center;
-          span {
-            color: #F9703E;
-            font-size: 26px;
-            margin-right: 5px;
-          }
-        } /*psychology-btn*/
-
-      } /*methods*/
-    } /*passport__contents*/
-  } /*container*/
-} /*passport*/
+    }
+  }
+  .passport_footer{
+    text-align: center;
+    margin-bottom: 30px;
+    .btn-edit{
+      display: inline-block;
+      vertical-align: middle;
+      width: 235px;
+      height: 44px;
+      margin-top: 5px;
+      background-color: $primary-color;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 16px;
+      :hover{
+        cursor: pointer;
+      }
+    }
+  }
+}
 
 @media screen and (max-width: 810px) {
   .passport {
@@ -212,13 +197,8 @@
       width: 100%;
       .passport__contents {
         justify-content: center;
-        padding: 0;
-        .contents + .contents {
-          margin-left: 0;
-        }
         .habit {
           width: 100%;
-          margin-top: 28px;
         }
         .calendar {
           width: 100%;
@@ -240,6 +220,30 @@
         .methods {
           height: 70vh;
         }
+      }
+    }
+    &__header {
+      position: relative;
+      overflow: hidden;
+      height: 120px;
+      margin-bottom: 25px;
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .passport {
+    &__contents {
+      padding: 0;
+      .contents + .contents {
+        margin-left: 0;
       }
     }
   }

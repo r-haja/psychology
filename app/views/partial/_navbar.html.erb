@@ -25,8 +25,8 @@
           <%= image_tag "icon_methods.png" %>
         <% end %>
       </div>
-      <div data-turbolinks="false">
-        <%= link_to  user_path(current_user), class: "menu__user" do %>
+      <div data-turbolinks="false" class="menu__status">
+        <%= link_to  user_path(current_user), class: "user" do %>
           <div class="userIcon">
             <% if current_user.profile_image.file %>
               <%= image_tag current_user.profile_image.url, class:"post-profile-icon" %>
@@ -40,8 +40,8 @@
         <% end %>
         <% if @achievement_sum >= 1 %>
           <div class="userAchievement">
-            <p><%= @achievement_sum %></p>
             <i class="fas fa-star"></i>
+            <p><%= @achievement_sum %></p>
           </div>
         <% end %>
       </div>
@@ -55,8 +55,8 @@
           <%= image_tag "icon_message.png" %>
         <% end %>
       </div>
-      <div data-turbolinks="false">
-        <%= link_to  user_path(current_user), class: "menu__user" do %>
+      <div data-turbolinks="false" class="menu__status">
+        <%= link_to  user_path(current_user), class: "user" do %>
           <div class="userIcon">
             <% if current_user.profile_image.file %>
               <%= image_tag current_user.profile_image.url, class:"post-profile-icon" %>
@@ -70,8 +70,8 @@
         <% end %>
         <% if @achievement_sum >= 1 %>
           <div class="userAchievement">
-            <p><%= @achievement_sum %></p>
             <i class="fas fa-star"></i>
+            <p><%= @achievement_sum %></p>
           </div>
         <% end %>
       </div>
@@ -87,8 +87,8 @@
           <%= image_tag "icon_message.png" %>
         <% end %>
       </div>
-      <div data-turbolinks="false">
-        <%= link_to  user_path(current_user), class: "menu__user" do %>
+      <div data-turbolinks="false" class="menu__status">
+        <%= link_to  user_path(current_user), class: "user" do %>
           <div class="userIcon">
             <% if current_user.profile_image.file %>
               <%= image_tag current_user.profile_image.url %>
@@ -102,8 +102,8 @@
         <% end %>
         <% if @achievement_sum >= 1 %>
           <div class="userAchievement">
-            <p><%= @achievement_sum %></p>
             <i class="fas fa-star"></i>
+            <p><%= @achievement_sum %></p>
           </div>
         <% end %>
       </div>
