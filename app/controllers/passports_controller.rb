@@ -3,8 +3,9 @@ class PassportsController < ApplicationController
   before_action :passport_set, only: [:edit, :update, :destroy]
 
   def index
-    if current_user.passports.present?
-      @passports = current_user.passports
+    user = User.find_by(id: params[:user_id])
+    if user.passports.present?
+      @passports = user.passports
       rate = PassportRator.new(@passports)
       rate.passport_rate
       @psychologies = Psychology.all

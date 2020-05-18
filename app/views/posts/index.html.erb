@@ -3,16 +3,17 @@
     <div class="card-wrap">
       <div class="card">
         <div class="card-header align-items-center d-flex">
-          <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+          <%= link_to user_passports_path(post.user.id), class: "no-text-decoration" do %>
             <% if post.user.profile_image.file.nil? %>
               <%= image_tag 'icon_default_user.png', class: "post-profile-icon" %>
             <% else %>
               <%= image_tag post.user.profile_image.url, class: "post-profile-icon" %>
             <% end %>
           <% end %>
-          <%= link_to user_path(post.user), class: "black-color no-text-decoration",　title: post.user.name do %>
+          <%= link_to user_passports_path(post.user.id), class: "black-color no-text-decoration",　title: post.user.name do %>
             <strong><%= post.user.name %></strong>
           <% end %>
+
           <% post_achievement = post.user.passports.where(achievement: true).count %>
           <% if post_achievement >= 1 %>
             <div class="passport__achievement">

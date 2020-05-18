@@ -1,5 +1,5 @@
 class GenresController < ApplicationController
-  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_admin!
   before_action :genre_set, only: [:edit, :update, :destroy]
 
   def index

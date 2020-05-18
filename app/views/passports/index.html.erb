@@ -23,32 +23,37 @@
                 <%= render partial: "passports/rate", locals: {passport: passport} %>
               </div>
             </div>
-
-            <div class="calendar">
-              <p class="calendar__label">習慣記録</p>
-              <div class="passport-calendar passport-calendar<%= passport.id.to_s %>">
-                <%= render partial: "passports/calendar", locals: { passport: passport, schedules: @schedules } %>
+            <% if passport.user_id == current_user.id %>
+              <div class="calendar">
+                <p class="calendar__label">習慣記録</p>
+                <div class="passport-calendar passport-calendar<%= passport.id.to_s %>">
+                  <%= render partial: "passports/calendar", locals: { passport: passport, schedules: @schedules } %>
+                </div>
               </div>
-            </div>
+            <% end %>
           </div><!-- contents -->
           <div class="contents">
             <div class="methods">
               <p class="methods__label">習慣化方法</p>
               <%= render partial: "passports/psychology", collection: passport.psychologies, as: :psychology %>
-              <button type="button" class="psychology-btn" data-toggle="modal" data-target="#psychologi_new_ModalLong<%= passport.id %>">
-                <span>＋</span>
-                新規登録
-              </button>
+              <% if passport.user_id == current_user.id %>
+                <button type="button" class="psychology-btn" data-toggle="modal" data-target="#psychologi_new_ModalLong<%= passport.id %>">
+                  <span>＋</span>
+                  新規登録
+                </button>
+              <% end %>
             </div>
           </div><!-- contents -->
         </div>
         <div class="passport_footer">
-          <div class="edit<%= passport.id.to_s %>">
-            <%= render partial: "passports/edit", locals:{passport: passport} %>
-          </div>
-          <div class="achievement<%= passport.id.to_s %>">
-            <%= render partial: "passports/achievement", locals: { passport: passport } %>
-          </div>
+          <% if passport.user_id == current_user.id %>
+            <div class="edit<%= passport.id.to_s %>">
+              <%= render partial: "passports/edit", locals:{passport: passport} %>
+            </div>
+            <div class="achievement<%= passport.id.to_s %>">
+              <%= render partial: "passports/achievement", locals: { passport: passport } %>
+            </div>
+          <% end %>
         </div>
       </section>
     </main>

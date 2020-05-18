@@ -1,0 +1,43 @@
+<div class="menu__user" data-toggle="modal" data-target="#current_userModal">
+  <div class="userIcon">
+    <% if current_user.profile_image.file %>
+      <%= image_tag current_user.profile_image.url, class:"post-profile-icon" %>
+    <% else %>
+      <%= image_tag "icon_default_user.png", class: "post-profile-icon" %>
+    <% end %>
+  </div>
+  <div class="userName">
+    <%= current_user.name %>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="current_userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="modal-body">
+        <div class="profile-wrap">
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <% if current_user.profile_image.file.nil? %>
+                <%= image_tag 'icon_default_user.png', class: "post-profile-icon" %>
+              <% else %>
+                <%= image_tag current_user.profile_image.url, class: "round-img" %>
+              <% end %>
+            </div>
+            <div class="col-md-8">
+              <div class="row">
+                <h1><%= current_user.name %></h1>
+                <%= render partial: 'devise/registrations/edit', class: "btn btn-outline-dark common-btn edit-profile-btn" %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
