@@ -33,6 +33,8 @@
                 <h1><%= current_user.name %></h1>
                 <%= render partial: 'devise/registrations/edit', class: "btn btn-outline-dark common-btn edit-profile-btn" %>
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action" %>
+
+                <%= link_to "アカウントを削除する", user_registration_path, method: :delete, data: {confirm: "本当に削除してよろしいですか？"} %>
               </div>
             </div>
           </div>

@@ -115,6 +115,7 @@ ja:
       timeout: 'セッションがタイムアウトしました。もう一度サインインしてください。'
       unauthenticated: 'アカウント登録もしくはサインインしてください。'
       unconfirmed: 'メールアドレスの本人確認が必要です。'
+      deleted_account: "このアカウントは既に削除されています。"
     mailer:
       confirmation_instructions:
         subject: 'アカウントの有効化について'
