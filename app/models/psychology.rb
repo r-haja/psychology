@@ -4,7 +4,8 @@ class Psychology < ApplicationRecord
 
   validates :title, presence: true
   validates :title, uniqueness: true
-  validates :discription, presence: true
+  validates :discription_image, presence: true
 
   mount_uploader :psychology_image, PsychologyImageUploader
+  mount_uploader :discription_image, DiscriptionImageUploader
 end

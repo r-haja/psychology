@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  after_initialize :set_default, if: :new_record?
   has_many :posts, dependent: :destroy
   has_many :comments
   has_many :passports, dependent: :destroy
@@ -61,4 +62,10 @@ class User < ApplicationRecord
   end
 
   mount_uploader :profile_image, ProfileImageUploader
+
+  private
+    def set_default
+      self.email_magazine ||= true
+      self.release ||= true
+    end
 end

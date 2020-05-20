@@ -3,6 +3,9 @@
     <h1>習慣化方法一覧</h1>
   </div>
   <div class="psyWrapper">
+    <% if admin_signed_in? %>
+      <%= link_to "Psychology 作成", new_psychology_path, class: "btn btn-success" %>
+    <% end %>
     <div class="container">
       <div class="genre">
           <h2 class="heading">はじめに</h2>
@@ -109,7 +112,7 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          <p class="item__disc　modal-disc"><%= simple_format(psychology.discription) %></p>
+                          <p class="item__disc　modal-disc"><%= image_tag psychology.discription_image.url %></p>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
@@ -137,9 +140,6 @@
         </div>
       </div>
     </div>
-    <% if admin_signed_in? %>
-      <%= link_to "Psychology 作成", new_psychology_path, class: "btn btn-success" %>
-    <% end %>
     <div class="message-wrapper">
       <div class="container">
         <div>

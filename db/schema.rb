@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_122007) do
+ActiveRecord::Schema.define(version: 2020_05_20_095450) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -94,10 +94,10 @@ ActiveRecord::Schema.define(version: 2020_05_13_122007) do
 
   create_table "psychologies", force: :cascade do |t|
     t.string "title"
-    t.string "discription"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "psychology_image"
+    t.string "discription_image"
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(version: 2020_05_13_122007) do
     t.string "profile_image"
     t.boolean "admin_flg"
     t.boolean "email_magazine", default: false, null: false
+    t.boolean "release"
     t.index ["email"], name: "index_users_on_email", unique: true, where: "(deleted_at IS NULL)"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

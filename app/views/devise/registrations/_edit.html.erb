@@ -15,7 +15,8 @@
   </div>
 
   <div class="form-group">
-    <%= f.check_box :email_magazine, {:checked => true} %>　メルマガを希望する
+    <%= f.check_box :email_magazine %>　
+    <%= f.label :email_magazine, "メルマガを希望する" %>
   </div>
 
   <div class="form-group">
@@ -26,6 +27,11 @@
   <div class="form-group">
     <%= f.label :password_confirmation, "パスワードの確認" %>
     <%= f.password_field :password_confirmation, autofocus: "off", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.check_box :release %>
+    <%= f.label :release, "Passportを公開する" %>
   </div>
 
   <div class="modal-footer">

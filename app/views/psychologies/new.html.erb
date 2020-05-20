@@ -9,8 +9,8 @@
             <div class="col-md-10">
               <%= f.label :title %>
               <%= f.text_field :title, class: "form-control border-0", placeholder: "タイトルを記載" %>
-              <%= f.label :discription %>
-              <%= f.text_field :discription, class: "form-control border-0", placeholder: "詳細を記載" %>
+              <%= f.label :discription_image %>
+              <%= f.file_field :discription_image, class: "form-control border-0", placeholder: "ファイルを選択" %>
               <%= f.file_field :psychology_image, placeholder: "ファイルを選択"%>
             </div>
           <%= f.submit "作成する", class: "btn btn-outline-primary" %>

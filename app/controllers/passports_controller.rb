@@ -4,15 +4,23 @@ class PassportsController < ApplicationController
 
   def index
     user = User.find_by(id: params[:user_id])
-    if user.passports.present?
-      @passports = user.passports
-      rate = PassportRator.new(@passports)
-      rate.passport_rate
-      @psychologies = Psychology.all
-      @schedules = Schedule.all.includes(:passport)
+    if user.id == current_user.id
+      if user.passports.present?
+        user_release?(user)
+      else
+        redirect_to new_user_passport_path(current_user)
+        flash[:notice] = "パスポートを作成しましょう！"
+      end
+    elsif user.release == true
+      if user.passports.present?
+        user_release?(user)
+      else
+        redirect_to user_passports_path(current_user)
+        flash[:alert] = "#{user.name}さんはPassportを作成していません。"
+      end
     else
-      redirect_to new_user_passport_path(current_user)
-      flash[:notice] = "パスポートを作成しましょう！"
+      redirect_to user_passports_path(current_user)
+      flash[:alert] = "#{user.name}さんはPassportの閲覧を許可していません。"
     end
   end
 
@@ -66,6 +74,15 @@ class PassportsController < ApplicationController
   end
 
 private
+
+  def user_release?(user)
+    @passports = user.passports
+    rate = PassportRator.new(@passports)
+    rate.passport_rate
+    @psychologies = Psychology.all
+    @schedules = Schedule.all.includes(:passport)
+  end
+
   def passport_set
     @passport = Passport.find_by(id: params[:id])
   end

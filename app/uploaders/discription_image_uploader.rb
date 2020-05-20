@@ -1,7 +1,7 @@
-class ProfileImageUploader < CarrierWave::Uploader::Base
+class DiscriptionImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-   include CarrierWave::MiniMagick
+  # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production? || Rails.env.development?

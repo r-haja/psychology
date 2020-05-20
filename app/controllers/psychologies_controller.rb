@@ -43,6 +43,6 @@ class PsychologiesController < ApplicationController
     end
 
     def psychology_params
-      params.require(:psychology).permit(:title, :discription, :psychology_image)
+      params.require(:psychology).permit(:title, :discription_image, :psychology_image)
     end
   end
