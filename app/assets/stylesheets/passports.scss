@@ -34,6 +34,14 @@
   }
   .habit {
     width: 390px;
+    &__user{
+      &-icon{
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+    }
     &__purpose {
       margin-bottom: 16px;
       font-size: 18px;

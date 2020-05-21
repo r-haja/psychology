@@ -1,13 +1,13 @@
 <nav>
-    <% if user_signed_in? %>
-      <%= link_to user_passports_path(current_user) do %>
-        <%= image_tag "img_logo.png", class: "logo" %>
-      <% end %>
-    <% else %>
-      <%= link_to psychologies_path do %>
-        <%= image_tag "img_logo.png", class: "logo" %>
-      <% end %>
+  <% if user_signed_in? %>
+    <%= link_to user_passports_path(current_user) do %>
+      <%= image_tag "img_logo.png", class: "logo" %>
     <% end %>
+  <% else %>
+    <%= link_to psychologies_path do %>
+      <%= image_tag "img_logo.png", class: "logo" %>
+    <% end %>
+  <% end %>
   <div class="menu">
     <% if user_signed_in? && controller.controller_name == 'posts' && controller.action_name == 'index'  %>
       <div class="menu__action">
@@ -19,65 +19,10 @@
           <%= image_tag "icon_methods.png" %>
         <% end %>
       </div>
-<<<<<<< HEAD
-      <div data-turbolinks="false">
-        <%= render "users/show" %>
-        <!--
-        <%# link_to  user_path(current_user), class: "menu__user" do %>
-=======
       <div data-turbolinks="false" class="menu__status">
-        <%= link_to  user_path(current_user), class: "user" do %>
->>>>>>> f45145a5cce6802051927bc603a87b605117f570
-          <div class="userIcon">
-            <%# if current_user.profile_image.file %>
-              <%# image_tag current_user.profile_image.url, class:"post-profile-icon" %>
-            <%# else %>
-              <%# image_tag "icon_default_user.png", class: "post-profile-icon" %>
-            <%# end %>
-          </div>
-          <div class="userName">
-            <%# current_user.name %>
-          </div>
-        <%# end %>-->
-        <% if @achievement_sum >= 1 %>
-          <div class="userAchievement">
-            <i class="fas fa-star"></i>
-            <p><%= @achievement_sum %></p>
-          </div>
-        <% end %>
-      </div>
-    <% elsif user_signed_in? && controller.controller_name == 'passports' && controller.action_name == 'index'  %>
-      <div class="menu__action">
-<<<<<<< HEAD
-        <%= link_to posts_path do %>
-          <%= image_tag "icon_message.png" %>
-        <% end %>
-        <% if params[:user_id] == current_user.id.to_s %>
-          <%= link_to "追加する",new_user_passport_path(current_user), class: "btn btn-primary"  %>
-        <% else %>
-          <%= link_to user_passports_path(current_user) do %>
-            <%= image_tag "icon_passport.png" %>
-          <% end %>
-        <% end %>
-=======
-        <%= link_to "追加する",new_user_passport_path(current_user), class: "btn btn-primary"  %>
->>>>>>> f45145a5cce6802051927bc603a87b605117f570
-        <%= link_to psychologies_path do %>
-          <%= image_tag "icon_methods.png" %>
-        <% end %>
-        <%= link_to posts_path do %>
-          <%= image_tag "icon_message.png" %>
-        <% end %>
-      </div>
-<<<<<<< HEAD
-      <div data-turbolinks="false">
         <%= render "users/show" %>
-        <!--
-        <%# link_to  user_path(current_user), class: "menu__user" do %>
-=======
-      <div data-turbolinks="false" class="menu__status">
-        <%= link_to  user_path(current_user), class: "user" do %>
->>>>>>> f45145a5cce6802051927bc603a87b605117f570
+
+        <%# link_to  user_path(current_user), class: "user" do %>
           <div class="userIcon">
             <%# if current_user.profile_image.file %>
               <%# image_tag current_user.profile_image.url, class:"post-profile-icon" %>
@@ -89,7 +34,44 @@
             <%# current_user.name %>
           </div>
         <%# end %>
-        -->
+        <% if @achievement_sum >= 1 %>
+          <div class="userAchievement">
+            <i class="fas fa-star"></i>
+            <p><%= @achievement_sum %></p>
+          </div>
+        <% end %>
+      </div>
+    <% elsif user_signed_in? && controller.controller_name == 'passports' && controller.action_name == 'index'  %>
+      <div class="menu__action">
+        <% if params[:user_id] == current_user.id.to_s %>
+          <%= link_to "追加する",new_user_passport_path(current_user), class: "btn btn-primary"  %>
+        <% else %>
+          <%= link_to user_passports_path(current_user) do %>
+            <%= image_tag "icon_passport.png" %>
+          <% end %>
+        <% end %>
+        <%= link_to psychologies_path do %>
+          <%= image_tag "icon_methods.png" %>
+        <% end %>
+        <%= link_to posts_path do %>
+          <%= image_tag "icon_message.png" %>
+        <% end %>
+      </div>
+      <div data-turbolinks="false" class="menu__status">
+        <%= render "users/show" %>
+
+        <%# link_to  user_path(current_user), class: "user" do %>
+          <div class="userIcon">
+            <%# if current_user.profile_image.file %>
+              <%# image_tag current_user.profile_image.url, class:"post-profile-icon" %>
+            <%# else %>
+              <%# image_tag "icon_default_user.png", class: "post-profile-icon" %>
+            <%# end %>
+          </div>
+          <div class="userName">
+            <%# current_user.name %>
+          </div>
+        <%# end %>
         <% if @achievement_sum >= 1 %>
           <div class="userAchievement">
             <i class="fas fa-star"></i>
@@ -109,15 +91,10 @@
           <%= image_tag "icon_message.png" %>
         <% end %>
       </div>
-<<<<<<< HEAD
-      <div data-turbolinks="false">
-        <%= render "users/show" %>
-        <!--
-        <%# link_to  user_path(current_user), class: "menu__user" do %>
-=======
       <div data-turbolinks="false" class="menu__status">
-        <%= link_to  user_path(current_user), class: "user" do %>
->>>>>>> f45145a5cce6802051927bc603a87b605117f570
+        <%= render "users/show" %>
+
+        <%# link_to  user_path(current_user), class: "user" do %>
           <div class="userIcon">
             <%# if current_user.profile_image.file %>
               <%# image_tag current_user.profile_image.url %>
@@ -129,7 +106,6 @@
             <%# current_user.name %>
           </div>
         <%# end %>
-        -->
         <% if @achievement_sum >= 1 %>
           <div class="userAchievement">
             <i class="fas fa-star"></i>

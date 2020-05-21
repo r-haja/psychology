@@ -42,6 +42,7 @@ nav {
     &__status {
       display: flex;
       align-items: center;
+      cursor: pointer;
       .user {
         display: flex;
         align-items: center;

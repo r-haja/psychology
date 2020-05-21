@@ -13,6 +13,12 @@
         <div class="passport__contents">
           <div class="contents">
             <div class="habit">
+              <% if passport.user_id != current_user.id %>
+                <div class="habit__user">
+                  <%= image_tag passport.user.profile_image.url, class: "habit__user-icon" %>
+                  <p class="habit__user-name"><%= passport.user.name%></p>
+                </div>
+              <% end %>
               <h1 class="habit__purpose"><%= passport.purpose %></h1>
               <h2 class="habit__goal"><%= passport.goal %></h2>
               <div class="habit__details">
