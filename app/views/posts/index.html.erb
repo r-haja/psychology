@@ -25,7 +25,7 @@
         <% if post.photos.first.nil? %>
         <% else %>
           <%= link_to(post_path(post)) do %>
-            <%= image_tag post.photos.first.post_image.url(:medium), class: "card-img-top" %>
+            <%= image_tag post.photos.first.post_image.url, class: "card-img-top" %>
           <% end %>
         <% end %>
         <div class="card-body">
