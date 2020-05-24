@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :users, only: %i(show) do
     resources :passports, only: %i(index new create destroy edit update) do
-      resources :schedules, only: %i(create destroy)
+      resources :schedules, only: %i(create destroy update)
     end
   end
   resources :posts, only: %i(new create index show destroy) do

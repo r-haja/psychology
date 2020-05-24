@@ -1,10 +1,10 @@
 $(".passport-calendar<%= @passport.id.to_s %>").
   html('<%= j render partial: "passports/calendar", locals: { passport: @passport, schedules: @schedules } %>');
-$(".passport-calendar").fadeIn(800);
+$(".passport-calendar<%= @passport.id.to_s %>").fadeIn(800);
 
 $(".habit__rate<%= @passport.id.to_s %>").
   html('<%= j render partial: "passports/rate", locals: { passport: @passport } %>');
-$(".habit__rate").fadeIn(800);
+$(".habit__rate<%= @passport.id.to_s %>").fadeIn(800);
 
 $(".achievement<%= @passport.id.to_s %>").
   html('<%= j render partial: "passports/achievement", locals: { passport: @passport } %>');
