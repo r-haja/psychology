@@ -1,9 +1,9 @@
 <div class="user" data-toggle="modal" data-target="#current_userModal">
   <div class="userIcon">
     <% if current_user.profile_image.file %>
-      <%= image_tag current_user.profile_image.url, class:"post-profile-icon" %>
+      <%= image_tag current_user.profile_image.url, class:"round-img" %>
     <% else %>
-      <%= image_tag "icon_default_user.png", class: "post-profile-icon" %>
+      <%= image_tag "icon_default_user.png", class: "round-img" %>
     <% end %>
   </div>
   <div class="userName">
@@ -15,28 +15,22 @@
 <div class="modal fade" id="current_userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close">
         <span aria-hidden="true">&times;</span>
       </button>
       <div class="modal-body">
-        <div class="profile-wrap">
-          <div class="row">
-            <div class="col-md-4 text-center">
-              <% if current_user.profile_image.file.nil? %>
-                <%= image_tag 'icon_default_user.png', class: "post-profile-icon" %>
-              <% else %>
-                <%= image_tag current_user.profile_image.url, class: "round-img" %>
-              <% end %>
-            </div>
-            <div class="col-md-8">
-              <div class="row">
-                <h1><%= current_user.name %></h1>
-                <%= render partial: 'devise/registrations/edit', class: "btn btn-outline-dark common-btn edit-profile-btn" %>
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action" %>
-
-                <%= link_to "アカウントを削除する", user_registration_path, method: :delete, data: {confirm: "本当に削除してよろしいですか？"} %>
-              </div>
-            </div>
+        <div class="UserInfo">
+          <div class="UserInfo__header">
+            <i class="fas fa-user"></i>
+            <p>アカウント</p>
+          </div>
+          <div class="UserInfo__form">
+            <%= render partial: 'devise/registrations/edit' %>
+          </div>
+          <div class="UserInfo__footer">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout" %>
+            <%= link_to "アカウントを削除する", user_registration_path, method: :delete,
+             data: {confirm: "本当に削除してよろしいですか？"}, class: "delete" %>
           </div>
         </div>
       </div>

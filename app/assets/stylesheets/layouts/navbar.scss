@@ -1,3 +1,4 @@
+@import "variables";
 nav {
   display: flex;
   justify-content: space-between;
@@ -34,6 +35,10 @@ nav {
         text-decoration: none;
         cursor: pointer;
       }
+      .btn{
+        background-color: $primary-color;
+        color: white;
+      }
     }
     &__post{
       float: left;
@@ -42,17 +47,17 @@ nav {
     &__status {
       display: flex;
       align-items: center;
-      cursor: pointer;
       .user {
         display: flex;
         align-items: center;
+        cursor: pointer;
         .userIcon {
           width: 36px;
           height: 36px;
           margin-right: 12px;
           img {
             width: 100%;
-            height: auto;
+            height: 100%;
           }
         }
         .userName {

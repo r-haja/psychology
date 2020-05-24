@@ -1,40 +1,47 @@
 <%= form_with scope: resource, as: resource_name, url: registration_path(resource_name), local: true, method: :patch do |f| %>
-  <div class="form-group">
-    <%= f.label :profile_image, "ユーザ画像" %>
-    <%= f.file_field :profile_image, class: "form-control" %>
+  <div class="usericon">
+    <% if current_user.profile_image.file.nil? %>
+        <%= image_tag 'icon_default_user.png', class: "round-img" %>
+      <% else %>
+        <%= image_tag current_user.profile_image.url, class: "round-img" %>
+      <% end %>
+    <div class="form-group">
+      <%= f.label :profile_image, "画像をアップロード", class: "image_imput_btn" %>
+      <%= f.file_field :profile_image, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :name, "名前" %>
-    <%= f.text_field :name, autofocus: true, class: "form-control" %>
-  </div>
+  <div class="info">
+    <div class="form-group">
+      <%= f.label :name, "ユーザー名" %>
+      <%= f.text_field :name, autofocus: true, class: "form-control" %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :email, "Email" %>
+      <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      <%= f.check_box :email_magazine %>　
+      <%= f.label :email_magazine, "メルマガを希望する" %>
+    </div>
 
-  <div class="form-group">
-    <%= f.check_box :email_magazine %>　
-    <%= f.label :email_magazine, "メルマガを希望する" %>
-  </div>
 
-  <div class="form-group">
-    <%= f.label :password, "パスワード" %>
-    <%= f.password_field :password, autofocus: "true", class: "form-control" %>
-  </div>
 
-  <div class="form-group">
-    <%= f.label :password_confirmation, "パスワードの確認" %>
-    <%= f.password_field :password_confirmation, autofocus: "off", class: "form-control" %>
-  </div>
 
-  <div class="form-group">
-    <%= f.check_box :release %>
-    <%= f.label :release, "Passportを公開する" %>
-  </div>
 
-  <div class="modal-footer">
-    <%= f.submit "更新", class: "btn btn-primary" %>
+    <div class="form-group">
+      <%= f.label :password, "Password" %>
+      <%= f.password_field :password, autofocus: "true", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation, "Passwordの確認" %>
+      <%= f.password_field :password_confirmation, autofocus: "off", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.check_box :release %>
+      <%= f.label :release, "習慣化パスポートを公開する" %>
+    </div>
+    <%= f.submit "更新", class: "UpdateBtn" %>
   </div>
 <% end %>

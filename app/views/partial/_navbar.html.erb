@@ -11,7 +11,7 @@
   <div class="menu">
     <% if user_signed_in? && controller.controller_name == 'posts' && controller.action_name == 'index'  %>
       <div class="menu__action">
-        <%= link_to "投稿する", new_post_path, class: "btn btn-primary" %>
+        <%= link_to "投稿する", new_post_path, class: "btn" %>
         <%= link_to user_passports_path(current_user) do %>
           <%= image_tag "icon_passport.png" %>
         <% end %>
@@ -44,7 +44,7 @@
     <% elsif user_signed_in? && controller.controller_name == 'passports' && controller.action_name == 'index'  %>
       <div class="menu__action">
         <% if params[:user_id] == current_user.id.to_s %>
-          <%= link_to "追加する",new_user_passport_path(current_user), class: "btn btn-primary"  %>
+          <%= link_to "追加する",new_user_passport_path(current_user), class: "btn"  %>
         <% else %>
           <%= link_to user_passports_path(current_user) do %>
             <%= image_tag "icon_passport.png" %>
