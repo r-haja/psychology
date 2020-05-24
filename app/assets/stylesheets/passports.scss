@@ -122,6 +122,18 @@
         width: 27px;
         height: 22px;
       }
+      .hide{
+        display: none;
+      }
+    }
+    .fa-chevron-circle-down{
+      height: 0px;
+      font-size: 1.5em;
+      position: relative;
+      top: 45px;
+      left: 150px;
+      color: $primary-color;
+      cursor: pointer;
     }
   }
   .methods {

@@ -2,6 +2,7 @@
   <div class="row post-wrap">
     <div class="col-md-8">
       <% if @post.photos.first.nil? %>
+        <%= image_tag "no-image.png", class: "card-img-top" %>
       <% else %>
         <div class="card-left">
           <%= image_tag @post.photos.first.post_image.url, class: "card-img-top" %>

@@ -32,8 +32,17 @@
             <% if passport.user_id == current_user.id %>
               <div class="calendar">
                 <p class="calendar__label">習慣記録</p>
-                <div class="passport-calendar passport-calendar<%= passport.id.to_s %>">
-                  <%= render partial: "passports/calendar", locals: { passport: passport, schedules: @schedules } %>
+                <i class="fas fa-chevron-circle-down"></i>
+                <div class="passport-calendar passport-calendar_month<%= passport.id.to_s %>" id="month" >
+                  <div>
+                    <%= render partial: "passports/calendar_month", locals: { passport: passport, schedules: @schedules } %>
+                  </div>
+                </div>
+
+                <div class="passport-calendar passport-calendar_week<%= passport.id.to_s %>" id="week">
+                  <div class="hide">
+                    <%= render partial: "passports/calendar_week", locals: { passport: passport, schedule: @schedules}%>
+                  </div>
                 </div>
               </div>
             <% end %>
@@ -93,3 +102,15 @@
     <%= render partial: "achievement_passport", locals:{passport: passport} %>
   <% end %>
 <% end %>
+
+<script>
+  $('.fa-chevron-circle-down').on('click', function(){
+    if($('#week div').attr('class') == 'hide'){
+      $('#week div').removeClass('hide');
+      $('#month div').addClass('hide');
+    }else{
+      $('#month div').removeClass('hide');
+      $('#week div').addClass('hide');
+    }
+  });
+</script>

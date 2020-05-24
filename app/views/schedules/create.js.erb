@@ -1,6 +1,12 @@
-$(".passport-calendar<%= @passport.id.to_s %>").
-  html('<%= j render partial: "passports/calendar", locals: { passport: @passport, schedules: @schedules } %>');
-$(".passport-calendar<%= @passport.id.to_s %>").fadeIn(800);
+if($('#week div').attr('class') == 'hide'){
+  $(".passport-calendar_month<%= @passport.id.to_s %>").
+    html('<%= j render partial: "passports/calendar_month", locals: { passport: @passport, schedules: @schedules } %>');
+
+}else{
+  $(".passport-calendar_week<%= @passport.id.to_s %>").
+    html('<%= j render partial: "passports/calendar_week", locals: { passport: @passport, schedules: @schedules } %>');
+}
+
 
 $(".habit__rate<%= @passport.id.to_s %>").
   html('<%= j render partial: "passports/rate", locals: { passport: @passport } %>');
