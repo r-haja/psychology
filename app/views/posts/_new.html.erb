@@ -1,0 +1,51 @@
+
+<!-- Button trigger modal -->
+<button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
+  投稿する
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      <div class="modal-body">
+        <div class="PostNew">
+          <div class="PostNew__header">
+            <i class="fas fa-edit"></i>
+            <p>新規投稿</p>
+          </div>
+          <% if @post.nil? %>
+            <% @post = Post.new %>
+            <% @post.photos.build %>
+          <% end %>
+          <div class="PostNew__form">
+            <%= form_with model: @post, local: true do |f| %>
+
+              <div class="form-group">
+                <%= f.text_field :title, class: "form-control", placeholder: "タイトルを記載（140文字まで）" %>
+              </div>
+
+              <div class="form-group">
+                <%= f.text_area :discription, class: "form-control disc", placeholder: "詳細を記載" %>
+              </div>
+
+              <div class="image">
+                <div class="form-group">
+                  <%= f.fields_for :photos do |i| %>
+                    <%= i.label :post_image, "画像をアップロード", class: "ImageInput" %>
+                    <%= i.file_field :post_image, class: "form-control" %>
+                  <% end %>
+                </div>
+              </div>
+              <%= f.submit "投稿する", class: "PostNew__btn" %>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

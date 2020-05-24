@@ -11,7 +11,7 @@
   <div class="menu">
     <% if user_signed_in? && controller.controller_name == 'posts' && controller.action_name == 'index'  %>
       <div class="menu__action">
-        <%= link_to "投稿する", new_post_path, class: "btn" %>
+        <%= render "posts/new" %>
         <%= link_to user_passports_path(current_user) do %>
           <%= image_tag "icon_passport.png" %>
         <% end %>
@@ -21,19 +21,6 @@
       </div>
       <div data-turbolinks="false" class="menu__status">
         <%= render "users/show" %>
-
-        <%# link_to  user_path(current_user), class: "user" do %>
-          <div class="userIcon">
-            <%# if current_user.profile_image.file %>
-              <%# image_tag current_user.profile_image.url, class:"post-profile-icon" %>
-            <%# else %>
-              <%# image_tag "icon_default_user.png", class: "post-profile-icon" %>
-            <%# end %>
-          </div>
-          <div class="userName">
-            <%# current_user.name %>
-          </div>
-        <%# end %>
         <% if @achievement_sum >= 1 %>
           <div class="userAchievement">
             <i class="fas fa-star"></i>
@@ -59,19 +46,6 @@
       </div>
       <div data-turbolinks="false" class="menu__status">
         <%= render "users/show" %>
-
-        <%# link_to  user_path(current_user), class: "user" do %>
-          <div class="userIcon">
-            <%# if current_user.profile_image.file %>
-              <%# image_tag current_user.profile_image.url, class:"post-profile-icon" %>
-            <%# else %>
-              <%# image_tag "icon_default_user.png", class: "post-profile-icon" %>
-            <%# end %>
-          </div>
-          <div class="userName">
-            <%# current_user.name %>
-          </div>
-        <%# end %>
         <% if @achievement_sum >= 1 %>
           <div class="userAchievement">
             <i class="fas fa-star"></i>

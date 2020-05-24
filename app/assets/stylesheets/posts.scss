@@ -1,6 +1,5 @@
-// Place all the styles related to the posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "variables";
+
 .post-profile-icon {
   height: 40px;
   width: 40px;
@@ -56,30 +55,6 @@
 .post-sub-text {
   text-decoration: none;
   color: #262626;
-}
-
-.new-title{
-  width: 100%;
-  position: relative;
-}
-
-.new-discription{
-  width: 80%;
-  position: relative;
-  top: 20px;
-  margin-left: 80px;
-}
-.new-image{
-  width: 60%;
-  position: relative;
-  top: 30px;
-  margin-left: 80px;
-
-}
-.new-bottom{
-  float: right;
-  position: relative;
-  top: 15px;
 }
 
 .post-wrap .col-md-8 {
@@ -154,3 +129,105 @@
     }
   }
 }
+
+//SNS New画面
+.modal{
+  .modal-dialog{
+    .modal-content{
+      .modal-body{
+        .PostNew{
+          margin: 0 auto;
+          text-align: center;
+          width: 80%;
+          &__header{
+            margin-left: -20px;
+            display: flex;
+            i{
+              font-size: 2em;
+            }
+            p{
+              margin-left: 10px;
+              margin-top: 7px;
+              font-weight: bold;
+
+            }
+          }
+          &__form{
+            margin-top: 20px;
+            .form-group{
+              margin-top: 10px;
+              .form-control{
+
+              }
+              .disc{
+                height: 100px;
+              }
+            }
+            .image{
+              margin-top: 20px;
+              margin-left: 60px;
+              .form-group{
+                .form-control{
+                  display: none;
+                }
+                .ImageInput{
+                  display: block;
+                  width: 255px;
+                  height: 40px;
+                  border-radius: 5px;
+                  border: 2px solid;
+                  border-color: $primary-color;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  cursor: pointer;
+                  &:hover{
+                    background-color: $primary-color;
+                    color: white;
+                    transition: color .3s;
+                    transition: background-color .3s;
+                  }
+                }
+              }
+            }
+          }
+          &__btn{
+            width: 255px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: $primary-color;
+            color: white;
+            margin-bottom: 20px;
+            &:hover{
+              opacity: 0.7;
+              transition: opacity .3s;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 750px) {
+  .modal{
+    .modal-dialog{
+      .modal-content{
+        .modal-body{
+          .PostNew{
+            width: 90%;
+            &__header{
+              margin-left: -10px;
+            }
+            &__form{
+              .image{
+                width: 100%;
+                margin-left: 21px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+//SNS New画面

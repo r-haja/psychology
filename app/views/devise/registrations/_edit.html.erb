@@ -6,7 +6,7 @@
         <%= image_tag current_user.profile_image.url, class: "round-img" %>
       <% end %>
     <div class="form-group">
-      <%= f.label :profile_image, "画像をアップロード", class: "image_imput_btn" %>
+      <%= f.label :profile_image, "画像をアップロード", class: "image_input_btn" %>
       <%= f.file_field :profile_image, class: "form-control" %>
     </div>
   </div>
@@ -23,10 +23,6 @@
       <%= f.check_box :email_magazine %>　
       <%= f.label :email_magazine, "メルマガを希望する" %>
     </div>
-
-
-
-
 
     <div class="form-group">
       <%= f.label :password, "Password" %>

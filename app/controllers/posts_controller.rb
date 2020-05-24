@@ -10,11 +10,6 @@ class PostsController < ApplicationController
   def show
   end
 
-  def new
-    @post = Post.new
-    @post.photos.build
-  end
-
   def create
     @post = Post.new(post_params)
     if @post.save
@@ -22,7 +17,7 @@ class PostsController < ApplicationController
       flash[:notice] = "投稿しました！"
     else
       flash[:alert] = "入力誤りがあります。再度記入してください。"
-      render :new
+      redirect_to posts_path
     end
   end
 
