@@ -134,6 +134,8 @@
       left: 150px;
       color: $primary-color;
       cursor: pointer;
+      z-index: 10;
+      animation: fadeIn 3s ;
     }
   }
   .methods {
@@ -236,6 +238,9 @@
               background: #FFE8D9;
             }
           }
+          .fa-chevron-circle-down{
+            top: 27px;
+          }
         }
         .methods {
           height: 70vh;
@@ -254,6 +259,9 @@
         transform: translate(-50%, -50%);
         width: 100%;
       }
+    }
+    .passport_footer{
+      margin-bottom: 200px;
     }
   }
 }
