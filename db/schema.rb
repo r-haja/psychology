@@ -124,8 +124,8 @@ ActiveRecord::Schema.define(version: 2020_05_22_163932) do
     t.string "name", default: "", null: false
     t.string "profile_image"
     t.boolean "admin_flg"
-    t.boolean "email_magazine", default: false, null: false
-    t.boolean "release"
+    t.boolean "email_magazine", default: true, null: false
+    t.boolean "release", default: true
     t.index ["email"], name: "index_users_on_email", unique: true, where: "(deleted_at IS NULL)"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
