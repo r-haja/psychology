@@ -36,8 +36,9 @@
                 <div class="form-group">
                   <%= f.fields_for :photos do |i| %>
                     <%= i.label :post_image, "画像をアップロード", class: "ImageInput" %>
-                    <%= i.file_field :post_image, class: "form-control" %>
+                    <%= i.file_field :post_image, class: "form-control ImageInput_tag" %>
                   <% end %>
+                  <img id="PostPreview">
                 </div>
               </div>
               <%= f.submit "投稿する", class: "PostNew__btn" %>
@@ -49,3 +50,12 @@
     </div>
   </div>
 </div>
+<script>
+  $('.ImageInput_tag').on('change', function(e){
+    var reader = new FileReader();
+    reader.onload = fundtion(e){
+      $('#PostPreview').attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.file[0]);
+  })
+</script>

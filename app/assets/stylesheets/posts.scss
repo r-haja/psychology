@@ -1,5 +1,12 @@
 @import "variables";
 
+.card-header{
+  .trash{
+    position: relative;
+    left: 400px;
+  }
+}
+
 .post-profile-icon {
   height: 40px;
   width: 40px;
@@ -227,6 +234,12 @@
           }
         }
       }
+    }
+  }
+  .card-header{
+    .trash{
+      position: relative;
+      left: 130px;
     }
   }
 }

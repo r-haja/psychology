@@ -21,24 +21,27 @@
               <i class="fas fa-star"></i>
             </div>
           <% end %>
+          <% if post.user.id == current_user.id %>
+              <%= link_to post_path(post), method: :delete, data: {confirm: "あなたの投稿を削除します。本当に削除してよろしいですか？"} do %>
+                <%= image_tag 'icon_trash.png', class: "trash" %>
+              <% end %>
+          <% end %>
         </div>
         <% if post.photos.first.nil? %>
         <% else %>
-          <%= link_to(post_path(post)) do %>
-            <%= image_tag post.photos.first.post_image.url, class: "card-img-top" %>
-          <% end %>
+          <%= image_tag post.photos.first.post_image.url, class: "card-img-top" %>
         <% end %>
         <div class="card-body">
           <div>
-            <%= link_to post_path(post) do %>
-              <span><h5><%= post.title %></h5></span>
-              <span><p><%= post.discription %></p></span>
-            <% end %>
+            <span><h5><%= post.title %></h5></span>
+            <span><p><%= post.discription %></p></span>
             <div id="comment-post-<%= post.id.to_s %>">
               <%= render 'comment_list', {post: post} %>
             </div>
-            <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post),
-              class: "light-color post-time no-text-decoration" %>
+            <div class="light-color post-time no-text-decoration">
+              <%= time_ago_in_words(post.created_at).upcase %>前
+            </div>
+
             <hr>
             <div class="row actions" id="comment-form-post-<%= post.id.to_s %>">
               <%= form_with model: [post, Comment.new], class: "w-100" do |f| %>

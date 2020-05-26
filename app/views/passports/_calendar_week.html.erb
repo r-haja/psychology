@@ -1,5 +1,4 @@
 <%= week_calendar do |date| %>
-
   <% if date.strftime("%Y-%m-%d") <= Time.now.strftime("%Y-%m-%d") %>
     <div class="calendar-check">
       <% schedule = passport.schedules.find_by(day: date.strftime("%Y-%m-%d")) %>

@@ -108,7 +108,7 @@
     if($('#week div').attr('class') == 'hide'){
       $('#week div').removeClass('hide');
       $('#month div').addClass('hide');
-    }else{
+    }else if($('#month div').attr('class') == 'hide'){
       $('#month div').removeClass('hide');
       $('#week div').addClass('hide');
     }
