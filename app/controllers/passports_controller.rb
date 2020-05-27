@@ -15,11 +15,11 @@ class PassportsController < ApplicationController
       if user.passports.present?
         user_release?(user)
       else
-        redirect_to user_passports_path(current_user)
+        redirect_to posts_path
         flash[:alert] = "#{user.name}さんはPassportを作成していません。"
       end
     else
-      redirect_to user_passports_path(current_user)
+      redirect_to posts_path
       flash[:alert] = "#{user.name}さんはPassportの閲覧を許可していません。"
     end
   end
