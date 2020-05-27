@@ -7,8 +7,6 @@ class SchedulesController < ApplicationController
     @passport = @schedule.passport
     if params[:commit] == "達成"
       @schedule.judgment = 1
-    elsif params[:commit] == "失敗"
-      @schedule.judgment = 2
     elsif params[:commit] == "例外日"
       @schedule.judgment = 3
     end
@@ -28,7 +26,7 @@ class SchedulesController < ApplicationController
 
     if params[:commit] == "達成"
       @schedule.judgment = 1
-    elsif params[:commit] == "失敗"
+    elsif params[:commit] == "取り消し"
       @schedule.judgment = 2
     elsif params[:commit] == "例外日"
       @schedule.judgment = 3

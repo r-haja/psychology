@@ -18,7 +18,7 @@
           <% if schedule.judgment == 1 %>
             <%= date.day %>達
           <% elsif schedule.judgment == 2 %>
-            <%= date.day %>失
+            <%= date.day %>取
           <% elsif schedule.judgment == 3 %>
             <%= date.day %>例
           <% end %>
@@ -37,18 +37,14 @@
               <%= f.hidden_field :user_id, value: current_user.id %>
               <%= f.hidden_field :day, value: date %>
               <% if schedule.judgment == 1 %>
-                <%= f.submit "失敗", class: "passportEdit fail" %>
                 <%= f.submit "例外日", class: "passportEdit skip" %>
-              <% elsif schedule.judgment == 2 %>
+                <%= f.submit "取り消し", class: "passportEdit fail" %>
+              <% elsif schedule.judgment == 2 || schedule.judgment == nil %>
                 <%= f.submit "達成", class: "passportEdit achieve" %>
                 <%= f.submit "例外日", class: "passportEdit skip" %>
               <% elsif schedule.judgment == 3 %>
-                <%= f.submit "失敗", class: "passportEdit fail" %>
                 <%= f.submit "達成", class: "passportEdit achieve" %>
-              <% else %>
-                <%= f.submit "達成", class: "passportEdit achieve" %>
-                <%= f.submit "失敗", class: "passportEdit fail" %>
-                <%= f.submit "例外日", class: "passportEdit skip" %>
+                <%= f.submit "取り消し", class: "passportEdit fail" %>
               <% end %>
             <% end %>
           </div>
