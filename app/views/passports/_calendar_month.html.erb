@@ -5,7 +5,7 @@
       <% if schedule.nil? %>
         <% schedule = Schedule.new %>
         <div id="calendar-form">
-          <p data-toggle="modal" data-target="#PassportCalendarModal<%= date %>">
+          <p data-toggle="modal" data-target="#PassportCalendarModal<%= passport.id %><%= date %>">
             <% if Time.now.strftime("%Y-%m-%d") == date.strftime("%Y-%m-%d") %>
               <span class="today"><%= date.day %></span>
             <% else %>
@@ -14,7 +14,7 @@
           </p>
         </div>
       <% else %>
-        <p data-toggle="modal" data-target="#PassportCalendarModal<%= date %>">
+        <p data-toggle="modal" data-target="#PassportCalendarModal<%= passport.id %><%= date %>">
           <% if schedule.judgment == 1 %>
             <span class="achieved"><%= date.day %></span>
           <% elsif schedule.judgment == 2 %>
@@ -25,7 +25,7 @@
         </p>
       <% end %>
     </div>
-    <div class="modal fade" id="PassportCalendarModal<%= date %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
+    <div class="modal fade" id="PassportCalendarModal<%= passport.id %><%= date %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
