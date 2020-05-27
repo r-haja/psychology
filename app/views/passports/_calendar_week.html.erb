@@ -37,18 +37,18 @@
               <%= f.hidden_field :user_id, value: current_user.id %>
               <%= f.hidden_field :day, value: date %>
               <% if schedule.judgment == 1 %>
-                <%= f.submit "失敗", class: "passportEdit" %>
-                <%= f.submit "例外日", class: "passportEdit" %>
+                <%= f.submit "失敗", class: "passportEdit fail" %>
+                <%= f.submit "例外日", class: "passportEdit skip" %>
               <% elsif schedule.judgment == 2 %>
-                <%= f.submit "達成", class: "passportEdit" %>
-                <%= f.submit "例外日", class: "passportEdit" %>
+                <%= f.submit "達成", class: "passportEdit achieve" %>
+                <%= f.submit "例外日", class: "passportEdit skip" %>
               <% elsif schedule.judgment == 3 %>
-                <%= f.submit "失敗", class: "passportEdit" %>
-                <%= f.submit "達成", class: "passportEdit" %>
+                <%= f.submit "失敗", class: "passportEdit fail" %>
+                <%= f.submit "達成", class: "passportEdit achieve" %>
               <% else %>
-                <%= f.submit "達成", class: "passportEdit" %>
-                <%= f.submit "失敗", class: "passportEdit" %>
-                <%= f.submit "例外日", class: "passportEdit" %>
+                <%= f.submit "達成", class: "passportEdit achieve" %>
+                <%= f.submit "失敗", class: "passportEdit fail" %>
+                <%= f.submit "例外日", class: "passportEdit skip" %>
               <% end %>
             <% end %>
           </div>

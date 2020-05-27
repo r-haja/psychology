@@ -87,7 +87,7 @@
             </div>
             <div class="modal-body">
               <%= f.collection_check_boxes :psychology_ids, Psychology.all, :id, :title do |b| %>
-                <%= b.label {b.check_box + b.text} %>
+                <%= b.check_box + b.label { b.text } %>
               <% end %>
             </div>
             <div class="modal-footer">

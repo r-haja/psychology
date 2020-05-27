@@ -72,7 +72,7 @@
     &__rate{
       display: flex;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
       .percentage {
         margin-right: 30px;
         margin-bottom: 0;
@@ -88,10 +88,12 @@
     }
   }
   .calendar {
+    position: relative;
     text-align: center;
     &__label {
       width: 110px;
       margin: 0 auto;
+      margin-bottom: 15px;
       padding: 6px 15px;
       border: 2px solid #E1E1E1;
       border-radius: 18px;
@@ -101,8 +103,9 @@
       line-height: 1;
     }
     .passport-calendar {
-      margin-top: 20px;
-      animation: fadeIn 3s ease 0s 1 normal;
+      div {
+        animation: fadeIn .5s ease-out 0s 1 normal;
+      }
       form input {
         border: none;
         background: transparent;
@@ -126,16 +129,49 @@
         display: none;
       }
     }
-    .fa-chevron-circle-down{
-      height: 0px;
-      font-size: 1.5em;
+    .table {
+      border-collapse: separate;
+      border-spacing: 0;
+      border: solid 1px gainsboro;
+      border-radius: 5px;
+      thead th {
+        padding: 15px 0 5px 0;
+        border: none;
+        font-size: 14px;
+      }
+      td {
+        position: relative;
+        padding: 12px 5px;
+        vertical-align: middle;
+        border: none;
+      }
+      .future {
+        color: #b3b3b3;
+      }
+      p {
+        margin: 0;
+      }
+    }
+    .calendar-heading {
+      margin-bottom: 10px;
+    }
+    .calendar-check {
       position: relative;
-      top: 45px;
-      left: 150px;
-      color: $primary-color;
+      display: block;
+      width: 40px;
+      height: 40px;
+      background-color: #fff0db;
+      border-radius: 15px;
       cursor: pointer;
-      z-index: 10;
-      animation: fadeIn 3s ;
+    }
+    #calendar-form {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .fa-chevron-circle-down{
+      display: none;
     }
   }
   .methods {
@@ -160,13 +196,18 @@
       width: 100%;
       margin-bottom: 20px;
       padding: 12px 20px;
-      border: 2px solid #FFB088;
+      border: 1px solid #7B93DB;
       border-radius: 5px;
       font-size: 14px;
       cursor : pointer;
+      transition: 0.2s;
+      &:hover {
+        background-color: #f7faff; 
+      }
       .badge-secondary {
         color: #333333;
         font-size: 14px;
+        font-weight: normal;
         background-color: transparent;
         .psychology-image{
           height: 30px;
@@ -186,7 +227,7 @@
       font-size: 14px;
       text-align: center;
       span {
-        color: #F9703E;
+        color: #7B93DB;
         font-size: 26px;
         margin-right: 5px;
       }
@@ -213,6 +254,111 @@
   }
 }
 
+#psychologi_new_ModalLong1 {
+  .modal-body {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .modal-body input {
+    display: none;
+  }
+  label {
+    position: relative;
+    display: flex;
+    width: 215px;
+    height: auto;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    padding: 10px 20px 10px 30px;
+    border: 1px solid #7B93DB;
+    border-radius: 5px;
+    &:hover {
+      cursor: pointer;
+      background-color: #f7faff; 
+    }
+    &::before {
+      content: '○';
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translate(0,-50%);
+      font-size: 20px;
+    }
+  }
+  input:checked + label {
+    background-color: #f7faff;
+  }
+  input:checked + label::before {
+    content: '●';
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translate(0,-50%);
+    font-size: 20px;
+    color: #7B93DB; 
+  }
+}
+
+@media screen and (min-width:811px) {
+  .passport {
+    .calendar {
+      .table {
+        .modal {
+          position: absolute;
+          top: 0;
+          left: 0;
+          overflow: visible;
+        }
+        .modal-content {
+        }
+        .modal-dialog {
+          width: 310px;
+        }
+        .modal-dialog-centered::before {
+          height: auto;
+        }
+        .modal-content {
+          flex-direction: row;
+          background-color: #F7F7F7;
+          box-shadow: 5px 5px 10px -2px rgba(0, 0, 0, 0.1);
+          border: none;
+          .close {
+            margin: 10px 20px;
+            padding-bottom: 5px;
+          }
+        }
+        .modal-body {
+          padding: 12px 0;
+        }
+        .modal-body form {
+          display: flex;
+          justify-content: center;
+          input {
+            border: 1px solid gainsboro;
+            border-radius: 5px;
+            margin-right: 15px;
+            padding: 5px 15px;
+            background-color: #fff;
+          }
+          .achieve {
+            border: 1px solid $function-blue;
+            color: $function-blue;
+          }
+          .fail {
+            border: 1px solid $function-red;
+            color: $function-red;
+          }
+          .skip {
+            border: 1px solid $function-green;
+            color: $function-green;
+          }
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 810px) {
   .passport {
     .container {
@@ -232,6 +378,9 @@
           &__label {
             display: none;
           }
+          .table {
+            border: none;
+          }
           .passport-calendar {
             margin-top: 0;
             .calendar-heading {
@@ -239,11 +388,17 @@
             }
           }
           .fa-chevron-circle-down{
-            top: 27px;
+            display: block;
+            height: 0px;
+            font-size: 1.5em;
+            position: absolute;
+            top: 0;
+            right: 30px;
+            color: $primary-color;
+            cursor: pointer;
+            z-index: 10;
+            animation: fadeIn 3s ;
           }
-        }
-        .methods {
-          height: 70vh;
         }
       }
     }
@@ -279,9 +434,9 @@
 
 @keyframes fadeIn {
   0% {
-    opacity: 0
+    opacity: 0;
   }
   100% {
-    opacity: 1
+    opacity: 1;
   }
 }

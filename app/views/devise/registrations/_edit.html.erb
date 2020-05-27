@@ -7,7 +7,7 @@
       <% end %>
     <div class="form-group">
       <%= f.label :profile_image, "画像をアップロード", class: "image_input_btn" %>
-      <%= f.file_field :profile_image, class: "form-control" %>
+      <%= f.file_field :profile_image, class: "form-control image_input_tag" %>
     </div>
   </div>
 
@@ -41,3 +41,13 @@
     <%= f.submit "更新", class: "UpdateBtn" %>
   </div>
 <% end %>
+<script>
+  $('.image_input_tag').on('change', function(e){
+    var reader = new FileReader();
+    reader.onload = function(e){
+      $('.round-img').attr('src', e.target.result);
+    }
+    e.target.files[0].width = 400;
+    reader.readAsDataURL(e.target.files[0]);
+  });
+</script>
