@@ -76,7 +76,7 @@
 
     <!-- Modal -->
     <%= form_with(model: passport, url: user_passport_path(current_user, passport.id), local: true ) do |f| %>
-      <div class="modal fade" id="psychologi_new_ModalLong<%= passport.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal fade psychologi_new_ModalLong" id="psychologi_new_ModalLong<%= passport.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -91,7 +91,6 @@
               <% end %>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <%= f.submit "習慣化方法を選択", class: "btn btn-primary" %>
             </div>
           </div>

@@ -260,7 +260,7 @@
       cursor : pointer;
       transition: 0.2s;
       &:hover {
-        background-color: #f7faff; 
+        background-color: #f7faff;
       }
       .badge-secondary {
         color: #333333;
@@ -312,7 +312,7 @@
   }
 }
 
-#psychologi_new_ModalLong1 {
+.psychologi_new_ModalLong {
   .modal-body {
     display: flex;
     justify-content: center;
@@ -333,7 +333,7 @@
     border-radius: 5px;
     &:hover {
       cursor: pointer;
-      background-color: #f7faff; 
+      background-color: #f7faff;
     }
     &::before {
       content: '○';
@@ -354,7 +354,7 @@
     left: 10px;
     transform: translate(0,-50%);
     font-size: 20px;
-    color: #7B93DB; 
+    color: #7B93DB;
   }
 }
 
