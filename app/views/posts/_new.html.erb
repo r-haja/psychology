@@ -38,7 +38,7 @@
                     <%= i.label :post_image, "画像をアップロード", class: "ImageInput" %>
                     <%= i.file_field :post_image, class: "form-control ImageInput_tag" %>
                   <% end %>
-                  <img id="PostPreview">
+                  <img id="PostPreview" class="hide">
                 </div>
               </div>
               <%= f.submit "投稿する", class: "PostNew__btn" %>
@@ -52,10 +52,12 @@
 </div>
 <script>
   $('.ImageInput_tag').on('change', function(e){
+    $('.form-group img').removeClass('hide');
     var reader = new FileReader();
-    reader.onload = fundtion(e){
+    reader.onload = function(e){
       $('#PostPreview').attr('src', e.target.result);
     }
-    reader.readAsDataURL(e.target.file[0]);
-  })
+    e.target.files[0].width = 400;
+    reader.readAsDataURL(e.target.files[0]);
+  });
 </script>
