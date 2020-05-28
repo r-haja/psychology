@@ -1,3 +1,4 @@
+@import "variables";
 body{
   background-color: #F7F7F7;
   border-top: 5px solid #F9703E;
@@ -65,16 +66,18 @@ a:hover {
 }
 @media screen and (max-width: 810px) {
   body {
-    background-color: #fff
+    background-color: #fff;
+    border-top: 3px solid $primary-color;
   }
   .container {
     max-width: 100% !important;
     border: none !important;
   }
-}
-
-/*@media screen and (max-width: 750px) {
-  body {
-    background-color: #fff;
+  .alert {
+    width: 100%;
+    border-radius: 0;
+    border-right: none;
+    border-left: none;
+    margin-bottom: 5px;
   }
-}*/
+}

@@ -9,7 +9,7 @@
     border-style: solid;
     border: solid 1px rgb(220, 220, 220);
     border-radius: 5px;
-  } /*container*/
+  }
   &__header {
     position: relative;
     overflow: hidden;
@@ -55,17 +55,16 @@
       display: flex;
       align-items: center;
       margin-bottom: 20px;
+      font-size: 14px;
       .period {
         margin-right: 15px;
         margin-bottom: 0;
-        font-size: 14px;
       }
       .genre {
         margin-bottom: 0;
         padding: 6px 15px;
-        background-color: #CFCFCF;
+        background-color: $border-color;
         border-radius: 18px;
-        font-size: 14px;
         line-height: 1;
       }
     }
@@ -150,6 +149,8 @@
       }
       td {
         position: relative;
+        width: 40px;
+        height: 40px;
         padding: 5px 5px;
         vertical-align: middle;
         border: none;
@@ -168,8 +169,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 40px;
-      height: 40px;
       border-radius: 50%;
       cursor: pointer;
     }
@@ -197,6 +196,9 @@
     }
     .calendar-check span.skipped {
       background-color: #f3f3f3;
+    }
+    #calendar-form {
+      width: 100%;
     }
 
     .modal-body form {
@@ -291,7 +293,7 @@
       }
     }
   }
-  .passport_footer{
+  .passport__footer{
     text-align: center;
     margin-bottom: 30px;
     .btn-edit{
@@ -315,8 +317,8 @@
 .psychologi_new_ModalLong {
   .modal-body {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+    padding: 24px;
   }
   .modal-body input {
     display: none;
@@ -358,9 +360,13 @@
   }
 }
 
+// 811px以上の場合に限定で適用
 @media screen and (min-width:811px) {
   .passport {
     .calendar {
+      #week {
+        display: none;
+      }
       .table {
         .modal {
           position: absolute;
@@ -394,6 +400,7 @@
   }
 }
 
+// 810px以下の場合に限定で適用(SP)
 @media screen and (max-width: 810px) {
   .passport {
     .container {
@@ -409,16 +416,69 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 100%;
+        width: auto;
+        height: 100%;
       }
     }
     .passport__contents {
       justify-content: center;
+      .contents {
+        width: 100%;
+        background-color: $bg-color;
+        &:first-child {
+          background-color: #fff;
+        }
+      }
     }
     .habit {
       width: 100%;
+      margin-bottom: 10px;
+      padding: 0 8%;
+      font-size: 16px;
+      &__purpose {
+        margin-bottom: 10px;
+      }
+      &__goal {
+        margin-bottom: 7px;
+      }
+      &__details {
+        margin-bottom: 5px;
+        font-size: 16px;
+      }
+      &__rate {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        margin-bottom: 0;
+        .percentage {
+          width: 50%;
+          margin-right: 0;
+          margin-bottom: 5px;
+          span {
+            font-size: 26px;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+    .methods {
+      position: relative;
+      width: 85%;
+      margin: 0 auto;
+      padding: 40px 0px;
+      &__label {
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        background-color: #fff;
+      }
+      .d-inline-block {
+        margin-bottom: 15px;
+        background-color: #fff;
+      }
     }
     .calendar {
+      z-index: 2;
       width: 100%;
       margin-top: 20px;
       position: fixed;
@@ -432,7 +492,11 @@
         border: none;
       }
       .passport-calendar {
+        display: none;
         margin-top: 0;
+      }
+      .passport-calendar.active {
+        display: block;
       }
       .simple-calendar {
         border-top: 1px solid gainsboro;
@@ -457,16 +521,35 @@
         height: 0px;
         font-size: 1.5em;
         position: absolute;
-        top: 15px;
+        top: -40px;
         right: 30px;
         color: $primary-color;
         cursor: pointer;
         z-index: 10;
         animation: fadeIn 1s ease 0s 1 normal;
       }
+      .fa-chevron-circle-down::before {
+        display: block;
+        transform: rotate(180deg);
+      }
+      .fa-chevron-circle-down.show {
+        top: 20px;
+      }
+      .fa-chevron-circle-down.show::before {
+        transform: rotate(0);
+      }
     }
-    .passport_footer {
+    .passport__footer {
       margin-bottom: 200px;
+    }
+  }
+  .psychologi_new_ModalLong {
+    .modal-body {
+      justify-content: center;
+    }
+    label {
+      width: 100%;
+      margin-bottom: 12px;
     }
   }
 }
@@ -482,6 +565,7 @@
   }
 }
 
+// アニメーション
 @keyframes fadeIn {
   0% {
     opacity: 0;
