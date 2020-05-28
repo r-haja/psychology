@@ -18,7 +18,7 @@
           <% if schedule.judgment == 1 %>
             <span class="achieved"><%= date.day %></span>
           <% elsif schedule.judgment == 2 %>
-            <span class="failed"><%= date.day %></span>
+            <span><%= date.day %></span>
           <% elsif schedule.judgment == 3 %>
             <span class="skipped"><%= date.day %></span>
           <% end %>

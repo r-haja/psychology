@@ -34,6 +34,7 @@
   }
   .habit {
     width: 390px;
+    margin-bottom: 40px;
     &__user{
       &-icon{
         height: 40px;
@@ -55,7 +56,7 @@
       display: flex;
       align-items: center;
       margin-bottom: 20px;
-      font-size: 14px;
+      font-size: 16px;
       .period {
         margin-right: 15px;
         margin-bottom: 0;
@@ -71,17 +72,48 @@
     &__rate{
       display: flex;
       align-items: center;
-      margin-bottom: 40px;
+      margin-bottom: 10px;
       .percentage {
         margin-right: 30px;
         margin-bottom: 0;
-        font-size: 14px;
+        font-size: 16px;
         span {
           margin-left: 15px;
           color: #F9703E;
           font-size: 18px;
           font-weight: bold;
           animation: fadeIn 1s ease 0s 1 normal;
+        }
+      }
+    }
+    &__btn {
+      display: flex;
+      margin-bottom: 15px;
+      align-items: center;
+      & > div {
+        display: flex;
+        justify-content: center;
+        width: 42%;
+        margin-right: 10px;
+        padding: 5px;
+        border: 1px solid $primary-color;
+        border-radius: 5px;
+        & > button {
+          color: $primary-color;
+          border: none;
+          background: none;
+        }
+        &.achieveBtn {
+          background-color: $primary-color;
+          & > button {
+            color: #fff;
+          }
+        }
+      }
+      .trash {
+        width: 22px;
+        img {
+          width: 100%;
         }
       }
     }
@@ -169,6 +201,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      border: 1px solid #fff;
       border-radius: 50%;
       cursor: pointer;
     }
@@ -190,10 +223,10 @@
       color: $primary-color;
       background-color: #fff4ee;
     }
-    .calendar-check span.failed {
-      color: $accent-color;
-      background-color: #edf2ff;
-    }
+    // .calendar-check span.failed {
+    //   color: $accent-color;
+    //   background-color: #edf2ff;
+    // }
     .calendar-check span.skipped {
       background-color: #f3f3f3;
     }
@@ -258,7 +291,7 @@
       padding: 12px 20px;
       border: 1px solid #7B93DB;
       border-radius: 5px;
-      font-size: 14px;
+      font-size: 16px;
       cursor : pointer;
       transition: 0.2s;
       &:hover {
@@ -266,7 +299,7 @@
       }
       .badge-secondary {
         color: #333333;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: normal;
         background-color: transparent;
         .psychology-image{
@@ -284,7 +317,7 @@
       border: 1px solid #E1E1E1;
       border-radius: 5px;
       background-color: #fff;
-      font-size: 14px;
+      font-size: 16px;
       text-align: center;
       span {
         color: #7B93DB;
@@ -296,20 +329,23 @@
   .passport__footer{
     text-align: center;
     margin-bottom: 30px;
-    .btn-edit{
-      display: inline-block;
-      vertical-align: middle;
-      width: 235px;
-      height: 44px;
-      margin-top: 5px;
-      background-color: $primary-color;
-      border: none;
-      border-radius: 5px;
-      color: #fff;
-      font-size: 16px;
-      :hover{
-        cursor: pointer;
-      }
+  }
+}
+
+.modal {
+  .btn-edit{
+    display: inline-block;
+    vertical-align: middle;
+    width: 235px;
+    height: 44px;
+    margin-top: 5px;
+    background-color: $primary-color;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    :hover{
+      cursor: pointer;
     }
   }
 }
@@ -432,7 +468,6 @@
     }
     .habit {
       width: 100%;
-      margin-bottom: 10px;
       padding: 0 8%;
       font-size: 16px;
       &__purpose {
@@ -448,16 +483,20 @@
       &__rate {
         flex-wrap: wrap;
         justify-content: flex-end;
-        margin-bottom: 0;
+        margin-bottom: 10px;
         .percentage {
           width: 50%;
           margin-right: 0;
           margin-bottom: 5px;
+          font-size: 14px;
           span {
             font-size: 26px;
             font-weight: normal;
           }
         }
+      }
+      &__btn > div {
+        margin-right: 15px;
       }
     }
     .methods {

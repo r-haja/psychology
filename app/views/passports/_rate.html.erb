@@ -1,7 +1,2 @@
 <p class="percentage">今週の達成率<span><%= passport.week_rate %></span>%</p>
 <p class="percentage">今月の達成率<span><%= passport.month_rate %></span>%</p>
-<% if passport.user_id == current_user.id %>
-  <%= link_to user_passport_path(current_user.id, passport.id), method: :delete, data: {confirm: "本当に削除してよろしいですか？"} do %>
-    <%= image_tag 'icon_trash.png', class: "trash" %>
-  <% end %>
-<% end %>

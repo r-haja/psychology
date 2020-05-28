@@ -28,6 +28,19 @@
               <div class="habit__rate habit__rate<%= passport.id.to_s %>">
                 <%= render partial: "passports/rate", locals: {passport: passport} %>
               </div>
+              <% if passport.user_id == current_user.id %>
+                <div class="habit__btn">
+                  <div class="achievement<%= passport.id.to_s %> achieveBtn">
+                    <%= render partial: "passports/achievement", locals: { passport: passport } %>
+                  </div>
+                  <div class="edit<%= passport.id.to_s %>">
+                    <%= render partial: "passports/edit", locals:{passport: passport} %>
+                  </div>
+                  <%= link_to user_passport_path(current_user.id, passport.id), method: :delete, data: {confirm: "本当に削除してよろしいですか？"}, class: "trash" do %>
+                    <%= image_tag 'icon_trash.png' %>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
             <% if passport.user_id == current_user.id %>
               <div class="calendar">
@@ -57,14 +70,6 @@
           </div><!-- contents -->
         </div>
         <div class="passport__footer">
-          <% if passport.user_id == current_user.id %>
-            <div class="edit<%= passport.id.to_s %>">
-              <%= render partial: "passports/edit", locals:{passport: passport} %>
-            </div>
-            <div class="achievement<%= passport.id.to_s %>">
-              <%= render partial: "passports/achievement", locals: { passport: passport } %>
-            </div>
-          <% end %>
         </div>
       </section>
     </main>
