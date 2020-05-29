@@ -50,7 +50,7 @@
                   <%= render partial: "passports/calendar_month", locals: { passport: passport, schedules: @schedules } %>
                 </div>
 
-                <div class="passport-calendar passport-calendar_week<%= passport.id.to_s %> active" id="week">
+                <div class="passport-calendar active passport-calendar_week<%= passport.id.to_s %>" id="week">
                   <%= render partial: "passports/calendar_week", locals: { passport: passport, schedule: @schedules}%>
                 </div>
               </div>

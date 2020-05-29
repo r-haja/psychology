@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_22_163932) do
+ActiveRecord::Schema.define(version: 2020_05_29_124542) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_05_22_163932) do
     t.integer "week_rate"
     t.boolean "achievement"
     t.integer "month_rate"
+    t.boolean "select_passport"
     t.index ["genre_id"], name: "index_passports_on_genre_id"
     t.index ["user_id"], name: "index_passports_on_user_id"
   end
