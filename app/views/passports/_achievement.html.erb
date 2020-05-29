@@ -18,7 +18,6 @@
       <%= form_with model: passport, url: [current_user, passport], class: " p-0 border-0" do |f| %>
         <%= f.hidden_field :achievement, value: true %>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">いいえ</button>
           <%= f.submit "達成しました！", class: "btn-edit"%>
         </div>
       <% end %>
