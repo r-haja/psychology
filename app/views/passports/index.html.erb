@@ -28,21 +28,30 @@
               <div class="habit__rate habit__rate<%= passport.id.to_s %>">
                 <%= render partial: "passports/rate", locals: {passport: passport} %>
               </div>
+              <% if passport.user_id == current_user.id %>
+                <div class="habit__btn">
+                  <div class="achievement<%= passport.id.to_s %> achieveBtn">
+                    <%= render partial: "passports/achievement", locals: { passport: passport } %>
+                  </div>
+                  <div class="edit<%= passport.id.to_s %>">
+                    <%= render partial: "passports/edit", locals:{passport: passport} %>
+                  </div>
+                  <%= link_to user_passport_path(current_user.id, passport.id), method: :delete, data: {confirm: "本当に削除してよろしいですか？"}, class: "trash" do %>
+                    <%= image_tag 'icon_trash.png' %>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
             <% if passport.user_id == current_user.id %>
               <div class="calendar">
                 <p class="calendar__label">習慣記録</p>
                 <i class="fas fa-chevron-circle-down"></i>
                 <div class="passport-calendar passport-calendar_month<%= passport.id.to_s %>" id="month" >
-                  <div>
-                    <%= render partial: "passports/calendar_month", locals: { passport: passport, schedules: @schedules } %>
-                  </div>
+                  <%= render partial: "passports/calendar_month", locals: { passport: passport, schedules: @schedules } %>
                 </div>
 
-                <div class="passport-calendar passport-calendar_week<%= passport.id.to_s %>" id="week">
-                  <div class="hide">
-                    <%= render partial: "passports/calendar_week", locals: { passport: passport, schedule: @schedules}%>
-                  </div>
+                <div class="passport-calendar passport-calendar_week<%= passport.id.to_s %> active" id="week">
+                  <%= render partial: "passports/calendar_week", locals: { passport: passport, schedule: @schedules}%>
                 </div>
               </div>
             <% end %>
@@ -60,15 +69,7 @@
             </div>
           </div><!-- contents -->
         </div>
-        <div class="passport_footer">
-          <% if passport.user_id == current_user.id %>
-            <div class="edit<%= passport.id.to_s %>">
-              <%= render partial: "passports/edit", locals:{passport: passport} %>
-            </div>
-            <div class="achievement<%= passport.id.to_s %>">
-              <%= render partial: "passports/achievement", locals: { passport: passport } %>
-            </div>
-          <% end %>
+        <div class="passport__footer">
         </div>
       </section>
     </main>
@@ -104,12 +105,14 @@
 
 <script>
   $('.fa-chevron-circle-down').on('click', function(){
-    if($('#week div').attr('class') == 'hide'){
-      $('#week div').removeClass('hide');
-      $('#month div').addClass('hide');
-    }else if($('#month div').attr('class') == 'hide'){
-      $('#month div').removeClass('hide');
-      $('#week div').addClass('hide');
+    if($('#week').hasClass('active')) {
+      $('#week').removeClass('active');
+      $('#month').addClass('active');
+      $('.fa-chevron-circle-down').addClass('show');
+    } else if($('#month').hasClass('active')) {
+      $('#month').removeClass('active');
+      $('#week').addClass('active');
+      $('.fa-chevron-circle-down').removeClass('show');
     }
   });
 </script>

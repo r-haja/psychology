@@ -11,7 +11,6 @@ nav {
     height: 30px;
     width: 30px;
     background-repeat: no-repeat;
-    //background-image: image-url("img_logo.png");
     background-size: contain;
   }
   .menu {
@@ -29,7 +28,11 @@ nav {
     }
     &__action {
       a {
+        display: inline-block;
         margin-right: 20px;
+        img {
+          width: 100%;
+        }
       }
       a:hover {
         text-decoration: none;
@@ -39,6 +42,13 @@ nav {
         background-color: $primary-color;
         color: white;
         margin-right: 20px;
+      }
+      .passport,
+      .methods {
+        width: 25px;
+      }
+      .posts {
+        width: 24px;
       }
     }
     &__post{
@@ -63,7 +73,7 @@ nav {
         }
         .userName {
           color: #333333;
-          font-size: 14px;
+          font-size: 16px;
           text-decoration: none;
         }
         &:hover {
@@ -117,7 +127,7 @@ nav {
 
 @media screen and (max-width: 750px){
   nav {
-    height: 50px;
+    height: 65px;
     .menu__user {
       .userIcon {
         width: 30px;
@@ -125,9 +135,10 @@ nav {
       }
     }
     .menu{
-      &__action{
+      &__action {
+        margin-right: 5px;
         a {
-          margin-right: 10px;
+          margin-right: 15px;
         }
         .btn{
           margin-right: 10px;

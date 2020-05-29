@@ -35,7 +35,7 @@
             </div><!-- contents -->
           </div>
           <% if passport.id == current_user.id %>
-            <div class="passport_footer">
+            <div class="passport__footer">
               <%= form_with model: passport, url:[current_user, passport], class: "p-0 border-0" do |f| %>
                 <%= f.hidden_field :achievement, value: nil %>
                 <%= f.submit "習慣化をやり直す", class: "btn-edit", data: {confirm: "本当に戻してもよろしいですか？"} %>

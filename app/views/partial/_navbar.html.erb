@@ -1,10 +1,10 @@
 <nav>
   <% if user_signed_in? %>
-    <%= link_to user_passports_path(current_user) do %>
+    <%= link_to user_passports_path(current_user), class: "passport" do %>
       <%= image_tag "img_logo.png", class: "logo" %>
     <% end %>
   <% else %>
-    <%= link_to psychologies_path do %>
+    <%= link_to psychologies_path, class: "methods" do %>
       <%= image_tag "img_logo.png", class: "logo" %>
     <% end %>
   <% end %>
@@ -12,10 +12,10 @@
     <% if user_signed_in? && controller.controller_name == 'posts' && controller.action_name == 'index'  %>
       <div class="menu__action">
         <%= render "posts/new" %>
-        <%= link_to user_passports_path(current_user) do %>
+        <%= link_to user_passports_path(current_user), class: "passport" do %>
           <%= image_tag "icon_passport.png" %>
         <% end %>
-        <%= link_to psychologies_path do %>
+        <%= link_to psychologies_path, class: "methods" do %>
           <%= image_tag "icon_methods.png" %>
         <% end %>
       </div>
@@ -33,14 +33,14 @@
         <% if params[:user_id] == current_user.id.to_s %>
           <%= link_to "追加する",new_user_passport_path(current_user), class: "btn"  %>
         <% else %>
-          <%= link_to user_passports_path(current_user) do %>
+          <%= link_to user_passports_path(current_user), class: "passport" do %>
             <%= image_tag "icon_passport.png" %>
           <% end %>
         <% end %>
-        <%= link_to psychologies_path do %>
+        <%= link_to psychologies_path, class: "methods" do %>
           <%= image_tag "icon_methods.png" %>
         <% end %>
-        <%= link_to posts_path do %>
+        <%= link_to posts_path, class: "posts" do %>
           <%= image_tag "icon_message.png" %>
         <% end %>
       </div>
@@ -55,13 +55,13 @@
       </div>
     <% elsif user_signed_in? %>
       <div class="menu__action">
-        <%= link_to user_passports_path(current_user) do %>
+        <%= link_to user_passports_path(current_user), class: "passport" do %>
           <%= image_tag "icon_passport.png" %>
         <% end %>
-        <%= link_to psychologies_path do %>
+        <%= link_to psychologies_path, class: "methods" do %>
           <%= image_tag "icon_methods.png" %>
         <% end %>
-        <%= link_to posts_path do %>
+        <%= link_to posts_path, class: "posts" do %>
           <%= image_tag "icon_message.png" %>
         <% end %>
       </div>
