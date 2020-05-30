@@ -1,7 +1,6 @@
 @import "variables";
 body{
   background-color: #F7F7F7;
-  border-top: 5px solid #F9703E;
   font-size: 16px;
   font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   color: #333333;
@@ -48,10 +47,140 @@ a:hover {
   }
 }
 
+// フラッシュメッセージ
 .alert {
   width: 810px;
   margin: 0 auto;
   margin-bottom: 20px;
+}
+
+// モーダル
+.modal-header,
+.modal-footer {
+  border: none;
+}
+.modal-header {
+  margin-bottom: 5px;
+}
+.modal-content {
+  padding: 30px;
+}
+.modal-body {
+  padding: 0 20px;
+  p {
+    margin-bottom: 10px;
+  }
+  input {
+    margin-bottom: 25px;
+  }
+  input, select {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+  }
+  select {
+    background: none;
+    width: 100%;
+    height: 32px;
+    color: #495057;
+    appearance: none;
+    border: none;
+  }
+  .round {
+    position: relative;
+    height: auto;
+    border: 1px solid #ced4da;
+    border-radius: 20px;
+    &--genre {
+      width: 160px;
+      margin-bottom: 25px;
+      select {
+        padding: 0 25px;
+      }
+    }
+    input {
+      border: none;
+      height: 32px;
+      margin-bottom: 0;
+      padding: 0 10px 0 25px;
+      border-radius: 20px;
+    }
+    &--period {
+      width: 180px;
+    }
+  }
+  .arrow::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border: 0px;
+    border-top: solid 2px #333333;
+    border-right: solid 2px #333333;
+    -ms-transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+    position: absolute;
+    top: calc(50% - 3px);
+    right: 20px;
+    margin-top: -4px;
+    pointer-events: none;
+  }
+}
+.modal-footer {
+  justify-content: center;
+}
+
+.passEdit {
+  .period {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+    & > div {
+      display: flex;
+      align-items: center;
+      span {
+        margin-right: 10px;
+        font-size: 14px;
+      }
+      & + div {
+        margin-top: 8px;
+      }
+    }
+  }
+  .new-image {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    input button {
+      background-color: none;
+    }
+  }
+}
+
+.modal-header .close {
+  display: block;
+  width: 22px;
+  height: 22px;
+  position: relative;
+  padding: 0;
+  span::before, span::after{
+      content: "";
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: #000;
+      transform: rotate(45deg);
+      transform-origin:0% 50%;
+      position: absolute;
+      top: calc(14% - 5px);
+      left: 14%;
+  }
+  span::after{
+      transform: rotate(-45deg);
+      transform-origin:100% 50%;
+      left: auto;
+      right: 14%;
+  }
 }
 
 @media screen and (min-width: 992px) {
@@ -64,10 +193,17 @@ a:hover {
     max-width: 810px !important;
   }
 }
+@media screen and (min-width: 811px) {
+  .modal.show .modal-dialog {
+    position: absolute;
+    top: calc(50% - 50px);
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+}
 @media screen and (max-width: 810px) {
   body {
     background-color: #fff;
-    border-top: 3px solid $primary-color;
   }
   .container {
     max-width: 100% !important;
