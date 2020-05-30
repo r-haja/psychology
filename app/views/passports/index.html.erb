@@ -1,3 +1,13 @@
+
+  <% @passports.each do |passport| %>
+    <%= form_with model:[current_user, passport] do |f| %>
+      <%= f.collection_radio_buttons :select_passport, current_user.passports.all, :id, :goal do |b| %>
+        <% b.label {b.radio_button + b.text} %>
+      <% end %>
+    <% end %>
+  <% end %>
+  Userのintgerに数値入れる実装。integerとPassport.idがイコールの時、それを表示する実装。
+
 <% @passports.each do |passport| %>
   <% if passport.achievement != true %>
     <main class="passport">

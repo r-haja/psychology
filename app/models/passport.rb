@@ -13,4 +13,9 @@ class Passport < ApplicationRecord
 
   mount_uploader :passport_image, PassportImageUploader
   accepts_nested_attributes_for :plans, allow_destroy: true
+
+  def self.start_time(id)
+    passport = find_by(id)
+    passport.plans.first.start_time
+  end
 end

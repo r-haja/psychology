@@ -76,7 +76,7 @@ class SchedulesController < ApplicationController
       sum_week = (end_week_date - start_week_date + 1).to_i - exception_count_week
 
       #週の成功率を計算
-      success_rate_week = @passport.schedules.where(day: start_week_date.to_s..end_week_date.to_s).count*100/sum_week
+      success_rate_week = @passport.schedules.where(day: start_week_date.to_s..end_week_date.to_s).where(judgment: 1).count*100/sum_week
       @passport.week_rate = success_rate_week
 
       @passport.save
