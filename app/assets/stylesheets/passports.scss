@@ -55,7 +55,7 @@
     &__details {
       display: flex;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 5px;
       font-size: 16px;
       .period {
         margin-right: 15px;
@@ -78,10 +78,10 @@
         margin-bottom: 0;
         font-size: 16px;
         span {
-          margin-left: 15px;
+          margin-right: 3px;
+          margin-left: 6px;
           color: #F9703E;
-          font-size: 18px;
-          font-weight: bold;
+          font-size: 24px;
           animation: fadeIn 1s ease 0s 1 normal;
         }
       }
@@ -163,11 +163,11 @@
     .simple-calendar {
       padding: 0 15px;
       border: solid 1px gainsboro;
-      border-radius: 5px;
+      border-radius: 18px;
     }
     .calendar-heading {
-      margin-top: 20px;
-      margin-bottom: 5px;
+      margin: 20px auto 5px;
+      border-radius: 18px;
     }
     .table {
       border-collapse: separate;
@@ -485,13 +485,16 @@
         justify-content: flex-end;
         margin-bottom: 10px;
         .percentage {
-          width: 50%;
+          width: calc(50% - 5px);
           margin-right: 0;
           margin-bottom: 5px;
           font-size: 14px;
           span {
             font-size: 26px;
             font-weight: normal;
+          }
+          & + .percentage {
+            margin-left: 10px;
           }
         }
       }

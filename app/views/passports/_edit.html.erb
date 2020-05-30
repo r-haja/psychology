@@ -4,46 +4,46 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="editModal<%= passport.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade passEdit" id="editModal<%= passport.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">習慣化パスポート</h5>
+        <h5 class="modal-title" id="exampleModalLabel"><%# current_user.name %>さんの習慣</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true"></span>
         </button>
       </div>
       <%= form_with model: passport, url: [current_user, passport], class: " p-0 border-0" do |f| %>
         <div class="modal-body">
           <%= render 'partial/error_messages', model: f.object %>
-          <div class="form-group row mt-2">
-            <div class="col-md-10">
-              <p>目的はなぜ、習慣化を行うのか？その習慣は本当に必要なのか？について考えた上で記載しましょう。</p>
-              <%= f.text_field :purpose, class: "form-control border-0", placeholder: "目的を記載" %>
-            </div>
-            <div class="col-md-12">
-              <p>達成不可能な目標設定はNGです。生活スタイルにあった無理のない目標を設定しましょう。</p>
-              <%= f.text_field :goal, class: "form-control border-0", placeholder: "目標を記載" %>
-            </div>
-          </div>
+          <p>何のために習慣化をしますか？</p>
+          <%= f.text_field :purpose, class: "form-control", placeholder: "習慣化の目的を入力してください" %>
+          <p>そのために何をしますか？</p>
+          <%= f.text_field :goal, class: "form-control", placeholder: "習慣化したいことを入力してください" %>
+          <p>ジャンルを選んでください</p>
+          <div class="round round--genre arrow">
             <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "ジャンルを選択してください" do |b|%>
               <%= b.label {b.select + b.text} %>
             <% end %>
-              <p>目標を達成するまでの期間を設定しましょう。</p>
-            <%= f.fields_for :plans do |i| %>
-              <%= i.date_field :start_time, class: "form-control", discard_time: true %>
-              <%= i.date_field :end_time, class: "form-control", discard_time: true %>
-            <% end %>
-
-          <div class="mb-3">
-            <p>もし、モチベーションにつながる画像がありましたら、選択してください。</p>
-            <%= f.file_field :passport_image, placeholder: "好きな画像を選択してください", class: "new-image" %>
           </div>
-
+          <p>いつまでに習慣化しますか？</p>
+          <div class="period">
+            <%= f.fields_for :plans do |i| %>
+              <div>
+                <span>開始日</span>
+                <div class="round round--period"><%= i.date_field :start_time, class: "form-control", discard_time: true %></div>
+              </div>
+              <div>
+                <span>終了日</span>
+                <div class="round round--period"><%= i.date_field :end_time, class: "form-control", discard_time: true %></div>
+              </div>
+            <% end %>
+          </div>
+          <p>ヘッダー画像</p>
+          <%= f.file_field :passport_image, placeholder: "好きな画像を選択してください", class: "new-image" %>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <%= f.submit "編集する", class: "btn-edit" %>
+          <%= f.submit "更新", class: "btn-edit" %>
         </div>
       <% end %>
     </div>
