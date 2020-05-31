@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_29_124542) do
+ActiveRecord::Schema.define(version: 2020_05_30_093059) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(version: 2020_05_29_124542) do
     t.boolean "admin_flg"
     t.boolean "email_magazine", default: true, null: false
     t.boolean "release", default: true
+    t.integer "select_passport"
     t.index ["email"], name: "index_users_on_email", unique: true, where: "(deleted_at IS NULL)"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
