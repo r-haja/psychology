@@ -95,10 +95,11 @@
         justify-content: center;
         width: 42%;
         margin-right: 10px;
-        padding: 5px;
         border: 1px solid $primary-color;
         border-radius: 5px;
         & > button {
+          width: 100%;
+          padding: 5px;
           color: $primary-color;
           border: none;
           background: none;
@@ -181,8 +182,6 @@
       }
       td {
         position: relative;
-        width: 40px;
-        height: 40px;
         padding: 5px 5px;
         vertical-align: middle;
         border: none;
@@ -201,6 +200,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 40px;
+      height: 40px;
       border: 1px solid #fff;
       border-radius: 50%;
       cursor: pointer;
@@ -287,13 +288,12 @@
       display: flex;
       align-items: center;
       width: 100%;
-      margin-bottom: 20px;
-      padding: 12px 20px;
+      margin-bottom: 15px;
+      padding: 8px 12px;
       border: 1px solid #7B93DB;
       border-radius: 5px;
       font-size: 16px;
       cursor : pointer;
-      transition: 0.2s;
       &:hover {
         background-color: #f7faff;
       }
@@ -354,32 +354,36 @@
   .modal-body {
     display: flex;
     flex-wrap: wrap;
-    padding: 24px;
-  }
-  .modal-body input {
-    display: none;
-  }
-  label {
-    position: relative;
-    display: flex;
-    width: 215px;
-    height: auto;
-    margin-right: 10px;
-    margin-bottom: 20px;
-    padding: 10px 20px 10px 30px;
-    border: 1px solid #7B93DB;
-    border-radius: 5px;
-    &:hover {
-      cursor: pointer;
-      background-color: #f7faff;
+    padding: 0 4px 20px;
+    input {
+      display: none;
     }
-    &::before {
-      content: '○';
-      position: absolute;
-      top: 50%;
-      left: 10px;
-      transform: translate(0,-50%);
-      font-size: 20px;
+    label {
+      position: relative;
+      display: flex;
+      width: 210px;
+      height: auto;
+      margin-bottom: 10px;
+      padding: 10px 20px 10px 30px;
+      border: 1px solid #7B93DB;
+      border-radius: 5px;
+      &:hover {
+        cursor: pointer;
+        background-color: #f7faff;
+      }
+      &::before {
+        content: '○';
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translate(0,-50%);
+        font-size: 20px;
+      }
+    }
+    @media screen and (min-width: 751px) {
+      label:nth-of-type(odd) {
+        margin-right: 10px;
+      }
     }
   }
   input:checked + label {
@@ -406,30 +410,25 @@
       .table {
         .modal {
           position: absolute;
-          top: -10px;
-          left: 50px;
+          top: 45px;
+          left: -75px;
           transform: translate(0,-50%);
           overflow: visible;
-        }
-        .modal-content {
-        }
-        .modal-dialog {
-          width: 310px;
         }
         .modal-dialog-centered::before {
           height: auto;
         }
         .modal-content {
           flex-direction: row;
+          width: auto;
           box-shadow: 5px 5px 10px -2px rgba(0, 0, 0, 0.1);
           border: 1px solid $bg-color;
           .close {
-            margin: 10px 20px;
-            padding-bottom: 5px;
+            margin: auto 15px auto 0;
           }
         }
         .modal-body {
-          padding: 12px 0;
+          padding: 15px 20px;
         }
       }
     }
@@ -515,7 +514,6 @@
         background-color: #fff;
       }
       .d-inline-block {
-        margin-bottom: 15px;
         background-color: #fff;
       }
     }
@@ -551,31 +549,46 @@
         background-color: rgba(0,0,0,0.5);
       }
       .modal-content {
+        display: flex;
         width: 80%;
         margin: 0 auto;
+        padding-bottom: 20px;
         .close {
-          margin: 5px 15px 0 0;
+          margin: 10px 15px 5px auto;
           text-align: right;
         }
+        .modal-body {
+          order: 2;
+        }
       }
-      .fa-chevron-circle-down{
-        display: block;
-        height: 0px;
-        font-size: 1.5em;
-        position: absolute;
-        top: -40px;
-        right: 30px;
-        color: $primary-color;
-        cursor: pointer;
+      .fa-chevron-circle-down {
         z-index: 10;
+        position: absolute;
+        top: -50px;
+        right: 20px;
+        display: block;
+        width: 20px;
+        height: 20px;
+        padding: 20px;
+        border-radius: 50%;
+        background-color: rgba(100,100,100,0.05);
+        color: $primary-color;
+        font-size: 1.5em;
+        cursor: pointer;
         animation: fadeIn 1s ease 0s 1 normal;
+        &.show {
+          background-color: transparent;
+        }
       }
       .fa-chevron-circle-down::before {
         display: block;
         transform: rotate(180deg);
+        position: absolute;
+        top: 8px;
+        left: 8px;
       }
       .fa-chevron-circle-down.show {
-        top: 20px;
+        top: 10px;
       }
       .fa-chevron-circle-down.show::before {
         transform: rotate(0);

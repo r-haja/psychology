@@ -54,7 +54,7 @@ a:hover {
   margin-bottom: 20px;
 }
 
-// モーダル
+// モーダル（共通）
 .modal-header,
 .modal-footer {
   border: none;
@@ -62,16 +62,42 @@ a:hover {
 .modal-header {
   margin-bottom: 5px;
 }
+.modal-header .close {
+  display: block;
+  width: 22px;
+  height: 22px;
+  position: relative;
+  padding: 0;
+  span::before, span::after{
+      content: "";
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: #000;
+      transform: rotate(45deg);
+      transform-origin:0% 50%;
+      position: absolute;
+      top: 14%;
+      left: 15%;
+  }
+  span::after{
+      transform: rotate(-45deg);
+      transform-origin:100% 50%;
+      left: auto;
+      right: 14%;
+  }
+}
+.modal-title {
+  font-size: 18px;
+}
 .modal-content {
   padding: 30px;
 }
 .modal-body {
   padding: 0 20px;
-  p {
-    margin-bottom: 10px;
-  }
-  input {
-    margin-bottom: 25px;
+  label {
+    margin-bottom: 5px;
+    font-size: 14px;
   }
   input, select {
     border: 1px solid #ced4da;
@@ -92,7 +118,6 @@ a:hover {
     border-radius: 20px;
     &--genre {
       width: 160px;
-      margin-bottom: 25px;
       select {
         padding: 0 25px;
       }
@@ -127,13 +152,28 @@ a:hover {
 }
 .modal-footer {
   justify-content: center;
+  padding: 0;
 }
 
+// モーダル（習慣修正）
 .passEdit {
+  @media screen and (min-width: 751px) {
+    .modal-dialog {
+      width: 500px;
+    }
+  }
+  .modal-header {
+    .passportIcon {
+      width: 30px;
+      margin-right: 10px;
+    }
+  }
+  .modal-body label {
+    color: #F9703E;;
+  }
   .period {
     display: flex;
     flex-direction: column;
-    margin-bottom: 25px;
     & > div {
       display: flex;
       align-items: center;
@@ -146,7 +186,7 @@ a:hover {
       }
     }
   }
-  .new-image {
+  .new-image { //習慣画像 一旦非表示。
     display: block;
     width: 100%;
     margin: 0 auto;
@@ -157,29 +197,60 @@ a:hover {
   }
 }
 
-.modal-header .close {
-  display: block;
-  width: 22px;
-  height: 22px;
-  position: relative;
-  padding: 0;
-  span::before, span::after{
-      content: "";
-      display: block;
-      width: 100%;
-      height: 2px;
-      background: #000;
-      transform: rotate(45deg);
-      transform-origin:0% 50%;
-      position: absolute;
-      top: calc(14% - 5px);
-      left: 14%;
+// モーダル（カレンダー記録）
+.record {
+  z-index: 20;
+  .modal-content {
+    padding: 0;
   }
-  span::after{
+  .close {
+    position: relative;
+    width: 20px;
+    height: 20px;
+  }
+  span::before, span::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #000;
+    transform: rotate(45deg);
+    transform-origin:0% 50%;
+    position: absolute;
+    top: 14%;
+    left: 15%;
+  }
+  span::after {
       transform: rotate(-45deg);
       transform-origin:100% 50%;
       left: auto;
       right: 14%;
+  }
+}
+
+// モーダル（習慣化方法の表示）
+.psychMethods {
+  .modal-header {
+    img {
+      width: 30px;
+      margin-right: 10px;
+    }
+  }
+  .modal-body {
+    @media screen and (max-width: 750px) {
+      padding: 0;
+    }
+    img {
+      width: 100%;
+    }
+  }
+}
+
+// モーダル（アカウント修正）
+.userEdit {
+  i {
+    font-size: 2em;
+    margin-right: 10px;
   }
 }
 
@@ -191,14 +262,6 @@ a:hover {
 @media screen and (min-width: 768px) {
   .container {
     max-width: 810px !important;
-  }
-}
-@media screen and (min-width: 811px) {
-  .modal.show .modal-dialog {
-    position: absolute;
-    top: calc(50% - 50px);
-    left: 50%;
-    transform: translate(-50%,-50%);
   }
 }
 @media screen and (max-width: 810px) {

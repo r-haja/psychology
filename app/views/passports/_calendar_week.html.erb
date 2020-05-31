@@ -25,12 +25,9 @@
         </p>
       <% end %>
     </div>
-    <div class="modal fade" id="PassportCalendarModalweek<%= passport.id %><%= date %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
+    <div class="modal fade record" id="PassportCalendarModalweek<%= passport.id %><%= date %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true"></span>
-          </button>
           <div class="modal-body">
             <%= form_with model: [current_user, passport, schedule], remote: true do |f| %>
               <%= f.hidden_field :passport_id, value: passport.id %>
@@ -48,6 +45,9 @@
               <% end %>
             <% end %>
           </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"></span>
+          </button>
         </div>
       </div>
     </div>
