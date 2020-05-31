@@ -4,12 +4,17 @@
 .container {
   width: 810px;
   height: auto;
-  padding-top: 120px;
-  padding-bottom: 100px;
+  padding-right: 0;
+  padding-left: 0;
   background-color: #fff;
   border-style: solid;
   border: solid 1px $border-color;
   border-radius: 5px;
+}
+
+.beforeForm .container {
+  padding-top: 120px;
+  padding-bottom: 100px;
 }
 
 .beforeForm__contents {

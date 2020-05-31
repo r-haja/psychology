@@ -1,19 +1,35 @@
 <div class="container">
-  <div class="home">
-    <p>Home画面です。</p>
-    <% if user_signed_in? %>
-      <ul>
-        <li><%= link_to "サインアウト", destroy_user_session_path, method: :delete, class: "home-btn btn btn-outline-dangger" %></li>
-      </ul>
-    <% elsif admin_signed_in? %>
-      <ul>
-        <li><%= link_to "サインアウト", destroy_admin_session_path, method: :delete, class: "home-btn btn btn-outline-dangger" %></li>
-      </ul>
-    <% else %>
-      <ul>
-        <li><%= link_to "サインアップ", new_user_registration_path, class: "home-btn btn btn-outline-dark" %></li>
-        <li><%= link_to "サインイン", new_user_session_path, class: "home-btn btn btn-outline-primary" %></li>
-      </ul>
-    <% end %>
+  <div class="home psych__contents">
+    <h1>さぁ、見つけよう。<br>3日坊主にならない習慣の身に付け方を。</h1>
+    <p>「パビット」は、心理学×習慣化をテーマとしたWebアプリです。現在テスト版を公開中です。</p>
+    <section>
+      <h2 class="heading">使い方</h2>
+      <p>
+        パビットは、「パスポート」と「ハビット（習慣）」の造語です。<br>
+        その名の通り、一つ一つの習慣をパスポートとして作成し、それを達成することを目標としています。
+      </p>
+      <ol>
+        <li>新規登録をしたら、まずはパスポートを作成します</li>
+        <li>自分の好きな習慣化方法を選び、登録します（いくつでも登録できます）</li>
+        <li>登録が完了したら、その日からカレンダーに達成できたかどうかを記録していきます</li>
+      </ol>
+      <p>
+        <% if user_signed_in? %>
+           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "home-btn btn btn-outline-dangger" %>
+        <% elsif admin_signed_in? %>
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "home-btn btn btn-outline-dangger" %>
+        <% else %>
+          <%= link_to "新規登録", new_user_registration_path, class: "btn" %>
+            <%= link_to "ログイン", new_user_session_path, class: "btn btn--login" %>
+        <% end %>
+        </p>
+    </section>
+    <section>
+      <h2 class="heading">習慣化に役立つ情報を配信中！</h2>
+      <p>
+      <a href="http://dumbo-app.com/" target="_blank" class="btn btn--external">dumbo公式サイト</a>
+      <a href="https://twitter.com/dumbo_habit" target="_blank" class="btn btn--external">公式ツイッター</a>
+      </p>
+      </section>
   </div>
 </div>

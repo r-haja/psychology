@@ -1,5 +1,10 @@
 @import "variables";
 //passport_show
+.newPassport {
+  span {
+    color: $primary-color;
+  }
+}
 .selection {
   width: 810px;
   height: auto;

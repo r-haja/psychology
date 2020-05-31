@@ -1,13 +1,25 @@
-<div class="d-flex flex-column align-items-center mt-3">
-  <div class="col-xl-7 col-lg-8 col-md-10 col-sm-11 post-card">
-    <div class="card">
-      <div class="card-header">
-        Passportの作成
-      </div>
-      <div class="card-body">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-          習慣化パスポートを作成しよう！
-        </button>
+<div class="newPassport">
+  <div class="d-flex flex-column align-items-center mt-3">
+    <div class="col-xl-7 col-lg-8 col-md-10 col-sm-11 post-card">
+      <div class="card">
+        <div class="card-header">
+          パスポートの作成
+        </div>
+        <div class="card-body">
+          <p>
+            さぁ！あなただけの習慣化パスポートを作成していきましょう！<br>
+            まず、習慣化を実現するために重要なのが、『目的』と『目標』を明確にすることです。<br>
+            あなたの理想をイメージして設定してみましょう！<br><br>
+            目的は、<b>なぜその習慣化を行うのか</b>を明確にします。<br>
+            <span>（例）時間に余裕をもって出社するため</span><br><br>
+            目標は、<b>目的を達成するために実践すること</b>を決めましょう<br>
+            <span>（例）平日は朝7時に起きる</span><br>
+            ※日常的に継続出来る、無理のない目標を設定しましょう<br>
+          </p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            新しい習慣を作成
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -30,11 +42,11 @@
         <%= render 'partial/error_messages', model: f.object %>
         <div class="form-group">
           <label for="passport_purpose">何のために習慣化をしますか？</label>
-          <%= f.text_field :purpose, class: "form-control", placeholder: "習慣化の目的を入力してください" %>
+          <%= f.text_field :purpose, class: "form-control", placeholder: "（例）朝の時間を有効活用するため" %>
         </div>
         <div class="form-group">
           <label for="passport_goal">そのために何をしますか？</label>
-          <%= f.text_field :goal, class: "form-control", placeholder: "習慣化したいことを入力してください" %>
+          <%= f.text_field :goal, class: "form-control", placeholder: "（例）平日は朝7時に起きる" %>
         </div>
         <div class="form-group">
           <label for="passport_genre_id">ジャンルを選んでください</label>
