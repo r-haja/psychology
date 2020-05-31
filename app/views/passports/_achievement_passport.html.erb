@@ -9,6 +9,9 @@
       <main class="passport">
         <section class="container">
           <div class="passport__header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"></span>
+            </button>
             <% if passport.passport_image.file.nil? %>
               <%= image_tag 'img_passport_header.jpg' %>
             <% else %>
