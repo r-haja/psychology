@@ -30,7 +30,22 @@
       transition: opacity .3s;
     }
   }
+  .passport__achievement{
+    .btn-achievement{
+      height: 50px;
+      width: 100px;
+      background-color: white;
+      border: solid 2px #ffd633;
+      border-radius: 5px;
+      overflow: hidden;
+      white-space: nowrap;
+      i{
+        color: #ffd633;
+      }
+    }
+  }
 }
+
 .passport {
   .container {
     width: 810px;
