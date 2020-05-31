@@ -11,13 +11,13 @@
   <div class="menu">
     <% if user_signed_in? && controller.controller_name == 'posts' && controller.action_name == 'index'  %>
       <div class="menu__action">
-        <%= render "posts/new" %>
-        <%= link_to user_passports_path(current_user), class: "passport" do %>
-          <%= image_tag "icon_passport.png" %>
-        <% end %>
-        <%= link_to psychologies_path, class: "methods" do %>
+      <%= link_to user_passports_path(current_user), class: "passport" do %>
+        <%= image_tag "icon_passport.png" %>
+      <% end %>
+      <%= link_to psychologies_path, class: "methods" do %>
           <%= image_tag "icon_methods.png" %>
         <% end %>
+        <%= render "posts/new" %>
       </div>
       <div data-turbolinks="false" class="menu__status">
         <%= render "users/show" %>
@@ -30,18 +30,18 @@
       </div>
     <% elsif user_signed_in? && controller.controller_name == 'passports' && controller.action_name == 'index'  %>
       <div class="menu__action">
-        <% if params[:user_id] == current_user.id.to_s %>
-          <%= link_to "追加する",new_user_passport_path(current_user), class: "btn"  %>
-        <% else %>
-          <%= link_to user_passports_path(current_user), class: "passport" do %>
-            <%= image_tag "icon_passport.png" %>
-          <% end %>
-        <% end %>
         <%= link_to psychologies_path, class: "methods" do %>
           <%= image_tag "icon_methods.png" %>
         <% end %>
         <%= link_to posts_path, class: "posts" do %>
           <%= image_tag "icon_message.png" %>
+        <% end %>
+        <% if params[:user_id] == current_user.id.to_s %>
+          <%= link_to "習慣を作成",new_user_passport_path(current_user), class: "btn"  %>
+        <% else %>
+          <%= link_to user_passports_path(current_user), class: "passport" do %>
+            <%= image_tag "icon_passport.png" %>
+          <% end %>
         <% end %>
       </div>
       <div data-turbolinks="false" class="menu__status">

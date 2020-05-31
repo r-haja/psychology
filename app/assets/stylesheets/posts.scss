@@ -1,9 +1,14 @@
 @import "variables";
 
 .card-header{
+  position: relative;
   .trash{
-    position: relative;
-    left: 400px;
+    position: absolute;
+    right: 20px;
+    width: 17px;
+    img {
+      width: 100%;
+    }
   }
 }
 
@@ -250,12 +255,6 @@
           }
         }
       }
-    }
-  }
-  .card-header{
-    .trash{
-      position: relative;
-      left: 180px;
     }
   }
 }

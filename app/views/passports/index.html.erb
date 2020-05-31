@@ -1,21 +1,23 @@
-<% @passports.each do |passport| %>
-  <div class="passport_select">
-    <% if passport.achievement != true %>
-      <%= form_with scope: resource, as: resource_name, url: registration_path(resource_name), method: :patch do |f| %>
-        <%= f.hidden_field :select_passport, value: passport.id %>
-        <% if passport.id == current_user.select_passport %>
-          <%= f.submit passport.goal, class: "btn-true" %>
-        <% else %>
-          <%= f.submit passport.goal, class: "btn-false" %>
+<div class="selection">
+  <% @passports.each do |passport| %>
+    <div class="passport_select">
+      <% if passport.achievement != true %>
+        <%= form_with scope: resource, as: resource_name, url: registration_path(resource_name), method: :patch do |f| %>
+          <%= f.hidden_field :select_passport, value: passport.id %>
+          <% if passport.id == current_user.select_passport %>
+            <%= f.submit passport.goal, class: "btn-true" %>
+          <% else %>
+            <%= f.submit passport.goal, class: "btn-false" %>
+          <% end %>
         <% end %>
+      <% else %>
+        <div class="passport__achievement">
+          <%= render partial: "achievement_passport", locals:{passport: passport} %>
+        </div>
       <% end %>
-    <% else %>
-      <div class="passport__achievement">
-        <%= render partial: "achievement_passport", locals:{passport: passport} %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+    </div>
+  <% end %>
+</div>
 <% @passports.each do |passport| %>
   <% if passport.achievement != true %>
     <% if passport.id == passport.user.select_passport %>

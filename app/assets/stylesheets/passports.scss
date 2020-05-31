@@ -1,11 +1,16 @@
 @import "variables";
 //passport_show
+.selection {
+  width: 810px;
+  height: auto;
+  margin: 0 auto;
+  padding: 0 20px 12px 0;
+}
 .passport_select{
   display: inline-block;
-  margin-bottom: 20px;
   margin-left: 2.5%;
   .btn-false{
-    height: 50px;
+    height: 36px;
     width: 100px;
     color: $primary-color;
     background-color: white;
@@ -19,7 +24,7 @@
     }
   }
   .btn-true{
-    height: 50px;
+    height: 36px;
     width: 100px;
     color: white;
     background-color: $primary-color;
@@ -247,7 +252,6 @@
       p {
         width: 100%;
         margin: 0;
-        line-height: 38px;
       }
     }
     .calendar-check {
@@ -270,10 +274,11 @@
     .calendar-check span {
       display: block;
       border-radius: 50%;
+      line-height: 38px;
     }
     .calendar-check span.today {
-      color: $primary-color;
-      background-color: #fff4ee;
+      border: 1px solid $primary-color;
+      line-height: 36px;
     }
     .calendar-check span.achieved {
       color: $primary-color;
@@ -665,6 +670,9 @@
 }
 
 @media screen and (max-width: 750px) {
+  .selection {
+    width: 100%;
+  }
   .passport {
     &__contents {
       padding: 0;

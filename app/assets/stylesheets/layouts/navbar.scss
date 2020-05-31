@@ -38,10 +38,13 @@ nav {
         text-decoration: none;
         cursor: pointer;
       }
-      .btn{
-        background-color: $primary-color;
-        color: white;
+      .btn {
         margin-right: 20px;
+        border: 1px solid $primary-color;
+        color: $primary-color;
+        background-color: #fff;
+        font-size: 14px;
+        line-height: 1.2;
       }
       .passport,
       .methods {
@@ -81,32 +84,6 @@ nav {
         }
       }
     }
-    .userAchievement {
-      position: relative;
-      display: inline-block;
-      height: 30px;
-      width: 30px;
-      margin-left: 10px;
-      i {
-        position: absolute;
-        left: 50%;
-        transform: translate(-50%, 0);
-        color: #ffd633;
-        font-size: 30px;
-      }
-      p {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, 0);
-        width: 30px;
-        font-size: 14px;
-        text-align: center;
-        line-height: 30px;
-        vertical-align: middle;
-        margin-bottom: 0;
-      }
-    }
     &__shared{
       font-size: 16px;
       float: left;
@@ -127,21 +104,29 @@ nav {
 
 @media screen and (max-width: 750px){
   nav {
-    height: 65px;
-    .menu__user {
-      .userIcon {
-        width: 30px;
-        height: 30px;
+    height: 85px;
+    margin-top: 20px;
+    align-items: flex-start;
+    .menu {
+      flex-direction: column;
+      align-items: flex-end;
+      &__status {
+        margin-bottom: 10px;
       }
-    }
-    .menu{
       &__action {
-        margin-right: 5px;
+        order: 2;
         a {
           margin-right: 15px;
         }
-        .btn{
-          margin-right: 10px;
+        .btn {
+          margin-right: 0;
+          padding: 5px 8px;
+        }
+      }
+      &__user {
+        .userIcon {
+          width: 30px;
+          height: 30px;
         }
       }
     }

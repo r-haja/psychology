@@ -16,14 +16,14 @@
 
           <% post_achievement = post.user.passports.where(achievement: true).count %>
           <% if post_achievement >= 1 %>
-            <div class="passport__achievement">
-              <span><%= post_achievement %></span>
+            <div class="userAchievement">
               <i class="fas fa-star"></i>
+              <p><%= post_achievement %></p>
             </div>
           <% end %>
           <% if post.user.id == current_user.id %>
-              <%= link_to post_path(post), method: :delete, data: {confirm: "あなたの投稿を削除します。本当に削除してよろしいですか？"} do %>
-                <%= image_tag 'icon_trash.png', class: "trash" %>
+              <%= link_to post_path(post), class: "trash" , method: :delete, data: {confirm: "あなたの投稿を削除します。本当に削除してよろしいですか？"} do %>
+                <%= image_tag 'icon_trash.png' %>
               <% end %>
           <% end %>
         </div>

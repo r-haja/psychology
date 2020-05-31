@@ -47,6 +47,33 @@ a:hover {
   }
 }
 
+.userAchievement {
+  position: relative;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  margin-left: 10px;
+  i {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    color: #ffd633;
+    font-size: 30px;
+  }
+  p {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 30px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 30px;
+    vertical-align: middle;
+    margin-bottom: 0;
+  }
+}
+
 // フラッシュメッセージ
 .alert {
   width: 810px;
