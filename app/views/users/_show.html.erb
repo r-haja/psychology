@@ -12,27 +12,23 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="current_userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade userEdit" id="current_userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close">
-        <span aria-hidden="true"></span>
-      </button>
+      <div class="modal-header">
+        <i class="fas fa-user"></i>
+        <p class="modal-title">アカウント情報</p>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
       <div class="modal-body">
-        <div class="UserInfo">
-          <div class="UserInfo__header">
-            <i class="fas fa-user"></i>
-            <p>アカウント情報</p>
-          </div>
-          <div class="UserInfo__form">
-            <%= render partial: 'devise/registrations/edit' %>
-          </div>
-          <div class="UserInfo__footer">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout" %>
-            <%= link_to "アカウントを削除する", user_registration_path, method: :delete,
-             data: {confirm: "本当に削除してよろしいですか？"}, class: "delete" %>
-          </div>
-        </div>
+        <%= render partial: 'devise/registrations/edit' %>
+      </div>
+      <div class="modal-footer">
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout" %>
+        <%= link_to "アカウントを削除する", user_registration_path, method: :delete,
+         data: {confirm: "本当に削除してよろしいですか？"}, class: "delete" %>
       </div>
     </div>
   </div>

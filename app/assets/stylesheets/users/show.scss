@@ -33,163 +33,96 @@
   }
 }
 
-.modal{
-  .modal-dialog{
-    .modal-content{
-      #close{
-        margin-left: 87%;
-        font-size: 35px;
-      }
-      .modal-body{
-        .UserInfo{
-          color: #696969;
-          width: 100%;
-          &__header{
-            display: flex;
-            margin-left: 30px;
-            margin-bottom: 15px;
-            i{
-              font-size: 2em;
-            }
-            p{
-              margin-left: 10px;
-              margin-top: 5px;
-              font-weight: bold;
-            }
-          }
-          &__form{
-            margin: 0 auto;
-            width: 85%;
-            .round-img{
-              border-radius:50%;
-              width: 70px;
-              height: 70px;
-            }
-            .usericon{
-              display: flex;
-              margin-left: 20px;
-              margin-bottom: 15px;
-              .form-group{
-                margin-left: 20px;
-                margin-top: 15px;
-                text-align: center;
-                .image_input_btn{
-                  display: block;
-                  width: 255px;
-                  height: 40px;
-                  border-radius: 5px;
-                  border: 2px solid;
-                  border-color: $primary-color;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  cursor: pointer;
-                  &:hover{
-                    background-color: $primary-color;
-                    color: white;
-                    transition: color .3s;
-                    transition: background-color .3s;
-                  }
-                }
-                .form-control{
-                  display: none;
-                }
-              }
-            }
-            .info{
-              margin: 0 auto;
-              width: 80%;
-              .form-group{
-                .form-control{
 
-                }
-              }
-              .UpdateBtn{
-                width: 70%;
-                height: 40px;
-                border-radius: 5px;
-                background-color: $primary-color;
-                color: white;
-                margin-left: 45px;
-                margin-bottom: 10px;
-                &:hover{
-                  opacity: 0.7;
-                  transition: opacity .3s;
-                }
-              }
-            }
-          }
-          &__footer{
-            text-align: center;
-            margin-top: 10px;
-            .logout{
-              display: block;
-              color: #696969;
-              border: 2px solid;
-              border-radius: 5px;
-              border-color: $primary-color;
-              width: 47%;
-              margin-left: 120px;
-              height: 40px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              text-decoration: none;
-              &:hover{
-                background-color: $primary-color;
-                color: white;
-                opacity: 1.0;
-                transition: color .3s;
-                transition: background-color .3s;
-              }
-            }
-            .delete{
-              margin-top: 10px;
-              display: block;
-              color: $primary-color;
-              margin-bottom: 15px;
-            }
-          }
+.userEdit {
+  .round-img{
+    border-radius:50%;
+    width: 70px;
+    height: 70px;
+  }
+  .usericon{
+    display: flex;
+    margin-bottom: 15px;
+    .form-group{
+      margin-left: 20px;
+      margin-top: 15px;
+      text-align: center;
+      .image_input_btn{
+        display: block;
+        width: 235px;
+        height: 40px;
+        border-radius: 5px;
+        border: 1px solid;
+        border-color: $primary-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        &:hover{
+          background-color: $primary-color;
+          color: white;
+          transition: color .3s;
+          transition: background-color .3s;
         }
+      }
+      .form-control{
+        display: none;
       }
     }
   }
+  .UpdateBtn{
+    display: block;
+    width: 235px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: $primary-color;
+    color: white;
+    margin: 0 auto 15px;
+    border: none;
+    &:hover{
+      opacity: 0.7;
+      transition: opacity .3s;
+    }
+  }
+  .modal-footer {
+    flex-direction: column;
+    .logout{
+      display: block;
+      color: #696969;
+      border: 1px solid;
+      border-radius: 5px;
+      border-color: $primary-color;
+      width: 235px;
+      height: 40px;
+      margin-right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      &:hover{
+        background-color: $primary-color;
+        color: white;
+        opacity: 1.0;
+        transition: color .3s;
+        transition: background-color .3s;
+      }
+    }
+    .delete{
+      margin-top: 15px;
+      margin-left: 0;
+      display: block;
+      color: $primary-color;
+    }
+  }
 }
+
 @media screen and (max-width: 750px) {
-  .modal{
-    .modal-dialog{
-      .modal-content{
-        .modal-body{
-          .UserInfo{
-            &__header{
-              margin-left: 10px;
-            }
-            &__form{
-              width: 95%;
-              .usericon{
-                .form-group{
-                  .image_input_btn{
-                    width: 170px;
-                  }
-                }
-              }
-              .info{
-                .UpdateBtn{
-                  width: 90%;
-                  margin-left: 10px;
-                }
-              }
-            }
-            &__footer{
-              .logout{
-                width: 68%;
-                margin-left: 49px;
-              }
-              .delete{
-              }
-            }
-          }
-        }
+  .userEdit {
+    .usericon {
+      flex-direction: column;
+      align-items: center;
+      .form-group {
+        margin-left: 0;
       }
     }
   }
