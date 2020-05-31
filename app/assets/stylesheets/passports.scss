@@ -42,6 +42,15 @@
       i{
         color: #ffd633;
       }
+      &:hover{
+        color: white;
+        background-color: #ffd633;
+        transition: color .3s;
+        transition: background-color .3s;
+        i {
+          color: white;
+        }
+      }
     }
   }
 }
