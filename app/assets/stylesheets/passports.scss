@@ -1,5 +1,36 @@
 @import "variables";
 //passport_show
+.passport_select{
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-left: 2.5%;
+  .btn-false{
+    height: 50px;
+    width: 100px;
+    color: $primary-color;
+    background-color: white;
+    border: solid 1px $primary-color;
+    border-radius: 5px;
+    &:hover{
+      background-color: $primary-color;
+      color: white;
+      transition: background-color .3s;
+      transition: color .3s;
+    }
+  }
+  .btn-true{
+    height: 50px;
+    width: 100px;
+    color: white;
+    background-color: $primary-color;
+    border: solid 1px $primary-color;
+    border-radius: 5px;
+    &:hover{
+      opacity: 0.7;
+      transition: opacity .3s;
+    }
+  }
+}
 .passport {
   .container {
     width: 810px;

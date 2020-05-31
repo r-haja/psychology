@@ -1,9 +1,15 @@
 <% @passports.each do |passport| %>
   <% if passport.achievement != true %>
+  <div class="passport_select">
     <%= form_with scope: resource, as: resource_name, url: registration_path(resource_name), method: :patch do |f| %>
       <%= f.hidden_field :select_passport, value: passport.id %>
-      <%= f.submit passport.id %>
+      <% if passport.id == current_user.select_passport %>
+        <%= f.submit passport.goal, class: "btn-true" %>
+      <% else %>
+        <%= f.submit passport.goal, class: "btn-false" %>
+      <% end %>
     <% end %>
+  </div>
   <% end %>
 <% end %>
 <% @passports.each do |passport| %>
