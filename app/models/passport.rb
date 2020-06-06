@@ -6,6 +6,17 @@ class Passport < ApplicationRecord
 
   has_many :passport_psychologies
   has_many :psychologies, through: :passport_psychologies
+
+  delegate :start_time,
+           :end_time,
+           :to => :plan,
+           :prefix => true
+
+  delegate :name,
+           :profile_image,
+           :to => :user,
+           :prefix => true
+
   accepts_nested_attributes_for :passport_psychologies
 
   validates :purpose, presence: true
@@ -14,8 +25,12 @@ class Passport < ApplicationRecord
   mount_uploader :passport_image, PassportImageUploader
   accepts_nested_attributes_for :plans, allow_destroy: true
 
-  def self.start_time(id)
-    passport = find_by(id)
-    passport.plans.first.start_time
+  def start_time(passport)
+    plans.first.start_time_to_s(passport)
   end
+
+  def end_time(passport)
+    plans.first.end_time_to_s(passport)
+  end
+
 end

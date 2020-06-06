@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_05_30_093059) do
 
-  create_table "admins", force: :cascade do |t|
+  create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -25,39 +25,39 @@ ActiveRecord::Schema.define(version: 2020_05_30_093059) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "comments", force: :cascade do |t|
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "comment", null: false
-    t.integer "post_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "post_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "genres", force: :cascade do |t|
+  create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "passport_psychologies", force: :cascade do |t|
-    t.integer "passport_id"
-    t.integer "psychology_id"
+  create_table "passport_psychologies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "passport_id"
+    t.bigint "psychology_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["passport_id"], name: "index_passport_psychologies_on_passport_id"
     t.index ["psychology_id"], name: "index_passport_psychologies_on_psychology_id"
   end
 
-  create_table "passports", force: :cascade do |t|
+  create_table "passports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "purpose", null: false
     t.string "goal", null: false
     t.string "passport_image"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "genre_id"
+    t.bigint "genre_id"
     t.integer "rate"
     t.integer "week_rate"
     t.boolean "achievement"
@@ -67,33 +67,33 @@ ActiveRecord::Schema.define(version: 2020_05_30_093059) do
     t.index ["user_id"], name: "index_passports_on_user_id"
   end
 
-  create_table "photos", force: :cascade do |t|
+  create_table "photos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "post_image"
-    t.integer "post_id", null: false
+    t.bigint "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_photos_on_post_id"
   end
 
-  create_table "plans", force: :cascade do |t|
+  create_table "plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "start_time"
     t.datetime "end_time"
-    t.integer "passport_id"
+    t.bigint "passport_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["passport_id"], name: "index_plans_on_passport_id"
   end
 
-  create_table "posts", force: :cascade do |t|
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "discription"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "psychologies", force: :cascade do |t|
+  create_table "psychologies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -101,19 +101,19 @@ ActiveRecord::Schema.define(version: 2020_05_30_093059) do
     t.string "discription_image"
   end
 
-  create_table "schedules", force: :cascade do |t|
+  create_table "schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "day"
     t.boolean "comprate"
-    t.integer "passport_id"
+    t.bigint "passport_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.integer "judgment"
     t.index ["passport_id"], name: "index_schedules_on_passport_id"
     t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -128,8 +128,19 @@ ActiveRecord::Schema.define(version: 2020_05_30_093059) do
     t.boolean "email_magazine", default: true, null: false
     t.boolean "release", default: true
     t.integer "select_passport"
-    t.index ["email"], name: "index_users_on_email", unique: true, where: "(deleted_at IS NULL)"
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
+  add_foreign_key "passport_psychologies", "passports"
+  add_foreign_key "passport_psychologies", "psychologies"
+  add_foreign_key "passports", "genres"
+  add_foreign_key "passports", "users"
+  add_foreign_key "photos", "posts"
+  add_foreign_key "plans", "passports"
+  add_foreign_key "posts", "users"
+  add_foreign_key "schedules", "passports"
+  add_foreign_key "schedules", "users"
 end

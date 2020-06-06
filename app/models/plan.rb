@@ -19,4 +19,11 @@ class Plan < ApplicationRecord
   #    errors.add(:start_time, "の日付を正しく記入してください。")
   #  end
   #end
+
+  def start_time_to_s(passport_id)
+    start_time.strftime("%Y-%m-%d")
+  end
+  def end_time_to_s(passport)
+    end_time.strftime("%Y-%m-%d")
+  end
 end
