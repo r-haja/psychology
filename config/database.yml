@@ -28,4 +28,10 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  database: psychology_production
+  port: 3306
+  username: admin
+  password: DumboAppPass
+  host: psychology-mysql.cjpaokrcqx5s.ap-northeast-1.rds.amazonaws.com
