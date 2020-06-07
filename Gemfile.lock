@@ -579,7 +579,7 @@ DEPENDENCIES
   rspec-rails (~> 3.6.0)
   sass-rails (~> 5.0)
   selenium-webdriver
-  simple_calendar
+  simple_calendar (= 2.3.0)
   spring
   spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)

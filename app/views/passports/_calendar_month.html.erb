@@ -32,7 +32,7 @@
             <%= form_with model: [current_user, passport, schedule], remote: true do |f| %>
               <%= f.hidden_field :passport_id, value: passport.id %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.hidden_field :day, value: date %>
+              <%= f.hidden_field :day, value: date.strftime("%Y-%m-%d") %>
               <% if schedule.judgment == 1 %>
                 <%= f.submit "例外日", class: "passportEdit skip" %>
                 <%= f.submit "取り消し", class: "passportEdit fail" %>
