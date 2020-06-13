@@ -12,56 +12,68 @@
   border-radius: 5px;
 }
 
-.beforeForm .container {
-  padding-top: 120px;
-  padding-bottom: 100px;
-}
-
-.beforeForm__contents {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  h1 {
-    margin-bottom: 30px;
-    font-size: 18px;
-    font-weight: bold
+.beforeForm {
+  .container {
+    padding-top: 120px;
+    padding-bottom: 100px;
   }
-  form {
-    text-align: center;
+  &__contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1 {
+      margin-bottom: 30px;
+      font-size: 18px;
+      font-weight: bold
+    }
+    form {
+      text-align: center;
+    }
+    .form-group {
+      width: 300px;
+      height: 40px;
+      margin-bottom: 20px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .form-control {
+      padding: 6px 15px;
+      border: 1px solid #969899;
+      border-radius: 5px;
+      font-size: inherit;
+    }
+    .btn {
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      width: 235px;
+      height: 44px;
+      margin-top: 5px;
+      background-color: $primary-color;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 16px;
+    }
+    .btn:hover {
+      cursor: pointer;
+    }
+    p {
+      margin-top: 20px;
+      a {
+        margin-left: 15px;
+        color: $primary-color;
+        text-decoration: none;
+      }
+    }
   }
-  .form-group {
-    width: 300px;
-    height: 40px;
+  .alert-warning {
+    width: 100%;
     margin-bottom: 20px;
-  }
-  .form-control {
-    padding: 6px 15px;
-    border: 1px solid #969899;
-    border-radius: 5px;
-    font-size: inherit;
-  }
-  .btn {
-    display: inline-block;
-    vertical-align: middle;
-    text-align: center;
-    width: 235px;
-    height: 44px;
-    margin-top: 5px;
-    background-color: $primary-color;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 16px;
-  }
-  .btn:hover {
-    cursor: pointer;
-  }
-  p {
-    margin-top: 20px;
-    a {
-      margin-left: 15px;
-      color: $primary-color;
-      text-decoration: none;
+    ul {
+      margin-bottom: 0;
+      padding-left: 20px;
+      text-align: left;
     }
   }
 }

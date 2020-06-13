@@ -2,7 +2,7 @@
 body{
   background-color: #F7F7F7;
   font-size: 16px;
-  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   color: #333333;
 }
 footer{
@@ -76,10 +76,39 @@ a:hover {
 
 // フラッシュメッセージ
 .alert {
+  position: relative;
   width: 810px;
   margin: 0 auto;
   margin-bottom: 20px;
+  button.close {
+    position: absolute;
+    right: 20px;
+    top: calc(50% - 3px);
+    transform: translate(0, -50%);
+  }
 }
+
+.modal .alert {
+  width: 100%;
+  ul {
+    padding-left: 15px;
+    margin-bottom: 0;
+  }
+}
+
+// スクロールトップ
+i.js-pagetop {
+  position: fixed;
+  bottom: 5%;
+  right: 8%;
+  font-size: 20px;
+  cursor: pointer;
+  @media screen and(min-width:850px) {
+    right: calc(50% - 440px); 
+  }
+}
+
+
 
 // モーダル（共通）
 .modal-header,
@@ -227,6 +256,7 @@ a:hover {
 // モーダル（カレンダー記録）
 .record {
   z-index: 20;
+  font-size: 16px;
   .modal-content {
     padding: 0;
   }
@@ -305,5 +335,6 @@ a:hover {
     border-right: none;
     border-left: none;
     margin-bottom: 5px;
+    font-size: 14px;
   }
 }
