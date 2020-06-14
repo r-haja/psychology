@@ -34,8 +34,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    passport = Passport.find_by(id: params[:user][:select_passport])
-    user_passports_path(passport.user)
+    user_passports_path(resource)
   end
 
   def authenticate_scope!

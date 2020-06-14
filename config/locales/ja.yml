@@ -233,6 +233,8 @@ ja:
               confirmation: "を入力してください。"
             age:
               blank: "を入力してください。"
+            sex:
+              blank: "を入力してください。"
 
         psychology:
           attributes:
