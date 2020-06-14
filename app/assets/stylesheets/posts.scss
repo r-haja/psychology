@@ -236,6 +236,7 @@
 }
 @media screen and (max-width: 750px) {
   .newPost {
+    z-index: 1100;
     .modal-dialog{
       margin: 0;
       height: 100%;

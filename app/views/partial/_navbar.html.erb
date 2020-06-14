@@ -1,4 +1,5 @@
 <nav>
+
   <% if user_signed_in? %>
     <%= link_to user_passports_path(current_user), class: "passport" do %>
       <%= image_tag "img_logo.png", class: "logo" %>
@@ -8,15 +9,23 @@
       <%= image_tag "img_logo.png", class: "logo" %>
     <% end %>
   <% end %>
+
   <div class="menu">
+
     <% if user_signed_in? && controller.controller_name == 'posts' %>
       <div class="menu__action">
-      <%= link_to user_passports_path(current_user), class: "passport" do %>
-        <%= image_tag "icon_passport.png" %>
-      <% end %>
-      <%= link_to psychologies_path, class: "methods" do %>
-          <%= image_tag "icon_methods.png" %>
-        <% end %>
+        <div id="actionWrap"></div>
+        <div id="action">
+          <div id="actionClose"><span></span></div>
+          <%= link_to user_passports_path(current_user), class: "passport" do %>
+            <span class="actionIcon"><%= image_tag "icon_passport.png" %></span>
+            <span class="actionLabel">習慣パスポート</span>
+          <% end %>
+          <%= link_to psychologies_path, class: "methods" do %>
+            <span class="actionIcon"><%= image_tag "icon_methods.png" %></span>
+            <span class="actionLabel">習慣化方法一覧</span>
+          <% end %>
+          </div>
         <%= render "posts/new" %>
       </div>
       <div data-turbolinks="false" class="menu__status">
@@ -28,21 +37,29 @@
           </div>
         <% end %>
       </div>
+      <div id="hamburger"><span></span></div>
+
     <% elsif user_signed_in? && controller.controller_name == 'passports' && controller.action_name == 'index'  %>
       <div class="menu__action">
-        <%= link_to psychologies_path, class: "methods" do %>
-          <%= image_tag "icon_methods.png" %>
-        <% end %>
-        <%= link_to posts_path, class: "posts" do %>
-          <%= image_tag "icon_message.png" %>
-        <% end %>
-        <% if params[:user_id] == current_user.id.to_s %>
-          <%= link_to "習慣を作成",new_user_passport_path(current_user), class: "btn"  %>
-        <% else %>
-          <%= link_to user_passports_path(current_user), class: "passport" do %>
-            <%= image_tag "icon_passport.png" %>
+        <div id="actionWrap"></div>
+        <div id="action">
+          <div id="actionClose"><span></span></div>
+          <%= link_to psychologies_path, class: "methods" do %>
+            <span class="actionIcon"><%= image_tag "icon_methods.png" %></span>
+            <span class="actionLabel">習慣化方法一覧</span>
           <% end %>
-        <% end %>
+          <%= link_to posts_path, class: "posts" do %>
+            <span class="actionIcon"><%= image_tag "icon_message.png" %></span>
+            <span class="actionLabel">メッセージ</span>
+          <% end %>
+          <% if params[:user_id] == current_user.id.to_s %>
+            <%= link_to "習慣を作成",new_user_passport_path(current_user), class: "btn"  %>
+          <% else %>
+            <%= link_to user_passports_path(current_user), class: "passport" do %>
+              <%= image_tag "icon_passport.png" %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
       <div data-turbolinks="false" class="menu__status">
         <%= render "users/show" %>
@@ -53,21 +70,29 @@
           </div>
         <% end %>
       </div>
+      <div id="hamburger"><span></span></div>
+
     <% elsif user_signed_in? %>
       <div class="menu__action">
-        <%= link_to user_passports_path(current_user), class: "passport" do %>
-          <%= image_tag "icon_passport.png" %>
-        <% end %>
-        <%= link_to psychologies_path, class: "methods" do %>
-          <%= image_tag "icon_methods.png" %>
-        <% end %>
-        <%= link_to posts_path, class: "posts" do %>
-          <%= image_tag "icon_message.png" %>
-        <% end %>
+        <div id="actionWrap"></div>
+        <div id="action">
+          <div id="actionClose"><span></span></div>
+          <%= link_to user_passports_path(current_user), class: "passport" do %>
+            <span class="actionIcon"><%= image_tag "icon_passport.png" %></span>
+            <span class="actionLabel">習慣パスポート</span>
+          <% end %>
+          <%= link_to psychologies_path, class: "methods" do %>
+            <span class="actionIcon"><%= image_tag "icon_methods.png" %></span>
+            <span class="actionLabel">習慣化方法一覧</span>
+          <% end %>
+          <%= link_to posts_path, class: "posts" do %>
+            <span class="actionIcon"><%= image_tag "icon_message.png" %></span>
+            <span class="actionLabel">メッセージ</span>
+          <% end %>
+        </div>
       </div>
       <div data-turbolinks="false" class="menu__status">
         <%= render "users/show" %>
-
         <%# link_to  user_path(current_user), class: "user" do %>
           <div class="userIcon">
             <%# if current_user.profile_image.file %>
@@ -87,6 +112,8 @@
           </div>
         <% end %>
       </div>
+      <div id="hamburger"><span></span></div>
+      
     <% elsif admin_signed_in? %>
       <div class="menu__user">
         <div class="userName">
@@ -94,8 +121,21 @@
           <%= link_to "サインアウト", destroy_admin_session_path, method: :delete, class: "home-btn btn btn-outline-dangger" %>
         </div>
       </div>
+
     <% else %>
       <%= link_to "ログイン", new_user_session_path %>
     <% end %>
+
   </div>
 </nav>
+
+<script>
+  $('#hamburger').on('click', function(){
+    $('#actionWrap').show();
+    $('#action').css({'right' : '0'});
+  });
+  $('#actionWrap, #actionClose').on('click', function(){
+    $('#actionWrap').hide();
+    $('#action').css({'right' : '-250px'});
+  });
+</script>
