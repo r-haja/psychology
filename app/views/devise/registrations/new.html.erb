@@ -13,7 +13,16 @@
         </div>
 
         <div class="form-group">
-          <%= f.text_field :name, autofocus: true, placeholder: "フルネーム", class: "form-control" %>
+          <%= f.text_field :name, autofocus: true, placeholder: "ネーム", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :age, "生年月日" %>
+          <%= f.date_field :age, autofocus: true, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.select :sex,[["男性", "男性"], ["女性", "女性"], ["その他", "その他"]], autofocus: true, placeholder: "性別", class: "form-control" %>
         </div>
 
         <div class="form-group">

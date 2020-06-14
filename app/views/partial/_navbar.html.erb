@@ -9,7 +9,7 @@
     <% end %>
   <% end %>
   <div class="menu">
-    <% if user_signed_in? && controller.controller_name == 'posts' && controller.action_name == 'index'  %>
+    <% if user_signed_in? && controller.controller_name == 'posts' %>
       <div class="menu__action">
       <%= link_to user_passports_path(current_user), class: "passport" do %>
         <%= image_tag "icon_passport.png" %>

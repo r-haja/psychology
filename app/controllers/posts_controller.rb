@@ -17,7 +17,9 @@ class PostsController < ApplicationController
       flash[:notice] = "投稿しました！"
     else
       flash[:alert] = "入力誤りがあります。再度記入してください。"
-      redirect_to posts_path
+      @posts = Post.includes(:photos, :user).order("created_at DESC").
+                page(params[:page]).per(15)
+      render :index
     end
   end
 

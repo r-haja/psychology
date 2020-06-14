@@ -12,10 +12,26 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true"></span>
             </button>
-            <% if passport.passport_image.file.nil? %>
-              <%= image_tag 'img_passport_header.jpg' %>
-            <% else %>
-              <%= image_tag passport.passport_image.url %>
+            <% if passport.genre.name == "運動" %>
+              <%= image_tag 'img_passport_header_1.png' %>
+            <% elsif passport.genre.name == "実践" %>
+              <%= image_tag 'img_passport_header_2.png' %>
+            <% elsif passport.genre.name == "睡眠" %>
+              <%= image_tag 'img_passport_header_3.png' %>
+            <% elsif passport.genre.name == "早起き" %>
+              <%= image_tag 'img_passport_header_4.png' %>
+            <% elsif passport.genre.name == "勉強" %>
+              <%= image_tag 'img_passport_header_5.png' %>
+            <% elsif passport.genre.name == "読書" %>
+              <%= image_tag 'img_passport_header_6.png' %>
+            <% elsif passport.genre.name == "ダイエット" %>
+              <%= image_tag 'img_passport_header_7.png' %>
+            <% elsif passport.genre.name == "瞑想" %>
+              <%= image_tag 'img_passport_header_8.png' %>
+            <% elsif passport.genre.name == "家事" %>
+              <%= image_tag 'img_passport_header_9.png' %>
+            <% elsif passport.genre.name == "悪い習慣" %>
+              <%= image_tag 'img_passport_header_10.png' %>
             <% end %>
           </div>
 

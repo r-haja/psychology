@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_30_093059) do
+ActiveRecord::Schema.define(version: 2020_06_14_023113) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -84,9 +84,9 @@ ActiveRecord::Schema.define(version: 2020_05_30_093059) do
     t.index ["passport_id"], name: "index_plans_on_passport_id"
   end
 
-  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title"
-    t.string "discription"
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "title"
+    t.text "discription"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -128,6 +128,8 @@ ActiveRecord::Schema.define(version: 2020_05_30_093059) do
     t.boolean "email_magazine", default: true, null: false
     t.boolean "release", default: true
     t.integer "select_passport"
+    t.datetime "age"
+    t.string "sex"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
   scope :without_soft_deleted, -> { where(deleted_at: nil) }
 
+  validates :age, presence: true
+  validates :sex, presence: true
   validates_uniqueness_of :email, scope: :deleted_at
   validates_format_of :email, with: Devise.email_regexp, if: :will_save_change_to_email?
   validates :password, presence: true, confirmation: true, length: { in: Devise.password_length }, on: :create
