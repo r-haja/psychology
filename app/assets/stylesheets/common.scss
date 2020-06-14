@@ -179,6 +179,8 @@ i.js-pagetop {
       }
     }
     input {
+      display: flex;
+      align-items: center;
       border: none;
       height: 32px;
       margin-bottom: 0;
