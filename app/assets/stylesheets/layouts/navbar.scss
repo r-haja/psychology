@@ -44,6 +44,14 @@ nav {
         background-color: #fff;
         font-size: 14px;
         line-height: 1.2;
+        &--post {
+          position: fixed;
+          bottom: 20px;
+          left: calc(50% + 440px);
+          background-color: $primary-color;
+          color: #fff;
+          font-size: 16px;
+        }
       }
       .passport,
       .methods {
@@ -101,25 +109,107 @@ nav {
   }
 }
 
+@media screen and (min-width: 751px){
+  nav {
+    .actionLabel {
+      display: none;
+    }
+  }
+}
+
 @media screen and (max-width: 750px){
   nav {
-    height: 85px;
+    height: 55px;
     margin-top: 20px;
     align-items: flex-start;
     .menu {
-      flex-direction: column;
-      align-items: flex-end;
       &__status {
-        margin-bottom: 10px;
+        .user {
+          margin-right: 20px;
+        }
       }
       &__action {
+        z-index: 1050;
         order: 2;
         a {
           margin-right: 15px;
+          margin-bottom: 20px;
+          color: #333333;
+          &:last-child {
+            margin-bottom: 0;
+          }
         }
         .btn {
           margin-right: 0;
-          padding: 5px 8px;
+          margin-bottom: 0;
+          font-size: 16px;
+          &--post {
+            bottom: 20px;
+            left: 50%;
+            transform: translate(-50%,0);
+            width: 80%;
+            padding: 10px;
+            background-color: #F9703E;
+            color: #fff;
+          }
+        }
+        .passport,
+        .methods,
+        .posts {
+          width: 100%;
+        }
+        .actionIcon {
+          display: inline-block;
+          width: 25px;
+          margin-right: 10px;
+          img {
+            width: 100%;;
+          }
+        }
+        #actionWrap {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: transparent;
+        }
+        #action {
+          display: flex;
+          position: fixed;
+          top: 0;
+          right: -250px;
+          transition: 0.2s;
+          flex-direction: column;
+          padding: 30px;
+          background-color: #fff;
+          box-shadow: -2px 5px 20px -5px rgba(0, 0, 0, 0.1);
+          #actionClose {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            margin-left: auto;
+            margin-bottom: 20px;
+            span::before, span::after {
+              content: "";
+              display: block;
+              width: 100%;
+              height: 2px;
+              background: #333333;
+              transform: rotate(45deg);
+              transform-origin:0% 50%;
+              position: absolute;
+              top: 14%;
+              left: 15%;
+            }
+            span::after {
+                transform: rotate(-45deg);
+                transform-origin:100% 50%;
+                left: auto;
+                right: 14%;
+            }
+          }
         }
       }
       &__user {
@@ -128,6 +218,30 @@ nav {
           height: 30px;
         }
       }
+    }
+    #hamburger {
+      display: inline-block;
+      width: 30px;
+      height: 22px;
+      vertical-align: middle;
+    }
+    #hamburger span,
+    #hamburger span:before,
+    #hamburger span:after {
+      position: absolute;
+      height: 3px;/*線の太さ*/
+      width: 25px;/*長さ*/
+      border-radius: 3px;
+      background: #555;
+      display: block;
+      content: '';
+      cursor: pointer;
+    }
+    #hamburger span:before {
+      bottom: -8px;
+    }
+    #hamburger span:after {
+      bottom: -16px;
     }
   }
   .navbar{
