@@ -143,41 +143,27 @@
 }
 
 //SNS New画面
-.modal{
+.newPost {
   .modal-dialog{
     .modal-content{
+      .modal-title {
+        i{
+          font-size: 1.5em;
+          margin-right: 5px;
+        }
+      }
       .modal-body{
         .PostNew{
           margin: 0 auto;
           text-align: center;
-          width: 80%;
-          &__header{
-            margin-left: -20px;
-            display: flex;
-            i{
-              font-size: 2em;
-            }
-            p{
-              margin-left: 10px;
-              margin-top: 7px;
-              font-weight: bold;
-
-            }
-          }
           &__form{
-            margin-top: 20px;
             .form-group{
-              margin-top: 10px;
-              .form-control{
-
-              }
+              margin-bottom: 20px;
               .disc{
                 height: 100px;
               }
             }
             .image{
-              margin-top: 20px;
-              margin-left: 60px;
               .form-group{
                 #PostPreview{
                   animation: fadeIn 1s;
@@ -195,8 +181,10 @@
                   display: block;
                   width: 255px;
                   height: 40px;
+                  margin-left: auto;
+                  margin-right: auto;
                   border-radius: 5px;
-                  border: 2px solid;
+                  border: 1px solid;
                   border-color: $primary-color;
                   display: flex;
                   justify-content: center;
@@ -215,6 +203,7 @@
           &__btn{
             width: 255px;
             height: 40px;
+            border: none;
             border-radius: 5px;
             background-color: $primary-color;
             color: white;
@@ -228,21 +217,42 @@
       }
     }
   }
+  #post_title,
+  #post_description {
+    border: none;
+    border-radius: 0;
+  }
+  #post_title {
+    border-bottom: 1px solid #ced4da;
+  }
+  input[type="text"]:focus {
+    border: none;
+    outline: none;
+  }
+  textarea:focus {
+    border: none;
+    outline: none;
+  }
 }
 @media screen and (max-width: 750px) {
-  .modal{
+  .newPost {
     .modal-dialog{
+      margin: 0;
+      height: 100%;
       .modal-content{
+        height: 100%;
+        border: none;
+        border-radius: 0;
         .modal-body{
+          padding: 0;
           .PostNew{
-            width: 90%;
+            width: 100%;
             &__header{
               margin-left: -10px;
             }
             &__form{
               .image{
                 width: 100%;
-                margin-left: 21px;
                 .form-group{
                   #PostPreview{
                     margin-left: -45px;
