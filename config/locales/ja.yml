@@ -190,6 +190,8 @@ ja:
         name: "名前"
         email: "メールアドレス"
         password: "パスワード"
+        age: "生年月日"
+        sex: "性別"
         password_confirmation: "パスワードの確認"
       psychology:
         title: "タイトル"
@@ -229,6 +231,8 @@ ja:
               invalid: 'は半角英数字のみ有効です。'
             password_confirmation:
               confirmation: "を入力してください。"
+            age:
+              blank: "を入力してください。"
 
         psychology:
           attributes:
