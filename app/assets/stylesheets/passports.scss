@@ -17,12 +17,12 @@
   .btn-false{
     height: 36px;
     width: 100px;
-    color: $primary-color;
+    color: $accent-color;
     background-color: white;
-    border: solid 1px $primary-color;
+    border: solid 1px $accent-color;
     border-radius: 5px;
     &:hover{
-      background-color: $primary-color;
+      background-color: $accent-color;
       color: white;
       transition: background-color .3s;
       transition: color .3s;
@@ -32,8 +32,8 @@
     height: 36px;
     width: 100px;
     color: white;
-    background-color: $primary-color;
-    border: solid 1px $primary-color;
+    background-color: $accent-color;
+    border: solid 1px $accent-color;
     border-radius: 5px;
     &:hover{
       opacity: 0.7;

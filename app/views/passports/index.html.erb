@@ -1,4 +1,5 @@
 <div class="selection">
+  <% i = 1 %>
   <% @passports.each do |passport| %>
     <% if passport.user_id == current_user.id %>
       <div class="passport_select">
@@ -7,9 +8,9 @@
 
             <%= f.hidden_field :select_passport, value: passport.id %>
             <% if passport.id == passport.user.select_passport %>
-              <%= f.submit passport.goal, class: "btn-true" %>
+              <%= f.submit "習慣化 #{i}", class: "btn-true" %>
             <% else %>
-              <%= f.submit passport.goal, class: "btn-false" %>
+              <%= f.submit "習慣化 #{i}", class: "btn-false" %>
             <% end %>
           <% end %>
         <% else %>
@@ -19,6 +20,7 @@
         <% end %>
       </div>
     <% end %>
+    <% i += 1 %>
   <% end %>
 </div>
 <% @passports.each do |passport| %>
