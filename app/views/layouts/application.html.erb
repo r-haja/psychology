@@ -15,7 +15,9 @@
   <body>
     <div class="wrapper">
       <%= render 'partial/navbar' %>
-      <%= render 'partial/flash' %>
+      <% if flash[:notice] != "アカウント情報を変更しました。" %>
+        <%= render 'partial/flash' %>
+      <% end %>
       <%= yield %>
       <% if user_signed_in? || admin_signed_in? %>
         <%= render 'partial/footer' %>
