@@ -5,10 +5,10 @@
         <%= render 'partial/error_messages', model: f.object %>
         <div class="usericon">
           <% if current_user.profile_image.file.nil? %>
-              <%= image_tag 'icon_default_user.png', class: "round-img" %>
-            <% else %>
-              <%= image_tag current_user.profile_image.url, class: "round-img" %>
-            <% end %>
+            <%= image_tag 'icon_default_user.png', class: "round-img" %>
+          <% else %>
+            <%= image_tag current_user.profile_image.url, class: "round-img" %>
+          <% end %>
           <div class="form-group">
             <%= f.label :profile_image, "画像をアップロード", class: "image_input_btn" %>
             <%= f.file_field :profile_image, class: "form-control image_input_tag" %>
@@ -16,12 +16,12 @@
         </div>
 
         <div class="form-group">
-          <%= f.label :name, "ユーザー名" %>
+          <%= f.label :name, "ユーザー名", class: "label" %>
           <%= f.text_field :name, autofocus: true, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :email, "Email" %>
+          <%= f.label :email, "Email", class: "label" %>
           <%= f.email_field :email, autofocus: true, class: "form-control" %>
           <!--
           <%= f.check_box :email_magazine %>　
@@ -30,12 +30,12 @@
         </div>
 
         <div class="form-group">
-          <%= f.label :password, "パスワード" %>
+          <%= f.label :password, "パスワード ※変更する場合", class: "label" %>
           <%= f.password_field :password, autofocus: "true", class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :password_confirmation, "パスワード（確認用）" %>
+          <%= f.label :password_confirmation, "パスワード（確認用）", class: "label" %>
           <%= f.password_field :password_confirmation, autofocus: "off", class: "form-control" %>
         </div>
 

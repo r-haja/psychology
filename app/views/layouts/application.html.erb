@@ -16,6 +16,7 @@
     <div class="wrapper">
       <%= render 'partial/navbar' %>
       <% if flash[:notice] != "アカウント情報を変更しました。" %>
+
         <%= render 'partial/flash' %>
       <% end %>
       <%= yield %>

@@ -225,12 +225,13 @@ ja:
             email:
               blank: 'を入力してください。'
               taken: 'は既に登録されています。'
+              invalid: 'を入力してください。'
             password:
               blank: 'を入力してください。'
               too_short: 'は6以上で設定してください。'
               invalid: 'は半角英数字のみ有効です。'
             password_confirmation:
-              confirmation: "を入力してください。"
+              confirmation: "とパスワードが一致しません。"
             age:
               blank: "を入力してください。"
             sex:
