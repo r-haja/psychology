@@ -7,4 +7,8 @@ class Post < ApplicationRecord
   validates :discription, presence: true, length: {maximum: 500}
 
   accepts_nested_attributes_for :photos
+
+  def post_user_not_deleted?(post)
+    post.user.deleted_at == nil
+  end
 end

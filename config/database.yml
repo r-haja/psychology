@@ -5,12 +5,14 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  #adapter: sqlite3
+  #pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  #timeout: 5000
+  adapter: mysql2
+
 
 development:
-  <<: *default
+  #<<: *default
   adapter: mysql2
   encoding: utf8mb4
   charset: utf8mb4
@@ -26,7 +28,11 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: psychology_test
+  username: dumbo
+  password: DumboAppPass
+  host: localhost
+  #database: db/test.sqlite3
 
 production:
   <<: *default

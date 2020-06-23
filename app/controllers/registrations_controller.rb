@@ -7,6 +7,8 @@ class RegistrationsController < Devise::RegistrationsController
     set_flash_message :notice, :destroyed
     yield resource if block_given?
     respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
+    resource.update(email: resource.deleted_at.to_i.to_s + '_' + resource.email.to_s)
+    resource.update(name: resource.deleted_at.to_i.to_s + '_' + resource.name.to_s)
   end
 
   def update

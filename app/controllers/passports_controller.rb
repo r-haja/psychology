@@ -32,6 +32,8 @@ class PassportsController < ApplicationController
   def create
     @passport = current_user.passports.new(passport_params)
     if @passport.save
+      current_user.select_passport = @passport.id
+      current_user.save
       flash[:notice] = "習慣化パスポートを保存しました！"
       redirect_to user_passports_path(current_user)
     else

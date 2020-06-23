@@ -70,4 +70,8 @@ class User < ApplicationRecord
       self.email_magazine ||= true
       self.release ||= true
     end
+
+    def email_soft_deleted_checked
+
+    end
 end

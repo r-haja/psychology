@@ -1,59 +1,61 @@
 <div class="col-md-8 col-md-2 mx-auto">
   <% @posts.each do |post| %>
-    <div class="card-wrap">
-      <div class="card">
-        <div class="card-header align-items-center d-flex">
-          <%= link_to user_passports_path(post.user.id), class: "no-text-decoration" do %>
-            <% if post.user.profile_image.file.nil? %>
-              <%= image_tag 'icon_default_user.png', class: "post-profile-icon" %>
-            <% else %>
-              <%= image_tag post.user.profile_image.url, class: "post-profile-icon" %>
+    <% if post.post_user_not_deleted?(post) %>
+      <div class="card-wrap">
+        <div class="card">
+          <div class="card-header align-items-center d-flex">
+            <%= link_to user_passports_path(post.user.id), class: "no-text-decoration" do %>
+              <% if post.user.profile_image.file.nil? %>
+                <%= image_tag 'icon_default_user.png', class: "post-profile-icon" %>
+              <% else %>
+                <%= image_tag post.user.profile_image.url, class: "post-profile-icon" %>
+              <% end %>
             <% end %>
-          <% end %>
-          <%= link_to user_passports_path(post.user.id), class: "black-color no-text-decoration",　title: post.user.name do %>
-            <strong><%= post.user.name %></strong>
-          <% end %>
+            <%= link_to user_passports_path(post.user.id), class: "black-color no-text-decoration",　title: post.user.name do %>
+              <strong><%= post.user.name %></strong>
+            <% end %>
 
-          <% post_achievement = post.user.passports.where(achievement: true).count %>
-          <% if post_achievement >= 1 %>
-            <div class="userAchievement">
-              <i class="fas fa-star"></i>
-              <p><%= post_achievement %></p>
-            </div>
+            <% post_achievement = post.user.passports.where(achievement: true).count %>
+            <% if post_achievement >= 1 %>
+              <div class="userAchievement">
+                <i class="fas fa-star"></i>
+                <p><%= post_achievement %></p>
+              </div>
+            <% end %>
+            <% if post.user.id == current_user.id %>
+                <%= link_to post_path(post), class: "trash" , method: :delete, data: {confirm: "あなたの投稿を削除します。本当に削除してよろしいですか？"} do %>
+                  <%= image_tag 'icon_trash.png' %>
+                <% end %>
+            <% end %>
+          </div>
+          <% if post.photos.first.nil? %>
+          <% else %>
+            <%= image_tag post.photos.first.post_image.url, class: "card-img-top" %>
           <% end %>
-          <% if post.user.id == current_user.id %>
-              <%= link_to post_path(post), class: "trash" , method: :delete, data: {confirm: "あなたの投稿を削除します。本当に削除してよろしいですか？"} do %>
-                <%= image_tag 'icon_trash.png' %>
-              <% end %>
-          <% end %>
-        </div>
-        <% if post.photos.first.nil? %>
-        <% else %>
-          <%= image_tag post.photos.first.post_image.url, class: "card-img-top" %>
-        <% end %>
-        <div class="card-body">
-          <div>
-            <span><h5><%= simple_format(post.title) %></h5></span>
-            <span><p><%= simple_format(post.discription) %></p></span>
-            <div id="comment-post-<%= post.id.to_s %>">
-              <%= render 'comment_list', {post: post} %>
-            </div>
-            <div class="light-color post-time no-text-decoration">
-              <%= time_ago_in_words(post.created_at).upcase %>前
-            </div>
+          <div class="card-body">
+            <div>
+              <span><h5><%= simple_format(post.title) %></h5></span>
+              <span><p><%= simple_format(post.discription) %></p></span>
+              <div id="comment-post-<%= post.id.to_s %>">
+                <%= render 'comment_list', {post: post} %>
+              </div>
+              <div class="light-color post-time no-text-decoration">
+                <%= time_ago_in_words(post.created_at).upcase %>前
+              </div>
 
-            <hr>
-            <div class="row actions" id="comment-form-post-<%= post.id.to_s %>">
-              <%= form_with model: [post, Comment.new], class: "w-100" do |f| %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.hidden_field :post_id, value: post.id %>
-                <%= f.text_field :comment, class: "form-control comment-input border-0", placeholder: "コメント ...", autocomplete: :off %>
-              <% end %>
+              <hr>
+              <div class="row actions" id="comment-form-post-<%= post.id.to_s %>">
+                <%= form_with model: [post, Comment.new], class: "w-100" do |f| %>
+                  <%= f.hidden_field :user_id, value: current_user.id %>
+                  <%= f.hidden_field :post_id, value: post.id %>
+                  <%= f.text_field :comment, class: "form-control comment-input border-0", placeholder: "コメント ...", autocomplete: :off %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
   <div class="paginate">
     <%= paginate @posts %>

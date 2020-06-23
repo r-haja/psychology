@@ -9,7 +9,9 @@
 User.create!(
   name: 'dumbo_test',
   email: 'dumbo@test.com',
-  password: 'password'
+  password: 'password',
+  age: '2020-01-03 00:00:00',
+  sex: "男性"
 )
 
 Admin.create!(
