@@ -4,7 +4,7 @@ class Passport < ApplicationRecord
   has_many :plans, dependent: :destroy
   has_many :schedules, dependent: :destroy
 
-  has_many :passport_psychologies
+  has_many :passport_psychologies, dependent: :destroy
   has_many :psychologies, through: :passport_psychologies
 
   delegate :start_time,
@@ -31,6 +31,12 @@ class Passport < ApplicationRecord
 
   def end_time(passport)
     plans.first.end_time_to_s(passport)
+  end
+
+  def passport_psychologies_default_set(passport)
+    if passport.genre.name = "運動"
+      passport.psychology_ids = 1
+    end
   end
 
 end

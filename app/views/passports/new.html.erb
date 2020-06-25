@@ -41,20 +41,20 @@
       <div class="modal-body">
         <%= render 'partial/error_messages', model: f.object %>
         <div class="form-group">
-          <label for="passport_purpose">何のために習慣化をしますか？</label>
-          <%= f.text_area :purpose, class: "form-control", placeholder: "（例）朝の時間を有効活用するため" %>
-        </div>
-        <div class="form-group">
-          <label for="passport_goal">そのために何をしますか？</label>
-          <%= f.text_area :goal, class: "form-control", placeholder: "（例）平日は朝7時に起きる" %>
-        </div>
-        <div class="form-group">
           <label for="passport_genre_id">ジャンルを選んでください</label>
           <div class="round round--genre arrow">
             <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "ジャンルを選択してください" do |b|%>
               <%= b.label {b.select + b.text} %>
             <% end %>
           </div>
+        </div>
+        <div class="form-group">
+          <label for="passport_purpose">何のために習慣化をしますか？</label>
+          <%= f.text_area :purpose, class: "form-control", placeholder: "（例）朝の時間を有効活用するため" %>
+        </div>
+        <div class="form-group">
+          <label for="passport_goal">そのために何をしますか？</label>
+          <%= f.text_area :goal, class: "form-control", placeholder: "（例）平日は朝7時に起きる" %>
         </div>
         <div class="form-group">
           <label>いつまでに習慣化しますか？</label>
@@ -81,3 +81,15 @@
     </div>
   </div>
 </div>
+
+<% if current_user.passports.count <= 1 %>
+  <script>
+    $(function(){
+      $('select').change(function(){
+        var val = $(this).val();
+        $('#passport_purpose').text(val);
+        $('#passport_goal').text(val);
+      })
+    })
+  </script>
+<% end %>

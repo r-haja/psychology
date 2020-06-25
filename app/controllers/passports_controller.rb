@@ -34,6 +34,7 @@ class PassportsController < ApplicationController
     if @passport.save
       current_user.select_passport = @passport.id
       current_user.save
+      @passport.passport_psychologies_default_set(@passport)
       flash[:notice] = "習慣化パスポートを保存しました！"
       redirect_to user_passports_path(current_user)
     else
