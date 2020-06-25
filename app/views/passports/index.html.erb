@@ -1,4 +1,4 @@
-<div class="selection">
+<div class="selection" data-step='1' data-intro='おめでとうございます！最初の習慣パスポートが作成されました。これから使い方をご説明していきます。<br>習慣が作成されると、ここにボタンが追加されていきます。'>
   <% i = 1 %>
   <% @passports.each do |passport| %>
     <% if passport.user_id == current_user.id %>
@@ -73,15 +73,15 @@
                   <p class="period"><%= passport.start_time(passport) %> 〜 <%= passport.end_time(passport) %></p>
                   <p class="genre"><%= passport.genre.name %></p>
                 </div>
-                <div class="habit__rate habit__rate<%= passport.id.to_s %>">
+                <div class="habit__rate habit__rate<%= passport.id.to_s %>" data-step='6' data-intro='達成率はパーセントで表示されます。月に57%以上の達成を目指しましょう！<br>説明は以上です。<br>それでは、新たな習慣づくりを一緒にスタートしましょう！'>
                   <%= render partial: "passports/rate", locals: {passport: passport} %>
                 </div>
                 <% if passport.user_id == current_user.id %>
                   <div class="habit__btn">
-                    <div class="achievement<%= passport.id.to_s %> achieveBtn">
+                    <div class="achievement<%= passport.id.to_s %> achieveBtn" data-step='5' data-intro='習慣化を達成できたなと思ったらこのボタンを押してください。習慣化パスポートが保存されます。'>
                       <%= render partial: "passports/achievement", locals: { passport: passport } %>
                     </div>
-                    <div class="edit<%= passport.id.to_s %>">
+                    <div class="edit<%= passport.id.to_s %>" data-step='4' data-intro='習慣化の内容を修正したい場合はこちらを押します。'>
                       <%= render partial: "passports/edit", locals:{passport: passport} %>
                     </div>
                     <%= link_to user_passport_path(current_user.id, passport.id), method: :delete, data: {confirm: "本当に削除してよろしいですか？"}, class: "trash" do %>
@@ -91,7 +91,7 @@
                 <% end %>
               </div>
               <% if passport.user_id == current_user.id %>
-                <div class="calendar">
+                <div class="calendar" data-step='2' data-intro='これから習慣を達成したら、カレンダーに記録していきましょう。日付を押すと「達成」「例外日」などを選択することができます。'>
                   <p class="calendar__label">習慣記録</p>
                   <i class="fas fa-chevron-circle-down"></i>
                   <div class="passport-calendar passport-calendar_month<%= passport.id.to_s %>" id="month" >
@@ -105,7 +105,7 @@
               <% end %>
             </div><!-- contents -->
             <div class="contents">
-              <div class="methods">
+              <div class="methods" data-step='3' data-intro='自分で選択した習慣化方法がここに表示されます。最初はオススメの方法が登録されているので、名前を押して詳細を見てみましょう。<br>習慣方法は「新規登録」から自由に選んで登録できます（複数選択可）。'>
                 <p class="methods__label">習慣化方法</p>
                 <%= render partial: "passports/psychology", collection: passport.psychologies, as: :psychology %>
                 <% if passport.user_id == current_user.id %>
@@ -151,6 +151,11 @@
 <% end %>
 
 <script>
+
+  document.addEventListener("DOMContentLoaded", function() {
+      introJs().start();
+  });
+
   $('.fa-chevron-circle-down').on('click', function(){
     if($('#week').hasClass('active')) {
       $('#week').removeClass('active');
