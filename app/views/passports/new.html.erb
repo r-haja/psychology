@@ -87,8 +87,13 @@
     $(function(){
       $('select').change(function(){
         var val = $(this).val();
-        $('#passport_purpose').text(val);
-        $('#passport_goal').text(val);
+        if (val == 1){
+          $('#passport_purpose').text("朝の時間を有効活用する為");
+          $('#passport_goal').text("朝は7時に起床する。");
+        }else if (val == 2){
+          $('#passport_purpose').text(val);
+          $('#passport_goal').text(val);
+        }
       })
     })
   </script>
