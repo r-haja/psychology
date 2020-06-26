@@ -150,10 +150,16 @@
   <% end %>
 <% end %>
 
+<div class="js-intro"><i class="fas fa-play-circle"></i> チュートリアルを見る</div>
+
 <script>
 
+  $('.js-intro').on('click',function(){
+    introJs().start();
+  });
+
   document.addEventListener("DOMContentLoaded", function() {
-      introJs().start();
+    introJs().start();
   });
 
   $('.fa-chevron-circle-down').on('click', function(){
