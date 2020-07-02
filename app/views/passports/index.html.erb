@@ -157,10 +157,13 @@
   $('.js-intro').on('click',function(){
     introJs().start();
   });
-
-  document.addEventListener("DOMContentLoaded", function() {
-    introJs().start();
-  });
+  <% if current_user.passport_first_create == nil %>
+    document.addEventListener("DOMContentLoaded", function() {
+      introJs().start();
+      <% current_user.passport_first_create = Time.now %>
+      <% current_user.save %>
+    });
+  <% end %>
 
   $('.fa-chevron-circle-down').on('click', function(){
     if($('#week').hasClass('active')) {

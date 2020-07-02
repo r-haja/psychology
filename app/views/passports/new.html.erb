@@ -82,18 +82,41 @@
   </div>
 </div>
 
-<% if current_user.passports.count <= 1 %>
+<% if current_user.passports.count < 1 %>
   <script>
     $(function(){
       $('select').change(function(){
         var val = $(this).val();
         if (val == 1){
-          $('#passport_purpose').text("朝の時間を有効活用する為");
-          $('#passport_goal').text("朝は7時に起床する。");
-        }else if (val == 2){
-          $('#passport_purpose').text(val);
-          $('#passport_goal').text(val);
+          $('#passport_purpose').text("健康的な生活を送るため");
+          $('#passport_goal').text("毎朝ランニングを３km以上する");
+        //実践を削除したため2は飛ばし
+        }else if (val == 3){
+          $('#passport_purpose').text("日中の活動を活発にするため、疲れを残さないため");
+          $('#passport_goal').text("毎日７時間の睡眠時間をとる");
+        }else if (val == 4){
+          $('#passport_purpose').text("朝の身支度に余裕をもつため");
+          $('#passport_goal').text("毎朝7時に起床をする");
+        }else if (val == 5){
+          $('#passport_purpose').text("英語を話せるようになるため");
+          $('#passport_goal').text("テキストを毎日１０ページ進める");
+        }else if (val == 6){
+          $('#passport_purpose').text("ビジネススキルをあげるため");
+          $('#passport_goal').text("自己啓発の本を2週間に１冊読む");
+        }else if (val == 7){
+          $('#passport_purpose').text("キレイなスタイルを手に入れるため");
+          $('#passport_goal').text("スイーツを食べない");
+        }else if (val == 8){
+          $('#passport_purpose').text("考え事を整理するため");
+          $('#passport_goal').text("毎朝５分間瞑想をする");
+        }else if (val == 9){
+          $('#passport_purpose').text("部屋をキレイに保つため");
+          $('#passport_goal').text("毎晩寝る前に部屋を片付ける");
+        }else if (val == 10){
+          $('#passport_purpose').text("自分の時間を作るため");
+          $('#passport_goal').text("22時以降はスマホを触らない");
         }
+        //その他文は作成しない。
       })
     })
   </script>

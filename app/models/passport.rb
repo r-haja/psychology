@@ -35,7 +35,23 @@ class Passport < ApplicationRecord
 
   def passport_psychologies_default_set(passport)
     if passport.genre.name = "運動"
-      passport.psychology_ids = 1
+  #    passport.psychology_ids = [4,9,10]
+    elsif passport.genre.name = "睡眠"
+      passport.psychology_ids = [2,7,11]
+    elsif passport.genre.name = "早起き"
+      passport.psychology_ids = [5,2,8]
+    elsif passport.genre.name = "勉強"
+      passport.psychology_ids = [1,3,7]
+    elsif passport.genre.name = "読書"
+      passport.psychology_ids = [1,3,4]
+    elsif passport.genre.name = "ダイエット"
+      passport.psychology_ids = [5,9,14]
+    elsif passport.genre.name = "瞑想"
+      passport.psychology_ids = []
+    elsif passport.genre.name = "家事"
+      passport.psychology_ids = [3,6,10]
+    elsif passport.genre.name = "悪い習慣"
+      passport.psychology_ids = [13,5,]
     end
   end
 

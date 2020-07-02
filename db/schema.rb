@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_14_023113) do
+ActiveRecord::Schema.define(version: 2020_07_02_112537) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2020_06_14_023113) do
     t.boolean "achievement"
     t.integer "month_rate"
     t.boolean "select_passport"
+    t.date "first_create"
     t.index ["genre_id"], name: "index_passports_on_genre_id"
     t.index ["user_id"], name: "index_passports_on_user_id"
   end
@@ -130,6 +131,7 @@ ActiveRecord::Schema.define(version: 2020_06_14_023113) do
     t.integer "select_passport"
     t.datetime "age"
     t.string "sex"
+    t.date "passport_first_create"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
