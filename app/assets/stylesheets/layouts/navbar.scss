@@ -16,6 +16,17 @@ nav {
     display: flex;
     align-items: center;
     margin-right: 20px;
+    .login {
+      padding: 6px 20px;
+      border: 1px solid $primary-color;
+      border-radius: 5px;
+      background-color: #fff;
+      color: $primary-color;
+      font-size: 14px;
+      &:hover {
+        text-decoration: none;
+      }
+    }
     ul {
       list-style: none;
       li {

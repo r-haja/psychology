@@ -1,9 +1,12 @@
 @import "variables";
-body{
+body {
   background-color: #F7F7F7;
   font-size: 16px;
   font-family: "Open Sans", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   color: #333333;
+}
+body.lp {
+  background-color: #fff; 
 }
 footer{
   p {
@@ -308,6 +311,18 @@ i.js-pagetop {
   i {
     font-size: 2em;
     margin-right: 10px;
+  }
+}
+
+// ランディングページ仕様
+.lp {
+  footer {
+    background-color: #f7f7f7;
+    margin: 0px;
+    padding: 20px 0;
+    p {
+      margin: 0;
+    }
   }
 }
 
