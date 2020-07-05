@@ -47,7 +47,7 @@ class Passport < ApplicationRecord
     elsif passport.genre.name = "ダイエット"
       passport.psychology_ids = [5,9,14]
     elsif passport.genre.name = "瞑想"
-      passport.psychology_ids = []
+      passport.psychology_ids = [3,4,8]
     elsif passport.genre.name = "家事"
       passport.psychology_ids = [3,6,10]
     elsif passport.genre.name = "悪い習慣"
