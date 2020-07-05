@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   def index
     @posts = current_user.posts.includes(:photos).order("created_at DESC").
               page(params[:page]).per(15)
+    flash[:notice] = "習慣化をしていく上で、反省点や良かった点をメモして残そう！"
   end
 
   def show
