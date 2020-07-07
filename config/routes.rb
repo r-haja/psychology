@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :users, only: %i(show) do
+    get "passport_comprated" => "passports#comprated"
     resources :passports, only: %i(index new create destroy edit update) do
       resources :schedules, only: %i(create destroy update)
     end

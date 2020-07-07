@@ -3,25 +3,11 @@ class PassportsController < ApplicationController
   before_action :passport_set, only: [:edit, :update, :destroy]
 
   def index
-    user = User.find_by(id: params[:user_id])
-    if user.id == current_user.id
-      if user.passports.present?
-        user_release?(user)
-      else
-        redirect_to new_user_passport_path(current_user)
-        flash[:notice] = "パスポートを作成しましょう！"
-      end
-    elsif user.release == true
-      if user.passports.present?
-        user_release?(user)
-      else
-        redirect_to posts_path
-        flash[:alert] = "#{user.name}さんはPassportを作成していません。"
-      end
-    else
-      redirect_to posts_path
-      flash[:alert] = "#{user.name}さんはPassportの閲覧を許可していません。"
-    end
+    passport_index_comprate
+  end
+
+  def comprated
+    passport_index_comprate
   end
 
   def new
@@ -77,6 +63,28 @@ class PassportsController < ApplicationController
   end
 
 private
+
+  def passport_index_comprate
+    user = User.find_by(id: params[:user_id])
+    if user.id == current_user.id
+      if user.passports.present?
+        user_release?(user)
+      else
+        redirect_to new_user_passport_path(current_user)
+        flash[:notice] = "パスポートを作成しましょう！"
+      end
+    elsif user.release == true
+      if user.passports.present?
+        user_release?(user)
+      else
+        redirect_to posts_path
+        flash[:alert] = "#{user.name}さんはPassportを作成していません。"
+      end
+    else
+      redirect_to posts_path
+      flash[:alert] = "#{user.name}さんはPassportの閲覧を許可していません。"
+    end
+  end
 
   def user_release?(user)
     @passports = user.passports

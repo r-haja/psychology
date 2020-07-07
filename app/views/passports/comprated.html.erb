@@ -3,15 +3,10 @@
   <% @passports.each do |passport| %>
     <% if passport.user_id == current_user.id %>
       <div class="passport_select">
-        <% if passport.achievement != true %>
-          <%= form_with scope: resource, as: resource_name, url: registration_path(resource_name), method: :patch, local: true do |f| %>
-            <%= f.hidden_field :select_passport, value: passport.id %>
-            <% if passport.id == passport.user.select_passport %>
-              <%= f.submit "習慣化 #{i}", class: "btn-true" %>
-            <% else %>
-              <%= f.submit "習慣化 #{i}", class: "btn-false" %>
-            <% end %>
-          <% end %>
+        <% if passport.achievement == true %>
+          <div class="passport__achievement">
+            <%= render partial: "achievement_passport", locals:{passport: passport} %>
+          </div>
         <% end %>
       </div>
     <% end %>
@@ -144,31 +139,3 @@
     <% end %>
   <% end %>
 <% end %>
-
-<div class="js-intro"><i class="fas fa-play-circle"></i> チュートリアルを見る</div>
-
-<script>
-
-  $('.js-intro').on('click',function(){
-    introJs().start();
-  });
-  <% if current_user.passport_first_create == nil %>
-    document.addEventListener("DOMContentLoaded", function() {
-      introJs().start();
-      <% current_user.passport_first_create = Time.now %>
-      <% current_user.save %>
-    });
-  <% end %>
-
-  $('.fa-chevron-circle-down').on('click', function(){
-    if($('#week').hasClass('active')) {
-      $('#week').removeClass('active');
-      $('#month').addClass('active');
-      $('.fa-chevron-circle-down').addClass('show');
-    } else if($('#month').hasClass('active')) {
-      $('#month').removeClass('active');
-      $('#week').addClass('active');
-      $('.fa-chevron-circle-down').removeClass('show');
-    }
-  });
-</script>
