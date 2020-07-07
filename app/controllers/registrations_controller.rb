@@ -36,7 +36,11 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    user_passports_path(resource)
+    if params[:user][:comprate_passport_select] == nil
+      user_passports_path(resource)
+    else
+      user_passport_comprated_path(resource)
+    end
   end
 
   def authenticate_scope!
