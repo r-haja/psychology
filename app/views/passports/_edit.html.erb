@@ -28,7 +28,7 @@
           <div class="form-group">
             <label for="passport_genre_id">ジャンルを選んでください</label>
             <div class="round round--genre arrow">
-              <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "ジャンルを選択してください" do |b|%>
+              <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "ジャンルを選択" do |b|%>
                 <%= b.label {b.select + b.text} %>
               <% end %>
             </div>

@@ -66,6 +66,10 @@ nav {
           color: #fff;
           font-size: 16px;
         }
+        &--turtorial {
+          color: $accent-color;
+          border-color: $accent-color;
+        }
       }
       .passport,
       .methods {
@@ -166,6 +170,9 @@ nav {
             background-color: #F9703E;
             color: #fff;
           }
+        }
+        .btn + .btn {
+          margin-top: 15px;
         }
         .passport,
         .methods,

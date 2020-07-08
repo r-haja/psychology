@@ -56,6 +56,7 @@
           <% end %>
           <% if params[:user_id] == current_user.id.to_s %>
             <%= link_to "習慣を作成",new_user_passport_path(current_user), class: "btn"  %>
+            <div class="btn btn--turtorial js-intro">使い方を見る</div>
           <% else %>
             <%= link_to user_passports_path(current_user), class: "passport" do %>
               <%= image_tag "icon_passport.png" %>
