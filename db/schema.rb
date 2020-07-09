@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(version: 2020_07_07_121438) do
     t.boolean "achievement"
     t.integer "month_rate"
     t.boolean "select_passport"
-    t.date "first_create"
     t.index ["genre_id"], name: "index_passports_on_genre_id"
     t.index ["user_id"], name: "index_passports_on_user_id"
   end
@@ -131,7 +130,7 @@ ActiveRecord::Schema.define(version: 2020_07_07_121438) do
     t.integer "select_passport"
     t.datetime "age"
     t.string "sex"
-    t.date "passport_first_create"
+    t.datetime "passport_first_create"
     t.integer "comprate_passport_select"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

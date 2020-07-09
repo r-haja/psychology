@@ -145,13 +145,10 @@
   <% end %>
 <% end %>
 
-<div class="turtorialBtn js-intro"><i class="fas fa-play-circle"></i> 使い方を見る</div>
-
+<% if current_user.passport_first_create.to_i < Time.now.to_i %>
+    <div class="turtorialBtn js-intro"><i class="fas fa-play-circle"></i> 使い方を見る</div>
+<% end %>
 <script>
-
-  $('.js-intro').on('click',function(){
-    introJs().start();
-  });
   <% if current_user.passport_first_create == nil %>
     document.addEventListener("DOMContentLoaded", function() {
       introJs().start();
@@ -159,6 +156,12 @@
       <% current_user.save %>
     });
   <% end %>
+
+  $('.js-intro').on('click',function(){
+    introJs().start();
+    <% current_user.passport_first_create = "2100-07-07" %>
+    <% current_user.save %>
+  });
 
   $('.fa-chevron-circle-down').on('click', function(){
     if($('#week').hasClass('active')) {
