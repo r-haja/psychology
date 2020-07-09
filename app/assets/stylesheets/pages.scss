@@ -198,10 +198,9 @@
         color: $accent-color;
       }
     }
-    p {
+    > p {
       margin-bottom: 0;
       font-size: 14px;
-      text-align: center;
     }
     .slick {
       width: 675px;
@@ -215,6 +214,41 @@
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
       box-shadow: 5px 10px 25px -5px rgba(0,0,0,0.1);
+      .heading {
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #efefef;
+        color: #7B93DB;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        letter-spacing: 2px;
+      }
+      p {
+        margin-bottom: 10px;
+        font-size: 14px;
+        text-align: left;
+        line-height: 1.75;
+      }
+      span {
+        border-bottom: 1px solid #7B93DB;
+        font-weight: bold;
+      }
+      .quote {
+        position: relative;
+        background-color: #f7f7f7;
+        padding: 20px 10px 3px 10px;
+        &::before {
+          position: absolute;
+          top: -13px;
+          font-family: 'FontAwesome';
+          content: '“';
+          font-size: 6em;
+          color: #333333;
+          line-height: 1;
+          opacity: .3;
+        }
+      }
     }
     .fa-arrow-circle-left:before {
       z-index: 2;
