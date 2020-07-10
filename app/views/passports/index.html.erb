@@ -145,7 +145,7 @@
   <% end %>
 <% end %>
 
-<% if current_user.passport_first_create.to_i < Time.now.to_i %>
+<% if current_user.passport_first_create_btn == nil %>
     <div class="turtorialBtn js-intro"><i class="fas fa-play-circle"></i> 使い方を見る</div>
 <% end %>
 <script>
@@ -159,7 +159,7 @@
 
   $('.js-intro').on('click',function(){
     introJs().start();
-    <% current_user.passport_first_create = "2100-07-07" %>
+    <% current_user.passport_first_create_btn = Time.now %>
     <% current_user.save %>
   });
 

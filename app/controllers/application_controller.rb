@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
   protected
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :age, :sex])
-      devise_parameter_sanitizer.permit(:account_update, keys: [:name, :profile_image, :email_magazine, :release, :select_passport, :comprate_passport_select])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:name, :profile_image, :email_magazine, :release, :select_passport,
+                                        :comprate_passport_select, :passport_first_create, :passport_first_create_btn])
     end
 end
