@@ -12,7 +12,7 @@
     <% if admin_signed_in? %>
         <li><%= link_to "Genre 一覧", genres_path, class: "link" %></li>
         <li><%= link_to "Psychology 一覧", psychologies_path, class: "link" %></li>
-        <li><%= link_to "ユーザ管理", "#", class: "link" %></li>
+        <li><%= link_to "ユーザ管理", admin_top_path", class: "link" %></li>
         <li><%= link_to "Admin 設定", "#", class: "link" %></li>
     <% end %>
     </ul>
