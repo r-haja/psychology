@@ -52,7 +52,7 @@
           <% end %>
           <%= link_to posts_path, class: "posts" do %>
             <span class="actionIcon"><%= image_tag "icon_message.png" %></span>
-            <span class="actionLabel">メッセージ</span>
+            <span class="actionLabel">メモ</span>
           <% end %>
           <% if params[:user_id] == current_user.id.to_s %>
             <%= link_to "習慣を作成",new_user_passport_path(current_user), class: "btn"  %>
@@ -92,7 +92,7 @@
           <% end %>
           <%= link_to posts_path, class: "posts" do %>
             <span class="actionIcon"><%= image_tag "icon_message.png" %></span>
-            <span class="actionLabel">メッセージ</span>
+            <span class="actionLabel">メモ</span>
           <% end %>
         </div>
       </div>
