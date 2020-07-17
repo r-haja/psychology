@@ -55,4 +55,44 @@ class Passport < ApplicationRecord
     end
   end
 
+  def passport_select_psychology(passports)
+    sum = 0
+    passports.each do |passport|
+      if passport.passport_psychologies.present? == true
+        sum += 1
+      end
+    end
+    select_rate = sum.to_f/passports.count.to_f
+    return select_rate*100
+  end
+
+  def passport_select_schedule(passports)
+    sum = 0
+    passports.each do |passport|
+      if passport.schedules.present? == true
+        sum += 1
+      end
+    end
+    select_rate = sum.to_f/passports.count.to_f
+    return select_rate*100
+  end
+  def passport_select_genre(passports, genre_number)
+    sum = passports.where(genre_id: genre_number).count
+    select_rate = sum.to_f/passports.count.to_f
+    return select_rate*100
+  end
+
+  def passport_psychology_ranking(passports, number)
+    sccess_passports = passports.where(rate: 0..Float::INFINITY)
+    genre_passports = sccess_passports.where(genre_id: number)
+    #ランキング形式で表示する仕様が必要。
+    psychologies = PassportPsychology.new().psychology_ranking(genre_passports)
+    psychology_sort = psychologies.sort{|(k1, v1), (k2, v2)| v2 <=> v1}
+    psychology_sort.first(5).each do |psychology|
+      #raise
+      psychology[0] = Psychology.find(psychology[0]).title
+      psychology[1] = (psychology[1].to_f/genre_passports.count*100).round(2)
+    end
+    return psychology_sort
+  end
 end

@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="card" style="width: 100%;">
+    <div class="card-header" style="font-size: 20px;">
+      各項目の総数と数値
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">総ユーザ数: <span style="color : red; font-size: 25px;"><%= @users.count %></span>人</li>
+      <li class="list-group-item">総パスポート数: <span style="color : red; font-size: 25px;"><%= @passports.count %></span>個</li>
+      <li class="list-group-item">ユーザごとのパスポート作成数平均: <span style="color : red; font-size: 25px;"><%= (@passports.count.to_f/@users.count.to_f).round(2) %></span>個</li>
+      <li class="list-group-item">各パスポート毎の習慣化方法追加数の平均値: <span style="color : red; font-size: 25px;"><%= (@passport_psychologies.count.to_f/@passports.count.to_f).round(2) %></span>個</li>
+    </ul>
+  </div>
+</div>
+
+<div class="container" style="margin-top: 30px;">
+  <div class="card" style="width: 100%;">
+    <div class="card-header" style="font-size: 20px;">
+      各ジャンルの選択率（100％表示）※どのジャンルが選ばれているか分かる。
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">1.パスポート「運動 #1」: <span style="color : red; font-size: 25px;"><%= (Passport.new().passport_select_genre(@passports, 1)).round(2) %></span>％</li>
+      <li class="list-group-item" style="color: gray">2.パスポート「実践 #2」: 削除した為なし</li>
+      <li class="list-group-item">3.パスポート「睡眠 #3」: <span style="color : red; font-size: 25px;"><%= (Passport.new().passport_select_genre(@passports, 3)).round(2) %></span>％</li>
+      <li class="list-group-item">4.パスポート「早起き #4」: <span style="color : red; font-size: 25px;"><%= (Passport.new().passport_select_genre(@passports, 4)).round(2) %></span>％</li>
+      <li class="list-group-item">5.パスポート「勉強 #5」: <span style="color : red; font-size: 25px;"><%= (Passport.new().passport_select_genre(@passports, 5)).round(2) %></span>％</li>
+      <li class="list-group-item">6.パスポート「読書 #6」: <span style="color : red; font-size: 25px;"><%= (Passport.new().passport_select_genre(@passports, 6)).round(2) %></span>％</li>
+      <li class="list-group-item">7.パスポート「ダイエット #7」: <span style="color : red; font-size: 25px;"><%= (Passport.new().passport_select_genre(@passports, 7)).round(2) %></span>％</li>
+      <li class="list-group-item">8.パスポート「瞑想 #8」: <span style="color : red; font-size: 25px;"><%= (Passport.new().passport_select_genre(@passports, 8)).round(2) %></span>％</li>
+      <li class="list-group-item">9.パスポート「家事 #9」: <span style="color : red; font-size: 25px;"><%= (Passport.new().passport_select_genre(@passports, 9)).round(2) %></span>％</li>
+      <li class="list-group-item">10.パスポート「悪い習慣 #10」: <span style="color : red; font-size: 25px;"><%= (Passport.new().passport_select_genre(@passports, 10)).round(2) %></span>％</li>
+      <li class="list-group-item">11.パスポート「その他 #11」: <span style="color : red; font-size: 25px;"><%= (Passport.new().passport_select_genre(@passports, 11)).round(2) %></span>％</li>
+    </ul>
+  </div>
+</div>
+
+<div class="container" style="margin-top: 30px;">
+  <div class="card" style="width: 100%;">
+    <div class="card-header" style="font-size: 20px;">
+      各習慣化方法選択率(100%以上) ※どの習慣化方法が選ばれているか分かる。
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">1.パスポート「目標プランニング」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 1)).round(2) %></span>％</li>
+      <li class="list-group-item">2.パスポート「パワフル発言」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 2)).round(2) %></span>％</li>
+      <li class="list-group-item">3.パスポート「行動チェーン」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 3)).round(2) %></span>％</li>
+      <li class="list-group-item">4.パスポート「こつこつプランニング」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 4)).round(2) %></span>％</li>
+      <li class="list-group-item">5.パスポート「張り紙効果」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 5)).round(2) %></span>％</li>
+      <li class="list-group-item">6.パスポート「ながら習慣」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 6)).round(2) %></span>％</li>
+      <li class="list-group-item">7.パスポート「宣言効果」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 7)).round(2) %></span>％</li>
+      <li class="list-group-item">8.パスポート「友人サポート」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 8)).round(2) %></span>％</li>
+      <li class="list-group-item">9.パスポート「過程イメージング」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 9)).round(2) %></span>％</li>
+      <li class="list-group-item">10.パスポート「25秒ルール」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 10)).round(2) %></span>％</li>
+      <li class="list-group-item">11.パスポート「未来イメージング」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 11)).round(2) %></span>％</li>
+      <li class="list-group-item">12.パスポート「逆転の発想 (悪い習慣)」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 12)).round(2) %></span>％</li>
+      <li class="list-group-item">13.パスポート「ストップセンサー (悪い習慣)」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 13)).round(2) %></span>％</li>
+      <li class="list-group-item">14.パスポート「思考転換 (悪い習慣)」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 14)).round(2) %></span>％</li>
+      <li class="list-group-item">15.パスポート「ボディースキャン (ストレス対策)」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 15)).round(2) %></span>％</li>
+      <li class="list-group-item">16.パスポート「リラックス効果 (ストレス対策)」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 16)).round(2) %></span>％</li>
+    </ul>
+  </div>
+</div>
+
+<div class="container" style="margin-top: 30px;">
+  <div class="card" style="width: 100%;">
+    <div class="card-header" style="font-size: 20px;">
+      各ジャンルで達成率57%以上のパスポートで利用される習慣化方法ランキング
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">1.パスポート「運動 #1」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 1)) %></span></li>
+      <li class="list-group-item"><span style="color : gray; font-size: 15px;">2.パスポート「実践 #2」: 削除した為なし</span></li>
+      <li class="list-group-item">3.パスポート「睡眠 #3」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 3)) %></span></li>
+      <li class="list-group-item">4.パスポート「早起き #4」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 4)) %></span></li>
+      <li class="list-group-item">5.パスポート「勉強 #5」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 5)) %></span></li>
+      <li class="list-group-item">6.パスポート「読書 #6」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 6)) %></span></li>
+      <li class="list-group-item">7.パスポート「ダイエット #7」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 7)) %></span></li>
+      <li class="list-group-item">8.パスポート「瞑想 #8」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 8)) %></span></li>
+      <li class="list-group-item">9.パスポート「家事 #9」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 9)) %></span></li>
+      <li class="list-group-item">10.パスポート「悪い習慣 #10」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 10)) %></span></li>
+      <li class="list-group-item">11.パスポート「その他 #11」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 11)) %></span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="container" style="margin-top: 30px;">
+  <div class="card" style="width: 100%;">
+    <div class="card-header" style="font-size: 20px;">
+      各項目の離脱率 ※どのタイミングでUserが離脱しているか分かる。
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">パスポートを作成しているユーザの割合: <span style="color : red; font-size: 25px;"><%= @user_rate.to_f.round(2) %></span>％</li>
+      <li class="list-group-item">習慣化方法を選択しているユーザの割合: <span style="color : red; font-size: 25px;"><%= @passport_select_psychology.round(2) %></span>％</li>
+      <li class="list-group-item">スケジュールに記入しているユーザの割合: <span style="color : red; font-size: 25px;"><%= @passport_select_schedule.round(2) %></span>％</li>
+    </ul>
+  </div>
+</div>

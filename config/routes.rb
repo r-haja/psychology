@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     controllers: {registrations: "registrations"}
 
   root to: "pages#home"
-  get "admin_top" => "admin#top"
+  get "admin_top" => "admins#top"
   resources :users, only: %i(show) do
     get "passport_comprated" => "passports#comprated"
     resources :passports, only: %i(index new create destroy edit update) do

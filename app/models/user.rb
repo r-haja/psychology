@@ -63,6 +63,12 @@ class User < ApplicationRecord
     result
   end
 
+  def user_create_passport_rate(users)
+    sum = users.where.not(select_passport: nil).count
+    rate = sum.to_f/users.count.to_f
+    return rate*100
+  end
+
   mount_uploader :profile_image, ProfileImageUploader
 
   private
@@ -72,6 +78,5 @@ class User < ApplicationRecord
     end
 
     def email_soft_deleted_checked
-
     end
 end
