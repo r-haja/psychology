@@ -6,7 +6,7 @@ body {
   color: #333333;
 }
 body.lp {
-  background-color: #fff; 
+  background-color: #fff;
 }
 footer{
   p {
@@ -75,6 +75,16 @@ a:hover {
     vertical-align: middle;
     margin-bottom: 0;
   }
+  @media screen and(max-width:750px){
+    i {
+      left: 0.3px;
+      top: 0.5px;
+    }
+    p{
+      left: 0.3px;
+      top: 1px;
+    }
+  }
 }
 
 // フラッシュメッセージ
@@ -107,7 +117,7 @@ i.js-pagetop {
   font-size: 20px;
   cursor: pointer;
   @media screen and(min-width:850px) {
-    right: calc(50% - 440px); 
+    right: calc(50% - 440px);
   }
 }
 
