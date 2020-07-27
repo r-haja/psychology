@@ -35,7 +35,7 @@ class Passport < ApplicationRecord
 
   def passport_psychologies_default_set(passport)
     if passport.genre.name = "運動"
-  #    passport.psychology_ids = [4,9,10]
+      passport.psychology_ids = [4,9,10]
     elsif passport.genre.name = "睡眠"
       passport.psychology_ids = [2,7,11]
     elsif passport.genre.name = "早起き"
@@ -51,7 +51,7 @@ class Passport < ApplicationRecord
     elsif passport.genre.name = "家事"
       passport.psychology_ids = [3,6,10]
     elsif passport.genre.name = "悪い習慣"
-      passport.psychology_ids = [13,5,]
+      passport.psychology_ids = [13,5]
     end
   end
 

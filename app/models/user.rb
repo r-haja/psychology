@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments
   has_many :passports, dependent: :destroy
-  has_many :schedules
+  has_many :schedules, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable  #, :validatable
