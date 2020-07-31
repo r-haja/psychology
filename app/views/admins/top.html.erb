@@ -65,17 +65,49 @@
       各ジャンルで達成率57%以上のパスポートで利用される習慣化方法ランキング
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">1.パスポート「運動 #1」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 1)) %></span></li>
+      <li class="list-group-item">1.パスポート「運動 #1」: <span style="color : red; font-size: 15px;">
+        <% (Passport.new().passport_psychology_ranking(@passports, 1)).each do |psychology| %>
+          <br><%= psychology[0] %>（<%= psychology[1] %>％）
+        <% end %></span></li>
+
       <li class="list-group-item"><span style="color : gray; font-size: 15px;">2.パスポート「実践 #2」: 削除した為なし</span></li>
-      <li class="list-group-item">3.パスポート「睡眠 #3」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 3)) %></span></li>
-      <li class="list-group-item">4.パスポート「早起き #4」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 4)) %></span></li>
-      <li class="list-group-item">5.パスポート「勉強 #5」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 5)) %></span></li>
-      <li class="list-group-item">6.パスポート「読書 #6」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 6)) %></span></li>
-      <li class="list-group-item">7.パスポート「ダイエット #7」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 7)) %></span></li>
-      <li class="list-group-item">8.パスポート「瞑想 #8」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 8)) %></span></li>
-      <li class="list-group-item">9.パスポート「家事 #9」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 9)) %></span></li>
-      <li class="list-group-item">10.パスポート「悪い習慣 #10」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 10)) %></span></li>
-      <li class="list-group-item">11.パスポート「その他 #11」: <span style="color : red; font-size: 15px;"><%= (Passport.new().passport_psychology_ranking(@passports, 11)) %></span></li>
+      <li class="list-group-item">3.パスポート「睡眠 #3」: <span style="color : red; font-size: 15px;">
+        <% (Passport.new().passport_psychology_ranking(@passports, 3)).each do |psychology| %>
+          <br><%= psychology[0] %>（<%= psychology[1] %>％）
+        <% end %></span></li>
+
+      <li class="list-group-item">4.パスポート「早起き #4」: <span style="color : red; font-size: 15px;">
+        <% (Passport.new().passport_psychology_ranking(@passports, 4)).each do |psychology| %>
+          <br><%= psychology[0] %>（<%= psychology[1] %>％）
+        <% end %></span></li>
+      <li class="list-group-item">5.パスポート「勉強 #5」: <span style="color : red; font-size: 15px;">
+        <% (Passport.new().passport_psychology_ranking(@passports, 5)).each do |psychology| %>
+          <br><%= psychology[0] %>（<%= psychology[1] %>％）
+        <% end %></span></li>
+      <li class="list-group-item">6.パスポート「読書 #6」: <span style="color : red; font-size: 15px;">
+        <% (Passport.new().passport_psychology_ranking(@passports, 6)).each do |psychology| %>
+          <br><%= psychology[0] %>（<%= psychology[1] %>％）
+        <% end %></span></li>
+      <li class="list-group-item">7.パスポート「ダイエット #7」: <span style="color : red; font-size: 15px;">
+        <% (Passport.new().passport_psychology_ranking(@passports, 7)).each do |psychology| %>
+          <br><%= psychology[0] %>（<%= psychology[1] %>％）
+        <% end %></span></li>
+      <li class="list-group-item">8.パスポート「瞑想 #8」: <span style="color : red; font-size: 15px;">
+        <% (Passport.new().passport_psychology_ranking(@passports, 8)).each do |psychology| %>
+          <br><%= psychology[0] %>（<%= psychology[1] %>％）
+        <% end %></span></li>
+      <li class="list-group-item">9.パスポート「家事 #9」: <span style="color : red; font-size: 15px;">
+        <% (Passport.new().passport_psychology_ranking(@passports, 9)).each do |psychology| %>
+          <br><%= psychology[0] %>（<%= psychology[1] %>％）
+        <% end %></span></li>
+      <li class="list-group-item">10.パスポート「悪い習慣 #10」: <span style="color : red; font-size: 15px;">
+        <% (Passport.new().passport_psychology_ranking(@passports, 10)).each do |psychology| %>
+          <br><%= psychology[0] %>（<%= psychology[1] %>％）
+        <% end %></span></li>
+      <li class="list-group-item">11.パスポート「その他 #11」: <span style="color : red; font-size: 15px;">
+        <% (Passport.new().passport_psychology_ranking(@passports, 11)).each do |psychology| %>
+          <br><%= psychology[0] %>（<%= psychology[1] %>％）
+        <% end %></span></li>
     </ul>
   </div>
 </div>
