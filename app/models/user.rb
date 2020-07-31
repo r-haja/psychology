@@ -69,6 +69,17 @@ class User < ApplicationRecord
     return rate*100
   end
 
+  def passports_schedule_LastRegistration_week(users, week)
+    i = 0
+    users.each do |user|
+      if Schedule.new().user_schedules(user.schedules.last, week) == true
+        i += 1
+      end
+    end
+    user_count = users.count
+    return i/user_count.to_f*100
+  end
+
   mount_uploader :profile_image, ProfileImageUploader
 
   private

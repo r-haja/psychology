@@ -48,7 +48,7 @@
       <li class="list-group-item">7.パスポート「宣言効果」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 7)).round(2) %></span>％</li>
       <li class="list-group-item">8.パスポート「友人サポート」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 8)).round(2) %></span>％</li>
       <li class="list-group-item">9.パスポート「過程イメージング」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 9)).round(2) %></span>％</li>
-      <li class="list-group-item">10.パスポート「25秒ルール」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 10)).round(2) %></span>％</li>
+      <li class="list-group-item">10.パスポート「20秒ルール」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 10)).round(2) %></span>％</li>
       <li class="list-group-item">11.パスポート「未来イメージング」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 11)).round(2) %></span>％</li>
       <li class="list-group-item">12.パスポート「逆転の発想 (悪い習慣)」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 12)).round(2) %></span>％</li>
       <li class="list-group-item">13.パスポート「ストップセンサー (悪い習慣)」: <span style="color : red; font-size: 25px;"><%= (PassportPsychology.new().passport_select_psychology(@passport_psychologies, @passports, 13)).round(2) %></span>％</li>
@@ -86,9 +86,13 @@
       各項目の離脱率 ※どのタイミングでUserが離脱しているか分かる。
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">パスポートを作成しているユーザの割合: <span style="color : red; font-size: 25px;"><%= @user_rate.to_f.round(2) %></span>％</li>
-      <li class="list-group-item">習慣化方法を選択しているユーザの割合: <span style="color : red; font-size: 25px;"><%= @passport_select_psychology.round(2) %></span>％</li>
-      <li class="list-group-item">スケジュールに記入しているユーザの割合: <span style="color : red; font-size: 25px;"><%= @passport_select_schedule.round(2) %></span>％</li>
+      <li class="list-group-item">パスポートを作成しているユーザの割合: <span style="color: red; font-size: 25px;"><%= @user_rate.to_f.round(2) %></span>％</li>
+      <li class="list-group-item">習慣化方法を選択しているユーザの割合: <span style="color: red; font-size: 25px;"><%= @passport_select_psychology.round(2) %></span>％</li>
+      <li class="list-group-item">スケジュールに記入しているユーザの割合: <span style="color: red; font-size: 25px;"><%= @passport_select_schedule.round(2) %></span>％</li>
+      <li class="list-group-item">スケジュールを1週間以内に記入しているUser割合: <span style="color: red; font-size: 25px;"><%= User.new().passports_schedule_LastRegistration_week(@users,1) %></span>％</li>
+      <li class="list-group-item">スケジュールを2週間以内に記入しているUser割合: <span style="color: red; font-size: 25px;"><%= User.new().passports_schedule_LastRegistration_week(@users,2) %></span>％</li>
+      <li class="list-group-item">スケジュールを3週間以内に記入しているUser割合: <span style="color: red; font-size: 25px;"><%= User.new().passports_schedule_LastRegistration_week(@users,3) %></span>％</li>
+      <li class="list-group-item">スケジュールを4週間以内に記入しているUser割合: <span style="color: red; font-size: 25px;"><%= User.new().passports_schedule_LastRegistration_week(@users,4) %></span>％</li>
     </ul>
   </div>
 </div>
