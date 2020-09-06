@@ -9,9 +9,12 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
   get "admin_top" => "admins#top"
+  get "porpose_create" => "pages#porpose_create"
+  get "psychology_ranking" => "psychologies#ranking"
+
   resources :users, only: %i(show) do
     get "passport_comprated" => "passports#comprated"
-    resources :passports, only: %i(index new create destroy edit update) do
+    resources :passports, only: %i(index show new create destroy edit update) do
       resources :schedules, only: %i(create destroy update)
     end
   end

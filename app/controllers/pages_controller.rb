@@ -4,4 +4,7 @@ class PagesController < ApplicationController
       redirect_to user_passports_path(current_user)
     end
   end
+
+  def porpose_create
+  end
 end

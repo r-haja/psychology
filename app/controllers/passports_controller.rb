@@ -1,9 +1,12 @@
 class PassportsController < ApplicationController
   before_action :authenticate_user!
-  before_action :passport_set, only: [:edit, :update, :destroy]
+  before_action :passport_set, only: [:show, :edit, :update, :destroy]
 
   def index
     passport_index_comprate
+  end
+
+  def show
   end
 
   def comprated
@@ -88,10 +91,17 @@ private
 
   def user_release?(user)
     @passports = user.passports
+    @passport_comprate = @passports.where(achievement: true)
+
     rate = PassportRator.new(@passports)
     rate.passport_rate
     @psychologies = Psychology.all
     @schedules = Schedule.all.includes(:passport)
+  #  if Schedule.find_by(day: Time.now.strftime("%Y-%m-%d"))
+  #    @schedule = Schedule.find_by(day: Time.now.strftime("%Y-%m-%d"))
+  #  else
+  #    @schedule = Schedule.new
+  #  end
   end
 
   def passport_set

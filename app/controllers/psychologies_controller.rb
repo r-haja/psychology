@@ -37,6 +37,9 @@ class PsychologiesController < ApplicationController
     redirect_to psychologies_path
   end
 
+  def ranking
+  end
+
   private
     def set_psychology
       @psychology = Psychology.find_by(id: params[:id])

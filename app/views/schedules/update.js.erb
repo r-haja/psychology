@@ -10,3 +10,6 @@ $(".habit__rate<%= @passport.id.to_s %>").fadeIn(800);
 
 $(".achievement<%= @passport.id.to_s %>").
   html('<%= j render partial: "passports/achievement", locals: { passport: @passport } %>');
+
+  $(".schedule_btn<%= @passport.id.to_s %>").
+    html('<%= j render partial: "passports/schedule_form", locals:{passport: @passport, schedule: @schedule} %>');

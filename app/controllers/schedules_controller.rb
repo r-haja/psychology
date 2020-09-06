@@ -1,7 +1,6 @@
 class SchedulesController < ApplicationController
 
   def create
-
     @schedules = Schedule.all.includes(:passport)
     @schedule = Schedule.new(params_schedule)
     @passport = @schedule.passport
@@ -23,7 +22,6 @@ class SchedulesController < ApplicationController
     @schedules = Schedule.all.includes(:passport)
     @schedule = Schedule.find_by(id: params[:id])
     @passport = @schedule.passport
-
     if params[:commit] == "達成"
       @schedule.judgment = 1
     elsif params[:commit] == "取り消し"
