@@ -1,7 +1,9 @@
 FactoryBot.define do
   factory :notification do
-    comment "MyString"
+    day "2020-09-06"
+    type 1
     check false
-    passport ""
+    passport nil
+    notification_comment nil
   end
 end

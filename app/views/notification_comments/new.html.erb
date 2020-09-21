@@ -1,0 +1,52 @@
+
+<div class="card">
+  <div class="card-header">
+    通知用コメントを作成する場所
+  </div>
+  <div class="card-body">
+    <%= form_with model: @notification_comment, class: " p-0 border-0", local: true do |f| %>
+      <div class="form-group row mt-2">
+        <div class="col-md-10">
+          <%= f.label :comment %>
+          <%= f.text_area :comment, class: "form-control border-0", placeholder: "ジャンルを記載" %>
+        </div>
+        <div class="col-md-10">
+          <%= f.label :date_type %>
+          <%= f.select :date_type, [['月', '月'], ['週', '週'], ['日', '日'], ['3日', '3日'], ['4日', '4日']], include_blank: 'タイプを選択してください', placeholder: "タイプ", class: "form-control border-0" %>
+        </div>
+        <div class="col-md-10">
+          <%= f.label :action, "date_typeが週のやつのみ記載" %>
+          <%= f.select :action, [['0%', '0%'], ['14%', '14%'], ['28%', '28%'], ['42%', '42%'], ['57%', '57%'], ['71%', '71%'], ['85%', '85%'], ['100%', '100%']], include_blank: '％を選択してください', placeholder: "タイプ", class: "form-control border-0" %>
+        </div>
+        <%= f.submit "作成する", class: "btn btn-outline-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% @comments.each do |c| %>
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">
+        <span>コメント：</span>
+        <%= c.comment %>
+      </div>
+      <div class="card-text">
+        <span>タイプ：</span>
+        <%= c.date_type %>
+      </div>
+      <div class="card-text">
+        <span>パーセント：</span>
+        <%= c.action %>
+      </div>
+      <div class="card-text">
+        <span>作成日：</span>
+        <%= c.created_at %>
+      </div>
+      <div class="card-text">
+        <span>修正日：</span>
+        <%= c.updated_at %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -11,6 +11,7 @@ class SchedulesController < ApplicationController
     end
     if @schedule.save
       passport_rate
+      Notification.new.notification_create(passport)
       respond_to :js
     else
       flash[:notice] = "スケジュールの更新に失敗しました"

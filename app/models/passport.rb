@@ -3,6 +3,7 @@ class Passport < ApplicationRecord
   belongs_to :genre
   has_many :plans, dependent: :destroy
   has_many :schedules, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   has_many :passport_psychologies, dependent: :destroy
   has_many :psychologies, through: :passport_psychologies

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_01_125237) do
+ActiveRecord::Schema.define(version: 2020_09_19_064227) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -41,12 +41,23 @@ ActiveRecord::Schema.define(version: 2020_09_01_125237) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+  create_table "notification_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "comment"
-    t.boolean "check", default: false, null: false
-    t.bigint "passport_id", null: false
+    t.string "date_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "action"
+  end
+
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.date "day"
+    t.integer "date_type"
+    t.boolean "check", default: false, null: false
+    t.bigint "passport_id"
+    t.bigint "notification_comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notification_comment_id"], name: "index_notifications_on_notification_comment_id"
     t.index ["passport_id"], name: "index_notifications_on_passport_id"
   end
 
@@ -148,6 +159,7 @@ ActiveRecord::Schema.define(version: 2020_09_01_125237) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "notifications", "notification_comments"
   add_foreign_key "notifications", "passports"
   add_foreign_key "passport_psychologies", "passports"
   add_foreign_key "passport_psychologies", "psychologies"

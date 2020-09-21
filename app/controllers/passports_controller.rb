@@ -25,7 +25,7 @@ class PassportsController < ApplicationController
       current_user.save
       @passport.passport_psychologies_default_set(@passport)
       flash[:notice] = "習慣化パスポートを保存しました！"
-      redirect_to user_passports_path(current_user)
+      redirect_to user_passport_path(current_user, @passport)
     else
       flash[:alert] = "入力誤りがあります。再度記入してください。"
       render :new
@@ -37,7 +37,7 @@ class PassportsController < ApplicationController
       redirect_to user_passports_path(current_user)
     else
       flash[:notice] = "パスポートの削除に失敗しました。"
-      render :index
+      render :show
     end
   end
 
@@ -52,15 +52,15 @@ class PassportsController < ApplicationController
     if params[:passport][:purpose]
       if @passport.update(passport_params)
         @passport.plans.first.destroy
-        redirect_to user_passports_path(current_user)
+        redirect_to user_passport_path(current_user, @passport)
       else
-        redirect_to user_passports_path(current_user)
+        redirect_to user_passport_path(current_user, @passport)
       end
     else
       if @passport.update(passport_params)
-        redirect_to user_passports_path(current_user)
+        redirect_to user_passport_path(current_user, @passport)
       else
-        redirect_to user_passports_path(current_user)
+        redirect_to user_passport_path(current_user, @passport)
       end
     end
   end

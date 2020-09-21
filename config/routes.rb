@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :psychologies
   resources :genres
+  resources :notification_comments, only: %i(new edit update destroy create)
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :admins
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
   get "admin_top" => "admins#top"
+  get "notification_create" => "admins#notification_create"
   get "porpose_create" => "pages#porpose_create"
   get "psychology_ranking" => "psychologies#ranking"
 
