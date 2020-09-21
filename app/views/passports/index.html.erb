@@ -27,11 +27,18 @@
           <% end %>
           <%= render partial: "passports/schedule_form", locals: {passport: passport, schedule: @schedule} %>
         </div>
+        <div class="notification">
+          <% if passport.notifications.blank? || passport.notifications.where(check: false).nil? %>
+            <i class="far fa-circle"></i>
+          <% else %>
+            <i class="fas fa-circle"></i>
+          <% end %>
+        </div>
       </section>
     </main>
   <% end %>
 <% end %>
----------  ここから達成してるやつ、現在は若番表示だから、
+---------  ここから達成してるやつ-------------
 <% @passport_comprate.each do |passport| %>
   <% if passport.achievement == true %>
     <main class="passport">
@@ -63,5 +70,3 @@
     </main>
   <% end %>
 <% end %>
-
---------------ここまで

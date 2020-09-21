@@ -3,7 +3,7 @@ class Notification < ApplicationRecord
   belongs_to :notification_comment
 
   validates :day, presence: true
-  validates :type, presence: true
+  validates :date_type, presence: true
 
 
   def notification_create(passport)
@@ -59,7 +59,9 @@ class Notification < ApplicationRecord
     else #date_type:1
       notification = Notification.new(day: Date.today.to_time, date_type: 1, passport_id: passport.id)
       notification.notification_comment_id = notification_comments(notification, passport)
+      byebug
       notification.save
+
     end
   end
 
