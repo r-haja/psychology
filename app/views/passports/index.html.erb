@@ -7,7 +7,7 @@
         <div class="passport__contents">
           <div class="contents">
             <div class="habit">
-              <%= link_to user_passport_path(current_user, passport.id) do  %>
+              <%= link_to user_passport_path(current_user, passport.id), data:{"turbolinks" => false} do  %>
                 <h1 class="habit__purpose"><%= simple_format(passport.purpose) %></h1>
               <% end %>
               <div class="habit__details">
@@ -28,7 +28,7 @@
           <%= render partial: "passports/schedule_form", locals: {passport: passport, schedule: @schedule} %>
         </div>
         <div class="notification">
-          <% if passport.notifications.blank? || passport.notifications.where(check: false).nil? %>
+          <% if passport.notifications.blank? || passport.notifications.where(check: false).blank? %>
             <i class="far fa-circle"></i>
           <% else %>
             <i class="fas fa-circle"></i>

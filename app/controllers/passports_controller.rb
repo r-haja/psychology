@@ -7,6 +7,7 @@ class PassportsController < ApplicationController
   end
 
   def show
+    @notifications = @passport.notifications.where(check: false)
   end
 
   def comprated

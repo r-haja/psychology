@@ -7,8 +7,9 @@ class Notification < ApplicationRecord
 
 
   def notification_create(passport)
-    date_count = (Date.today.to_time - passport.plans.first.start_time.strftime("%Y-%m-%d").to_time)/60/60/24
+    date_count = (Date.today.to_time - passport.plans.first.start_time.strftime("%Y-%m-%d").to_time)/60/60/24+1
     now = Time.current
+    notification_reset(passport)
   if date_count == 4 && now == now.end_of_month #4日目と月末がかぶった場合
     notification_4 = Notification.new(day: Date.today.to_time, date_type: 4, passport_id: passport.id)
     notification_4.notification_comment_id = notification_comments(notification_4, passport)
@@ -59,7 +60,6 @@ class Notification < ApplicationRecord
     else #date_type:1
       notification = Notification.new(day: Date.today.to_time, date_type: 1, passport_id: passport.id)
       notification.notification_comment_id = notification_comments(notification, passport)
-      byebug
       notification.save
 
     end
@@ -140,5 +140,12 @@ class Notification < ApplicationRecord
       comment = comment_random.order("RAND()").first
       return comment.id
     end
+  end
+end
+
+def notification_reset(passport)
+  notifications = passport.notifications
+  if notifications.where(check: false, date_type: 1 || 7 || 28)
+    notifications.where(check: false, date_type: 1 || 7 || 28).update_all(:check => true)
   end
 end

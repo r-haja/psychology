@@ -6,6 +6,9 @@
     <%= link_to "戻る", user_passports_path(current_user), class: "btn-true" %>
   </div>
 </div>
+<div class="notification">
+  <%= render partial: "notifications/feedback", locals: {notifications: @notification}  %>
+</div>
 
 <main class="passport">
   <section class="container">

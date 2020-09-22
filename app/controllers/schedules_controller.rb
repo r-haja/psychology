@@ -4,6 +4,7 @@ class SchedulesController < ApplicationController
     @schedules = Schedule.all.includes(:passport)
     @schedule = Schedule.new(params_schedule)
     @passport = @schedule.passport
+    @notifications = @passport.notifications.where(check: false)
     if params[:commit] == "達成"
       @schedule.judgment = 1
     elsif params[:commit] == "例外日"
@@ -11,7 +12,9 @@ class SchedulesController < ApplicationController
     end
     if @schedule.save
       passport_rate
-      Notification.new.notification_create(passport)
+      if @schedule.day.strftime("%Y-%m-%d")  == Time.now.strftime("%Y-%m-%d")
+        Notification.new().notification_create(@schedule.passport)
+      end
       respond_to :js
     else
       flash[:notice] = "スケジュールの更新に失敗しました"
