@@ -7,21 +7,39 @@
     </script>
     <!-- Modal -->
     <% if notification.date_type == 4 %>
-      <div class="modal fade" id="FeedBackModal<%= notification.id %>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+      <div class="modal fade fb" id="FeedBackModal<%= notification.id %>" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+              <p class="modal-title nomore3">
+                <%= image_tag "passport/img_diamond.png" %>
+                ３日坊主にならないために！
+              </p>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true"></span>
               </button>
             </div>
             <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Understood</button>
+              <p class="leadTxt">
+                本日は習慣化を初めて3日目です！<br>
+                多くの人が3日以内で習慣化を断念してしまいます。明日の達成が習慣化へ繋がります！
+              </p>
+              <div class="yourHabit">
+                <p class="yourHabit__heading">あなたの習慣化</p>
+                <div class="yourHabit__content">
+                  <div>
+                    <dl>
+                      <dt>何のために習慣化をしますか？<dt>
+                      <dd>朝の時間を有効活用するため朝の時間を有効活用するため</dd>
+                    </dl>
+                    <dl>
+                      <dt>そのために何をしますか？<dt>
+                      <dd>平日は朝7時に起きる平日は朝7時に起きる</dd>
+                    </dl>
+                  </div>
+                  <%= image_tag "passport/img_yell02.png", class: "yourHabit__img" %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -29,21 +47,39 @@
       <% notification.check = true %>
       <% notification.save %>
     <% elsif notification.date_type == 3 %>
-      <div class="modal fade" id="FeedBackModal<%= notification.id %>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+      <div class="modal fade fb" id="FeedBackModal<%= notification.id %>" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+              <p class="modal-title nomore3">
+                <%= image_tag "passport/img_diamond.png" %>
+                ３日坊主にならないために！
+              </p>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true"></span>
               </button>
             </div>
             <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Understood</button>
+              <p class="leadTxt">
+                本日は習慣化を初めて4日目です！<br>
+                多くの人が4日以内で習慣化を断念してしまいます。明日の達成が習慣化へ繋がります！
+              </p>
+              <div class="yourHabit">
+                <p class="yourHabit__heading">あなたの習慣化</p>
+                <div class="yourHabit__content">
+                  <div>
+                    <dl>
+                      <dt>何のために習慣化をしますか？<dt>
+                      <dd>朝の時間を有効活用するため朝の時間を有効活用するため</dd>
+                    </dl>
+                    <dl>
+                      <dt>そのために何をしますか？<dt>
+                      <dd>平日は朝7時に起きる平日は朝7時に起きる</dd>
+                    </dl>
+                  </div>
+                  <%= image_tag "passport/img_yell02.png", class: "yourHabit__img" %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -51,21 +87,43 @@
       <% notification.check = true %>
       <% notification.save %>
     <% elsif notification.date_type == 28 %>
-      <div class="modal fade" id="FeedBackModal<%= notification.id %>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+      <div class="modal fade fb" id="FeedBackModal<%= notification.id %>" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+              <p class="modal-title monthly">
+                <%= image_tag "passport/img_cracker.png" %>
+                今月もお疲れ様でした！
+              </p>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true"></span>
               </button>
             </div>
             <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Understood</button>
+              <p class="leadTxt leadTxt--center leadTxt--mt40">
+                今月のあなたの記録結果を表示します。
+              </p>
+              <div class="result result--column">
+                <p class="result__heading">今月の記録</p>
+                <div>
+                  <dl>
+                    <dt>１ヶ月の達成率</dt><dd><span>71</span>%</dd>
+                  </dl>
+                  <dl>
+                    <dt>ゴールまで残り</dt><dd><span>30</span>日</dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="chart chart--monthly">
+                <div><canvas id="FbMonthlyChart01" height="400" width="auto"></canvas></div>
+                <div><canvas id="FbMonthlyChart02" height="400" width="auto"></canvas></div>
+              </div>
+              <div class="advise">
+                <p class="advise__txt">
+                  習慣化されている達成率です！どうしても習慣化行動ができない日は、『例外ルール』を行いながら継続日を伸ばしましょう！
+                </p>
+                <%= image_tag "passport/img_yell04.png", class: "advise__img advise__img--monthly" %>
+              </div>
             </div>
           </div>
         </div>
@@ -73,21 +131,45 @@
       <% notification.check = true %>
       <% notification.save %>
     <% elsif notification.date_type == 7 %>
-      <div class="modal fade" id="FeedBackModal<%= notification.id %>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+      <div class="modal fade fb" id="FeedBackModal<%= notification.id %>" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+              <p class="modal-title weekly">
+                <%= image_tag "passport/img_coffee.png" %>
+                今週もお疲れ様でした！
+              </p>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true"></span>
               </button>
             </div>
             <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Understood</button>
+              <p class="leadTxt leadTxt--center leadTxt--mt15">
+                今週のあなたの記録結果を表示します。
+              </p>
+              <div class="result result--column">
+                <p class="result__heading">今週の記録</p>
+                <div>
+                  <dl>
+                    <dt>１週間の達成率</dt><dd><span>42</span>%</dd>
+                  </dl>
+                  <dl>
+                    <dt>ゴールまで残り</dt><dd><span>56</span>日</dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="chart chart--weekly">
+                <div><canvas id="FbWeeklyChart" height="180" width="auto"></canvas></div>
+              </div>
+              <div class="advise">
+                <p class="advise__txt">
+                  習慣化までもう一息です！明日から改めてチャレンジしていきましょう！もし達成率に伸び悩んでいる場合は、あなたに合った習慣化方法を再度検討してみませんか？
+                </p>
+                <%= image_tag "passport/img_yell03.png", class: "advise__img advise__img--weekly" %>
+              </div>
+              <%= link_to "習慣化のワザ 適正診断", psychology_ranking_path, class: "adviseBtn" %>
+              <%= link_to "そもそも習慣化とは？", porpose_create_path, class: "adviseBtn" %>
+              <%= link_to "達成に近づく目標の立て方", porpose_create_path, class: "adviseBtn" %>
             </div>
           </div>
         </div>
@@ -95,21 +177,36 @@
       <% notification.check = true %>
       <% notification.save %>
     <% else %>
-      <div class="modal fade" id="FeedBackModal<%= notification.id %>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+      <div class="modal fade fb" id="FeedBackModal<%= notification.id %>" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+              <p class="modal-title welldone">
+                <%= image_tag "passport/img_wing_left.png" %>
+                やりました！
+                <%= image_tag "passport/img_wing_right.png" %>
+              </p>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true"></span>
               </button>
             </div>
             <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Understood</button>
+              <div class="result result--inline result--mt15">
+                <div>
+                  <dl>
+                    <dt>達成回数</dt><dd><span>1</span>回</dd>
+                  </dl>
+                  <dl>
+                    <dt>残り日数</dt><dd><span>61</span>日</dd>
+                  </dl>
+                </div>
+                <%= image_tag "passport/img_yell01.png" %>
+              </div>
+              <div class="meigen">
+                <%= image_tag "passport/img_meigen_heading.png" %> 
+                <p>習慣とは非常に軽いものであり、普段はその存在にさえ気づかない。だが一度意識すると、非常に重く断ち難いものであることがわかる</p>
+                <p class="meigen__src">ウォーレン・バフェット</p>
+              </div>
             </div>
           </div>
         </div>
@@ -119,3 +216,89 @@
     <% end %>
   <% end %>
 <% end %>
+
+<script>
+  var ctx01 = document.getElementById("FbWeeklyChart");
+  var FbWeeklyChart = new Chart(ctx01, {
+      type: 'pie',
+      data: {
+      labels: ["21時", "22時", "23時", "20時"],
+      datasets: [{
+          backgroundColor: [
+              "#7B93DB",
+              "#98AEEB",
+              "#BED0F7",
+              "#E0E8F9"
+          ],
+          data: [50,25,20,5]
+      }]
+      },
+      options: {
+      legend : {
+          position: 'bottom',
+          labels: {
+          boxWidth : 10,
+          }
+      },
+      title: {
+          display: true,
+          text: '達成時間帯'
+      }
+      }
+  });
+  var ctx02 = document.getElementById("FbMonthlyChart01");
+  var FbMonthlyChart01 = new Chart(ctx02, {
+    type: 'pie',
+    data: {
+      labels: ["21時", "22時", "23時", "20時"],
+      datasets: [{
+          backgroundColor: [
+            "#7B93DB",
+            "#98AEEB",
+            "#BED0F7",
+            "#E0E8F9"
+          ],
+          data: [50,25,20,5]
+      }]
+    },
+    options: {
+      legend : {
+        position: 'bottom',
+        labels: {
+          boxWidth : 10,
+        }
+      },
+      title: {
+        display: true,
+        text: '達成時間帯（先月比較）'
+      }
+    }
+  });
+  var ctx03 = document.getElementById("FbMonthlyChart02");
+  var FbMonthlyChart02 = new Chart(ctx03, {
+    type: 'pie',
+    data: {
+      labels: ["日曜", "土曜", "金曜"],
+      datasets: [{
+          backgroundColor: [
+              "#F9703E",
+              "#FF9466",
+              "#FFB088"
+          ],
+          data: [70,20,10]
+      }]
+    },
+    options: {
+      legend : {
+        position: 'bottom',
+        labels: {
+          boxWidth : 10,
+        }
+      },
+      title: {
+        display: true,
+        text: '達成曜日（先月比較）'
+      }
+    }
+  });
+</script>

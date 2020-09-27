@@ -459,6 +459,250 @@
   }
 }
 
+.fb {
+  dl {
+    margin-bottom: 0;
+  }
+  .modal-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-weight: bold;
+  }
+
+  // 見出しイメージ個別指定
+  .welldone {
+    img {
+      width: 38px;
+      margin: 0 10px 8px;
+    }
+    img:nth-of-type(2) {
+      margin-left: 5px;
+    }
+  }
+  .nomore3 {
+    width: 140%;
+    margin-left: -20px;
+    img {
+      width: 45px;
+      margin-right: 5px;
+      margin-bottom: 18px;
+    }
+  }
+  .weekly {
+    height: 60px;
+    img {
+      width: 50px;
+      margin-right: 10px;
+    }
+  }
+  .monthly {
+    width: 105%;
+    margin-bottom: 10px;
+    margin-left: -20px;
+    img {
+      width: 66px;
+      margin-right: 10px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .modal-body {
+    padding: 0;
+  }
+  .leadTxt {
+    margin-top: -22px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    &--center {
+      text-align: center;
+    }
+    &--mt15 {
+      margin-top: -15px;
+    }
+    &--mt40 {
+      margin-top: -40px;
+    }
+  }
+  .result {
+    &--inline {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &--column {
+      display: flex;
+      flex-direction: column;
+      align-items: center; 
+    }
+    &--mt15 {
+      margin-top: -15px;
+    }
+    &__heading {
+      margin-bottom: 12px;
+      padding: 5px 35px;
+      border: 2px solid #E1E1E1;
+      border-radius: 18px;
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+      line-height: 1; 
+    }
+    dl {
+      display: flex;
+      align-items: center;
+      dt {
+        margin-right: 5px;
+        padding: 8px 15px;
+        background-color: $primary-color;
+        border-radius: 18px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 1;
+      }
+      dd {
+        margin-bottom: 0;
+        font-size: 18px;
+        span {
+          display: inline-block;
+          width: 35px;
+          margin-right: 5px;
+          color: $primary-color;
+          font-weight: bold;
+          text-align: center;
+        }
+      }
+    }
+    dl + dl {
+      margin-top: 7px;
+    }
+    img {
+      width: 60px;
+      margin-left: 20px;
+    }
+  }
+  .meigen {
+    margin-top: 10px;
+    img {
+      display: block;
+      width: 103px;
+      margin: 0 auto;
+      margin-bottom: 15px;;
+    }
+    p {
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+    &__src {
+      color: $accent-color;
+      text-align: center;
+    }
+    p + p {
+      margin-top: 6px;
+    }
+  }
+  .yourHabit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__heading {
+      display: inline-block;  
+      margin-bottom: 15px;
+      padding: 8px 15px;
+      background-color: $primary-color;
+      border-radius: 18px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 1; 
+    }
+    &__content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      dl + dl {
+        margin-top: 15px;
+      }
+      dt {
+        margin-bottom: 5px;
+        color: $font-gray;
+        font-size: 14px;
+        font-weight: normal;
+      }
+      dd {
+        margin-bottom: 0;
+        color: $font-color;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 1.4;
+      }
+      img {
+        width: 76px;
+      }
+    }
+  }
+  .chart {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    &--weekly {
+      div {
+        width: 100%;
+        @media screen and (min-width: 751px) {
+          width: 70%;
+        }
+      }
+    }
+    &--monthly {
+      div {
+        width: 50%;
+        @media screen and (min-width: 751px) {
+          width: 35%;
+        }
+      }
+    }
+  }
+  .advise {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    &__txt {
+      font-size: 14px;
+    }
+    &__img {
+      margin-left: 10px;
+      &--weekly {
+        width: 45px;
+      }
+      &--monthly {
+        width: 65px;
+      }
+    }
+  }
+  .adviseBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 235px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: $primary-color;
+    color: #fff;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    &:hover {
+      text-decoration: none;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
 .psychologi_new_ModalLong {
   .modal-body {
     display: flex;
@@ -566,13 +810,18 @@
 @media screen and (max-width: 810px) {
   .passport {
     .container {
-      width: 100%;
+      width: calc(100% - 40px);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
     }
     &__header {
       position: relative;
       overflow: hidden;
       height: 120px;
       margin-bottom: 25px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
       img {
         position: absolute;
         top: 50%;
@@ -720,9 +969,6 @@
       .fa-chevron-circle-down.show::before {
         transform: rotate(0);
       }
-    }
-    .passport__footer {
-      margin-bottom: 200px;
     }
   }
   .psychologi_new_ModalLong {
