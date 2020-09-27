@@ -19,8 +19,8 @@ development:
   collation: utf8mb4_bin
   database: texhpitgram
   pool: 3306
-  username: dumbo
-  password: DumboAppPass
+  username: root
+  password:
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -29,8 +29,8 @@ development:
 test:
   <<: *default
   database: psychology_test
-  username: dumbo
-  password: DumboAppPass
+  username: root
+  password:
   host: localhost
   #database: db/test.sqlite3
 
