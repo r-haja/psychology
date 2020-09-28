@@ -15,7 +15,7 @@
           <%= f.select :date_type, [['月', '月'], ['週', '週'], ['日', '日'], ['3日', '3日'], ['4日', '4日']], include_blank: 'タイプを選択してください', placeholder: "タイプ", class: "form-control border-0" %>
         </div>
         <div class="col-md-10">
-          <%= f.label :action, "date_typeが週のやつのみ記載" %>
+          <%= f.label :action, "date_typeが週＆月末のやつのみ記載" %>
           <%= f.select :action, [['0%', '0%'], ['14%', '14%'], ['28%', '28%'], ['42%', '42%'], ['57%', '57%'], ['71%', '71%'], ['85%', '85%'], ['100%', '100%']], include_blank: '％を選択してください', placeholder: "タイプ", class: "form-control border-0" %>
         </div>
         <%= f.submit "作成する", class: "btn btn-outline-primary" %>
