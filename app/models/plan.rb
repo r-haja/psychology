@@ -26,4 +26,11 @@ class Plan < ApplicationRecord
   def end_time_to_s(passport)
     end_time.strftime("%Y-%m-%d")
   end
+
+  def remaining_days_check(notification)
+    today = Time.now.strftime("%Y-%m-%d").to_time
+    passport = notification.passport
+    end_time = passport.plans.first.end_time.strftime("%Y-%m-%d").to_time
+    return remaining_days = (end_time - today)/24/60/60
+  end
 end

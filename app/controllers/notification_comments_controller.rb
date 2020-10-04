@@ -25,6 +25,6 @@ class NotificationCommentsController < ApplicationController
 
   private
     def notification_comment_params
-      params.require(:notification_comment).permit(:comment, :date_type, :action)
+      params.require(:notification_comment).permit(:comment, :date_type, :action, :author)
     end
 end

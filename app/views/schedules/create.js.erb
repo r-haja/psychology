@@ -17,5 +17,7 @@ $(".achievement<%= @passport.id.to_s %>").
 $(".schedule_btn<%= @passport.id.to_s %>").
   html('<%= j render partial: "passports/schedule_form", locals:{passport: @passport, schedule: @schedule} %>');
 
-$(".notification").
-  html('<%= j render partial: "notifications/feedback", locals: {notifications: @notification}  %>');
+<% if controller.controller_name == 'passports' && controller.action_name == 'show' %>
+  $(".notification").
+    html('<%= j render partial: "notifications/feedback", locals: {notifications: @notifications}  %>');
+<% end %>

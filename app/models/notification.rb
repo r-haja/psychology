@@ -9,7 +9,9 @@ class Notification < ApplicationRecord
   def notification_create(passport)
     date_count = (Date.today.to_time - passport.plans.first.start_time.strftime("%Y-%m-%d").to_time)/60/60/24+1
     now = Time.current
-    notification_reset(passport)
+    if passport.notifications.present?
+      notification_reset(passport)
+    end
   if date_count == 4 && now == now.end_of_month #4日目と月末がかぶった場合
     notification_4 = Notification.new(day: Date.today.to_time, date_type: 4, passport_id: passport.id)
     notification_4.notification_comment_id = notification_comments(notification_4, passport)
@@ -69,11 +71,13 @@ class Notification < ApplicationRecord
   def notification_comments(notification, passport)
     if notification.date_type == 4
       comments = NotificationComment.all
-      comment = comments.where(date_type: "4日")
+      comment_4 = comments.where(date_type: "4日")
+      comment = comment_4.order("RAND()").first
       return comment.id
     elsif notification.date_type == 3
       comments = NotificationComment.all
-      comment = comments.where(date_type: "3日")
+      comment_3 = comments.where(date_type: "3日")
+      comment = comment_3.order("RAND()").first
       return comment.id
     elsif notification.date_type == 28
       comments = NotificationComment.all

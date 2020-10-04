@@ -1,12 +1,7 @@
 <% if notifications.nil? == false %>
   <% notifications.each do |notification| %>
-    <script>
-      window.onload = function(){
-        $('#FeedBackModal<%= notification.id %>').modal('show');
-      }
-    </script>
     <!-- Modal -->
-    <% if notification.date_type == 4 %>
+    <% if notification.date_type == 3 %>
       <div class="modal fade fb" id="FeedBackModal<%= notification.id %>" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -30,11 +25,11 @@
                   <div>
                     <dl>
                       <dt>何のために習慣化をしますか？<dt>
-                      <dd>朝の時間を有効活用するため朝の時間を有効活用するため</dd>
+                      <dd><%= notification.passport.purpose %></dd>
                     </dl>
                     <dl>
                       <dt>そのために何をしますか？<dt>
-                      <dd>平日は朝7時に起きる平日は朝7時に起きる</dd>
+                      <dd><%= notification.passport.goal %></dd>
                     </dl>
                   </div>
                   <%= image_tag "passport/img_yell02.png", class: "yourHabit__img" %>
@@ -46,7 +41,7 @@
       </div>
       <% notification.check = true %>
       <% notification.save %>
-    <% elsif notification.date_type == 3 %>
+    <% elsif notification.date_type == 4 %>
       <div class="modal fade fb" id="FeedBackModal<%= notification.id %>" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -70,11 +65,11 @@
                   <div>
                     <dl>
                       <dt>何のために習慣化をしますか？<dt>
-                      <dd>朝の時間を有効活用するため朝の時間を有効活用するため</dd>
+                      <dd><%= notification.passport.purpose %></dd>
                     </dl>
                     <dl>
                       <dt>そのために何をしますか？<dt>
-                      <dd>平日は朝7時に起きる平日は朝7時に起きる</dd>
+                      <dd><%= notification.passport.goal %></dd>
                     </dl>
                   </div>
                   <%= image_tag "passport/img_yell02.png", class: "yourHabit__img" %>
@@ -107,10 +102,10 @@
                 <p class="result__heading">今月の記録</p>
                 <div>
                   <dl>
-                    <dt>１ヶ月の達成率</dt><dd><span>71</span>%</dd>
+                    <dt>１ヶ月の達成率</dt><dd><span><%= Schedule.new().notidication_rate(notification, 28).to_i %></span>%</dd>
                   </dl>
                   <dl>
-                    <dt>ゴールまで残り</dt><dd><span>30</span>日</dd>
+                    <dt>ゴールまで残り</dt><dd><span><%= Plan.new().remaining_days_check(notification).to_i %></span>日</dd>
                   </dl>
                 </div>
               </div>
@@ -120,7 +115,7 @@
               </div>
               <div class="advise">
                 <p class="advise__txt">
-                  習慣化されている達成率です！どうしても習慣化行動ができない日は、『例外ルール』を行いながら継続日を伸ばしましょう！
+                  <%= notification.notification_comment.comment %>習慣化されている達成率です！どうしても習慣化行動ができない日は、『例外ルール』を行いながら継続日を伸ばしましょう！
                 </p>
                 <%= image_tag "passport/img_yell04.png", class: "advise__img advise__img--monthly" %>
               </div>
@@ -151,10 +146,10 @@
                 <p class="result__heading">今週の記録</p>
                 <div>
                   <dl>
-                    <dt>１週間の達成率</dt><dd><span>42</span>%</dd>
+                    <dt>１週間の達成率</dt><dd><span><%= Schedule.new().notidication_rate(notification, 7).to_i %></span>%</dd>
                   </dl>
                   <dl>
-                    <dt>ゴールまで残り</dt><dd><span>56</span>日</dd>
+                    <dt>ゴールまで残り</dt><dd><span><%= Plan.new().remaining_days_check(notification).to_i %></span>日</dd>
                   </dl>
                 </div>
               </div>
@@ -163,7 +158,7 @@
               </div>
               <div class="advise">
                 <p class="advise__txt">
-                  習慣化までもう一息です！明日から改めてチャレンジしていきましょう！もし達成率に伸び悩んでいる場合は、あなたに合った習慣化方法を再度検討してみませんか？
+                  <%= notification.notification_comment.comment %>習慣化までもう一息です！明日から改めてチャレンジしていきましょう！もし達成率に伸び悩んでいる場合は、あなたに合った習慣化方法を再度検討してみませんか？
                 </p>
                 <%= image_tag "passport/img_yell03.png", class: "advise__img advise__img--weekly" %>
               </div>
@@ -194,18 +189,18 @@
               <div class="result result--inline result--mt15">
                 <div>
                   <dl>
-                    <dt>達成回数</dt><dd><span>1</span>回</dd>
+                    <dt>達成回数</dt><dd><span><%= Schedule.new().schedule_count(notification) %></span>回</dd>
                   </dl>
                   <dl>
-                    <dt>残り日数</dt><dd><span>61</span>日</dd>
+                    <dt>残り日数</dt><dd><span><%= Plan.new().remaining_days_check(notification).to_i %></span>日</dd>
                   </dl>
                 </div>
                 <%= image_tag "passport/img_yell01.png" %>
               </div>
               <div class="meigen">
-                <%= image_tag "passport/img_meigen_heading.png" %> 
-                <p>習慣とは非常に軽いものであり、普段はその存在にさえ気づかない。だが一度意識すると、非常に重く断ち難いものであることがわかる</p>
-                <p class="meigen__src">ウォーレン・バフェット</p>
+                <%= image_tag "passport/img_meigen_heading.png" %>
+                <p><%= notification.notification_comment.comment %>習慣とは非常に軽いものであり、普段はその存在にさえ気づかない。だが一度意識すると、非常に重く断ち難いものであることがわかる</p>
+                <p class="meigen__src">ウォーレン・バフェット<%= notification.notification_comment.author %></p>
               </div>
             </div>
           </div>
@@ -214,91 +209,97 @@
       <% notification.check = true %>
       <% notification.save %>
     <% end %>
+    <script>
+      $('#FeedBackModal<%= notification.id %>').modal('show');
+    </script>
+
+    <script>
+      //毎週の時間を表示するグラフ
+      var ctx01 = document.getElementById("FbWeeklyChart");
+      var FbWeeklyChart = new Chart(ctx01, {
+          type: 'pie',
+          data: {
+          labels: ["21時", "22時", "23時", "20時"],
+          datasets: [{
+              backgroundColor: [
+                  "#7B93DB",
+                  "#98AEEB",
+                  "#BED0F7",
+                  "#E0E8F9"
+              ],
+              data: [50,25,20,5]
+          }]
+          },
+          options: {
+          legend : {
+              position: 'bottom',
+              labels: {
+              boxWidth : 10,
+              }
+          },
+          title: {
+              display: true,
+              text: '達成時間帯'
+          }
+          }
+      });
+      //毎月の時間を表示するグラフ
+      var ctx02 = document.getElementById("FbMonthlyChart01");
+      var FbMonthlyChart01 = new Chart(ctx02, {
+        type: 'pie',
+        data: {
+          labels: ["21時", "22時", "23時", "20時"],
+          datasets: [{
+              backgroundColor: [
+                "#7B93DB",
+                "#98AEEB",
+                "#BED0F7",
+                "#E0E8F9"
+              ],
+              data: [50,25,20,5]
+          }]
+        },
+        options: {
+          legend : {
+            position: 'bottom',
+            labels: {
+              boxWidth : 10,
+            }
+          },
+          title: {
+            display: true,
+            text: '達成時間帯（先月比較）'
+          }
+        }
+      });
+      //毎月の曜日を表示するグラフ
+      var ctx03 = document.getElementById("FbMonthlyChart02");
+      var FbMonthlyChart02 = new Chart(ctx03, {
+        type: 'pie',
+        data: {
+          labels: ["日曜", "土曜", "金曜"],
+          datasets: [{
+              backgroundColor: [
+                  "#F9703E",
+                  "#FF9466",
+                  "#FFB088"
+              ],
+              data: [70,20,10]
+          }]
+        },
+        options: {
+          legend : {
+            position: 'bottom',
+            labels: {
+              boxWidth : 10,
+            }
+          },
+          title: {
+            display: true,
+            text: '達成曜日（先月比較）'
+          }
+        }
+      });
+    </script>
   <% end %>
 <% end %>
-
-<script>
-  var ctx01 = document.getElementById("FbWeeklyChart");
-  var FbWeeklyChart = new Chart(ctx01, {
-      type: 'pie',
-      data: {
-      labels: ["21時", "22時", "23時", "20時"],
-      datasets: [{
-          backgroundColor: [
-              "#7B93DB",
-              "#98AEEB",
-              "#BED0F7",
-              "#E0E8F9"
-          ],
-          data: [50,25,20,5]
-      }]
-      },
-      options: {
-      legend : {
-          position: 'bottom',
-          labels: {
-          boxWidth : 10,
-          }
-      },
-      title: {
-          display: true,
-          text: '達成時間帯'
-      }
-      }
-  });
-  var ctx02 = document.getElementById("FbMonthlyChart01");
-  var FbMonthlyChart01 = new Chart(ctx02, {
-    type: 'pie',
-    data: {
-      labels: ["21時", "22時", "23時", "20時"],
-      datasets: [{
-          backgroundColor: [
-            "#7B93DB",
-            "#98AEEB",
-            "#BED0F7",
-            "#E0E8F9"
-          ],
-          data: [50,25,20,5]
-      }]
-    },
-    options: {
-      legend : {
-        position: 'bottom',
-        labels: {
-          boxWidth : 10,
-        }
-      },
-      title: {
-        display: true,
-        text: '達成時間帯（先月比較）'
-      }
-    }
-  });
-  var ctx03 = document.getElementById("FbMonthlyChart02");
-  var FbMonthlyChart02 = new Chart(ctx03, {
-    type: 'pie',
-    data: {
-      labels: ["日曜", "土曜", "金曜"],
-      datasets: [{
-          backgroundColor: [
-              "#F9703E",
-              "#FF9466",
-              "#FFB088"
-          ],
-          data: [70,20,10]
-      }]
-    },
-    options: {
-      legend : {
-        position: 'bottom',
-        labels: {
-          boxWidth : 10,
-        }
-      },
-      title: {
-        display: true,
-        text: '達成曜日（先月比較）'
-      }
-    }
-  });
-</script>

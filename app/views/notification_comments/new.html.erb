@@ -15,8 +15,12 @@
           <%= f.select :date_type, [['月', '月'], ['週', '週'], ['日', '日'], ['3日', '3日'], ['4日', '4日']], include_blank: 'タイプを選択してください', placeholder: "タイプ", class: "form-control border-0" %>
         </div>
         <div class="col-md-10">
-          <%= f.label :action, "date_typeが週＆月末のやつのみ記載" %>
+          <%= f.label :action, "date_typeが週＆月末のやつのみ記載（達成率）" %>
           <%= f.select :action, [['0%', '0%'], ['14%', '14%'], ['28%', '28%'], ['42%', '42%'], ['57%', '57%'], ['71%', '71%'], ['85%', '85%'], ['100%', '100%']], include_blank: '％を選択してください', placeholder: "タイプ", class: "form-control border-0" %>
+        </div>
+        <div class="col-md-10">
+          <%= f.label :author, "date_typeが日のやつのみ記載（名言言ってる人）" %>
+          <%= f.text_field :author, class: "form-control border-0" %>
         </div>
         <%= f.submit "作成する", class: "btn btn-outline-primary" %>
       </div>
@@ -38,6 +42,10 @@
       <div class="card-text">
         <span>パーセント：</span>
         <%= c.action %>
+      </div>
+      <div class="card-text">
+        <span>名言作者：</span>
+        <%= c.author %>
       </div>
       <div class="card-text">
         <span>作成日：</span>
