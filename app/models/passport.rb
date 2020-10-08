@@ -96,4 +96,15 @@ class Passport < ApplicationRecord
     end
     return psychology_sort
   end
+
+  def passport_schedule_check(notification)
+    passport = notification.passport
+    schedules = passport.schedules
+    schedule = schedules.find_by(day: Time.now.strftime("%Y-%m-%d"))
+    if schedule.judgment == 1
+      return 1
+    else
+      return 2
+    end
+  end
 end

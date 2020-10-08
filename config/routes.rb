@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get "notification_create" => "admins#notification_create"
   get "porpose_create" => "pages#porpose_create"
   get "psychology_ranking" => "psychologies#ranking"
+  post "schedules/create_index" => "schedules#create_index", as: "schedule_index_create"
 
   resources :users, only: %i(show) do
     get "passport_comprated" => "passports#comprated"

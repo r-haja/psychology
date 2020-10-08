@@ -102,7 +102,7 @@
                 <p class="result__heading">今月の記録</p>
                 <div>
                   <dl>
-                    <dt>１ヶ月の達成率</dt><dd><span><%= Schedule.new().notidication_rate(notification, 28).to_i %></span>%</dd>
+                    <dt>１ヶ月の達成率</dt><dd><span><%= Schedule.new().notification_rate(notification, 28).to_i %></span>%</dd>
                   </dl>
                   <dl>
                     <dt>ゴールまで残り</dt><dd><span><%= Plan.new().remaining_days_check(notification).to_i %></span>日</dd>
@@ -110,6 +110,7 @@
                 </div>
               </div>
               <div class="chart chart--monthly">
+                <% value = Schedule.new().schedule_day_of_the_week(notification) %>
                 <div><canvas id="FbMonthlyChart01" height="400" width="auto"></canvas></div>
                 <div><canvas id="FbMonthlyChart02" height="400" width="auto"></canvas></div>
               </div>
@@ -146,7 +147,7 @@
                 <p class="result__heading">今週の記録</p>
                 <div>
                   <dl>
-                    <dt>１週間の達成率</dt><dd><span><%= Schedule.new().notidication_rate(notification, 7).to_i %></span>%</dd>
+                    <dt>１週間の達成率</dt><dd><span><%= Schedule.new().notification_rate(notification, 7).to_i %></span>%</dd>
                   </dl>
                   <dl>
                     <dt>ゴールまで残り</dt><dd><span><%= Plan.new().remaining_days_check(notification).to_i %></span>日</dd>
@@ -178,7 +179,11 @@
             <div class="modal-header">
               <p class="modal-title welldone">
                 <%= image_tag "passport/img_wing_left.png" %>
-                やりました！
+                <% if Passport.new().passport_schedule_check(notification) == 1 %>
+                  やりました！
+                <% else %>
+                  お疲れさまでした！
+                <% end %>
                 <%= image_tag "passport/img_wing_right.png" %>
               </p>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -227,7 +232,7 @@
                   "#BED0F7",
                   "#E0E8F9"
               ],
-              data: [50,25,20,5]
+              data: [50,25,20,0]
           }]
           },
           options: {
@@ -249,6 +254,7 @@
         type: 'pie',
         data: {
           labels: ["21時", "22時", "23時", "20時"],
+          //上位3つを表示、それ以外についてはその他で表示
           datasets: [{
               backgroundColor: [
                 "#7B93DB",
@@ -277,14 +283,20 @@
       var FbMonthlyChart02 = new Chart(ctx03, {
         type: 'pie',
         data: {
-          labels: ["日曜", "土曜", "金曜"],
+          labels: ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"],
           datasets: [{
               backgroundColor: [
                   "#F9703E",
                   "#FF9466",
-                  "#FFB088"
+                  "#FFB088",
+                  "#F9703E",
+                  "#FF9466",
+                  "#FFB088",
+                  "#F9703E"
               ],
-              data: [70,20,10]
+              data: [20,20,5,5,20,20,10]
+              //data: [value["日曜日"].to_i, value["月曜日"].to_i, value["火曜日"].to_i, value["水曜日"].to_i, value["木曜日"].to_i, value["金曜日"].to_i, value["土曜日"].to_i]
+              //上位3つを表示、それ以外についてはその他で表示
           }]
         },
         options: {

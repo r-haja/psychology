@@ -52,6 +52,7 @@ class Schedule < ApplicationRecord
       return rate
     end
   end
+
   def schedule_day_of_the_week(notification)
     passport = notification.passport
     schedules = passport.schedules
@@ -62,7 +63,7 @@ class Schedule < ApplicationRecord
     thu = 0
     fri = 0
     sat = 0
-    schedule.each do |schedule|
+    schedules.each do |schedule, number|
       if schedule.day.strftime("%A") == "Sunday"
         sun += 1
       elsif schedule.day.strftime("%A") == "Monday"
@@ -79,13 +80,16 @@ class Schedule < ApplicationRecord
         sat += 1
       end
     end
-    sum = (sun+mon+tue+wed+thu+fri+sat).count
-    sun_per = sun/sum.to_f
-    mon_per = mon/sum.to_f
-    tue_per = tue/sum.to_f
-    wed_per = wed/sum.to_f
-    thu_per = thu/sum.to_f
-    fri_per = fri/sum.to_f
-    sat_per = sat/sum.to_f
+    sum = (sun+mon+tue+wed+thu+fri+sat)
+    sun_per = sun/sum.to_f*100
+    mon_per = mon/sum.to_f*100
+    tue_per = tue/sum.to_f*100
+    wed_per = wed/sum.to_f*100
+    thu_per = thu/sum.to_f*100
+    fri_per = fri/sum.to_f*100
+    sat_per = sat/sum.to_f*100
+    hash = {"日曜日" =>sun_per, "月曜日" =>mon_per, "火曜日" =>tue_per, "水曜日" =>wed_per, "木曜日" =>thu_per, "金曜日" =>fri_per, "土曜日" =>sat_per}
+    value = Hash[hash.sort_by{|_, v| -v}]
+    return value
   end
 end

@@ -63,7 +63,6 @@ class Notification < ApplicationRecord
       notification = Notification.new(day: Date.today.to_time, date_type: 1, passport_id: passport.id)
       notification.notification_comment_id = notification_comments(notification, passport)
       notification.save
-
     end
   end
 

@@ -21,6 +21,26 @@ class SchedulesController < ApplicationController
     end
   end
 
+  def create_index
+    @schedules = Schedule.all.includes(:passport)
+    @schedule = Schedule.new(params_schedule_index)
+    @passport = @schedule.passport
+    @notifications = @passport.notifications.where(check: false)
+    if params[:commit] == "達成"
+      @schedule.judgment = 1
+    elsif params[:commit] == "例外日"
+      @schedule.judgment = 3
+    end
+    if @schedule.save
+      passport_rate
+      if @schedule.day.strftime("%Y-%m-%d")  == Time.now.strftime("%Y-%m-%d")
+        Notification.new().notification_create(@schedule.passport)
+      end
+      respond_to :js
+    else
+      flash[:notice] = "スケジュールの更新に失敗しました"
+    end
+  end
 
   def update
     @schedules = Schedule.all.includes(:passport)
@@ -44,6 +64,9 @@ class SchedulesController < ApplicationController
   private
     def params_schedule
       params.require(:schedule).permit(:day, :comprate, :passport_id, :user_id, :judgment)
+    end
+    def params_schedule_index
+      params.permit(:day, :comprate, :passport_id, :user_id, :judgment)
     end
     def params_schedule_update
       params.permit(:day, :comprate, :passport_id, :user_id, :judgment)
