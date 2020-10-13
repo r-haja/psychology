@@ -1,6 +1,6 @@
 class PassportsController < ApplicationController
   before_action :authenticate_user!
-  before_action :passport_set, only: [:show, :edit, :update, :destroy]
+  before_action :passport_set, only: [:show, :edit, :update, :destroy, :comprated]
 
   def index
     passport_index_comprate
@@ -107,6 +107,9 @@ private
 
   def passport_set
     @passport = Passport.find_by(id: params[:id])
+    if @passport == nil
+      @passport = Passport.find_by(id: params[:passport_id])
+    end
   end
 
   def passport_params

@@ -1,132 +1,102 @@
-<div class="selection" data-step='1' data-intro='おめでとうございます！最初の習慣パスポートが作成されました。これから使い方をご説明していきます。<br>習慣が作成されると、ここにボタンが追加されていきます。'>
-  <% i = 1 %>
-  <% @passports.each do |passport| %>
-    <% if passport.user_id == current_user.id %>
-      <div class="passport_select">
-        <% if passport.achievement == true %>
-          <div class="passport__achievement">
-            <%= form_with scope: resource, as: resource_name, url: registration_path(resource_name), method: :patch, local: true do |f| %>
-              <%= f.hidden_field :comprate_passport_select, value: passport.id %>
-              <% if passport.id == passport.user.comprate_passport_select %>
-                <%= button_tag :type => "submit", :class => "btn-achievement-select" do %>
-                  <i class="fas fa-star"></i>習慣化<%= i %>
-                <% end %>
-              <% else %>
-                <%= button_tag :type => "submit", :class => "btn-achievement" do %>
-                  <i class="fas fa-star"></i>習慣化<%= i %>
-                <% end %>
-              <% end %>
-            <% end %>
-          </div>
+<% if @passport.achievement == true %>
+  <main class="passport">
+    <section class="container">
+      <div class="passport__header">
+        <% if @passport.genre.name == "運動" %>
+          <%= image_tag 'img_passport_header_1.png' %>
+        <% elsif @passport.genre.name == "実践" %>
+          <%= image_tag 'img_passport_header_2.png' %>
+        <% elsif @passport.genre.name == "睡眠" %>
+          <%= image_tag 'img_passport_header_3.png' %>
+        <% elsif @passport.genre.name == "早起き" %>
+          <%= image_tag 'img_passport_header_4.png' %>
+        <% elsif @passport.genre.name == "勉強" %>
+          <%= image_tag 'img_passport_header_5.png' %>
+        <% elsif @passport.genre.name == "読書" %>
+          <%= image_tag 'img_passport_header_6.png' %>
+        <% elsif @passport.genre.name == "ダイエット" %>
+          <%= image_tag 'img_passport_header_7.png' %>
+        <% elsif @passport.genre.name == "瞑想" %>
+          <%= image_tag 'img_passport_header_8.png' %>
+        <% elsif @passport.genre.name == "家事" %>
+          <%= image_tag 'img_passport_header_9.png' %>
+        <% elsif @passport.genre.name == "悪い習慣" %>
+          <%= image_tag 'img_passport_header_10.png' %>
+        <% else %>
+          <%= image_tag 'img_passport_header.jpg' %>
         <% end %>
       </div>
-    <% end %>
-    <% i += 1 %>
-  <% end %>
-</div>
-<% @passports.each do |passport| %>
-  <% if passport.achievement == true %>
-    <% if passport.id == passport.user.comprate_passport_select %>
-      <main class="passport">
-        <section class="container">
-          <div class="passport__header">
-            <% if passport.genre.name == "運動" %>
-              <%= image_tag 'img_passport_header_1.png' %>
-            <% elsif passport.genre.name == "実践" %>
-              <%= image_tag 'img_passport_header_2.png' %>
-            <% elsif passport.genre.name == "睡眠" %>
-              <%= image_tag 'img_passport_header_3.png' %>
-            <% elsif passport.genre.name == "早起き" %>
-              <%= image_tag 'img_passport_header_4.png' %>
-            <% elsif passport.genre.name == "勉強" %>
-              <%= image_tag 'img_passport_header_5.png' %>
-            <% elsif passport.genre.name == "読書" %>
-              <%= image_tag 'img_passport_header_6.png' %>
-            <% elsif passport.genre.name == "ダイエット" %>
-              <%= image_tag 'img_passport_header_7.png' %>
-            <% elsif passport.genre.name == "瞑想" %>
-              <%= image_tag 'img_passport_header_8.png' %>
-            <% elsif passport.genre.name == "家事" %>
-              <%= image_tag 'img_passport_header_9.png' %>
-            <% elsif passport.genre.name == "悪い習慣" %>
-              <%= image_tag 'img_passport_header_10.png' %>
-            <% else %>
-              <%= image_tag 'img_passport_header.jpg' %>
+
+      <div class="passport__contents">
+        <div class="contents">
+          <div class="habit">
+            <% if @passport.user_id != @current_user.id %>
+              <div class="habit__user">
+                <% if @passport.user_profile_image.present? %>
+                  <%= image_tag @passport.user.profile_image.url, class: "habit__user-icon" %>
+                <% else %>
+                  <%= image_tag "icon_default_user.png", class: "habit__user-icon" %>
+                <% end %>
+                <p class="habit__user-name"><%= @passport.user_name %></p>
+              </div>
+            <% end %>
+            <h1 class="habit__purpose"><%= simple_format(@passport.purpose) %></h1>
+            <h2 class="habit__goal"><%= simple_format(@passport.goal) %></h2>
+            <div class="habit__details">
+              <p class="period"><%= @passport.start_time(@passport) %> 〜 <%= @passport.end_time(@passport) %></p>
+              <p class="genre"><%= @passport.genre.name %></p>
+            </div>
+            <% if @passport.user_id == current_user.id %>
+              <div class="habit__btn">
+                <%= link_to user_passport_path(current_user.id, @passport.id), method: :delete, data: {confirm: "本当に削除してよろしいですか？"}, class: "trash" do %>
+                  <%= image_tag 'icon_trash.png' %>
+                <% end %>
+              </div>
             <% end %>
           </div>
-
-          <div class="passport__contents">
-            <div class="contents">
-              <div class="habit">
-                <% if passport.user_id != current_user.id %>
-                  <div class="habit__user">
-                    <% if passport.user_profile_image.present? %>
-                      <%= image_tag passport.user.profile_image.url, class: "habit__user-icon" %>
-                    <% else %>
-                      <%= image_tag "icon_default_user.png", class: "habit__user-icon" %>
-                    <% end %>
-                    <p class="habit__user-name"><%= passport.user_name %></p>
-                  </div>
-                <% end %>
-                <h1 class="habit__purpose"><%= simple_format(passport.purpose) %></h1>
-                <h2 class="habit__goal"><%= simple_format(passport.goal) %></h2>
-                <div class="habit__details">
-                  <p class="period"><%= passport.start_time(passport) %> 〜 <%= passport.end_time(passport) %></p>
-                  <p class="genre"><%= passport.genre.name %></p>
-                </div>
-                <% if passport.user_id == current_user.id %>
-                  <div class="habit__btn">
-                    <%= link_to user_passport_path(current_user.id, passport.id), method: :delete, data: {confirm: "本当に削除してよろしいですか？"}, class: "trash" do %>
-                      <%= image_tag 'icon_trash.png' %>
-                    <% end %>
-                  </div>
-                <% end %>
-              </div>
-            </div><!-- contents -->
-            <div class="contents">
-              <div class="methods" data-step='3' data-intro='自分で選択した習慣化方法がここに表示されます。最初はオススメの方法が登録されているので、名前を押して詳細を見てみましょう。<br>習慣方法は「新規登録」から自由に選んで登録できます（複数選択可）。'>
-                <p class="methods__label">習慣化方法</p>
-                <%= render partial: "passports/psychology", collection: passport.psychologies, as: :psychology %>
-              </div>
-            </div><!-- contents -->
+        </div><!-- contents -->
+        <div class="contents">
+          <div class="methods" data-step='3' data-intro='自分で選択した習慣化方法がここに表示されます。最初はオススメの方法が登録されているので、名前を押して詳細を見てみましょう。<br>習慣方法は「新規登録」から自由に選んで登録できます（複数選択可）。'>
+            <p class="methods__label">習慣化方法</p>
+            <%= render partial: "passports/psychology", collection: @passport.psychologies, as: :psychology %>
           </div>
-          <% if passport.user.id == current_user.id %>
-            <div class="passport__footer">
-              <%= form_with model: passport, url:[current_user, passport], class: "p-0 border-0" do |f| %>
-                <%= f.hidden_field :achievement, value: nil %>
-                <%= f.submit "習慣化をやり直す", class: "btn-edit", data: {confirm: "本当に戻してもよろしいですか？"} %>
-              <% end %>
-            </div>
+        </div><!-- contents -->
+      </div>
+      <% if @passport.user.id == current_user.id %>
+        <div class="passport__footer">
+          <%= form_with model: @passport, url:[current_user, @passport], class: "p-0 border-0" do |f| %>
+            <%= f.hidden_field :achievement, value: nil %>
+            <%= f.submit "習慣化をやり直す", class: "btn-edit", data: {confirm: "本当に戻してもよろしいですか？"} %>
           <% end %>
-          <div class="passport__footer">
-          </div>
-        </section>
-      </main>
-
-
-      <!-- Modal -->
-      <%= form_with(model: passport, url: user_passport_path(current_user, passport.id), local: true ) do |f| %>
-        <div class="modal fade psychologi_new_ModalLong" id="psychologi_new_ModalLong<%= passport.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">習慣化方法</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true"></span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <%= f.collection_check_boxes :psychology_ids, Psychology.all, :id, :title do |b| %>
-                  <%= b.check_box + b.label { b.text } %>
-                <% end %>
-              </div>
-              <div class="modal-footer">
-                <%= f.submit "習慣化方法を選択", class: "btn btn-primary" %>
-              </div>
-            </div>
-          </div>
         </div>
       <% end %>
-    <% end %>
+      <div class="passport__footer">
+      </div>
+    </section>
+  </main>
+
+
+    <!-- Modal -->
+  <%= form_with(model: @passport, url: user_passport_path(current_user, @passport.id), local: true ) do |f| %>
+    <div class="modal fade psychologi_new_ModalLong" id="psychologi_new_ModalLong<%= @passport.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">習慣化方法</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= f.collection_check_boxes :psychology_ids, Psychology.all, :id, :title do |b| %>
+              <%= b.check_box + b.label { b.text } %>
+            <% end %>
+          </div>
+          <div class="modal-footer">
+            <%= f.submit "習慣化方法を選択", class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
 <% end %>

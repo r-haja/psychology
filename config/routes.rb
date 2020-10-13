@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   post "schedules/create_index" => "schedules#create_index", as: "schedule_index_create"
 
   resources :users, only: %i(show) do
-    get "passport_comprated" => "passports#comprated"
     resources :passports, only: %i(index show new create destroy edit update) do
+      get "passport_comprated" => "passports#comprated"
       resources :schedules, only: %i(create destroy update)
     end
   end

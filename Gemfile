@@ -87,3 +87,4 @@ gem 'simple_calendar', '2.3.0'
 gem 'kaminari'
 gem 'font-awesome-sass'
 gem 'whenever', require: false
+gem 'chart-js-rails'

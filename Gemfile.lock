@@ -93,6 +93,8 @@ GEM
     carrierwave-aws (1.4.0)
       aws-sdk-s3 (~> 1.0)
       carrierwave (>= 0.7, < 2.1)
+    chart-js-rails (0.1.7)
+      railties (> 3.1)
     childprocess (3.0.0)
     chronic (0.10.2)
     coffee-rails (4.2.2)
@@ -357,6 +359,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   carrierwave (~> 1.0)
   carrierwave-aws
+  chart-js-rails
   coffee-rails (~> 4.2)
   devise
   dotenv-rails

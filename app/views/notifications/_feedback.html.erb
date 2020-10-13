@@ -110,9 +110,15 @@
                 </div>
               </div>
               <div class="chart chart--monthly">
-                <% value = Schedule.new().schedule_day_of_the_week(notification) %>
-                <div><canvas id="FbMonthlyChart01" height="400" width="auto"></canvas></div>
-                <div><canvas id="FbMonthlyChart02" height="400" width="auto"></canvas></div>
+                <% value_key,num = Schedule.new().schedule_day_of_the_week(notification) %>
+                <% prev_num = Schedule.new().prev_schedule_day_of_the_week(notification) %>
+                <% prev_num_value = prev_num.map(&:second) %>
+                <% key_per = value_key.map(&:first) %>
+                <% value_per = value_key.map(&:second) %>
+                <% key_num = num.map(&:first) %>
+                <% value_num = num.map(&:second) %>
+                <!--  id="FbMonthlyChart01" height="auto" width="auto" -->
+                <canvas id="FbMonthlyChart02" height="auto" width="auto"></canvas>
               </div>
               <div class="advise">
                 <p class="advise__txt">
@@ -155,6 +161,11 @@
                 </div>
               </div>
               <div class="chart chart--weekly">
+                <% key_value = Schedule.new().working_hours(notification) %>
+                <% key = key_value.map(&:first) %>
+                <% value = key_value.map(&:second) %>
+                <% prev_key_value = Schedule.new().prev_working_hours(notification) %>
+                <% prev_value = prev_key_value.map(&:second) %>
                 <div><canvas id="FbWeeklyChart" height="180" width="auto"></canvas></div>
               </div>
               <div class="advise">
@@ -220,98 +231,126 @@
 
     <script>
       //毎週の時間を表示するグラフ
-      var ctx01 = document.getElementById("FbWeeklyChart");
-      var FbWeeklyChart = new Chart(ctx01, {
-          type: 'pie',
-          data: {
-          labels: ["21時", "22時", "23時", "20時"],
-          datasets: [{
-              backgroundColor: [
-                  "#7B93DB",
-                  "#98AEEB",
-                  "#BED0F7",
-                  "#E0E8F9"
-              ],
-              data: [50,25,20,0]
-          }]
-          },
-          options: {
-          legend : {
-              position: 'bottom',
-              labels: {
-              boxWidth : 10,
+      <% if notification.date_type == 7 %>
+        var array = <%= value %>;
+        var prev_array = <%= prev_value %>;
+        for(let i = 0; i < 6; i++){
+          if(array[i] == 0){
+            array[i] = null;
+          }
+          if(prev_array[i] == 0){
+            prev_array[i] = null;
+          }
+        }
+        var ctx01 = document.getElementById('FbWeeklyChart');
+        var FbWeeklyChart = new Chart(ctx01, {
+            type: 'line',
+            data: {
+                labels: <%= key.to_json.html_safe %>,
+                datasets: [{
+                    label: '今週のチェック時間',
+                    data: array,
+                    backgroundColor: 'rgba(255, 99, 132, 0.0)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 2,
+                    spanGaps: true
+                },
+                {
+                  label: '先週のチェック時間',
+                  data: prev_array,
+                  backgroundColor: 'rgba(54, 162, 235, 0.0)',
+                  borderColor: 'rgba(54, 162, 235, 1)',
+                  borderWidth: 2,
+                  spanGaps: true
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            max: 24,
+                            min: 0,
+                            stepSize: 3
+                        }
+                    }]
+                }
+            }
+        });
+      <% end %>
+      <% if notification.date_type == 28 %>
+      //毎月の曜日ごとの達成率を表示するグラフ
+          // var ctx02 = document.getElementById('FbMonthlyChart01');
+          // var FbMonthlyChart01 = new Chart(ctx02, {
+          //     type: 'pie',
+          //     data: {
+          //         labels: <%= key_per.to_json.html_safe %>,
+          //         datasets: [{
+          //             label: '曜日ごとの達成率',
+          //             data: <%= value_per %>,
+          //             backgroundColor: [
+          //                 'rgba(255, 99, 132, 0.2)',
+          //                 'rgba(54, 162, 235, 0.2)',
+          //                 'rgba(255, 206, 86, 0.2)',
+          //                 'rgba(75, 192, 192, 0.2)',
+          //                 'rgba(153, 102, 255, 0.2)',
+          //                 'rgba(255, 159, 64, 0.2)'
+          //             ],
+          //             borderColor: [
+          //                 'rgba(255, 99, 132, 1)',
+          //                 'rgba(54, 162, 235, 1)',
+          //                 'rgba(255, 206, 86, 1)',
+          //                 'rgba(75, 192, 192, 1)',
+          //                 'rgba(153, 102, 255, 1)',
+          //                 'rgba(255, 159, 64, 1)'
+          //             ],
+          //             borderWidth: 1
+          //         }]
+          //     },
+          //     options: {
+          //         scales: {
+          //             yAxes: [{
+          //                 ticks: {
+          //                     beginAtZero: true
+          //                 }
+          //             }]
+          //         }
+          //     }
+          // });
+
+          //毎月の曜日ごとの達成回数を表示するグラフ
+          var ctx03 = document.getElementById('FbMonthlyChart02');
+          var FbMonthlyChart02 = new Chart(ctx03, {
+              type: 'bar',
+              data: {
+                  labels: <%= key_num.to_json.html_safe %>,
+                  datasets: [{
+                      label: '今月の達成回数',
+                      data: <%= value_num %>,
+                      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                      borderColor: 'rgba(255, 99, 132, 1)',
+                      borderWidth: 1
+                  },
+                  {
+                    label: '先月の達成回数',
+                    data: <%= prev_num_value %>,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true,
+                              max: 5,
+                              stepSize: 1
+                          }
+                      }]
+                  }
               }
-          },
-          title: {
-              display: true,
-              text: '達成時間帯'
-          }
-          }
-      });
-      //毎月の時間を表示するグラフ
-      var ctx02 = document.getElementById("FbMonthlyChart01");
-      var FbMonthlyChart01 = new Chart(ctx02, {
-        type: 'pie',
-        data: {
-          labels: ["21時", "22時", "23時", "20時"],
-          //上位3つを表示、それ以外についてはその他で表示
-          datasets: [{
-              backgroundColor: [
-                "#7B93DB",
-                "#98AEEB",
-                "#BED0F7",
-                "#E0E8F9"
-              ],
-              data: [50,25,20,5]
-          }]
-        },
-        options: {
-          legend : {
-            position: 'bottom',
-            labels: {
-              boxWidth : 10,
-            }
-          },
-          title: {
-            display: true,
-            text: '達成時間帯（先月比較）'
-          }
-        }
-      });
-      //毎月の曜日を表示するグラフ
-      var ctx03 = document.getElementById("FbMonthlyChart02");
-      var FbMonthlyChart02 = new Chart(ctx03, {
-        type: 'pie',
-        data: {
-          labels: ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"],
-          datasets: [{
-              backgroundColor: [
-                  "#F9703E",
-                  "#FF9466",
-                  "#FFB088",
-                  "#F9703E",
-                  "#FF9466",
-                  "#FFB088",
-                  "#F9703E"
-              ],
-              data: [20,20,5,5,20,20,10]
-              //data: [value["日曜日"].to_i, value["月曜日"].to_i, value["火曜日"].to_i, value["水曜日"].to_i, value["木曜日"].to_i, value["金曜日"].to_i, value["土曜日"].to_i]
-              //上位3つを表示、それ以外についてはその他で表示
-          }]
-        },
-        options: {
-          legend : {
-            position: 'bottom',
-            labels: {
-              boxWidth : 10,
-            }
-          },
-          title: {
-            display: true,
-            text: '達成曜日（先月比較）'
-          }
-        }
-      });
+          });
+      <% end %>
     </script>
   <% end %>
 <% end %>

@@ -46,7 +46,7 @@
         <div class="passport__contents">
           <div class="contents">
             <div class="habit">
-              <%= link_to user_passport_comprated_path(current_user) do %>
+              <%= link_to user_passport_passport_comprated_path(current_user, passport) do %>
                 <h1 class="habit__purpose"><%= simple_format(passport.purpose) %></h1>
               <% end %>
               <div class="habit__details">
@@ -57,14 +57,6 @@
               </div>
             </div>
           </div><!-- contents -->
-        </div>
-        <div class="schedule_btn<%= passport.id.to_s %>">
-          <% if passport.schedules.find_by(day: Time.now.strftime("%Y-%m-%d")) %>
-            <% @schedule = passport.schedules.find_by(day: Time.now.strftime("%Y-%m-%d")) %>
-          <% else %>
-            <% @schedule = Schedule.new %>
-          <% end %>
-          <%= render partial: "passports/schedule_form", locals: {passport: passport, schedule: @schedule} %>
         </div>
       </section>
     </main>

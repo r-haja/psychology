@@ -8,7 +8,7 @@ class Notification < ApplicationRecord
 
   def notification_create(passport)
     date_count = (Date.today.to_time - passport.plans.first.start_time.strftime("%Y-%m-%d").to_time)/60/60/24+1
-    now = Time.current
+    now = Date.today
     if passport.notifications.present?
       notification_reset(passport)
     end

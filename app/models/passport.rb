@@ -101,10 +101,24 @@ class Passport < ApplicationRecord
     passport = notification.passport
     schedules = passport.schedules
     schedule = schedules.find_by(day: Time.now.strftime("%Y-%m-%d"))
-    if schedule.judgment == 1
-      return 1
-    else
-      return 2
+    if schedule.nil? == false
+      if schedule.judgment == 1
+        return 1
+      else
+        return 2
+      end
     end
   end
+
+  # def no_updated_schedule_check
+  #   passports = Passport.all
+  #   current_time = Time.now.strftime("%Y-%m-%d")
+  #   passports.each do |passport|
+  #     schedules = passport.schedules
+  #     if schedules.where(day: current_time).present?
+  #     else
+  #       Notification.new().notification_create(passport)
+  #     end
+  #   end
+  # end
 end
