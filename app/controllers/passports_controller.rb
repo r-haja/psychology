@@ -58,10 +58,24 @@ class PassportsController < ApplicationController
         redirect_to user_passport_path(current_user, @passport)
       end
     else
-      if @passport.update(passport_params)
-        redirect_to user_passport_path(current_user, @passport)
+      if params[:passport][:achievement].present?
+        if @passport.update(passport_params)
+          redirect_to user_passport_passport_comprated_path(current_user, @passport)
+        else
+          redirect_to user_passport_path(current_user, @passport)
+        end
+      elsif params[:passport][:achievement].blank? == true
+        if @passport.update(passport_params)
+          redirect_to user_passport_path(current_user, @passport)
+        else
+          redirect_to user_passport_path(current_user, @passport)
+        end
       else
-        redirect_to user_passport_path(current_user, @passport)
+        if @passport.update(passport_params)
+          redirect_to user_passport_path(current_user, @passport)
+        else
+          redirect_to user_passport_path(current_user, @passport)
+        end
       end
     end
   end
