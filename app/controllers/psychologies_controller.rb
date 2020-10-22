@@ -40,6 +40,9 @@ class PsychologiesController < ApplicationController
   def ranking
   end
 
+  def diagnosis
+  end
+
   private
     def set_psychology
       @psychology = Psychology.find_by(id: params[:id])

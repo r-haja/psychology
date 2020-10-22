@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :psychologies
   resources :genres
   resources :notification_comments, only: %i(new edit update destroy create)
+  resources :diagnoses, only: %i(index create show)
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :admins

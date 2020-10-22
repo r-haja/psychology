@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_28_112911) do
+ActiveRecord::Schema.define(version: 2020_10_22_090631) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -33,6 +33,19 @@ ActiveRecord::Schema.define(version: 2020_09_28_112911) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "diagnoses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.integer "x_axis"
+    t.integer "y_axis"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "x_axis1"
+    t.integer "x_axis2"
+    t.integer "y_axis1"
+    t.integer "y_axis2"
+    t.string "result"
+    t.boolean "check"
   end
 
   create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
@@ -154,6 +167,7 @@ ActiveRecord::Schema.define(version: 2020_09_28_112911) do
     t.datetime "passport_first_create"
     t.integer "comprate_passport_select"
     t.datetime "passport_first_create_btn"
+    t.integer "diagnosis_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

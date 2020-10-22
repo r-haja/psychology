@@ -18,7 +18,7 @@ class User < ApplicationRecord
   validates_format_of :email, with: Devise.email_regexp, if: :will_save_change_to_email?
   validates :password, presence: true, confirmation: true, length: { in: Devise.password_length }, on: :create
   validates :password, confirmation: true, length: { in: Devise.password_length }, allow_blank: true, on: :update
-  validates :name, presence: true, length: {maximum: 30}, uniqueness: true
+  validates :name, presence: true, length: {maximum: 50}, uniqueness: true
   VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
   validates :password, format: { with: VALID_PASSWORD_REGEX }, if: :password_presence?
 

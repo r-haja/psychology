@@ -1,0 +1,34 @@
+<div class="container s">
+  <div class="card" style="width: 51rem; height: 20rem;">
+    <div class="card-body">
+      <% if current_user == nil %>
+        <h5 class="card-title">あなたの診断結果</h5>
+      <% else %>
+        <h5 class="card-title"><%= current_user.name %>様の診断結果</h5>
+      <% end %>
+      <h6 class="card-text"><%= @diagnosis.result %></h6><br>
+      <% if @diagnosis.result == "友人サポート" %>
+        <p>物事を直感的に考え、モチベーションが源が外に向いている</p>
+      <% elsif @diagnosis.result == "20秒ルール" %>
+        <p>物事を直感的に考え、モチベーションが源が内に向いている</p>
+      <% elsif @diagnosis.result == "未来イメージング" %>
+        <p>物事を論理的に考え、モチベーションが源が外に向いている</p>
+      <% elsif @diagnosis.result == "こつこつプランニング" %>
+        <p>物事を論理的に考え、モチベーションが源が内に向いている</p>
+      <% elsif @diagnosis.result == "行動チェーン" %>
+        <p>物事に対する考え方やモチベーションの源も非常にバランスが
+            取れているあなたにオススメな習慣化方法</p>
+      <% end %>
+
+      <% if current_user == nil %>
+        <%= link_to new_user_registration_path do %>
+          パスポートを作成し、習慣化方法を追加しよう！！
+        <% end %>
+      <% else %>
+        <%= link_to user_passports_path(current_user) do %>
+          さっそくパスポートに習慣化方法を追加しよう！！
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
