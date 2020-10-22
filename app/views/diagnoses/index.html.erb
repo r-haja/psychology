@@ -128,6 +128,22 @@
   $(function() {
       $('.s').slick({
           dots: true,
+          nextArrow: '<img src="/assets/right-arrow.png" class="slide-arrow next-arrow" >'
       });
   });
 </script>
+
+<style>
+  .slide-arrow{
+    position: absolute;
+    top: 240px;
+    right: 25px;
+    font-size: 20px;
+    width: 50px;
+  }
+  .slide-arrow:hover{
+    opacity: 0.5;
+    transition: .3s;
+    cursor: pointer;
+  }
+</style>
