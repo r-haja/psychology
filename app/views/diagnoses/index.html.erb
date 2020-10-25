@@ -9,7 +9,6 @@
           <h6>それは、方法があなたに合っていなかったのかもしれません。</h6>
           <h6>習慣化の方法は数多くあります。</h6>
           <h5>あなたに合った習慣化方法を見つけてみませんか！？</h5>
-
       </div>
     </div>
     <div class="card" style="width: 51rem; height: 20rem;">
@@ -128,22 +127,36 @@
   $(function() {
       $('.s').slick({
           dots: true,
-          nextArrow: '<img src="/assets/right-arrow.png" class="slide-arrow next-arrow" >'
+          fade: true,
+          nextArrow: '<img src="/assets/right-arrow.png" class="arrow slide-next-arrow next-arrow"><button type="button" class="slick-btn" style="display: block">診断スタート</button>',
+          prevArrow: '<img src="/assets/left-arrow.png" class="arrow slide-prev-arrow prev-arrow" >'
       });
   });
 </script>
 
 <style>
-  .slide-arrow{
+  .slide-next-arrow{
     position: absolute;
-    top: 240px;
-    right: 25px;
-    font-size: 20px;
-    width: 50px;
+    top: 330px;
+    right: 240px;
+    width: 30px;
   }
-  .slide-arrow:hover{
+  .slide-prev-arrow{
+    position: absolute;
+    top: 330px;
+    left: 240px;
+    width: 30px;
+  }
+  .arrow:hover{
     opacity: 0.5;
     transition: .3s;
     cursor: pointer;
+  }
+  .slick-dots{
+    top: 330px;
+  }
+  .slick-btn{
+    position: absolute;
+    top: 200px;
   }
 </style>
