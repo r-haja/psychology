@@ -1,162 +1,142 @@
-<%= form_with model: @diagnosis do |f| %>
-  <div class="container s">
-    <div class="card" style="width: 51rem; height: 20rem;">
-      <div class="card-body">
-        <h6 class="card-text">あなたは、「ダイエットしたい！」「早起きしたい！」
-          など目標を立てて行動しますが「３日坊主」になってしまう経験はありませんか？</h6>
+<main class="diag">
+  <section class="container">
+    <div class="diag__header">
+      <h1><%= image_tag 'diagnoses/img_header_diagnoses.png' %></h1>
+    </div>
+    <div class="diag__contents">
+      <%= form_with model: @diagnosis do |f| %>
+        <div class="slick">
 
-          <h6>もしかすると・・・</h6>
-          <h6>それは、方法があなたに合っていなかったのかもしれません。</h6>
-          <h6>習慣化の方法は数多くあります。</h6>
-          <h5>あなたに合った習慣化方法を見つけてみませんか！？</h5>
-      </div>
-    </div>
-    <div class="card" style="width: 51rem; height: 20rem;">
-      <div class="card-body">
-        <h5 class="card-title">質問 1</h5>
-        <h6 class="card-text">Qあなたは目的がなくても貯金ができる。</h6><br>
-        <div class="radio-inline">
-          <%= f.radio_button :x_axis, 1, id: "radio_1-1" %>
-          <%= f.label "はい", for: "radio_1-1" %>
+          <div class="slider intro">
+            <p>
+              あなたは「ダイエットする！」「毎朝早起きする！」などと思いながら、三日坊主になってしまった経験はありませんか？もしかすると、それは<span>習慣化の方法がよくなかった</span>のかもしれません。
+            </p>
+            <div>
+              <p>習慣化には科学的に効果のあるワザがあります。ここでは、あなたに合った習慣化のワザを診断します。</p>
+              <%= image_tag 'diagnoses/img_kenpo.png' %>
+            </div>
+            <p>６つの質問に答えて自分に合ったワザを見つけましょう！</p>
+            <!--<button type="button" class="slick-btn" style="display: block">診断スタート</button>-->
+          </div>
+
+          <div class="slider">
+            <h2 class="heading"><span>Q1.</span>あなたの貯金スタイルは？</h2>
+            <%= image_tag 'diagnoses/img_money.jpg' %>
+            <div class="radio-inline">
+              <%= f.radio_button :x_axis, 1, id: "radio_1-1", class: "radio" %>
+              <%= f.label "目的がなくても貯金ができる", for: "radio_1-1" %>
+            </div>
+            <div class="radio-inline">
+              <%= f.radio_button :x_axis, -1, id: "radio_1-2", class: "radio" %>
+              <%= f.label "事前に目的を決めてから始める", for: "radio_1-2" %>
+            </div>
+            <div class="radio-inline">
+              <%= f.radio_button :x_axis, 0, id: "radio_1-3", class: "radio" %>
+              <%= f.label "どちらでもない", for: "radio_1-3" %>
+            </div>
+          </div>
+
+          <div class="slider">
+            <h2 class="heading"><span>Q2.</span>相手に出来事を話す時あなたは？</h2>
+            <%= image_tag 'diagnoses/img_talk.jpg' %>
+            <div class="radio-inline">
+              <%= f.radio_button :x_axis1, 1, id: "radio_2-1", class: "radio" %>
+              <%= f.label "「〜な感じ」や擬音語を用いることが多い", for: "radio_2-1" %>
+            </div>
+            <div class="radio-inline">
+              <%= f.radio_button :x_axis1, -1, id: "radio_2-2", class: "radio" %>
+              <%= f.label "話の組み立てを考えてから話すことが多い", for: "radio_2-2"%>
+            </div>
+            <div class="radio-inline">
+              <%= f.radio_button :x_axis1, 0, id: "radio_2-3", class: "radio" %>
+              <%= f.label "どちらでもない", for: "radio_2-3"%>
+            </div>
+          </div>
+
+          <div class="slider">
+            <h2 class="heading"><span>Q3.</span>学生時代、宿題をやる時あなたは？</h2>
+            <%= image_tag 'diagnoses/img_homework.jpg' %>
+            <div class="radio-inline">
+              <%= f.radio_button :x_axis2, 1, id: "radio_3-1", class: "radio" %>
+              <%= f.label "まずできるところまでやってみる", for: "radio_3-1"%>
+            </div>
+            <div class="radio-inline">
+              <%= f.radio_button :x_axis2, -1, id: "radio_3-2", class: "radio" %>
+              <%= f.label "最初に計画を立てる", for: "radio_3-2"%>
+            </div>
+            <div class="radio-inline">
+              <%= f.radio_button :x_axis2, 0, id: "radio_3-3", class: "radio" %>
+              <%= f.label "どちらでもない", for: "radio_3-3"%>
+            </div>
+          </div>
+
+          <div class="slider">
+            <h2 class="heading"><span>Q4.</span>目標や夢がある時のあなたは？</h2>
+            <%= image_tag 'diagnoses/img_bunki.jpg' %>
+            <div class="radio-inline">
+              <%= f.radio_button :y_axis, 1, id: "radio_4-1", class: "radio" %>
+              <%= f.label "家族や友人など親しい人に話すことが多い", for: "radio_4-1"%>
+            </div>
+            <div class="radio-inline">
+              <%= f.radio_button :y_axis, -1, id: "radio_4-2", class: "radio" %>
+              <%= f.label "誰にも言わず時の中に留める", for: "radio_4-2"%>
+            </div>
+            <div class="radio-inline">
+              <%= f.radio_button :y_axis, 0, id: "radio_4-3", class: "radio" %>
+              <%= f.label "どちらでもない", for: "radio_4-3"%>
+            </div>
+          </div>
+
+          <div class="slider">
+            <h2 class="heading"><span>Q5.</span>あなたのモチベーションを上げることが多いのは？</h2>
+            <%= image_tag 'diagnoses/img_DJ.jpg' %>
+            <div class="radio-inline">
+              <%= f.radio_button :y_axis1, 1, id: "radio_5-1", class: "radio" %>
+              <%= f.label "友人と過ごす時間", for: "radio_5-1"%>
+            </div>
+            <div class="radio-inline">
+              <%= f.radio_button :y_axis1, -1, id: "radio_5-2", class: "radio" %>
+              <%= f.label "一人でいる時間", for: "radio_5-2"%>
+            </div>
+            <div class="radio-inline">
+              <%= f.radio_button :y_axis1, 0, id: "radio_5-3", class: "radio" %>
+              <%= f.label "どちらでもない", for: "radio_5-3"%>
+            </div>
+          </div>
+
+          <div class="slider">
+            <h2 class="heading"><span>Q6.</span>達成感を感じることが多いのは？</h2>
+            <%= image_tag 'diagnoses/img_achieve.jpg' %>
+            <div class="radio-inline">
+              <%= f.radio_button :y_axis2, 1, id: "radio_6-1", class: "radio" %>
+              <%= f.label "チームでゴールを達成した時", for: "radio_6-1"%>
+            </div>
+            <div class="radio-inline">
+              <%= f.radio_button :y_axis2, -1, id: "radio_6-2", class: "radio" %>
+              <%= f.label "自分で定めたゴールを達成した時", for: "radio_6-2"%>
+            </div>
+            <div class="radio-inline">
+              <%= f.radio_button :y_axis2, 0, id: "radio_6-3", class: "radio" %>
+              <%= f.label "どちらでもない", for: "radio_6-3"%>
+            </div>
+            <%= f.submit "診断する" %>
+          </div>
+
         </div>
-        <div class="radio-inline">
-          <%= f.radio_button :x_axis, -1, id: "radio_1-2" %>
-          <%= f.label "いいえ", for: "radio_1-2" %>
-        </div>
-        <div class="radio-inline">
-          <%= f.radio_button :x_axis, 0, id: "radio_1-3" %>
-          <%= f.label "どちらでもない", for: "radio_1-3" %>
-        </div>
-      </div>
-    </div>
-    <div class="card" style="width: 51rem; height: 20rem;">
-      <div class="card-body">
-        <h5 class="card-title">質問 2</h5>
-        <h6 class="card-text">Q相手に出来事を話す時あなたは？</h6><br>
-        <div class="radio-inline">
-          <%= f.radio_button :x_axis1, 1, id: "radio_2-1" %>
-          <%= f.label "「〜な感じ」や擬音語を用いることが多い", for: "radio_2-1" %>
-        </div>
-        <div class="radio-inline">
-          <%= f.radio_button :x_axis1, -1, id: "radio_2-2" %>
-          <%= f.label "話の組み立てを考えてから話すことが多い", for: "radio_2-2"%>
-        </div>
-        <div class="radio-inline">
-          <%= f.radio_button :x_axis1, 0, id: "radio_2-3" %>
-          <%= f.label "どちらでもない", for: "radio_2-3"%>
-        </div>
-      </div>
-    </div>
-    <div class="card" style="width: 51rem; height: 20rem;">
-      <div class="card-body">
-        <h5 class="card-title">質問 3</h5>
-        <h6 class="card-text">Q学生時代宿題をやる時あなたは？</h6><br>
-        <div class="radio-inline">
-          <%= f.radio_button :x_axis2, 1, id: "radio_3-1" %>
-          <%= f.label "まずできるところまでやってみる", for: "radio_3-1"%>
-        </div>
-        <div class="radio-inline">
-          <%= f.radio_button :x_axis2, -1, id: "radio_3-2" %>
-          <%= f.label "最初に計画を立てる", for: "radio_3-2"%>
-        </div>
-        <div class="radio-inline">
-          <%= f.radio_button :x_axis2, 0, id: "radio_3-3" %>
-          <%= f.label "どちらでもない", for: "radio_3-3"%>
-        </div>
-      </div>
-    </div>
-    <div class="card" style="width: 51rem; height: 20rem;">
-      <div class="card-body">
-        <h5 class="card-title">質問 4</h5>
-        <h6 class="card-text">Q目標や夢を友人に話すことが多い</h6><br>
-        <div class="radio-inline">
-          <%= f.radio_button :y_axis, 1, id: "radio_4-1" %>
-          <%= f.label "はい", for: "radio_4-1"%>
-        </div>
-        <div class="radio-inline">
-          <%= f.radio_button :y_axis, -1, id: "radio_4-2" %>
-          <%= f.label "いいえ", for: "radio_4-2"%>
-        </div>
-        <div class="radio-inline">
-          <%= f.radio_button :y_axis, 0, id: "radio_4-3" %>
-          <%= f.label "どちらでもない", for: "radio_4-3"%>
-        </div>
-      </div>
-    </div>
-    <div class="card" style="width: 51rem; height: 20rem;">
-      <div class="card-body">
-        <h5 class="card-title">質問 5</h5>
-        <h6 class="card-text">Qモチベーションが上がる時どちらが多い？</h6><br>
-        <div class="radio-inline">
-          <%= f.radio_button :y_axis1, 1, id: "radio_5-1" %>
-          <%= f.label "友人と過ごす時間", for: "radio_5-1"%>
-        </div>
-        <div class="radio-inline">
-          <%= f.radio_button :y_axis1, -1, id: "radio_5-2" %>
-          <%= f.label "一人で考えたり本を読む時間", for: "radio_5-2"%>
-        </div>
-        <div class="radio-inline">
-          <%= f.radio_button :y_axis1, 0, id: "radio_5-3" %>
-          <%= f.label "どちらでもない", for: "radio_5-3"%>
-        </div>
-      </div>
-    </div>
-    <div class="card" style="width: 51rem; height: 20rem;">
-      <div class="card-body">
-        <h5 class="card-title">質問 6</h5>
-        <h6 class="card-text">Qどちらが達成感を感じる？</h6><br>
-        <div class="radio-inline">
-          <%= f.radio_button :y_axis2, 1, id: "radio_6-1" %>
-          <%= f.label "チームでゴールを達成した時", for: "radio_6-1"%>
-        </div>
-        <div class="radio-inline">
-          <%= f.radio_button :y_axis2, -1, id: "radio_6-2" %>
-          <%= f.label "自分で定めたゴールを達成した時", for: "radio_6-2"%>
-        </div>
-        <div class="radio-inline">
-          <%= f.radio_button :y_axis2, 0, id: "radio_6-3" %>
-          <%= f.label "どちらでもない", for: "radio_6-3"%>
-        </div>
-      </div>
-      <%= f.submit "診断する" %>
-    </div>
-  </div>
-<% end %>
+      <% end %>
+    </div><!-- //diag__contents -->
+  </section>
+</main>
 
 <script>
   $(function() {
-      $('.s').slick({
-          dots: true,
-          fade: true,
-          nextArrow: '<img src="/assets/right-arrow.png" class="arrow slide-next-arrow next-arrow"><button type="button" class="slick-btn" style="display: block">診断スタート</button>',
-          prevArrow: '<img src="/assets/left-arrow.png" class="arrow slide-prev-arrow prev-arrow" >'
-      });
+    $('body').css({'background-color':'#f9f9f9'}); //このページのみコンテスト用に先行実装のため仮対応
+    $('.slick').slick({
+        dots: true,
+        infinite: false,
+        fade: true,
+        nextArrow: '<img src="/assets/right-arrow.png" class="arrow slide-next-arrow next-arrow">',
+        prevArrow: '<img src="/assets/left-arrow.png" class="arrow slide-prev-arrow prev-arrow" >'
+    });
   });
 </script>
-
-<style>
-  .slide-next-arrow{
-    position: absolute;
-    top: 330px;
-    right: 240px;
-    width: 30px;
-  }
-  .slide-prev-arrow{
-    position: absolute;
-    top: 330px;
-    left: 240px;
-    width: 30px;
-  }
-  .arrow:hover{
-    opacity: 0.5;
-    transition: .3s;
-    cursor: pointer;
-  }
-  .slick-dots{
-    top: 330px;
-  }
-  .slick-btn{
-    position: absolute;
-    top: 200px;
-  }
-</style>

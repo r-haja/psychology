@@ -1,3 +1,190 @@
-// Place all the styles related to the diagnoses controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "variables";
+.diag {
+    p {
+        font-size: 14px;
+        line-height: 1.75;
+        margin-bottom: 0;
+    }
+    h2 {
+        font-size: 16px;
+    }
+    .heading {
+        margin-left: 2.1em;
+        text-indent: -2.1em;
+        margin-bottom: 15px;
+        span {
+            margin-right: 5px;
+            font-size: 18px;
+            color: $font-gray;
+        }
+    }
+    .container {
+        margin-bottom: 70px;
+        border: none;
+        background-color: transparent;
+    }
+    &__header {
+        margin-bottom: 24px;
+        img {
+            width: 100%;
+        }
+    }
+    &__contents {
+        margin-left: 25px;
+        margin-right: 25px;
+        border-radius: 10px;
+        box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.1);
+    }
+    .intro {
+        span {
+            font-weight: bold;
+            border-bottom: 1px solid;
+        }
+        div {
+            display: flex;
+            align-items: start;
+            margin-top: 10px;
+            p {
+                margin-right: 10px;
+            }
+            img {
+                width: 40%;
+                margin-bottom: 0;
+            }
+        }
+    }
+    .slick {
+        background-color: #fff;
+        border-radius: 10px;
+    }
+    .slider {
+        padding: 23px;
+        border-radius: 10px;
+        outline: none;
+        img {
+            width: 60%;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+        .radio-inline {
+            display: flex;
+            align-items: center;
+            padding-left: 30px;
+            .radio {
+                display: none;
+            }
+            .radio + label {
+                position: relative;
+                margin-bottom: 0;
+                padding-left: 25px;
+                font-size: 14px;
+            }
+            .radio + label::before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                width: 16px;
+                height: 16px;
+                border: 1px solid $font-gray;
+                border-radius: 50%;
+            }
+            .radio:checked + label {
+                color: $primary-color;
+            }
+            .radio:checked + label::before {
+                border-color: $primary-color;
+            }
+            .radio:checked + label::after {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 3px;
+                transform: translateY(-50%);
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background-color: $primary-color;
+            }
+            & + .radio-inline {
+                margin-top: 15px;
+            }
+        }
+    }
+    .slide-next-arrow {
+        position: absolute;
+        bottom: -45px;
+        right: 20px;
+        width: 30px;
+    }
+    .slide-prev-arrow {
+        position: absolute;
+        bottom: -45px;
+        left: 20px;
+        width: 30px;
+    }
+    .arrow:hover {
+        // opacity: 0.5;
+        // transition: .3s;
+        // cursor: pointer;
+    }
+    .slick-dots {
+        width: 75%;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -40px;
+    }
+    .slick-dots li button:before {
+        font-size: 14px;
+    }
+    .slick-btn {
+        position: absolute;
+        top: 200px;
+    }
+    .slick-disabled {
+        display: none !important;
+    }
+    input[type=submit] {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 235px;
+        height: 44px;
+        margin: 0 auto;
+        margin-top: 15px;
+        background-color: $primary-color;
+        border-radius: 5px;
+        border: none;
+        color: #fff;
+    }
+}
+
+.diag--result {
+    .fadeIn01, .fadeIn02, .fadeIn03 {
+        opacity: 0;
+        transition: 1s;
+    }
+    .fadeIn01.show, .fadeIn02.show, .fadeIn03.show {
+        opacity: 1;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .result {
+        display: flex;
+        justify-content: center;
+        span {
+            display: inline-block;
+            margin: 0 auto;
+            padding: 10px;
+            border: 1px solid $accent-color;
+            border-radius: 10px;
+            font-size: 16px;
+            color: $accent-color;
+        }
+    }
+}

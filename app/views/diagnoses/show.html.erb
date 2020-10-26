@@ -1,34 +1,58 @@
-<div class="container s">
-  <div class="card" style="width: 51rem; height: 20rem;">
-    <div class="card-body">
-      <% if current_user == nil %>
-        <h5 class="card-title">あなたの診断結果</h5>
-      <% else %>
-        <h5 class="card-title"><%= current_user.name %>様の診断結果</h5>
-      <% end %>
-      <h6 class="card-text"><%= @diagnosis.result %></h6><br>
-      <% if @diagnosis.result == "友人サポート" %>
-        <p>物事を直感的に考え、モチベーションが源が外に向いている</p>
-      <% elsif @diagnosis.result == "20秒ルール" %>
-        <p>物事を直感的に考え、モチベーションが源が内に向いている</p>
-      <% elsif @diagnosis.result == "未来イメージング" %>
-        <p>物事を論理的に考え、モチベーションが源が外に向いている</p>
-      <% elsif @diagnosis.result == "こつこつプランニング" %>
-        <p>物事を論理的に考え、モチベーションが源が内に向いている</p>
-      <% elsif @diagnosis.result == "行動チェーン" %>
-        <p>物事に対する考え方やモチベーションの源も非常にバランスが
-            取れているあなたにオススメな習慣化方法</p>
-      <% end %>
-
-      <% if current_user == nil %>
-        <%= link_to new_user_registration_path do %>
-          パスポートを作成し、習慣化方法を追加しよう！！
-        <% end %>
-      <% else %>
-        <%= link_to user_passports_path(current_user) do %>
-          さっそくパスポートに習慣化方法を追加しよう！！
-        <% end %>
-      <% end %>
+<main class="diag diag--result">
+  <section class="container">
+    <div class="diag__header">
+      <h1><%= image_tag 'diagnoses/img_header_diagnoses.png' %></h1>
     </div>
-  </div>
-</div>
+    <div class="diag__contents">
+      <div class="slick">
+        <div class="slider">
+          <% if current_user == nil %>
+            <h2 class="fadeIn01">あなたの診断結果</h2>
+          <% else %>
+            <h2 class="fadeIn01"><%= current_user.name %>様の診断結果</h2>
+          <% end %>
+          <h3 class="result fadeIn02"><span><%= @diagnosis.result %></span></h3><br>
+          <p class="fadeIn03">
+            <% if @diagnosis.result == "友人サポート" %>
+              物事を直感的に考え、モチベーションが源が外に向いている
+            <% elsif @diagnosis.result == "20秒ルール" %>
+              物事を直感的に考え、モチベーションが源が内に向いている
+            <% elsif @diagnosis.result == "未来イメージング" %>
+              物事を論理的に考え、モチベーションが源が外に向いている
+            <% elsif @diagnosis.result == "こつこつプランニング" %>
+              物事を論理的に考え、モチベーションが源が内に向いている
+            <% elsif @diagnosis.result == "行動チェーン" %>
+              物事に対する考え方やモチベーションの源も非常にバランスが取れている
+            <% end %>
+            あなたにオススメな習慣化方法
+          </p>
+
+          <% if current_user == nil %>
+            <%= link_to new_user_registration_path do %>
+              <p class="fadeIn03">パスポートを作成し、習慣化方法を追加しよう！！</p>
+            <% end %>
+          <% else %>
+            <%= link_to user_passports_path(current_user) do %>
+              <p class="fadeIn03">さっそくパスポートに習慣化方法を追加しよう！！</p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div><!-- //diag__contents -->
+  </section>
+</main>
+
+<script>
+  $(function() {
+    $('body').css({'background-color':'#f9f9f9'}); //このページのみコンテスト用に先行実装のため仮対応
+  });
+  setTimeout(function(){
+      $('.fadeIn01').addClass("show");
+  },1000);
+  setTimeout(function(){
+      $('.fadeIn02').addClass("show");
+  },3000);
+  setTimeout(function(){
+      $('.fadeIn03').addClass("show");
+  },4000);
+</script>
