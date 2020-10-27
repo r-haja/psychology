@@ -1,4 +1,4 @@
-<main class="diag diag--result">
+<main class="diag">
   <section class="container">
     <div class="diag__header">
       <h1><%= image_tag 'diagnoses/img_header_diagnoses.png' %></h1>
@@ -6,36 +6,48 @@
     <div class="diag__contents">
       <div class="slick">
         <div class="slider">
-          <% if current_user == nil %>
-            <h2 class="fadeIn01">あなたの診断結果</h2>
-          <% else %>
-            <h2 class="fadeIn01"><%= current_user.name %>様の診断結果</h2>
-          <% end %>
-          <h3 class="result fadeIn02"><span><%= @diagnosis.result %></span></h3><br>
-          <p class="fadeIn03">
-            <% if @diagnosis.result == "友人サポート" %>
-              物事を直感的に考え、モチベーションが源が外に向いている
-            <% elsif @diagnosis.result == "20秒ルール" %>
-              物事を直感的に考え、モチベーションが源が内に向いている
-            <% elsif @diagnosis.result == "未来イメージング" %>
-              物事を論理的に考え、モチベーションが源が外に向いている
-            <% elsif @diagnosis.result == "こつこつプランニング" %>
-              物事を論理的に考え、モチベーションが源が内に向いている
-            <% elsif @diagnosis.result == "行動チェーン" %>
-              物事に対する考え方やモチベーションの源も非常にバランスが取れている
-            <% end %>
-            あなたにオススメな習慣化方法
-          </p>
 
-          <% if current_user == nil %>
-            <%= link_to new_user_registration_path do %>
-              <p class="fadeIn03">パスポートを作成し、習慣化方法を追加しよう！！</p>
-            <% end %>
-          <% else %>
-            <%= link_to user_passports_path(current_user) do %>
-              <p class="fadeIn03">さっそくパスポートに習慣化方法を追加しよう！！</p>
-            <% end %>
-          <% end %>
+          <div class="result">
+            <h2 class="fadeIn01">
+              <%= image_tag 'lp/img_warranty_diamond.png' %>
+              <% if current_user == nil %>
+                あなた
+              <% else %>
+                <%= current_user.name %>さん
+              <% end %>
+              の診断結果
+            </h2>
+
+            <h3 class="fadeIn02"><%= @diagnosis.result %></h3>
+
+            <div class="fadeIn03">
+              <p class="result__desc">
+                <span>
+                  <% if @diagnosis.result == "友人サポート" %>
+                    物事を直感的に考え、モチベーションの源が外に向いている
+                  <% elsif @diagnosis.result == "20秒ルール" %>
+                    物事を直感的に考え、モチベーションの源が内に向いている
+                  <% elsif @diagnosis.result == "未来イメージング" %>
+                    物事を論理的に考え、モチベーションの源が外に向いている
+                  <% elsif @diagnosis.result == "こつこつプランニング" %>
+                    物事を論理的に考え、モチベーションの源が内に向いている
+                  <% elsif @diagnosis.result == "行動チェーン" %>
+                    物事に対する考え方やモチベーションの源も非常にバランスが取れている
+                  <% end %>
+                </span>
+                あなたにオススメな習慣化方法です。
+              </p>
+              <p>さっそくパスポートに習慣化方法を追加しましょう！</p>
+              <% if current_user == nil %>
+                <%= link_to "習慣化をはじめる", new_user_registration_path, class: "result__btn" %>
+              <% else %>
+                <%= link_to "習慣パスポートを見る", user_passports_path(current_user), class: "result__btn" %>
+              <% end %>
+              <%= link_to "他のワザを見てみる", psychologies_path, class: "result__btn" %>
+            </div>
+
+          </div><!-- //result -->
+
         </div>
       </div>
     </div><!-- //diag__contents -->
