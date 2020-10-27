@@ -1,64 +1,72 @@
-<div class="selection" data-step='1' data-intro='おめでとうございます！最初の習慣パスポートが作成されました。これから使い方をご説明していきます。<br>習慣が作成されると、ここにボタンが追加されていきます。'>
-</div>
-<% @passports.each do |passport| %>
-  <% if passport.achievement != true %>
-    <main class="passport">
-      <section class="container">
-        <div class="passport__contents">
-          <div class="contents">
-            <div class="habit">
-              <%= link_to user_passport_path(current_user, passport.id), data:{"turbolinks" => false} do  %>
-                <h1 class="habit__purpose"><%= simple_format(passport.purpose) %></h1>
-              <% end %>
-              <div class="habit__details">
-                <p class="genre"><%= passport.genre.name %></p>
-              </div>
-              <div class="habit__rate habit__rate<%= passport.id.to_s %>" data-step='6' data-intro='達成率はパーセントで表示されます。月に57%以上の達成を目指しましょう！<br>説明は以上です。<br>それでは、新たな習慣づくりを一緒にスタートしましょう！'>
-                <%= render partial: "passports/rate", locals: {passport: passport} %>
-              </div>
-            </div>
-          </div><!-- contents -->
-        </div>
-        <div class="schedule_btn<%= passport.id.to_s %>">
-          <% if passport.schedules.find_by(day: Time.now.strftime("%Y-%m-%d")) %>
-            <% @schedule = passport.schedules.find_by(day: Time.now.strftime("%Y-%m-%d")) %>
-          <% else %>
-            <% @schedule = Schedule.new %>
-          <% end %>
-          <%= render partial: "passports/schedule_form", locals: {passport: passport, schedule: @schedule} %>
-        </div>
-        <div class="notification">
+<main class="mypage">
+  <section class="container">
+
+    <h2 class="mypage__heading">現在チャレンジ中の習慣</h2>
+  
+    <% @passports.each do |passport| %>
+      <% if passport.achievement != true %>
+
+        <%= link_to user_passport_path(current_user, passport.id), data:{"turbolinks" => false}, class: "habit" do  %>
+
           <% if passport.notifications.blank? || passport.notifications.where(check: false).blank? %>
-            <i class="far fa-circle"></i>
+            <!-- <i class="far fa-circle"></i> -->
           <% else %>
-            <i class="fas fa-circle"></i>
+            <i class="far fa-circle"></i>
           <% end %>
-        </div>
-      </section>
-    </main>
-  <% end %>
-<% end %>
----------  ここから達成してるやつ-------------
-<% @passport_comprate.each do |passport| %>
-  <% if passport.achievement == true %>
-    <main class="passport">
-      <section class="container">
-        <div class="passport__contents">
-          <div class="contents">
-            <div class="habit">
-              <%= link_to user_passport_passport_comprated_path(current_user, passport) do %>
-                <h1 class="habit__purpose"><%= simple_format(passport.purpose) %></h1>
-              <% end %>
-              <div class="habit__details">
-                <p class="genre"><%= passport.genre.name %></p>
-              </div>
-              <div class="habit__rate habit__rate<%= passport.id.to_s %>" data-step='6' data-intro='達成率はパーセントで表示されます。月に57%以上の達成を目指しましょう！<br>説明は以上です。<br>それでは、新たな習慣づくりを一緒にスタートしましょう！'>
-                <%= render partial: "passports/rate", locals: {passport: passport} %>
-              </div>
+
+          
+          <h3><%= simple_format(passport.purpose) %></h3>
+
+          <div class="habit__body">
+            <div class="body__rate body__rate<%= passport.id.to_s %>">
+              <%= render partial: "passports/rate", locals: {passport: passport} %>
             </div>
-          </div><!-- contents -->
-        </div>
-      </section>
-    </main>
-  <% end %>
-<% end %>
+
+            <div class="body__btn body__btn<%= passport.id.to_s %>">
+              <% if passport.schedules.find_by(day: Time.now.strftime("%Y-%m-%d")) %>
+                <% @schedule = passport.schedules.find_by(day: Time.now.strftime("%Y-%m-%d")) %>
+              <% else %>
+                <% @schedule = Schedule.new %>
+              <% end %>
+              <%= render partial: "passports/schedule_form", locals: {passport: passport, schedule: @schedule} %>
+            </div>
+          </div>
+
+        <% end %>
+
+      <% end %>
+    <% end %>
+
+    <h2 class="mypage__heading mypage__heading--achieved">達成済みの習慣</h2>
+
+    <% @passport_comprate.each do |passport| %>
+      <% if passport.achievement == true %>
+
+        <div class="habit">
+
+          <%= link_to user_passport_passport_comprated_path(current_user, passport) do %>
+            <h3><%= simple_format(passport.purpose) %></h3>
+          <% end %>
+
+          <div class="habit__body">
+            <div class="body__rate body__rate<%= passport.id.to_s %>">
+              <%= render partial: "passports/rate", locals: {passport: passport} %>
+            </div>
+            <div class="body__btn">
+              <%= link_to "詳細", user_passport_passport_comprated_path(current_user, passport), class: "detail" %> 
+            </div>
+          </div>
+
+        </div><!-- //habit -->
+
+      <% end %>
+    <% end %>
+
+  </section>
+</main>
+
+<script>
+  $(function() {
+    $('body').css({'background-color':'#f9f9f9'}); //仮対応
+  });
+</script>

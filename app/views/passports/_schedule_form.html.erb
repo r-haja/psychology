@@ -5,13 +5,13 @@
     <%= f.hidden_field :day, value: Time.now.strftime("%Y-%m-%d") %>
     <% if schedule.judgment == 1 %>
       <%= f.submit "例外日", class: "passportEdit skip" %>
-      <%= f.submit "取り消し", class: "passportEdit fail" %>
+      <%= f.submit "取消", class: "passportEdit fail" %>
     <% elsif schedule.judgment == 2 || schedule.judgment == nil %>
       <%= f.submit "達成", class: "passportEdit achieve" %>
       <%= f.submit "例外日", class: "passportEdit skip" %>
     <% elsif schedule.judgment == 3 %>
       <%= f.submit "達成", class: "passportEdit achieve" %>
-      <%= f.submit "取り消し", class: "passportEdit fail" %>
+      <%= f.submit "取消", class: "passportEdit fail" %>
     <% end %>
   <% end %>
 <% else %>
@@ -21,13 +21,13 @@
     <%= f.hidden_field :day, value: Time.now.strftime("%Y-%m-%d") %>
     <% if schedule.judgment == 1 %>
       <%= f.submit "例外日", class: "passportEdit skip" %>
-      <%= f.submit "取り消し", class: "passportEdit fail" %>
+      <%= f.submit "取消", class: "passportEdit fail" %>
     <% elsif schedule.judgment == 2 || schedule.judgment == nil %>
       <%= f.submit "達成", class: "passportEdit achieve" %>
       <%= f.submit "例外日", class: "passportEdit skip" %>
     <% elsif schedule.judgment == 3 %>
       <%= f.submit "達成", class: "passportEdit achieve" %>
-      <%= f.submit "取り消し", class: "passportEdit fail" %>
+      <%= f.submit "取消", class: "passportEdit fail" %>
     <% end %>
   <% end %>
 <% end %>
