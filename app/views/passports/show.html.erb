@@ -1,11 +1,6 @@
 <div class="selection" data-step='1' data-intro='おめでとうございます！最初の習慣パスポートが作成されました。これから使い方をご説明していきます。<br>習慣が作成されると、ここにボタンが追加されていきます。'>
 </div>
-<!-- パスポートホームへの移動、Classは仮名 -->
-<div class="selection">
-  <div class="passport_select">
-    <%= link_to "戻る", user_passports_path(current_user), class: "btn-true" %>
-  </div>
-</div>
+
 <div class="notification" data-turbolinks="false">
   <%= render partial: "notifications/feedback", locals: {notifications: @notifications} %>
 </div>
@@ -35,6 +30,9 @@
         <%= image_tag 'img_passport_header_10.png' %>
       <% else %>
         <%= image_tag 'img_passport_header.jpg' %>
+      <% end %>
+      <%= link_to user_passports_path(current_user), class: "btn-back" do %>
+        <i class="fas fa-arrow-left"></i>
       <% end %>
     </div>
 
