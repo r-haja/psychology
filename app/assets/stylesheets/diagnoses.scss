@@ -1,22 +1,12 @@
 @import "variables";
 .diag {
     p {
+        margin-bottom: 0;
         font-size: 14px;
         line-height: 1.75;
-        margin-bottom: 0;
     }
     h2 {
         font-size: 16px;
-    }
-    .heading {
-        margin-left: 2.1em;
-        text-indent: -2.1em;
-        margin-bottom: 15px;
-        span {
-            margin-right: 5px;
-            font-size: 18px;
-            color: $font-gray;
-        }
     }
     .container {
         margin-bottom: 70px;
@@ -30,8 +20,8 @@
         }
     }
     &__contents {
-        margin-left: 25px;
         margin-right: 25px;
+        margin-left: 25px;
         border-radius: 10px;
         box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.1);
     }
@@ -53,6 +43,17 @@
             }
         }
     }
+    .heading {
+        margin-left: 2.1em;
+        margin-bottom: 15px;
+        text-indent: -2.1em;
+        span {
+            margin-right: 5px;
+            color: $font-gray;
+            font-size: 18px;
+        }
+    }
+    
     .slick {
         background-color: #fff;
         border-radius: 10px;
@@ -116,18 +117,18 @@
     }
     .slide-next-arrow {
         position: absolute;
-        bottom: -45px;
         right: 20px;
+        bottom: -45px;
         width: 30px;
     }
     .slide-prev-arrow {
         position: absolute;
-        bottom: -45px;
         left: 20px;
+        bottom: -45px;
         width: 30px;
     }
     .arrow:hover {
-        // opacity: 0.5;
+        // opacity: 0.5; SPではずっとホバーになってしまうので以下一旦コメントアウト
         // transition: .3s;
         // cursor: pointer;
     }
@@ -206,10 +207,10 @@
             margin-top: 15px;
             margin-right: auto;
             margin-left: auto;
+            border: none;
             border-radius: 5px;
             background-color: $primary-color;
             color: white;
-            border: none;
             text-align: center;
             line-height: 40px;
         }
