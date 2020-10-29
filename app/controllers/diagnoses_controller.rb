@@ -8,7 +8,11 @@ class DiagnosesController < ApplicationController
   end
 
   def create
-    @diagnosis = Diagnosis.new(diagnosis_params)
+    if params[:diagnosis] == nil
+      @diagnosis = Diagnosis.new
+    else
+      @diagnosis = Diagnosis.new(diagnosis_params)
+    end
     if current_user == nil
     else
       if Diagnosis.all.where(id: current_user.diagnosis_id)
@@ -16,6 +20,7 @@ class DiagnosesController < ApplicationController
         @delete_diagnosis.destroy_all
       end
     end
+    if @diagnosis.save
       x = @diagnosis.x_axis + @diagnosis.x_axis1 + @diagnosis.x_axis2
       y = @diagnosis.y_axis + @diagnosis.y_axis1 + @diagnosis.y_axis2
       if x >= 1 && y >= 1
@@ -37,7 +42,6 @@ class DiagnosesController < ApplicationController
       elsif x <= -1 && y <= -1
         @diagnosis.result = "こつこつプランニング"
       end
-    if @diagnosis.save
       flash[:notice] = "診断が成功しました！"
       if current_user == nil
         redirect_to diagnosis_path(@diagnosis)
@@ -48,7 +52,7 @@ class DiagnosesController < ApplicationController
       end
     else
       flash[:alert] = "入力に誤りがあります。再度記入してください。"
-      render :index
+      redirect_to diagnoses_path
     end
   end
 
