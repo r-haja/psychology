@@ -5,25 +5,29 @@
         font-size: 14px;
         line-height: 1.75;
     }
+    h1 {
+        margin: 0;
+    }
     h2 {
         font-size: 16px;
     }
     .container {
+        width: 500px;
         margin-bottom: 70px;
         border: none;
-        background-color: transparent;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.1);
     }
     &__header {
-        margin-bottom: 24px;
         img {
-            width: 100%;
+            display: block;
+            margin: 0 auto;
+            width: 375px;
         }
     }
     &__contents {
-        margin-right: 25px;
-        margin-left: 25px;
-        border-radius: 10px;
-        box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.1);
+        padding: 0 20px;
     }
     .intro {
         span {
@@ -38,7 +42,7 @@
                 margin-right: 10px;
             }
             img {
-                width: 40%;
+                width: 112px;
                 margin-bottom: 0;
             }
         }
@@ -63,7 +67,7 @@
         border-radius: 10px;
         outline: none;
         img {
-            width: 60%;
+            width: 40%;
             margin: 0 auto;
             margin-bottom: 20px;
         }
@@ -130,7 +134,7 @@
     .arrow:hover {
         // opacity: 0.5; SPではずっとホバーになってしまうので以下一旦コメントアウト
         // transition: .3s;
-        // cursor: pointer;
+        cursor: pointer;
     }
     .slick-dots {
         width: 75%;
@@ -160,6 +164,10 @@
         border-radius: 5px;
         border: none;
         color: #fff;
+        &:hover {
+            opacity: 0.6;
+            transition: all .4s;
+        }
     }
 
     .result {
@@ -213,6 +221,31 @@
             color: white;
             text-align: center;
             line-height: 40px;
+        }
+    }
+}
+
+@media screen and (max-width: 750px) { // SP
+    .diag {
+        .container {
+            background: transparent;
+            box-shadow: none;
+        }
+        &__header {
+            margin-bottom: 24px;
+            img {
+                width: 100%;
+            }
+        }
+        &__contents {
+            margin-right: 25px;
+            margin-left: 25px;
+            padding: 0;
+            border-radius: 10px;
+            box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.1);
+        }
+        .slider img {
+            width: 60%;
         }
     }
 }
