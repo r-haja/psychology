@@ -8,6 +8,7 @@
     }
     .container {
         background-color: transparent;
+        border: none;
     }
     &__heading {
         display: block;
@@ -27,17 +28,25 @@
             color: $font-gray;
         }
     }
+    &__body {
+        display: flex;
+        flex-wrap: wrap;
+    }
     .habit {
         display: block;
         position: relative;
-        margin-left: 25px;
-        margin-right: 25px;
+        width: calc(50% - 20px);
+        margin-bottom: 20px;
         padding: 20px 23px;
         border-radius: 10px;
         background-color: #fff;
         box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.1);
-        & + .habit {
-            margin-top: 20px;
+        &:nth-child(2n) {
+            margin-left: 20px;
+        }
+        &:hover {
+            opacity: 1;
+            box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.20); 
         }
         i {
             position: absolute;
@@ -116,4 +125,15 @@
         }
     }
 
+}
+
+@media screen and (max-width: 750px) {
+    .mypage__body {
+        flex-direction: column;
+    }
+    .mypage .habit {
+        width: calc(100% - 50px);
+        margin-left: 25px;
+        margin-right: 25px; 
+    }
 }

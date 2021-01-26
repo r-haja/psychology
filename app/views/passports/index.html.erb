@@ -2,7 +2,8 @@
   <section class="container">
 
     <h2 class="mypage__heading">現在チャレンジ中の習慣</h2>
-  
+
+    <div class="mypage__body">
     <% @passports.each do |passport| %>
       <% if passport.achievement != true %>
 
@@ -36,6 +37,7 @@
 
       <% end %>
     <% end %>
+    </div>
 
     <h2 class="mypage__heading mypage__heading--achieved">達成済みの習慣</h2>
 
