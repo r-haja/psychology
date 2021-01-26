@@ -74,6 +74,19 @@
     p + p {
       margin-top: 14px;
     }
+    .psychology-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 235px;
+      height: 44px;
+      margin: 0 auto 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 16px;
+      background-color: #7B93DB;
+    }
   }
   .genre {
     display: flex;

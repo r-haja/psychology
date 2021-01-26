@@ -24,7 +24,7 @@ class GenresController < ApplicationController
 
   def update
     if @genre.update(genre_params)
-      redirect_to :index
+      redirect_to genres_path
     else
       render :edit
     end
