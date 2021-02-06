@@ -97,7 +97,7 @@
   }
   .habit {
     width: 390px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     &__user{
       &-icon{
         height: 40px;
@@ -135,7 +135,6 @@
     &__rate{
       display: flex;
       align-items: center;
-      margin-bottom: 10px;
       .percentage {
         margin-right: 30px;
         margin-bottom: 0;
@@ -146,39 +145,6 @@
           color: #F9703E;
           font-size: 24px;
           animation: fadeIn 1s ease 0s 1 normal;
-        }
-      }
-    }
-    &__btn {
-      display: flex;
-      margin-bottom: 15px;
-      align-items: center;
-      & > div {
-        display: flex;
-        justify-content: center;
-        width: 42%;
-        margin-right: 10px;
-        border: 1px solid $primary-color;
-        border-radius: 5px;
-        background-color: #fff;
-        & > button {
-          width: 100%;
-          padding: 5px;
-          color: $primary-color;
-          border: none;
-          background: none;
-        }
-        &.achieveBtn {
-          background-color: $primary-color;
-          & > button {
-            color: #fff;
-          }
-        }
-      }
-      .trash {
-        width: 22px;
-        img {
-          width: 100%;
         }
       }
     }
@@ -343,6 +309,7 @@
     align-items: center;
     flex-direction: column;
     width: 260px;
+    margin-bottom: 20px;
     &__label {
       width: 110px;
       margin-bottom: 25px;
@@ -394,6 +361,37 @@
         color: #7B93DB;
         font-size: 26px;
         margin-right: 5px;
+      }
+    }
+  }
+  .editBtn {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    & > div {
+      width: 42%;
+      margin-right: 10px;
+      border: 1px solid $primary-color;
+      border-radius: 5px;
+      background-color: #fff;
+      & > button {
+        width: 100%;
+        padding: 5px;
+        color: $primary-color;
+        border: none;
+        background: none;
+      }
+      &.achieveBtn {
+        background-color: $primary-color;
+        & > button {
+          color: #fff;
+        }
+      }
+    }
+    .trash {
+      width: 22px;
+      img {
+        width: 100%;
       }
     }
   }
@@ -788,8 +786,7 @@
   .passport {
     .container {
       width: calc(100% - 40px);
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
+      border-radius: 10px;
       box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.1);
     }
     &__header {
@@ -850,15 +847,12 @@
           }
         }
       }
-      &__btn > div {
-        margin-right: 15px;
-      }
     }
     .methods {
       position: relative;
       width: 85%;
       margin: 0 auto;
-      padding: 40px 0px;
+      padding: 40px 0 20px 0;
       &__label {
         position: absolute;
         top: -15px;
@@ -869,6 +863,11 @@
       .d-inline-block {
         background-color: #fff;
       }
+    }
+    .editBtn {
+      width: 85%;
+      margin: 0 auto;
+      margin-bottom: 20px;
     }
     .calendar {
       z-index: 2;
