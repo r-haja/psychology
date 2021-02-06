@@ -195,8 +195,12 @@
 @media screen and (max-width: 750px){
   .psych {
     .psych__contents {
+      padding-bottom: 20px;
       .section {
         padding: 0 20px;
+        &--closing {
+          margin-bottom: 20px;
+        }
       }
     }
     .genre {
