@@ -60,9 +60,9 @@
     height: auto;
     padding: 0;
     background-color: #fff;
-    border-style: solid;
-    border: solid 1px rgb(220, 220, 220);
+    border: none;
     border-radius: 5px;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.1); 
   }
   &__header {
     position: relative;
@@ -809,7 +809,6 @@
       justify-content: center;
       .contents {
         width: 100%;
-        background-color: $bg-color;
         &:first-child {
           background-color: #fff;
         }
@@ -852,7 +851,7 @@
       position: relative;
       width: 85%;
       margin: 0 auto;
-      padding: 40px 0 20px 0;
+      padding: 30px 0 20px 0;
       &__label {
         position: absolute;
         top: -15px;
