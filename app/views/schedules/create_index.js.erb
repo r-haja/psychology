@@ -16,3 +16,6 @@ $(".achievement<%= @passport.id.to_s %>").
 
 $(".schedule_btn<%= @passport.id.to_s %>").
   html('<%= j render partial: "passports/schedule_form", locals:{passport: @passport, schedule: @schedule} %>');
+
+$(".body__btn<%= @passport.id.to_s %>").
+  html('<%= j render partial: "passports/schedule_form", locals: {passport: @passport, schedule: @schedule} %>');

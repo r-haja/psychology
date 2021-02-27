@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 2020_10_22_090631) do
     t.integer "y_axis1"
     t.integer "y_axis2"
     t.string "result"
-    t.boolean "check"
   end
 
   create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
