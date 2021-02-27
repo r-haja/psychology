@@ -2,7 +2,8 @@
   <section class="container">
 
     <h2 class="mypage__heading">現在チャレンジ中の習慣</h2>
-  
+
+    <div class="mypage__body">
     <% @passports.each do |passport| %>
       <% if passport.achievement != true %>
 
@@ -14,7 +15,6 @@
             <i class="far fa-circle"></i>
           <% end %>
 
-          
           <h3><%= simple_format(passport.purpose) %></h3>
 
           <div class="habit__body">
@@ -36,37 +36,34 @@
 
       <% end %>
     <% end %>
+    </div>
 
     <h2 class="mypage__heading mypage__heading--achieved">達成済みの習慣</h2>
 
+    <div class="mypage__body">
     <% @passport_comprate.each do |passport| %>
       <% if passport.achievement == true %>
 
-        <div class="habit">
-
-          <%= link_to user_passport_passport_comprated_path(current_user, passport) do %>
+        <%= link_to user_passport_passport_comprated_path(current_user, passport), class: "habit" do %>
+          
             <h3><%= simple_format(passport.purpose) %></h3>
-          <% end %>
 
-          <div class="habit__body">
-            <div class="body__rate body__rate<%= passport.id.to_s %>">
-              <%= render partial: "passports/rate", locals: {passport: passport} %>
+            <div class="habit__body">
+              <div class="body__rate body__rate<%= passport.id.to_s %>">
+                <%= render partial: "passports/rate", locals: {passport: passport} %>
+              </div>
+              <!--
+              <div class="body__btn">
+                <div class="detail">詳細</div>
+              </div>
+              -->
             </div>
-            <div class="body__btn">
-              <%= link_to "詳細", user_passport_passport_comprated_path(current_user, passport), class: "detail" %> 
-            </div>
-          </div>
 
-        </div><!-- //habit -->
+         <% end %>
 
       <% end %>
     <% end %>
+    </div>
 
   </section>
 </main>
-
-<script>
-  $(function() {
-    $('body').css({'background-color':'#f9f9f9'}); //仮対応
-  });
-</script>

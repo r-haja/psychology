@@ -1,6 +1,6 @@
 @import "variables";
 body {
-  background-color: #F7F7F7;
+  background-color: #F9F9F9;
   font-size: 16px;
   font-family: "Open Sans", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   color: #333333;
@@ -17,6 +17,7 @@ footer{
 a:hover {
   opacity: 0.6;
   transition: all .4s;
+  text-decoration: none;
 }
 .footer-nav{
   width: 100%;
@@ -347,9 +348,6 @@ i.js-pagetop {
   }
 }
 @media screen and (max-width: 810px) {
-  body {
-    background-color: #fff;
-  }
   .container {
     max-width: 100% !important;
     border: none !important;
