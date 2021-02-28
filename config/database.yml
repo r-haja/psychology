@@ -36,12 +36,12 @@ test:
 
 production:
   <<: *default
-  adapter: mysql2
-  encoding: utf8mb4
-  charset: utf8mb4
-  collation: utf8mb4_bin
+  #adapter: mysql2
+  #encoding: utf8mb4
+  #charset: utf8mb4
+  #collation: utf8mb4_bin
   database: psychology_production
-  port: 3306
-  username: admin
-  password: DumboAppPass
-  host: psychology-mysql.cjpaokrcqx5s.ap-northeast-1.rds.amazonaws.com
+  #port: 3306
+  #username: admin
+  #password: DumboAppPass
+  #host: psychology-mysql.cjpaokrcqx5s.ap-northeast-1.rds.amazonaws.com
