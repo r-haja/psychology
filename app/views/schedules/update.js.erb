@@ -1,18 +1,27 @@
-$(".passport-calendar_month<%= @passport.id.to_s %>").
+
+  $(".body__rate<%= @passport.id.to_s %>").
+  html('<%= j render partial: "passports/rate", locals: { passport: @passport } %>');
+  $(".body__rate<%= @passport.id.to_s %>").fadeIn(800);
+
+  $(".body__btn<%= @passport.id.to_s %>").
+  html('<%= j render partial: "passports/schedule_form", locals: {passport: @passport, schedule: @schedule} %>');
+
+  $(".passport-calendar_month<%= @passport.id.to_s %>").
   html('<%= j render partial: "passports/calendar_month", locals: { passport: @passport, schedules: @schedules } %>');
 
-$(".passport-calendar_week<%= @passport.id.to_s %>").
+  $(".passport-calendar_week<%= @passport.id.to_s %>").
   html('<%= j render partial: "passports/calendar_week", locals: { passport: @passport, schedules: @schedules } %>');
 
-$(".habit__rate<%= @passport.id.to_s %>").
+  $(".habit__rate<%= @passport.id.to_s %>").
   html('<%= j render partial: "passports/rate", locals: { passport: @passport } %>');
-$(".habit__rate<%= @passport.id.to_s %>").fadeIn(800);
+  $(".habit__rate<%= @passport.id.to_s %>").fadeIn(800);
 
-$(".achievement<%= @passport.id.to_s %>").
+  $(".achievement<%= @passport.id.to_s %>").
   html('<%= j render partial: "passports/achievement", locals: { passport: @passport } %>');
 
   $(".schedule_btn<%= @passport.id.to_s %>").
     html('<%= j render partial: "passports/schedule_form", locals:{passport: @passport, schedule: @schedule} %>');
 
-$(".body__btn<%= @passport.id.to_s %>").
+  $(".body__btn<%= @passport.id.to_s %>").
   html('<%= j render partial: "passports/schedule_form", locals: {passport: @passport, schedule: @schedule} %>');
+

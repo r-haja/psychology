@@ -48,7 +48,7 @@ class SchedulesController < ApplicationController
     @passport = @schedule.passport
     if params[:commit] == "達成"
       @schedule.judgment = 1
-    elsif params[:commit] == "取り消し"
+    elsif params[:commit] == "取消"
       @schedule.judgment = 2
     elsif params[:commit] == "例外日"
       @schedule.judgment = 3
