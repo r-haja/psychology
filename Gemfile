@@ -41,6 +41,7 @@ group :development, :test do
   gem 'rspec-rails', '~>3.6.0'
   gem 'factory_bot_rails', '~>4.10.0'
   gem 'rails-i18n'
+  gem 'mysql2'
 end
 
 group :development do
@@ -51,7 +52,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
-  gem 'mysql2'
 end
 
 group :test do
@@ -61,7 +61,6 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   #gem 'chromedriver-helper'
   gem 'launchy', '~>2.4.3'
-  gem 'mysql2'
 end
 
 group :production do
