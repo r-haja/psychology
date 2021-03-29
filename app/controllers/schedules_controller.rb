@@ -12,7 +12,7 @@ class SchedulesController < ApplicationController
     end
     if @schedule.save
       passport_rate
-      if @schedule.day.strftime("%Y-%m-%d")  == Time.now.strftime("%Y-%m-%d")
+      if @schedule.day.strftime("%Y-%m-%d") == Time.now.strftime("%Y-%m-%d")
         Notification.new().notification_create(@schedule.passport)
       end
       respond_to :js
@@ -33,7 +33,7 @@ class SchedulesController < ApplicationController
     end
     if @schedule.save
       passport_rate
-      if @schedule.day.strftime("%Y-%m-%d")  == Time.now.strftime("%Y-%m-%d")
+      if @schedule.day.strftime("%Y-%m-%d") == Time.now.strftime("%Y-%m-%d")
         Notification.new().notification_create(@schedule.passport)
       end
       respond_to :js
