@@ -82,61 +82,61 @@ class Notification < ApplicationRecord
       comments = NotificationComment.all
       comment_month = comments.where(date_type: "月")
       if passport.month_rate >= 100
-        comment_random = comment_month.where(action: "100%")
-        comment = comment_random.order("RANDOM()").first
+        comment_random = comment_month.where(action: "100")
+        #comment = comment_random.order("RANDOM()").first
       elsif passport.month_rate >= 85
-        comment_random = comment_month.where(action: "85%")
-        comment = comment_random.order("RANDOM()").first
+        comment_random = comment_month.where(action: "85")
+        #comment = comment_random.order("RANDOM()").first
       elsif passport.month_rate >= 71
-        comment_random = comment_month.where(action: "71%")
-        comment = comment_random.order("RANDOM()").first
+        comment_random = comment_month.where(action: "71")
+        #comment = comment_random.order("RANDOM()").first
       elsif passport.month_rate >= 57
-        comment_random = comment_month.where(action: "57%")
-        comment = comment_random.order("RANDOM()").first
+        comment_random = comment_month.where(action: "57")
+        #comment = comment_random.order("RANDOM()").first
       elsif passport.month_rate >= 42
-        comment_random = comment_month.where(action: "42%")
-        comment = comment_random.order("RANDOM()").first
+        comment_random = comment_month.where(action: "42")
+        #comment = comment_random.order("RANDOM()").first
       elsif passport.month_rate >= 28
-        comment_random = comment_month.where(action: "28%")
-        comment = comment_random.order("RANDOM()").first
+        comment_random = comment_month.where(action: "28")
+        #comment = comment_random.order("RANDOM()").first
       elsif passport.month_rate >= 14
-        comment_random = comment_month.where(action: "14%")
-        comment = comment_random.order("RANDOM()").first
+        comment_random = comment_month.where(action: "14")
+        #comment = comment_random.order("RANDOM()").first
       else
-        comment_random = comment_month.where(action: "0%")
-        comment = comment_random.order("RANDOM()").first
+        comment_random = comment_month.where(action: "0")
+        #comment = comment_random.order("RANDOM()").first
       end
-      return comment.id
+      return comment_random.ids.first
 
     elsif notification.date_type == 7
       comments = NotificationComment.all
       comment_week = comments.where(date_type: "週")
       if passport.week_rate >= 100
-        comment_random = comment_week.where(action: "100%")
-        comment = comment_random.order("RANDOM()").first
+        comment_random = comment_week.where(action: "100")
+        #comment = comment_random.order("RANDOM()").first
       elsif passport.week_rate >= 85
-        comment_random = comment_week.where(action: "85%")
-        comment = comment_random.order("RANDOM()").first
+        comment_random = comment_week.where(action: "85")
+        #comment = comment_random.order("RANDOM()").first
       elsif passport.week_rate >= 71
-        comment_random = comment_week.where(action: "71%")
-        comment = comment_random.order("RANDOM()").first
+        comment_random = comment_week.where(action: "71")
+        #comment = comment_random.order("RANDOM()").first
       elsif passport.week_rate >= 57
-        comment_random = comment_week.where(action: "57%")
-        comment = comment_random.order("RANDOM()").first
+        comment_random = comment_week.where(action: "57")
+        #comment = comment_random.order("RANDOM()").first
       elsif passport.week_rate >= 42
-        comment_random = comment_week.where(action: "42%")
-        comment = comment_random.order("RANDOM()").first
+        comment_random = comment_week.where(action: "42")
+        #comment = comment_random.order("RANDOM()").first
       elsif passport.week_rate >= 28
-        comment_random = comment_week.where(action: "28%")
-        comment = comment_random.order("RANDOM()").first
+        comment_random = comment_week.where(action: "28")
+        #comment = comment_random.order("RANDOM()").first
       elsif passport.week_rate >= 14
-        comment_random = comment_week.where(action: "14%")
-        comment = comment_random.order("RANDOM()").first
+        comment_random = comment_week.where(action: "14")
+        #comment = comment_random.order("RANDOM()").first
       else
-        comment_random = comment_week.where(action: "0%")
-        comment = comment_random.order("RANDOM()").first
+        comment_random = comment_week.where(action: "0")
+        #comment = comment_random.order("RANDOM()").first
       end
-      return comment.id
+      return comment_random.ids.first
     else
       comments = NotificationComment.all
       comment_random = comments.where(date_type: "日")
