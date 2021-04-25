@@ -1,12 +1,9 @@
-<div class="selection" data-step='1' data-intro='おめでとうございます！最初の習慣パスポートが作成されました。これから使い方をご説明していきます。<br>習慣が作成されると、ここにボタンが追加されていきます。'>
-</div>
-
 <div class="notification" data-turbolinks="false">
   <%= render partial: "notifications/feedback", locals: {notifications: @notifications} %>
 </div>
 
 <main class="passport">
-  <section class="container">
+  <section class="container" data-step='1' data-intro='おめでとうございます！最初の習慣パスポートが作成されました。これから使い方をご説明していきます。'>
     <div class="passport__header">
       <% if @passport.genre.name == "運動" %>
         <%= image_tag 'img_passport_header_1.png' %>
@@ -88,7 +85,7 @@
         <% if @passport.user_id == current_user.id %>
           <div class="editBtn">
             <div class="achievement<%= @passport.id.to_s %> achieveBtn" data-step='5' data-position="right" data-intro='習慣化を達成できたなと思ったらこのボタンを押してください。
-              習慣化パスポートが保存されます。保存された習慣化方法はページ上部の★から確認できます。'>
+              習慣化パスポートが保存されます。保存された習慣化方法はマイページから確認できます。'>
               <%= render partial: "passports/achievement", locals: { passport: @passport } %>
             </div>
             <div class="edit<%= @passport.id.to_s %>" data-step='4' data-intro='習慣化の内容を修正したい場合はこちらを押します。'>

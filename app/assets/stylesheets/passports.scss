@@ -5,52 +5,11 @@
     color: $primary-color;
   }
 }
-.passport_select{
-  display: inline-block;
-  margin-left: 2.5%;
-  .passport__achievement{
-    .btn-achievement-select{
-      height: 36px;
-      width: 105px;
-      background-color: #ffd633;
-      border: solid 2px #ffd633;
-      border-radius: 5px;
-      overflow: hidden;
-      white-space: nowrap;
-      color: #696969;
-      i{
-        color: white;
-      }
-      &:hover{
-        opacity: 0.7;
-        transition: opacity .3s;
-        i {
-          color: white;
-        }
-      }
-    }
-    .btn-achievement{
-      height: 36px;
-      width: 105px;
-      background-color: white;
-      border: solid 2px #ffd633;
-      border-radius: 5px;
-      overflow: hidden;
-      white-space: nowrap;
-      color: #696969;
-      i{
-        color: #ffd633;
-      }
-      &:hover{
-        opacity: 0.8;
-        background-color: #ffd633;
-        transition: opacity .3s;
-        transition: background-color .3s;
-        i {
-          color: white;
-        }
-      }
-    }
+.introjs-donebutton {
+  color: #fff;
+  background-color: $primary-color; 
+  &:hover {
+    color: #fff;
   }
 }
 
