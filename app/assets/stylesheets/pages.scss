@@ -270,6 +270,7 @@
       bottom: 0;
     }
     .slick-dots li button:before {
+      content: '';
       width: 12px;
       height: 12px;
       border-radius: 10px;
