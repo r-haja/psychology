@@ -11,20 +11,20 @@
         </div>
 
         <div class="form-group">
-          <%= f.text_field :name, autofocus: true, placeholder: "ネーム", class: "form-control" %>
+          <%= f.text_field :name, placeholder: "ネーム", class: "form-control" %>
         </div>
 
         <div class="form-group col2">
           <%= f.label :age, "生年月日" %>
           <div class="round">
-            <%= f.date_field :age, autofocus: true, class: "form-control" %>
+            <%= f.date_field :age, class: "form-control" %>
           </div>
         </div>
 
         <div class="form-group col2">
           <%= f.label :sex, "性別" %>
           <div class="round arrow">
-            <%= f.select :sex,[["男性", "男性"], ["女性", "女性"], ["その他", "その他"]], autofocus: true, placeholder: "性別", class: "form-control" %>
+            <%= f.select :sex,[["男性", "男性"], ["女性", "女性"], ["その他", "その他"]], placeholder: "性別", class: "form-control" %>
           </div>
         </div>
 
