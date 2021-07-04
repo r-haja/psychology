@@ -179,7 +179,7 @@ class Schedule < ApplicationRecord
     week_time = {"月曜日" =>mon_time,
             "火曜日" =>tue_time, "水曜日" =>wed_time,
             "木曜日" =>thu_time, "金曜日" =>fri_time,
-            "土曜日" =>sat_time, "日曜日" =>sun_time,}
+            "土曜日" =>sat_time, "日曜日" =>sun_time}
     return week_time
   end
 

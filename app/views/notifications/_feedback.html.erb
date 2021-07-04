@@ -174,9 +174,9 @@
                 </p>
                 <%= image_tag "passport/img_yell03.png", class: "advise__img advise__img--weekly" %>
               </div>
-              <%= link_to "習慣化のワザ 適正診断", diagnoses_path, class: "adviseBtn" %>
-              <%# link_to "そもそも習慣化とは？", porpose_create_path, class: "adviseBtn" %>
-              <%# link_to "達成に近づく目標の立て方", porpose_create_path, class: "adviseBtn" %>
+              <%= link_to "習慣化のワザ 適正診断", diagnoses_path, class: "adviseBtn", target: :_blank %>
+              <%= link_to("そもそも習慣化とは？", "http://dumbo-app.com/about-the-importance-of-habit", class: "adviseBtn", target: :_blank) %>
+              <%= link_to("達成に近づく目標の立て方", "http://dumbo-app.com/how-to-smart", class: "adviseBtn", target: :_blank) %>
             </div>
           </div>
         </div>
@@ -246,23 +246,34 @@
         var FbWeeklyChart = new Chart(ctx01, {
             type: 'line',
             data: {
-                labels: <%= key.to_json.html_safe %>,
-                datasets: [{
+               labels: <%= key.to_json.html_safe %>,
+               <% if prev_value[0]==0 && prev_value[1]==0 && prev_value[2]==0 && prev_value[3]==0 && prev_value[4]==0 && prev_value[5]==0 && prev_value[6]==0 %>
+                 datasets: [{
                     label: '今週のチェック時間',
                     data: array,
                     backgroundColor: 'rgba(255, 99, 132, 0.0)',
                     borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 2,
                     spanGaps: true
-                },
-                {
-                  label: '先週のチェック時間',
-                  data: prev_array,
-                  backgroundColor: 'rgba(54, 162, 235, 0.0)',
-                  borderColor: 'rgba(54, 162, 235, 1)',
-                  borderWidth: 2,
-                  spanGaps: true
-                }]
+                  }]
+               <% else %>
+                 datasets: [{
+                      label: '今週のチェック時間',
+                      data: array,
+                      backgroundColor: 'rgba(255, 99, 132, 0.0)',
+                      borderColor: 'rgba(255, 99, 132, 1)',
+                      borderWidth: 2,
+                      spanGaps: true
+                    },
+                    {
+                      label: '先週のチェック時間',
+                      data: prev_array,
+                     backgroundColor: 'rgba(54, 162, 235, 0.0)',
+                      borderColor: 'rgba(54, 162, 235, 1)',
+                      borderWidth: 2,
+                      spanGaps: true
+                 }]
+               <% end %>
             },
             options: {
                 scales: {
