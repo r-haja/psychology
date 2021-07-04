@@ -138,10 +138,10 @@ class Schedule < ApplicationRecord
         sat += 1
       end
     end
-    num = {"日曜日" =>sun, "月曜日" =>mon,
+    num = { "月曜日" =>mon,
             "火曜日" =>tue, "水曜日" =>wed,
             "木曜日" =>thu, "金曜日" =>fri,
-            "土曜日" =>sat}
+            "土曜日" =>sat, "日曜日" =>sun}
     return num
   end
 
@@ -214,10 +214,10 @@ class Schedule < ApplicationRecord
         sat_time = schedule.created_at.hour
       end
     end
-    week_time = {"日曜日" =>sun_time, "月曜日" =>mon_time,
+    week_time = {"月曜日" =>mon_time,
             "火曜日" =>tue_time, "水曜日" =>wed_time,
             "木曜日" =>thu_time, "金曜日" =>fri_time,
-            "土曜日" =>sat_time}
+            "土曜日" =>sat_time, "日曜日" =>sun_time}
     return week_time
   end
 end
