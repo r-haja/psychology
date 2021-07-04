@@ -140,7 +140,7 @@ class Notification < ApplicationRecord
     else
       comments = NotificationComment.all
       comment_random = comments.where(date_type: "日")
-      comment = comment_random.order("RANDOM()").first
+      comment = comment_random.order("RAND()").first
       return comment.id
     end
   end

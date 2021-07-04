@@ -95,14 +95,14 @@ class Schedule < ApplicationRecord
     thu_per = thu/sum.to_f*100
     fri_per = fri/sum.to_f*100
     sat_per = sat/sum.to_f*100
-    num = {"日曜日" =>sun, "月曜日" =>mon,
+    num = { "月曜日" =>mon,
             "火曜日" =>tue, "水曜日" =>wed,
             "木曜日" =>thu, "金曜日" =>fri,
-            "土曜日" =>sat}
-    hash = {"日曜日" =>sun_per.to_i, "月曜日" =>mon_per.to_i,
+            "土曜日" =>sat, "日曜日" =>sun}
+    hash = {"月曜日" =>mon_per.to_i,
             "火曜日" =>tue_per.to_i, "水曜日" =>wed_per.to_i,
             "木曜日" =>thu_per.to_i, "金曜日" =>fri_per.to_i,
-            "土曜日" =>sat_per.to_i}
+            "土曜日" =>sat_per.to_i, "日曜日" =>sun_per.to_i}
     sort_hash = Hash[hash.sort_by{|_, v| -v}]
     hash_top = sort_hash.to_a[0]+sort_hash.to_a[1]+sort_hash.to_a[2]
     hash_lower = sort_hash.to_a[3]+sort_hash.to_a[4]+sort_hash.to_a[5]+sort_hash.to_a[6]
@@ -176,10 +176,10 @@ class Schedule < ApplicationRecord
         sat_time = schedule.created_at.hour
       end
     end
-    week_time = {"日曜日" =>sun_time, "月曜日" =>mon_time,
+    week_time = {"月曜日" =>mon_time,
             "火曜日" =>tue_time, "水曜日" =>wed_time,
             "木曜日" =>thu_time, "金曜日" =>fri_time,
-            "土曜日" =>sat_time}
+            "土曜日" =>sat_time, "日曜日" =>sun_time,}
     return week_time
   end
 

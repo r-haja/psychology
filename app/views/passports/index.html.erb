@@ -9,11 +9,11 @@
 
         <%= link_to user_passport_path(current_user, passport.id), data:{"turbolinks" => false}, class: "habit" do  %>
 
-          <%# if passport.notifications.blank? || passport.notifications.where(check: false).blank? %>
+          <% if passport.notifications.blank? || passport.notifications.where(check: false).blank? %>
             <!-- <i class="far fa-circle"></i> -->
-          <%# else %>
+          <% else %>
             <i class="far fa-circle"></i>
-          <%# end %>
+          <% end %>
 
           <h3><%= simple_format(passport.purpose) %></h3>
 
