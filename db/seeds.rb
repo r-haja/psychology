@@ -328,49 +328,49 @@ NotificationComment.create!(
 NotificationComment.create!(
   comment: 'おめでとうございます!達成率が100%です!あなたは習慣化に向けての行動意識が非常に高いです。引き続き、習慣化方法を意識して継続していきましょう!',
   date_type: '週',
-  action: '100',
+  action: '100%',
   author: ''
 )
 NotificationComment.create!(
   comment: '達成率が85%であり、もう少しで100%達成です!あなたは習慣化に向けての行動が好調です。引き続き、習慣化方法を意識して継続していきましょう!',
   date_type: '週',
-  action: '85',
+  action: '85%',
   author: ''
 )
 NotificationComment.create!(
   comment: '達成率が71%であり、習慣化されている数値です!どうしても習慣化行動ができない日は、『例外ルール』を行いながら継続日を伸ばしましょう!',
   date_type: '週',
-  action: '71',
+  action: '71%',
   author: ''
 )
 NotificationComment.create!(
   comment: '達成率が57%であり、習慣化が身に付き始めています!週に4回以上の習慣化行動が理想のため、計画的に時間を確保できるようにしましょう!',
   date_type: '週',
-  action: '57',
+  action: '57%',
   author: ''
 )
 NotificationComment.create!(
   comment: '達成率が42%であり、習慣化までもう一息です!明日から改めてチャレンジしていきましょう!もし達成率に伸び悩んでいる場合は、あなたに合った習慣化方法を再度検討してみませんか?',
   date_type: '週',
-  action: '42',
+  action: '42%',
   author: ''
 )
 NotificationComment.create!(
   comment: '達成率が28%であり、習慣化に苦戦しているかもしれません。定期的に習慣化を行う目的と目標を見直す意識をしましょう!もし達成率に伸び悩んでいる場合は、自分に合った習慣化方法を再度検討してみませんか?',
   date_type: '週',
-  action: '28',
+  action: '28%',
   author: ''
 )
 NotificationComment.create!(
   comment: '達成率が14%であり、習慣化に苦戦している模様です。継続ができない自分を責めるのではなく、習慣化のやり方の見直してみましょう!あなたに合った習慣化方法を再度検討してみませんか?',
   date_type: '週',
-  action: '14',
+  action: '14%',
   author: ''
 )
 NotificationComment.create!(
   comment: '達成率が0%であり、習慣化行動の時間を確保できていないのかもしれません。計画的に時間を確保する生活を心がけ、まずは達成できる範囲の目標を設定することが大切です。あなたに合った習慣化方法を再度検討してみませんか?',
   date_type: '週',
-  action: '0',
+  action: '0%',
   author: ''
 )
 
@@ -378,48 +378,48 @@ NotificationComment.create!(
 NotificationComment.create!(
   comment: 'おめでとうございます!達成率が100%です!あなたは習慣化に向けての行動意識が非常に高いです。引き続き、習慣化方法を意識して継続していきましょう!',
   date_type: '月',
-  action: '100',
+  action: '100%',
   author: ''
 )
 NotificationComment.create!(
   comment: '達成率が85%であり、もう少しで100%達成です!あなたは習慣化に向けての行動が好調です。引き続き、習慣化方法を意識して継続していきましょう!',
   date_type: '月',
-  action: '85',
+  action: '85%',
   author: ''
 )
 NotificationComment.create!(
   comment: '達成率が71%であり、習慣化されている数値です!どうしても習慣化行動ができない日は、『例外ルール』を行いながら継続日を伸ばしましょう!',
   date_type: '月',
-  action: '71',
+  action: '71%',
   author: ''
 )
 NotificationComment.create!(
   comment: '達成率が57%であり、習慣化が身に付き始めています!週に4回以上の習慣化行動が理想のため、計画的に時間を確保できるようにしましょう!',
   date_type: '月',
-  action: '57',
+  action: '57%',
   author: ''
 )
 NotificationComment.create!(
   comment: '達成率が42%であり、習慣化までもう一息です!明日から改めてチャレンジしていきましょう!もし達成率に伸び悩んでいる場合は、あなたに合った習慣化方法を再度検討してみませんか?',
   date_type: '月',
-  action: '42',
+  action: '42%',
   author: ''
 )
 NotificationComment.create!(
   comment: '達成率が28%であり、習慣化に苦戦しているかもしれません。定期的に習慣化を行う目的と目標を見直す意識をしましょう!もし達成率に伸び悩んでいる場合は、自分に合った習慣化方法を再度検討してみませんか?',
   date_type: '月',
-  action: '28',
+  action: '28%',
   author: ''
 )
 NotificationComment.create!(
   comment: '達成率が14%であり、習慣化に苦戦している模様です。継続ができない自分を責めるのではなく、習慣化のやり方の見直してみましょう!あなたに合った習慣化方法を再度検討してみませんか?',
   date_type: '月',
-  action: '14',
+  action: '14%',
   author: ''
 )
 NotificationComment.create!(
   comment: '達成率が0%であり、習慣化行動の時間を確保できていないのかもしれません。計画的に時間を確保する生活を心がけ、まずは達成できる範囲の目標を設定することが大切です。あなたに合った習慣化方法を再度検討してみませんか?',
   date_type: '月',
-  action: '0',
+  action: '0%',
   author: ''
 )
