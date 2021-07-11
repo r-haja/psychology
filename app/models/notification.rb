@@ -106,7 +106,7 @@ class Notification < ApplicationRecord
         comment_random = comment_month.where(action: "0")
         #comment = comment_random.order("RANDOM()").first
       end
-      return comment_random.ids.first
+      return comment_random.first.id
 
     elsif notification.date_type == 7
       comments = NotificationComment.all
@@ -136,7 +136,7 @@ class Notification < ApplicationRecord
         comment_random = comment_week.where(action: "0")
         #comment = comment_random.order("RANDOM()").first
       end
-      return comment_random.ids.first
+      return comment_random.first.id
     else
       comments = NotificationComment.all
       comment_random = comments.where(date_type: "日")
